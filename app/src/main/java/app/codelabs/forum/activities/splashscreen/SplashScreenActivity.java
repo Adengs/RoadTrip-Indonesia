@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
-import app.codelabs.forum.MainActivity;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.walktrought.WalkThroughActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
                 startActivity(intent);
 
                 finish();

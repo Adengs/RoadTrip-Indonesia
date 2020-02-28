@@ -9,107 +9,115 @@
     android:orientation="vertical"
     tools:context=".activities.login.LoginActivity">
 
-    <ImageView
-        android:id="@+id/logo_login"
-        android:layout_width="67.14dp"
-        android:layout_height="72.09dp"
-        android:layout_marginLeft="146.88dp"
-        android:layout_marginTop="67.15dp"
-        android:layout_marginBottom="16.76dp"
-        android:src="@drawable/ic_logo_login" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="280dp"
-        android:layout_height="56dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shape_login"
-        android:orientation="horizontal">
-
-        <com.google.android.material.textfield.TextInputEditText
-
-            android:id="@+id/etemaillogin"
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:hint="E-mail"
-            android:inputType="textEmailAddress"
-            android:paddingTop="21dp"
-            android:paddingBottom="19dp"
-            android:textColorHint="@color/abuemaillogin"
-            android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="match_parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/logo_login"
+                android:layout_width="67.14dp"
+                android:layout_height="72.09dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/ic_logo_login" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/shape_login"
+                android:orientation="horizontal">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="280dp"
-        android:layout_height="56dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shape_login"
-        android:orientation="horizontal"
-        app:passwordToggleEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="280dp"
-            android:layout_height="56dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:paddingTop="21dp"
-            android:paddingBottom="19dp"
-            android:textColorHint="@color/abuemaillogin"
-            android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
+                    android:id="@+id/etemaillogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="E-mail"
+                    android:inputType="textEmailAddress"
+                    android:paddingTop="21dp"
+                    android:paddingBottom="19dp"
+                    android:textColorHint="@color/abuemaillogin"
+                    android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/buttonlogin"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/shape_buttonlogin"
-        android:text="Login"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/putih"
-        android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/txtforgotpasword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="121dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="131dp"
-        android:text="Forgot password?"
-        android:textColor="@color/pink"
-        android:textSize="16dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_login"
+                android:orientation="horizontal"
+                app:passwordToggleEnabled="true">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="92dp"
-        android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingTop="21dp"
+                    android:paddingBottom="19dp"
+                    android:textColorHint="@color/abuemaillogin"
+                    android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:text="Have an account?"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/txtpindahregister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="Register"
-            android:textColor="@color/pink"
-            android:textSize="14dp" />
+            <Button
+                android:id="@+id/buttonlogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="40dp"
+                android:background="@drawable/shape_buttonlogin"
+                android:text="Login"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/putih"
+                android:textSize="16dp" />
 
-    </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtforgotpasword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="131dp"
+                android:text="Forgot password?"
+                android:textColor="@color/pink"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Have an account?"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/txtpindahregister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Register"
+                    android:textColor="@color/pink"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
 
 </LinearLayout>
