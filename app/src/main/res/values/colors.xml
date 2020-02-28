@@ -3,4 +3,19 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!-- toolbar display -->
+    <color name="displayScreen">#F0F3F5</color>
+
+    <!-- toolbar display -->
+    <color name="backgroudToolbar">#FFFFFF</color>
+    <color name="titleToolbar">#000000</color>
+
+    <!-- display edit -->
+    <color name="colorEye">#FFFFFF</color>
+    <color name="backgroudEdit">#FFFFFF</color>
+    <color name="colorButtonRegister">#F62C4C</color>
+    <color name="titleButton">#FFFFFF</color>
+
+
 </resources>
