@@ -1,8 +1,10 @@
 package app.codelabs.forum.activities.login;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import app.codelabs.forum.R;
 
 public class LoginActivity extends AppCompatActivity {
 
