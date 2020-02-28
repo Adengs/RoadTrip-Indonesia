@@ -1,7 +1,9 @@
 package app.codelabs.forum;
 
 import androidx.appcompat.app.AppCompatActivity;
+import app.codelabs.forum.activities.walktrought.fragment.WalkTroughtFirstFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
