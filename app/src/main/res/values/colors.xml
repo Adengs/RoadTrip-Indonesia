@@ -3,4 +3,19 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="silver">#F0F3F5</color>
+    <color name="putih">#FFFFFF</color>
+    <color name="pink">#F62C4C</color>
+    <color name="putihp">#F5F5F5</color>
+    <color name="abu">#818E97</color>
+    <color name="biru">#E4EAEF</color>
+    <color name="hitam">#000000</color>
+    <color name="silver2">#818E9726</color>
+
+
+
+
+
+
+
 </resources>
