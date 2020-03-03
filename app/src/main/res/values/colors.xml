@@ -8,6 +8,8 @@
     <color name="colorCircle">#F0F3F5</color>
     <color name="colorDesc">#818E97</color>
     <color name="colorText">#000000</color>
+    <color name="abuai">#818E97</color>
+
 
     <!-- display log in-->
     <color name="abuemaillogin">#818E97</color>

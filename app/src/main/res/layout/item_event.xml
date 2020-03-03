@@ -3,4 +3,44 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <FrameLayout
+        android:background="@color/colorCircle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+                    <LinearLayout
+                android:background="@color/putih"
+                android:layout_marginTop="3dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="290dp">
+                <ImageView
+                    android:id="@+id/imgListEvent"
+                    android:padding="20dp"
+                    android:src="@drawable/mobil_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"/>
+
+                <TextView
+                    android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
+                    android:textColor="@color/black"
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="   20 Feb 2020 - 24 Feb 2020"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:drawableLeft="@drawable/ic_iconfinder_sidebar"
+                    android:textColor="@color/colorDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+
+            </LinearLayout>
+
+    </FrameLayout>
+
+
 </LinearLayout>

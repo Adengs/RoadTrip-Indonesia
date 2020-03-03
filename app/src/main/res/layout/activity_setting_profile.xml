@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorCircle"
+    tools:context=".activities.profile.SettingProfile">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_settingProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroudToolbar"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/Register">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_back_black"
+            android:drawablePadding="20dp"
+            android:text="Setting"
+            android:textColor="@color/titleToolbar"
+            android:textSize="14dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp"
+            android:background="@color/putih"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtPush"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="25.04dp"
+                android:drawableLeft="@drawable/ic_push_notif"
+                android:text="     Push notifications"
+                android:textColor="@color/black" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="22.96dp"
+                android:layout_marginRight="19.5dp"
+                android:background="@color/colorCircle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="22.5dp"
+                android:drawableLeft="@drawable/ic_setpro_ic_rate"
+                android:text="     Rate the app"
+                android:textColor="@color/black" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="21.05dp"
+                android:layout_marginRight="19.5dp"
+                android:background="@color/colorCircle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="22.5dp"
+                android:drawableLeft="@drawable/ic_setpro_ic_feedback"
+                android:text="     Feedback"
+                android:textColor="@color/black" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="21.05dp"
+                android:layout_marginRight="19.5dp"
+                android:background="@color/colorCircle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="22.5dp"
+                android:drawableLeft="@drawable/ic_setpro_ic_language"
+                android:text="     Language"
+                android:textColor="@color/black" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="21.05dp"
+                android:layout_marginRight="19.5dp"
+                android:background="@color/colorCircle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="22.5dp"
+                    android:drawableLeft="@drawable/ic_setpro_ic_moon"
+                    android:text="     Dark mode"
+                    android:textColor="@color/black" />
+                <!-- link java switch https://www.tutlane.com/tutorial/android/android-switch-on-off-button-with-examples-->
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="220dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="22.5dp"
+                    android:checked="true"
+                    android:paddingTop="22.5dp"
+                    android:paddingBottom="10dp"
+                    android:switchMinWidth="56dp"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="21dp"
+                android:layout_marginRight="19.5dp"
+                android:background="@color/colorCircle" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"       >
+
+        <Button
+            android:id="@+id/btnlogoutSettingP"
+            android:background="@color/putih"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textColor="@color/pink"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+</RelativeLayout>
