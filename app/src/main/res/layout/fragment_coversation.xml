@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".activities.conversation.fragment.CoversationFragment">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_top"
         android:layout_width="match_parent"
@@ -23,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="20dp"
-            android:text="Conversation"
+            android:text="Conservation"
             android:textStyle="bold"
             android:textColor="@color/titleToolbar"
             android:textSize="14dp" />
@@ -74,6 +73,11 @@
 
 
     </LinearLayout>
+
+
+
+
+
 
     <View android:layout_width="match_parent"
         android:layout_height="2dp"

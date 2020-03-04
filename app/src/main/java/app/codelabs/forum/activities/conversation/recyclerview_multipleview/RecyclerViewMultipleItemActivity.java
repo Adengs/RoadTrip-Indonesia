@@ -1,0 +1,98 @@
+package app.codelabs.forum.activities.conversation.recyclerview_multipleview;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import app.codelabs.forum.R;
+import app.codelabs.forum.activities.conversation.adapter.ChatAdapter;
+import app.codelabs.forum.activities.conversation.models.Chat;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class RecyclerViewMultipleItemActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    EditText etInputMessage;
+    ImageView btnSend;
+    Context context;
+
+    ChatAdapter adapter;
+
+    List<Chat> items = new ArrayList<>();
+    List<Chat> name = new ArrayList<>();
+
+    String ownerName = "Nurul Maulida";
+    int ownerUserId = 1;
+
+    String friendName = "Zikra Hanum";
+    int friendUserId = 2;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recycler_view_multiple_item);
+        context = getApplicationContext();
+
+        setView();
+        setRecyclerView();
+        setEvent();
+
+        setSampleData();
+
+    }
+
+
+    private void setSampleData() {
+
+        adapter.setOwnerId(ownerUserId);
+
+        items.add(new Chat(ownerName, "Hay, how are you? ", new Date().toString(), ownerUserId));
+        items.add(new Chat(friendName, "I'm good :)?", new Date().toString(), friendUserId));
+        items.add(new Chat(ownerName, "I wanna riding with you! Please :(", new Date().toString(), ownerUserId));
+        items.add(new Chat(ownerName, "Tonight?", new Date().toString(),friendUserId));
+        items.add(new Chat(friendName, "Ok. 7 pm i'll go your apartment", new Date().toString(), friendUserId));
+
+        adapter.setItems(items);
+    }
+
+    private void setView() {
+        recyclerView = findViewById(R.id.recyclerview_message);
+        etInputMessage = findViewById(R.id.et_input_message);
+        btnSend = findViewById(R.id.btn_send);
+    }
+
+    private void setRecyclerView() {
+        adapter = new ChatAdapter();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    private void setEvent() {
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                items.add(new Chat(
+                        ownerName,
+                        etInputMessage.getText().toString(),
+                        new Date().toString(),
+                        ownerUserId
+                ));
+                adapter.setItems(items);
+
+                etInputMessage.setText("");
+            }
+        });
+    }
+}
