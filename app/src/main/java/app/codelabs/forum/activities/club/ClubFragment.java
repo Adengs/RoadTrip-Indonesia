@@ -1,27 +1,33 @@
 package app.codelabs.forum.activities.club;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayout;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.club.about.AboutFragment;
+import app.codelabs.forum.activities.club.event.EventFragment;
+import app.codelabs.forum.activities.club.gallery.GalleryFragment;
+import app.codelabs.forum.activities.club.member.MemberFragment;
+import app.codelabs.forum.activities.club.post.PostFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ClubFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    private RvAdapter adapter;
-    Context context;
+    private ViewPager viewPager;
+    private PagerAdapter adapter;
+    private TabLayout tabLayout;
+
     public ClubFragment() {
         // Required empty public constructor
     }
@@ -37,10 +43,29 @@ public class ClubFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        adapter = new RvAdapter();
-        recyclerView = view.findViewById(R.id.rv_Club);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(adapter);
+
+        setView(view);
+        setViewPager();
     }
+
+    private void setViewPager() {
+        adapter = new PagerAdapter(getFragmentManager());
+
+        adapter.addFragment(new PostFragment(), "Post");
+        adapter.addFragment(new MemberFragment(), "Member");
+        adapter.addFragment(new EventFragment(), "Event");
+        adapter.addFragment(new GalleryFragment(), "Gallery");
+        adapter.addFragment(new AboutFragment(), "About");
+
+        viewPager.setAdapter(adapter);
+
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void setView(View view) {
+        viewPager = view.findViewById(R.id.viewPagerClub);
+        tabLayout = view.findViewById(R.id.tab_layout);
+    }
+
 }
+

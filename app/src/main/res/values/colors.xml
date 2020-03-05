@@ -45,4 +45,7 @@
     <color name="texttablayout">#818E97</color>
     <color name="textcar">#F62C4C</color>
 
+    <!-- display member-->
+    <color name="member">#818E97</color>
+
 </resources>
