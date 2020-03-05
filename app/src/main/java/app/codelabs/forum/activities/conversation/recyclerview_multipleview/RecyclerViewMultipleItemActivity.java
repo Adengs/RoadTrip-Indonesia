@@ -56,11 +56,11 @@ public class RecyclerViewMultipleItemActivity extends AppCompatActivity {
 
         adapter.setOwnerId(ownerUserId);
 
-        items.add(new Chat(ownerName, "Hay, how are you? ", new Date().toString(), ownerUserId));
-        items.add(new Chat(friendName, "I'm good :)?", new Date().toString(), friendUserId));
-        items.add(new Chat(ownerName, "I wanna riding with you! Please :(", new Date().toString(), ownerUserId));
-        items.add(new Chat(ownerName, "Tonight?", new Date().toString(),friendUserId));
-        items.add(new Chat(friendName, "Ok. 7 pm i'll go your apartment", new Date().toString(), friendUserId));
+        items.add(new Chat(ownerName, "Hay, how are you? ", new Date().toString(), friendUserId));
+        items.add(new Chat(friendName, "I'm good :)?", new Date().toString(), ownerUserId));
+        items.add(new Chat(ownerName, "I wanna riding with you! Please :(", new Date().toString(), friendUserId));
+        items.add(new Chat(ownerName, "Tonight?", new Date().toString(),ownerUserId));
+        items.add(new Chat(friendName, "Ok. 7 pm i'll go your apartment", new Date().toString(), ownerUserId));
 
         adapter.setItems(items);
     }

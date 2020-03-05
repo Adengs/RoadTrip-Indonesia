@@ -9,23 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".activities.conversation.ConversationActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity">
+
         </activity>
         <activity android:name=".activities.conversation.EventNameActivity" />
-        <activity android:name=".activities.conversation.ConversationActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <activity android:name=".activities.forgotpassword.ForgotPasswordActivity" />
         <activity android:name=".activities.register.RegisterActivity" />
         <activity android:name=".activities.login.LoginActivity" />
         <activity android:name=".activities.walktrought.WalkThroughActivity" />
-        <activity android:name=".activities.splashscreen.SplashScreenActivity">
-
-        </activity>
+        <activity android:name=".activities.splashscreen.SplashScreenActivity"></activity>
     </application>
 
 </manifest>

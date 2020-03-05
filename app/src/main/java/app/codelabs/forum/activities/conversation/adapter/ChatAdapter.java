@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.conversation.models.Chat;
 
-public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
-
+public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int VIEW_TYPE_LEFT_CHAT = 0;
     public static final int VIEW_TYPE_RIGHT_CHAT = 1;
 
@@ -26,6 +25,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
     public ChatAdapter() {
         this.items = new ArrayList<>();
     }
+
 
     @NonNull
     @Override
@@ -50,6 +50,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
         }
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder.getItemViewType() == VIEW_TYPE_LEFT_CHAT) {
@@ -60,6 +61,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
 
             onBindViewRightHolder(holder, position);
         }
+
     }
 
     private void onBindViewRightHolder(RecyclerView.ViewHolder holder, int position) {

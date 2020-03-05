@@ -5,26 +5,29 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:maxWidth="300dp"
+        android:layout_margin="8dp"
         android:layout_marginRight="20dp"
         android:layout_gravity="right"
         android:background="@drawable/shape_chat_hitam"
         android:orientation="vertical"
-        android:layout_width="109dp"
-        android:layout_height="56dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <LinearLayout
+            android:paddingLeft="10dp"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
                 android:text="You"
                 android:textStyle="bold"
                 android:textColor="@color/putih"
-                android:layout_marginLeft="13dp"
+
                 android:layout_marginTop="10dp"
                 android:textSize="12dp"
-                android:layout_width="22dp"
-                android:layout_height="14dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
             </TextView>
 
@@ -44,26 +47,26 @@
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="10dp"
                 android:textSize="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="14dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
             </TextView>
 
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:paddingLeft="10dp"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_message_left_side"
+                android:id="@+id/tv_message_right_side"
                 android:text="Tonight? "
                 android:layout_marginTop="6dp"
                 android:textColor="@color/putih"
-                android:layout_marginLeft="13dp"
                 android:textSize="12dp"
-                android:layout_width="51dp"
-                android:layout_height="16dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
             </TextView>
 

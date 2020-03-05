@@ -7,6 +7,46 @@
     android:layout_height="match_parent"
     tools:context=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <ImageView
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="21.26dp"
+            android:src="@drawable/ic_asset"
+            android:layout_width="18dp"
+            android:layout_height="13.47dp">
+
+        </ImageView>
+
+        <ImageView
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/draw_conv_user"
+            android:src="@drawable/ic_iconfinder_users"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:layout_width="29dp"
+            android:layout_height="29dp">
+
+        </ImageView>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="18dp"
+            android:text="Event name etc"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/hitam"
+            android:layout_width="match_parent"
+            android:layout_height="16dp">
+
+        </TextView>
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_message"
