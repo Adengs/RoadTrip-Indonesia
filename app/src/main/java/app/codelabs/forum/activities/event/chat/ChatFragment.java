@@ -1,5 +1,5 @@
 
-package app.codelabs.forum.activities.event.fragment;
+package app.codelabs.forum.activities.event.chat;
 
 
 import android.os.Bundle;

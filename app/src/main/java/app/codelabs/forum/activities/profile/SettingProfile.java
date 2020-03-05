@@ -3,6 +3,9 @@ package app.codelabs.forum.activities.profile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
+
+import app.codelabs.forum.R;
 
 public class SettingProfile extends AppCompatActivity {
 
