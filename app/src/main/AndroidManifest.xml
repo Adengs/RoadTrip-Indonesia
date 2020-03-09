@@ -12,11 +12,6 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".activities.forgotpassword.ForgotPasswordActivity" />
         <activity android:name=".activities.register.RegisterActivity"></activity>
-
-
-        <activity android:name=".activities.home.HomeActivity"></activity>
-        <activity android:name=".activities.home.notivication.NotivicationHome"></activity>
-
         <activity android:name=".activities.login.LoginActivity" />
         <activity android:name=".activities.walktrought.WalkThroughActivity" />
         <activity android:name=".activities.splashscreen.SplashScreenActivity">
@@ -26,7 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
