@@ -13,6 +13,7 @@
         android:layout_height="55dp">
 
         <ImageView
+            android:id="@+id/btnpanah"
             android:layout_marginLeft="21dp"
             android:layout_marginTop="21.26dp"
             android:src="@drawable/ic_asset"
@@ -26,8 +27,8 @@
             android:layout_marginLeft="15dp"
             android:background="@drawable/draw_conv_user"
             android:src="@drawable/ic_iconfinder_users"
-            android:paddingLeft="10dp"
-            android:paddingTop="8dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
             android:layout_width="29dp"
             android:layout_height="29dp">
 

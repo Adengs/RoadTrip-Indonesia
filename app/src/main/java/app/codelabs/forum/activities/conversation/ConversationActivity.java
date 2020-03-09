@@ -2,10 +2,12 @@ package app.codelabs.forum.activities.conversation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.conversation.adapter.ConversationAdapter;
+import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
 import app.codelabs.forum.activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity;
 
 import android.content.Context;
@@ -17,7 +19,9 @@ import android.widget.TextView;
 
 public class ConversationActivity extends AppCompatActivity {
 
-    ImageView btnEvent;
+    CardView cardviewe;
+
+
     Context context;
     ConversationAdapter adapter;
 
@@ -49,19 +53,22 @@ public class ConversationActivity extends AppCompatActivity {
 
 
     private void setView() {
-        btnEvent = findViewById(R.id.btnevent);
+       cardviewe  = findViewById (R.id.cardvieweventname);
 
 
 
     }
 
     private void setEvent() {
-        btnEvent.setOnClickListener(new View.OnClickListener() {
+        cardviewe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ConversationActivity.this, RecyclerViewMultipleItemActivity.class));
             }
         });
+
+
+
 
 
     }

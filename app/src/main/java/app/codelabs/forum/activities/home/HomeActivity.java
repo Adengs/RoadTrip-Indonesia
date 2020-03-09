@@ -1,6 +1,7 @@
 package app.codelabs.forum.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import app.codelabs.forum.R;
 
 import android.os.Bundle;
 

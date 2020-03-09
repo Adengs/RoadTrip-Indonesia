@@ -15,7 +15,6 @@
         <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity">
 
         </activity>
-        <activity android:name=".activities.conversation.EventNameActivity" />
         <activity android:name=".MainActivity" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

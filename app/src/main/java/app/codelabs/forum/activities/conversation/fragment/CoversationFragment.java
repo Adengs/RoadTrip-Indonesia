@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.conversation.ConversationActivity;
 import app.codelabs.forum.activities.conversation.adapter.ConversationAdapter;
 import app.codelabs.forum.activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity;
 
@@ -27,7 +29,8 @@ public class CoversationFragment extends Fragment {
     RecyclerView recyclerView;
     private ConversationAdapter adapter;
     Context context;
-    ImageView btnEvent;
+    CardView cardviewe;
+
 
 
 
@@ -59,12 +62,12 @@ public class CoversationFragment extends Fragment {
 
     private void setView(View view) {
         adapter = new ConversationAdapter();
-        btnEvent = view.findViewById(R.id.btnevent);
+        cardviewe = view.findViewById(R.id.cardvieweventname);
         recyclerView = view.findViewById(R.id.recyclerviewConv);
     }
 
     private void setEvent() {
-        btnEvent.setOnClickListener(new View.OnClickListener() {
+        cardviewe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), RecyclerViewMultipleItemActivity.class);
@@ -72,6 +75,10 @@ public class CoversationFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+
+
     }
 
     private void setRecycleView() {

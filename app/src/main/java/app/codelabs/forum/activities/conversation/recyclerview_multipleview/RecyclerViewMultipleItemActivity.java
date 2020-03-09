@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.conversation.ConversationActivity;
 import app.codelabs.forum.activities.conversation.adapter.ChatAdapter;
+import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
 import app.codelabs.forum.activities.conversation.models.Chat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,8 +25,9 @@ public class RecyclerViewMultipleItemActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     EditText etInputMessage;
-    ImageView btnSend;
+    ImageView btnSend,btnBack;
     Context context;
+
 
     ChatAdapter adapter;
 
@@ -69,6 +73,7 @@ public class RecyclerViewMultipleItemActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview_message);
         etInputMessage = findViewById(R.id.et_input_message);
         btnSend = findViewById(R.id.btn_send);
+        btnBack = findViewById(R.id.btnpanah);
     }
 
     private void setRecyclerView() {
@@ -94,5 +99,17 @@ public class RecyclerViewMultipleItemActivity extends AppCompatActivity {
                 etInputMessage.setText("");
             }
         });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CoversationFragment.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+
+
+            }
+        });
     }
+
 }

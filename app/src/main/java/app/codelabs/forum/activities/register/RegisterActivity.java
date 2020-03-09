@@ -32,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setView() {
+
         txtlogin = findViewById(R.id.txtlogin);
     }
 }
