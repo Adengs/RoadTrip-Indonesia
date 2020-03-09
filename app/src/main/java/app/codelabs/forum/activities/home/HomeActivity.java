@@ -1,20 +1,21 @@
 package app.codelabs.forum.activities.home;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+import app.codelabs.forum.R;
+import app.codelabs.forum.activities.home.fragment.HomeFragment;
+import app.codelabs.forum.activities.home.fragment.adapter.HomeCardSliderAdapter;
+import app.codelabs.forum.activities.home.notivication.NotivicationHome;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import app.codelabs.forum.R;
-import app.codelabs.forum.activities.club.ClubFragment;
-import app.codelabs.forum.activities.home.fragment.HomeFragment;
-import app.codelabs.forum.activities.home.notivication.NotivicationHome;
 
 public class HomeActivity extends AppCompatActivity {
 Context context;
@@ -64,7 +65,7 @@ ImageView img_bell, imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
         imgClubs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new ClubFragment());
+
             }
         });
         imgChats.setOnClickListener(new View.OnClickListener() {
