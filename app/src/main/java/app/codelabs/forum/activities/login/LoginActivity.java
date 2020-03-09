@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.forgotpassword.ForgotPasswordActivity;
+import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -36,7 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
         txtForgotPassword.setOnClickListener(new View.OnClickListener() {
