@@ -19,19 +19,19 @@
         android:layout_gravity="center"
         android:layout_width="360dp"
         android:layout_height="wrap_content">
-        <androidx.viewpager.widget.ViewPager
+        <ImageView
             android:id="@+id/pagergray"
             android:layout_marginLeft="166dp"
             android:background="@drawable/ic_circle_gray"
             android:layout_width="7dp"
             android:layout_height="7dp"/>
-        <androidx.viewpager.widget.ViewPager
+        <ImageView
             android:id="@+id/pager"
             android:layout_marginLeft="4dp"
             android:background="@drawable/ic_circle_red"
             android:layout_width="7dp"
             android:layout_height="7dp"/>
-        <androidx.viewpager.widget.ViewPager
+        <ImageView
             android:id="@+id/pagergrayes"
             android:layout_marginLeft="4dp"
             android:background="@drawable/ic_circle_gray"

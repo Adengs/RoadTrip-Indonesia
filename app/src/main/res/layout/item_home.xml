@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_walk_through"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_logo1"
+                android:src="@drawable/lamborghini"
+                android:layout_marginLeft="3dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"/>
+
+            <TextView
+                android:textSize="12dp"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/txtnamamobil1"
+                android:text="Ford Everest Club Indonesia"
+                android:textColor="@color/colorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/circlegray"
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/ic_circle_latest"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/tikmobil"
+                android:text="2 Day"
+                android:textSize="12dp"
+                android:textColor="@color/colorDesc"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_desc_mobil"
+                android:layout_width="189dp"
+                android:layout_height="57dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="13dp"
+                android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
+                android:textColor="@color/colorText"
+                android:textSize="14dp"/>
+            <ImageView
+                android:id="@+id/img_mobill1"
+                android:src="@drawable/fordeverestfrnt"
+                android:layout_gravity="right"
+                android:layout_marginLeft="35dp"
+                android:layout_width="116dp"
+                android:layout_height="88dp"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/cars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginBottom="21dp"
+            android:background="@drawable/shape_home_latest"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="3dp"
+            android:text="Cars"
+            android:textColor="@color/pink"
+            android:textSize="12dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/shape_walk_through"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_logo2"
+                android:src="@drawable/lamborghini"
+                android:layout_marginLeft="3dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"/>
+
+            <TextView
+                android:textSize="12dp"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/txtnamamobil2"
+                android:text="Ford Everest Club Indonesia"
+                android:textColor="@color/colorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginLeft="4dp"
+                android:id="@+id/circlegrayss"
+                android:src="@drawable/ic_circle_latest"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/titik"
+                android:text="2 Day"
+                android:textSize="12dp"
+                android:textColor="@color/colorDesc"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_desc_mobil1"
+                android:layout_width="189dp"
+                android:layout_height="57dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="13dp"
+                android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
+                android:textColor="@color/colorText"
+                android:textSize="14dp"/>
+            <ImageView
+                android:id="@+id/img_mobil2"
+                android:src="@drawable/homemobil"
+                android:layout_gravity="right"
+                android:layout_marginLeft="35dp"
+                android:layout_width="116dp"
+                android:layout_height="88dp"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/cars2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginBottom="21dp"
+            android:background="@drawable/shape_home_latest"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="3dp"
+            android:text="Cars"
+            android:textColor="@color/pink"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+</LinearLayout>
