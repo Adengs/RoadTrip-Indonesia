@@ -1,5 +1,6 @@
 package app.codelabs.forum;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -10,12 +11,14 @@ import app.codelabs.forum.activities.conversation.recyclerview_multipleview.Recy
 import app.codelabs.forum.activities.walktrought.fragment.WalkTroughtFirstFragment;
 
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
+public class MainActivity extends AppCompatActivity {
 
 
     @Override
@@ -23,22 +26,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         setFragment(new CoversationFragment());
 
 
     }
 
 
-
     private void setFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentConv,fragment);
+        fragmentTransaction.replace(R.id.fragmentConv, fragment);
         fragmentTransaction.commit();
 
 
     }
-
 
 
 }
