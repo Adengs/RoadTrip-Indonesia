@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
 import app.codelabs.forum.activities.home.fragment.HomeFragment;
 import app.codelabs.forum.activities.home.fragment.adapter.HomeCardSliderAdapter;
 import app.codelabs.forum.activities.home.notivication.NotivicationHome;
@@ -77,6 +78,7 @@ public class HomeActivity extends AppCompatActivity {
         imgEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setFragment(new CoversationFragment());
 
             }
         });
