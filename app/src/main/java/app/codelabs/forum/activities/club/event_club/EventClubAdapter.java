@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.event;
+package app.codelabs.forum.activities.club.event_club;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import app.codelabs.forum.R;
 
 import static android.graphics.Color.rgb;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyHolder> {
+public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHolder> {
     private Context context;
 
     @NonNull

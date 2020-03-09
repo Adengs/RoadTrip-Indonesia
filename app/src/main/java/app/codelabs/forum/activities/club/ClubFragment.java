@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.club.about.AboutFragment;
-import app.codelabs.forum.activities.club.event.EventFragment;
+import app.codelabs.forum.activities.club.event_club.Event_Club_Fragment;
 import app.codelabs.forum.activities.club.gallery.GalleryFragment;
 import app.codelabs.forum.activities.club.member.MemberFragment;
 import app.codelabs.forum.activities.club.post.PostFragment;
@@ -53,7 +53,7 @@ public class ClubFragment extends Fragment {
 
         adapter.addFragment(new PostFragment(), "Post");
         adapter.addFragment(new MemberFragment(), "Member");
-        adapter.addFragment(new EventFragment(), "Event");
+        adapter.addFragment(new Event_Club_Fragment(), "Event");
         adapter.addFragment(new GalleryFragment(), "Gallery");
         adapter.addFragment(new AboutFragment(), "About");
 

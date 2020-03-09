@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.event;
+package app.codelabs.forum.activities.club.event_club;
 
 
 import android.content.Context;
@@ -17,13 +17,13 @@ import app.codelabs.forum.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventFragment extends Fragment {
+public class Event_Club_Fragment extends Fragment {
     RecyclerView recyclerView;
-    private EventAdapter adapter;
+    private EventClubAdapter adapter;
     Context context;
 
 
-    public EventFragment() {
+    public Event_Club_Fragment() {
         // Required empty public constructor
     }
 
@@ -32,7 +32,7 @@ public class EventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event, container, false);
+        return inflater.inflate(R.layout.fragment_event_club, container, false);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class EventFragment extends Fragment {
     }
 
     private void setView(View view) {
-        adapter = new EventAdapter();
+        adapter = new EventClubAdapter();
         recyclerView = view.findViewById(R.id.rv_event);
     }
 }
