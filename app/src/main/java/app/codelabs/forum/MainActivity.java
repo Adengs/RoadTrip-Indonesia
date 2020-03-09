@@ -27,20 +27,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        setFragment(new CoversationFragment());
 
 
     }
 
 
-    private void setFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentConv, fragment);
-        fragmentTransaction.commit();
-
-
-    }
 
 
 }

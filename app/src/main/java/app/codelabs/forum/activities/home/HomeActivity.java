@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.club.ClubFragment;
 import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
 import app.codelabs.forum.activities.home.fragment.HomeFragment;
 import app.codelabs.forum.activities.home.fragment.adapter.HomeCardSliderAdapter;
@@ -66,19 +67,20 @@ public class HomeActivity extends AppCompatActivity {
         imgClubs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+               setFragment(new ClubFragment());
             }
         });
         imgChats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setFragment(new CoversationFragment());
 
             }
         });
         imgEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new CoversationFragment());
+
 
             }
         });
