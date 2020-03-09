@@ -20,29 +20,27 @@
         android:layout_marginTop="11dp"
         android:orientation="horizontal">
 
-        <androidx.viewpager.widget.ViewPager
+        <ImageView
             android:id="@+id/pager"
             android:layout_width="7dp"
             android:layout_height="7dp"
             android:layout_marginLeft="166dp"
             android:background="@drawable/ic_circle_red" />
 
-        <androidx.viewpager.widget.ViewPager
+        <ImageView
             android:id="@+id/pagergray"
             android:layout_width="7dp"
             android:layout_height="7dp"
             android:layout_marginLeft="4dp"
             android:background="@drawable/ic_circle_gray" />
 
-        <androidx.viewpager.widget.ViewPager
+        <ImageView
             android:id="@+id/pagergrayes"
             android:layout_width="7dp"
             android:layout_height="7dp"
             android:layout_marginLeft="4dp"
-            android:background="@drawable/ic_circle_gray" />
+            android:background="@drawable/ic_circle_gray"/>
     </LinearLayout>
-
-
     <TextView
         android:id="@+id/titlefirst"
         android:layout_width="wrap_content"
