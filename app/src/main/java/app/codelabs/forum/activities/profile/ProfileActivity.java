@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.event.fragment.EventFragment;
 import app.codelabs.forum.activities.profile.fragment.ProfileFragment;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        setFragment(new ProfileFragment());
+        setFragment(new EventFragment());
     }
 
     private void setFragment(Fragment fragment) {

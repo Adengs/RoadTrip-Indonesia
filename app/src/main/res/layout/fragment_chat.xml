@@ -10,21 +10,36 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
-        android:layout_marginTop="3dp"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewpesan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerviewpesan"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:itemCount="10"
-            tools:listitem="@layout/item_chat_kiri" />
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_chat_kiri"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:background="@color/putih"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_sendChat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/imgSendChat"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_iconfinder_navigation_send">
+
+        </ImageView>
     </LinearLayout>
+
 
 
 </LinearLayout>

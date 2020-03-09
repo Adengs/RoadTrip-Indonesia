@@ -3,18 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
 
 
     <LinearLayout
+        android:minWidth="100dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
         android:paddingBottom="10dp"
+        android:paddingRight="20dp"
         android:background="@drawable/shape_chat_hitam"
         android:orientation="vertical">
 
@@ -47,7 +49,7 @@
 
             <TextView
                 android:id="@+id/txtWaktuKirim_kanan"
-                android:layout_width="51dp"
+                android:layout_width="match_parent"
                 android:layout_height="14dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="10dp"

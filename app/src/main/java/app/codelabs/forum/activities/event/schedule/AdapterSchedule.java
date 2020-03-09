@@ -49,7 +49,7 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
             txtMaps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    txtMaps.setText("Joined");
+                    txtMaps.setText("Maps");
                     txtMaps.setTextColor(Color.rgb(255,255,255));
                     txtMaps.setBackgroundColor(ContextCompat.getColor(context,R.color.pink));
                 }

@@ -56,7 +56,7 @@ public class AdapterParticipant extends RecyclerView.Adapter<AdapterParticipant.
         }
 
         private void setView(View view) {
-            txtJoin=view.findViewById(R.id.txtJoined);
+            txtJoin=view.findViewById(R.id.txtjoinedabu);
         }
     }
 
