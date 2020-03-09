@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.home.fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layouthome"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorBackground"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom"
+        android:layout_margin="5dp"
+        app:tabIndicator="@color/merah"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="2dp"
+        app:tabSelectedTextColor="@color/colorText"
+        app:tabMode="scrollable"
+        app:tabTextAppearance="@style/Tablayout"
+        app:tabTextColor="@color/colorText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_marginTop="?actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/viewpagers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <include layout="@layout/item_fragment_home" />
+
+    <include layout="@layout/fragment_latest" />
+</LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
