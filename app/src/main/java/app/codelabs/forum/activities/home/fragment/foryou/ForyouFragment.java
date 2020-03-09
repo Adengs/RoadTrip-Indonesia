@@ -1,9 +1,10 @@
 package app.codelabs.forum.activities.home.fragment.foryou;
 
 
-
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,6 @@ import app.codelabs.forum.R;
 
 /**
  * A simple {@link Fragment} subclass.
- *
  */
 public class ForyouFragment extends Fragment {
 
