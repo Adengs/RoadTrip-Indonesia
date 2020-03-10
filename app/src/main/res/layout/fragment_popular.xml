@@ -7,9 +7,10 @@
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popularfragment"
         android:layout_width="match_parent"
-        tools:itemCount="3"
-        android:layout_height="wrap_content"
+        tools:itemCount="4"
+        android:layout_height="match_parent"
         tools:listitem="@layout/item_home">
     </androidx.recyclerview.widget.RecyclerView>
 
