@@ -81,9 +81,9 @@
                 android:textSize="12dp"
                 android:textColor="@color/colorDesc"
                 android:layout_marginTop="25dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginLeft="48dp"
-                android:layout_width="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <View
@@ -138,9 +138,9 @@
                 android:textSize="12dp"
                 android:textColor="@color/colorDesc"
                 android:layout_marginTop="25dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginLeft="48dp"
-                android:layout_width="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <View

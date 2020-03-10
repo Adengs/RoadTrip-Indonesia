@@ -8,28 +8,33 @@
     tools:context=".activities.home.fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-
-
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layouthome"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorBackground"
+    <LinearLayout
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom"
-        android:layout_margin="5dp"
-        app:tabIndicator="@color/merah"
-        app:tabIndicatorFullWidth="false"
-        app:tabIndicatorHeight="2dp"
-        app:tabSelectedTextColor="@color/colorText"
-        app:tabMode="scrollable"
-        app:tabTextAppearance="@style/Tablayout"
-        app:tabTextColor="@color/colorText"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.google.android.material.tabs.TabLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layouthome"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shape_walk_through"
+            app:layout_anchor="@id/appbar"
+            app:tabGravity="fill"
+            app:layout_anchorGravity="bottom"
+            app:tabIndicator="@color/merah"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="@color/colorText"
+            app:tabMode="fixed"
+            app:tabTextAppearance="@style/Tablayout"
+            app:tabTextColor="@color/colorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.google.android.material.tabs.TabLayout>
+    </LinearLayout>
+
+    <include layout="@layout/item_fragment_home" />
 
     <androidx.viewpager.widget.ViewPager
         android:layout_marginTop="?actionBarSize"
@@ -37,14 +42,4 @@
         android:id="@+id/viewpagers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <include layout="@layout/item_fragment_home" />
-
-    <include layout="@layout/fragment_latest" />
-</LinearLayout>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

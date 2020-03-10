@@ -16,13 +16,20 @@ import app.codelabs.forum.activities.club.ClubFragment;
 import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
 import app.codelabs.forum.activities.event.fragment.EventFragment;
 import app.codelabs.forum.activities.home.fragment.HomeFragment;
+import app.codelabs.forum.activities.home.fragment.adapter.HomeCardSliderAdapter;
 import app.codelabs.forum.activities.home.notivication.NotivicationHome;
 import app.codelabs.forum.activities.profile.fragment.ProfileFragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class HomeActivity extends AppCompatActivity {
 Context context;
-TextView txtfevci;
-ImageView img_bell, imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
+ImageView imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +47,6 @@ ImageView img_bell, imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
 
 
     private void setView() {
-        txtfevci = findViewById(R.id.txtfevci);
-        img_bell = findViewById(R.id.iconbell);
         imgHomes = findViewById(R.id.img_homes);
         imgClubs = findViewById(R.id.img_clubs);
         imgChats = findViewById(R.id.img_chats);
@@ -51,13 +56,6 @@ ImageView img_bell, imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
 
 
     private void setEvent() {
-        img_bell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, NotivicationHome.class);
-                startActivity(intent);
-            }
-        });
         imgHomes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

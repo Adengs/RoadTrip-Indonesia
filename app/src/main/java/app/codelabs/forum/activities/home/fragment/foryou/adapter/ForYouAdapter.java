@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.home.fragment.adapter;
+package app.codelabs.forum.activities.home.fragment.foryou.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,33 +14,34 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.home.fragment.latest.adapter.LatestAdapter;
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeAdapterViewHolder> {
+public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.ForYouViewHolder> {
     List<Fragment> items = new ArrayList<>();
     Context context;
     @NonNull
     @Override
-    public HomeAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ForYouViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_home, parent, false);
-        return new HomeAdapterViewHolder(view);
+        return new ForYouViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ForYouViewHolder holder, int position) {
 
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return 2;
     }
 
-    public class HomeAdapterViewHolder extends RecyclerView.ViewHolder {
+    public class ForYouViewHolder extends RecyclerView.ViewHolder {
         TextView TxtNamaMobil1,TxtNamaMobil2,TxtCars1,TxtCars2,TxTDescMobil1,TxtDescMobil2;
         TextView txtday,txtdaymo;
         ImageView imgLogo1,imgLogo2,circleGray1,circleGray2,imgMobil1,imgMobil2;
-        public HomeAdapterViewHolder(@NonNull View view) {
+        public ForYouViewHolder(@NonNull View view) {
             super(view);
             setView(view);
         }
