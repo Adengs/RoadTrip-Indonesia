@@ -36,12 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="10"
-            tools:listitem="@layout/item_event">
-
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-
+            tools:listitem="@layout/item_event" />
     </LinearLayout>
 
 </LinearLayout>
