@@ -13,12 +13,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.conversation.ConversationActivity;
 import app.codelabs.forum.activities.conversation.adapter.ConversationAdapter;
 import app.codelabs.forum.activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity;
 
@@ -70,9 +68,12 @@ public class CoversationFragment extends Fragment {
         cardviewe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), RecyclerViewMultipleItemActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                 Intent intent = new Intent(getContext(), RecyclerViewMultipleItemActivity.class);
+                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+
+
+
             }
         });
 
