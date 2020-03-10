@@ -4,23 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.fragment.HomeFragment;
-import app.codelabs.forum.activities.home.fragment.adapter.HomeCardSliderAdapter;
-import app.codelabs.forum.activities.home.notivication.NotivicationHome;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 Context context;
-TextView txtfevci;
-ImageView img_bell, imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
+ImageView imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +27,9 @@ ImageView img_bell, imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
 
 
         setFragment(new HomeFragment());
-
     }
 
-
     private void setView() {
-        txtfevci = findViewById(R.id.txtfevci);
-        img_bell = findViewById(R.id.iconbell);
         imgHomes = findViewById(R.id.img_homes);
         imgClubs = findViewById(R.id.img_clubs);
         imgChats = findViewById(R.id.img_chats);
@@ -49,17 +39,9 @@ ImageView img_bell, imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
 
 
     private void setEvent() {
-        img_bell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, NotivicationHome.class);
-                startActivity(intent);
-            }
-        });
         imgHomes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new HomeFragment());
             }
         });
         imgClubs.setOnClickListener(new View.OnClickListener() {

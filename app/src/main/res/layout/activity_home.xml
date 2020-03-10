@@ -6,36 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.home.HomeActivity">
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:id="@+id/notiflinear"
-        android:background="@drawable/shape_home_bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="55dp">
-        <TextView
-            android:id="@+id/txtfevci"
-            android:text="FEVCI Indonesia"
-            android:textSize="14dp"
-            android:paddingTop="20dp"
-            android:textColor="@color/colorText"
-            android:paddingLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:id="@+id/iconbell"
-            android:src="@drawable/ic_nottification"
-            android:paddingTop="18dp"
-            android:paddingLeft="189.78dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <FrameLayout
         android:id="@+id/fragment_container"
-        android:layout_below="@+id/notiflinear"
         android:layout_width="match_parent"
-        android:layout_height="620dp"/>
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
