@@ -1,180 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/displayScreen"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal"
+        android:background="@color/putih"
+        android:orientation="vertical"
+        android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:src="@drawable/logo"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
-
         <LinearLayout
-            android:orientation="vertical"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:text="Ford Everest Club Indonesia"
-                android:textColor="@color/black"
-                android:paddingLeft="15dp"
-                android:textSize="14dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
-            <TextView
-                android:text="In publishing and graphic design"
-                android:paddingTop="6dp"
-                android:paddingLeft="15dp"
-                android:textSize="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <ImageView
+                android:src="@drawable/logo"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Ford Everest Club Indonesia"
+                    android:textColor="@color/black"
+                    android:paddingLeft="15dp"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="In publishing and graphic design"
+                    android:paddingTop="6dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
 
     </LinearLayout>
 
-    <View android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="5dp"
-        android:background="#bbb"/>
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <ImageView
-            android:src="@drawable/chatsatu"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="Anya Geraldine"
-                android:textColor="@color/black"
-                android:paddingLeft="15dp"
-                android:textSize="14dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:text="In publishing and graphic design, Lorem "
-                android:paddingTop="6dp"
-                android:paddingLeft="15dp"
-                android:textSize="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <View android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="5dp"
-        android:background="#bbb"/>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:src="@drawable/chatdua"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="Paul Pogba"
-                android:textColor="@color/black"
-                android:paddingLeft="15dp"
-                android:textSize="14dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:text="In publishing and graphic design, Lorem "
-                android:paddingTop="6dp"
-                android:paddingLeft="15dp"
-                android:textSize="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-    <View android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:background="#bbb"/>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:src="@drawable/chattiga"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="David Beckham"
-                android:textColor="@color/black"
-                android:paddingLeft="15dp"
-                android:textSize="14dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:text="In publishing and graphic design, Lorem "
-                android:paddingTop="6dp"
-                android:paddingLeft="15dp"
-                android:textSize="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-    <View android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:background="#bbb"/>
 
 
 

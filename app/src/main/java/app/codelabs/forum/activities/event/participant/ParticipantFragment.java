@@ -1,29 +1,33 @@
-package app.codelabs.forum.activities.club.event;
+package app.codelabs.forum.activities.event.participant;
 
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
 import app.codelabs.forum.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventFragment extends Fragment {
+public class ParticipantFragment extends Fragment {
     RecyclerView recyclerView;
-    private EventAdapter adapter;
+    private AdapterParticipant adapter;
     Context context;
 
 
-    public EventFragment() {
+
+    public ParticipantFragment() {
         // Required empty public constructor
     }
 
@@ -32,15 +36,18 @@ public class EventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event, container, false);
+        return inflater.inflate(R.layout.fragment_participant, container, false);
+
+
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
+    @Override
+    public void onViewCreated(@NonNull View view , @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view , savedInstanceState);
         setView(view);
         setRecycleView();
+
     }
 
     private void setRecycleView() {
@@ -50,7 +57,10 @@ public class EventFragment extends Fragment {
     }
 
     private void setView(View view) {
-        adapter = new EventAdapter();
-        recyclerView = view.findViewById(R.id.rv_event);
+        adapter = new AdapterParticipant();
+        recyclerView = view.findViewById(R.id.recyclerviewparticipant);
     }
+
+
+
 }

@@ -1,13 +1,5 @@
 package app.codelabs.forum.activities.conversation.recyclerview_multipleview;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import app.codelabs.forum.R;
-import app.codelabs.forum.activities.conversation.adapter.ChatAdapter;
-import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
-import app.codelabs.forum.activities.conversation.models.Chat;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +10,14 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import app.codelabs.forum.R;
+import app.codelabs.forum.activities.conversation.adapter.ChatAdapter;
+import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
+import app.codelabs.forum.activities.conversation.models.Chat;
 
 public class RecyclerViewMultipleItemActivity extends AppCompatActivity {
 
@@ -101,7 +101,8 @@ public class RecyclerViewMultipleItemActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RecyclerViewMultipleItemActivity.this, CoversationFragment.class);
+                Intent intent = new Intent(getApplicationContext(), CoversationFragment.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
 
 
