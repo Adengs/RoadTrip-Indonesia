@@ -8,12 +8,15 @@
     <color name="colorCircle">#F0F3F5</color>
     <color name="colorDesc">#818E97</color>
     <color name="colorText">#000000</color>
+    <color name="abuai">#818E97</color>
+
 
     <!-- display log in-->
     <color name="abuemaillogin">#818E97</color>
     <color name="merah">#F62C4C</color>
     <color name="abukeputihan">#F5F5F5</color>
     <color name="black">#000000</color>
+
 
 
     <!-- toolbar display -->
@@ -38,4 +41,23 @@
     <color name="biru">#E4EAEF</color>
     <color name="hitam">#000000</color>
     <color name="silver2">#818E9726</color>
+
+    <color name="user">#F0F3F5</color>
+
+
+
+    <color name="birul">#2C91F6</color>
+    <color name="hijau">#32B94C</color>
+
+
+    <!-- display Club-->
+    <color name="colorborder">#F0F3F5</color>
+    <color name="textClub">#F0F3F5</color>
+    <color name="texttablayout">#818E97</color>
+    <color name="textcar">#F62C4C</color>
+
+    <!-- display member-->
+    <color name="member">#818E97</color>
+
+
 </resources>
