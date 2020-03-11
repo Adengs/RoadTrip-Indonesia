@@ -99,7 +99,7 @@ public class HomeActivity extends AppCompatActivity {
                 imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event));
                 imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community));
                 imgChats.setImageDrawable(getResources().getDrawable(R.drawable.ic_chat));
-                imgProfile.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile_klik));
+                imgProfile.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile_active));
             }
         });
 
