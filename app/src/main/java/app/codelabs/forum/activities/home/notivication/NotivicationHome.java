@@ -2,7 +2,9 @@ package app.codelabs.forum.activities.home.notivication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.home.HomeActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,6 +20,17 @@ View vline,vlines;
         setContentView(R.layout.activity_notivication_home);
 
         setView();
+        setEvent();
+    }
+
+    private void setEvent() {
+        panah_kiri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NotivicationHome.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setView() {
