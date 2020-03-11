@@ -42,7 +42,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="21dp"
-                        android:layout_marginRight="162dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -68,14 +67,22 @@
 
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/imgSetting"
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="110dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="19dp"
-                        android:layout_marginRight="15dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_settings" />
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/imgSetting"
+                            android:layout_gravity="right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_settings" />
+                    </LinearLayout>
+
+
 
                 </LinearLayout>
 
@@ -83,6 +90,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="36.5dp"
                     android:layout_marginBottom="21dp"
                     android:orientation="horizontal">
@@ -91,7 +101,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="54dp"
+                        android:layout_marginLeft="34dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -232,10 +242,11 @@
 
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_marginLeft="65dp"
                         android:layout_marginRight="20dp"
-                        android:paddingLeft="250dp"
                         android:text="David Beckham"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -256,11 +267,12 @@
                         android:textSize="12dp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_marginLeft="65dp"
                         android:layout_marginRight="20dp"
-                        android:paddingLeft="250dp"
-                        android:text="David Beckham"
+                        android:text="David_Beckham@gmail.com"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
 
@@ -280,10 +292,11 @@
                         android:textSize="12dp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_marginLeft="65dp"
                         android:layout_marginRight="20dp"
-                        android:paddingLeft="200dp"
                         android:text="10 Desember 1980"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -304,10 +317,11 @@
                         android:textSize="12dp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_marginLeft="65dp"
                         android:layout_marginRight="20dp"
-                        android:paddingLeft="270dp"
                         android:text="Jakarta Banjir"
                         android:textColor="@color/black"
                         android:textSize="12dp" />

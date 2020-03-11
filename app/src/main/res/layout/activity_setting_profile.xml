@@ -16,7 +16,7 @@
         app:theme="@style/Register">
 
         <TextView
-            android:id="@+id/toolbar_title"
+            android:id="@+id/back_settingProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_back_black"
@@ -40,7 +40,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtPush"
+                android:id="@+id/txtPushSetPro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="21dp"
@@ -58,6 +58,7 @@
                 android:background="@color/colorCircle" />
 
             <TextView
+                android:id="@+id/txtRateSetPro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="21dp"
@@ -75,6 +76,7 @@
                 android:background="@color/colorCircle" />
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="21dp"
