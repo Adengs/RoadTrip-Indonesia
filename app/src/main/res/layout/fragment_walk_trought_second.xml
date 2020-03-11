@@ -10,7 +10,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
             android:layout_width="match_parent"
@@ -67,16 +67,21 @@
             android:textAlignment="center"
             android:textColor="@color/colorDesc"
             android:textSize="14dp" />
-
-        <TextView
-            android:id="@+id/btnnext_second"
-            android:text="Next"
-            android:textSize="16dp"
-            android:textColor="@color/colorNext"
-            android:layout_marginTop="54dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/btnnext_second"
+                android:text="Next"
+                android:textSize="16dp"
+                android:textColor="@color/colorNext"
+                android:layout_marginBottom="53dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 
 

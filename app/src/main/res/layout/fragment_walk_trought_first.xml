@@ -2,16 +2,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:background="@color/colorBackground"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="horizontal"
     tools:context=".activities.walktrought.fragment.WalkTroughtFirstFragment">
 
     <LinearLayout
-
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/img_fist"
@@ -45,9 +44,8 @@
                 android:layout_width="7dp"
                 android:layout_height="7dp"
                 android:layout_marginLeft="4dp"
-                android:background="@drawable/ic_circle_gray"/>
+                android:background="@drawable/ic_circle_gray" />
         </LinearLayout>
-
         <TextView
             android:id="@+id/titlefirst"
             android:layout_width="wrap_content"
@@ -68,16 +66,23 @@
             android:textAlignment="center"
             android:textColor="@color/colorDesc"
             android:textSize="14dp" />
+        <LinearLayout
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txtnext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="53dp"
+                android:text="Next"
+                android:textColor="@color/colorNext"
+                android:textSize="16dp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtnext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="54dp"
-            android:text="Next"
-            android:textColor="@color/colorNext"
-            android:textSize="16dp" />
-</LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
