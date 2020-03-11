@@ -18,7 +18,7 @@
         app:tabIndicatorColor="@color/merah"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="2dp"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="@color/hitam"
         app:tabTextAppearance="@style/Tablayout"
         app:tabTextColor="@color/texttablayout"></com.google.android.material.tabs.TabLayout>
