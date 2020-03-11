@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.conversation.adapter.ChatAdapter;
-import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
 import app.codelabs.forum.activities.conversation.models.Chat;
+import app.codelabs.forum.activities.home.HomeActivity;
 
 public class RecyclerViewMultipleItemActivity extends AppCompatActivity {
 
@@ -101,7 +101,7 @@ public class RecyclerViewMultipleItemActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RecyclerViewMultipleItemActivity.this, CoversationFragment.class);
+                Intent intent = new Intent(RecyclerViewMultipleItemActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
