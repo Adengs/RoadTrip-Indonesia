@@ -1,11 +1,9 @@
 package app.codelabs.forum.activities.home;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -16,20 +14,14 @@ import app.codelabs.forum.activities.club.ClubFragment;
 import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
 import app.codelabs.forum.activities.event.fragment.EventFragment;
 import app.codelabs.forum.activities.home.fragment.HomeFragment;
-import app.codelabs.forum.activities.home.fragment.adapter.HomeCardSliderAdapter;
-import app.codelabs.forum.activities.home.notivication.NotivicationHome;
 import app.codelabs.forum.activities.profile.fragment.ProfileFragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class HomeActivity extends AppCompatActivity {
-Context context;
-ImageView imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
+
+    Context context;
+
+    ImageView imgHomes, imgClubs, imgChats, imgEvents, imgProfile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +30,14 @@ ImageView imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
 
         setView();
         setEvent();
-
-
-
         setFragment(new HomeFragment());
 
     }
 
 
     private void setView() {
+        //BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        //bottomNav.setOnNavigationItemSelectedListener(navListener);
         imgHomes = findViewById(R.id.img_homes);
         imgClubs = findViewById(R.id.img_clubs);
         imgChats = findViewById(R.id.img_chats);
@@ -60,31 +51,55 @@ ImageView imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
             @Override
             public void onClick(View v) {
                 setFragment(new HomeFragment());
+                imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active_klik));
+                imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event));
+                imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community));
+                imgChats.setImageDrawable(getResources().getDrawable(R.drawable.ic_chat));
+                imgProfile.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile));
             }
         });
         imgClubs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setFragment(new ClubFragment());
-
+                imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active));
+                imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event));
+                imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community_active));
+                imgChats.setImageDrawable(getResources().getDrawable(R.drawable.ic_chat));
+                imgProfile.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile));
             }
         });
         imgChats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setFragment(new CoversationFragment());
+                imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active));
+                imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event));
+                imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community));
+                imgChats.setImageDrawable(getResources().getDrawable(R.drawable.ic_chat_active));
+                imgProfile.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile));
             }
         });
         imgEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setFragment(new EventFragment());
+                imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active));
+                imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event_klik));
+                imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community));
+                imgChats.setImageDrawable(getResources().getDrawable(R.drawable.ic_chat));
+                imgProfile.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile));
             }
         });
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setFragment(new ProfileFragment());
+                imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active));
+                imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event));
+                imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community));
+                imgChats.setImageDrawable(getResources().getDrawable(R.drawable.ic_chat));
+                imgProfile.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile_klik));
             }
         });
 
@@ -93,7 +108,7 @@ ImageView imgHomes, imgClubs,imgChats,imgEvents,imgProfile;
     private void setFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,fragment);
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
     }
 }
