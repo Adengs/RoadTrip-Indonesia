@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <!-- Mendefinisikan button saat di klik -->
+    <item android:state_checked="true" android:drawable="@drawable/ic_event_klik" />
+    <!-- Mendefinisikan button saat terfokus -->
+    <item android:state_checked="false" android:drawable="@drawable/ic_event"></item>
+    <item android:drawable="@drawable/ic_event"></item>
 </selector>
