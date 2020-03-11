@@ -19,14 +19,19 @@
         android:layout_weight="1" />
 
     <LinearLayout
-        android:background="@color/putih"
+        android:background="@drawable/shape_sendchatmyevent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/et_sendChat"
+            android:hint="Type reply here..."
+            android:textSize="14dp"
             android:layout_width="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
         <ImageView
@@ -34,7 +39,7 @@
             android:layout_width="30dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="15dp"
             android:src="@drawable/ic_iconfinder_navigation_send">
 
         </ImageView>
