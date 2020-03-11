@@ -9,106 +9,107 @@
     android:orientation="vertical"
     tools:context=".activities.login.LoginActivity">
 
-        <LinearLayout
-            android:orientation="vertical"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo_login"
+            android:layout_width="126.5dp"
+            android:layout_height="126.5dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/logologinbaru" />
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center">
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/logo_login"
-                android:layout_width="126.5dp"
-                android:layout_height="126.5dp"
-                android:layout_margin="20dp"
-                android:src="@drawable/logologinbaru" />
+            <com.google.android.material.textfield.TextInputEditText
 
-            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etemaillogin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress"
+                android:paddingTop="21dp"
+                android:paddingBottom="19dp"
+                android:textColorHint="@color/abuemaillogin"
+                android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:orientation="horizontal"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:orientation="horizontal">
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingTop="21dp"
+                android:paddingBottom="19dp"
+                android:textColorHint="@color/abuemaillogin"
+                android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
 
-                <com.google.android.material.textfield.TextInputEditText
+        </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/etemaillogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:hint="E-mail"
-                    android:inputType="textEmailAddress"
-                    android:paddingTop="21dp"
-                    android:paddingBottom="19dp"
-                    android:textColorHint="@color/abuemaillogin"
-                    android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
+        <Button
+            android:id="@+id/buttonlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:background="@drawable/shape_buttonlogin"
+            android:text="Login"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/putih"
+            android:textSize="16dp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/txtforgotpasword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot password?"
+            android:textColor="@color/pink"
+            android:textSize="16dp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="40dp"
-                android:orientation="horizontal"
-                app:passwordToggleEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:paddingTop="21dp"
-                    android:paddingBottom="19dp"
-                    android:textColorHint="@color/abuemaillogin"
-                    android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/buttonlogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="40dp"
-                android:background="@drawable/shape_buttonlogin"
-                android:text="Login"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@color/putih"
-                android:textSize="16dp" />
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="56dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtforgotpasword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Have an account?"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/txtpindahregister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="131dp"
-                android:text="Forgot password?"
+                android:layout_marginLeft="5dp"
+                android:text="Register"
                 android:textColor="@color/pink"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Have an account?"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:id="@+id/txtpindahregister"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Register"
-                    android:textColor="@color/pink"
-                    android:textSize="14dp" />
-
-            </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 </FrameLayout>
