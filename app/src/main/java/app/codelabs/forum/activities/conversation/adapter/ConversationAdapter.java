@@ -31,7 +31,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 15;
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
