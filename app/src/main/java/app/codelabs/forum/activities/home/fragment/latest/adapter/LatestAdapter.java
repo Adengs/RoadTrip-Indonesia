@@ -1,6 +1,7 @@
 package app.codelabs.forum.activities.home.fragment.latest.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
 
 public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapterViewHolder> {
     List<Fragment> items = new ArrayList<>();
@@ -28,38 +31,29 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapterViewHolder holder, int position) {
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CardViewActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 9;
     }
 
     public class HomeAdapterViewHolder extends RecyclerView.ViewHolder {
-        TextView TxtNamaMobil1,TxtNamaMobil2,TxtCars1,TxtCars2,TxTDescMobil1,TxtDescMobil2;
-        TextView txtday,txtdaymo;
-        ImageView imgLogo1,imgLogo2,circleGray1,circleGray2,imgMobil1,imgMobil2;
+        CardView cardView;
         public HomeAdapterViewHolder(@NonNull View view) {
             super(view);
             setView(view);
         }
 
         private void setView(View view) {
-            TxtNamaMobil1 = view.findViewById(R.id.txtnamamobil1);
-            TxtNamaMobil2 = view.findViewById(R.id.txtnamamobil2);
-            TxTDescMobil1 = view.findViewById(R.id.txt_desc_mobil);
-            TxtDescMobil2 = view.findViewById(R.id.txt_desc_mobil1);
-            TxtCars1 = view.findViewById(R.id.cars);
-            TxtCars2 = view.findViewById(R.id.cars2);
-            txtday = view.findViewById(R.id.titik);
-            txtdaymo = view.findViewById(R.id.tikmobil);
-            imgLogo1 = view.findViewById(R.id.img_logo1);
-            imgLogo2 = view.findViewById(R.id.img_logo2);
-            imgMobil1 = view.findViewById(R.id.img_mobill1);
-            imgMobil2 = view.findViewById(R.id.img_mobil2);
-            circleGray1 = view.findViewById(R.id.circlegray);
-            circleGray2 = view.findViewById(R.id.circlegrayss);
+            cardView = view.findViewById(R.id.cardviewtabhome);
         }
     }
 }
