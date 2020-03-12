@@ -1,6 +1,7 @@
 package app.codelabs.forum.activities.home.fragment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.home.HomeActivity;
+import app.codelabs.forum.activities.vote.VoteActivity;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
     Context context;
@@ -41,6 +44,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         public MenuViewHolder(@NonNull View view) {
             super(view);
             setView(view);
+            setEvent();
+        }
+
+        private void setEvent() {
+
         }
 
         private void setView(View view) {
