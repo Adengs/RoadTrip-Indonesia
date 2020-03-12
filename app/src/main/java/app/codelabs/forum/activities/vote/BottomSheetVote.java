@@ -1,39 +1,33 @@
 package app.codelabs.forum.activities.vote;
 
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class FragmentBottomSheetVote extends Fragment {
-    Button btnDoneVote;
+public class BottomSheetVote extends BottomSheetDialogFragment {
+Button btnDoneVote;
 
 
-    public FragmentBottomSheetVote() {
-        // Required empty public constructor
-    }
-
-
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_bottom_sheet_vote, container, false);
-    }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+     View view =inflater.inflate(R.layout.bottom_sheet_vote,container,false);
+        return view;
+
+
+           }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -52,9 +46,12 @@ public class FragmentBottomSheetVote extends Fragment {
                 startActivity(intent);
             }
         });
+
     }
+
 
     private void setView(View view) {
         btnDoneVote=view.findViewById(R.id.btn_done_Vote);
     }
+
 }

@@ -1,5 +1,6 @@
 package app.codelabs.forum.activities.vote;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -19,7 +20,7 @@ import java.util.List;
 import app.codelabs.forum.R;
 
 public class AdapterVote extends RecyclerView.Adapter<AdapterVote.MyHolder> {
-
+    ArrayList<Activity> items = new ArrayList<>();
     private static Context context;
     @NonNull
     @Override
@@ -40,7 +41,8 @@ public class AdapterVote extends RecyclerView.Adapter<AdapterVote.MyHolder> {
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        ImageView imgVote ,txtImage , txtName;
+        ImageView imgVote ,txtImage ;
+        TextView txtName;
         public MyHolder(@NonNull View view) {
             super(view);
             setView(view);
@@ -48,12 +50,12 @@ public class AdapterVote extends RecyclerView.Adapter<AdapterVote.MyHolder> {
         }
 
         private void setEvent() {
-            imgVote.setOnClickListener(new View.OnClickListener() {
+          /*  imgVote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    imgVote.setBackgroundColor(ContextCompat.getColor(context,R.color.pink));
+
                 }
-            });
+            }); */
 
         }
 

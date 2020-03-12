@@ -27,7 +27,6 @@ public class VoteActivity extends AppCompatActivity {
     AdapterVote adapter;
 
 
-FragmentBottomSheetVote bottomSheetVote = new FragmentBottomSheetVote();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +51,14 @@ FragmentBottomSheetVote bottomSheetVote = new FragmentBottomSheetVote();
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(VoteActivity.this , HomeActivity.class));
+            }
+        });
+
+        btnVoting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetVote bottomSheetVote = new BottomSheetVote();
+                bottomSheetVote.show(getSupportFragmentManager(),"bottomvote");
             }
         });
 
