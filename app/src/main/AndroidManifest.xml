@@ -9,13 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.shop.ActivityShop"></activity>
-        <activity android:name=".activities.shop.ActivityProducts">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".activities.shop.ActivityShop">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+        </activity>
+        <activity android:name=".activities.shop.ActivityProducts">
+
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".activities.forgotpassword.ForgotPasswordActivity" />
@@ -27,7 +26,14 @@
         <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity" />
         <activity android:name=".activities.login.LoginActivity" />
         <activity android:name=".activities.walktrought.WalkThroughActivity" />
-        <activity android:name=".activities.splashscreen.SplashScreenActivity" />
+        <activity android:name=".activities.splashscreen.SplashScreenActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

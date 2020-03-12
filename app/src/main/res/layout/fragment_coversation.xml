@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/displayScreen"
+    android:background="@color/putih"
     android:orientation="vertical"
     tools:context=".activities.conversation.fragment.CoversationFragment">
 
@@ -28,20 +28,10 @@
             android:textSize="14dp" />
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardvieweventname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
+            android:id="@+id/linearname"
             android:background="@color/putih"
-
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <LinearLayout
-
-            android:background="@color/putih"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,7 +75,7 @@
 
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
 
 
 

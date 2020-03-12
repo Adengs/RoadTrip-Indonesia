@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".activities.shop.ActivityShopPenjelasan">
+    tools:context=".FragmentRincian">
 
     <LinearLayout
         android:orientation="vertical"
@@ -146,23 +147,41 @@
 
         </TextView>
 
-        <TextView
-            android:text="Maps"
-            android:paddingHorizontal="13dp"
-            android:paddingVertical="2dp"
-            android:layout_marginLeft="159dp"
-            android:layout_marginRight="20dp"
-            android:textColor="@color/hitam"
-            android:textSize="14dp"
-            android:background="#E4EAEF"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        </TextView>
+            <TextView
+                android:layout_gravity="center"
+                android:text="Maps"
+                android:textColor="@color/hitam"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="3dp"
+                android:layout_marginRight="20dp"
+                android:background="#E4EAEF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
 
 
 
     </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_marginTop="8dp"
+        android:id="@+id/tab_layoutrincian"
+        android:background="@color/putih"
+        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="@color/hitam"
+        android:layout_width="match_parent"
+        app:tabTextAppearance ="@style/Tablayout"
+        app:tabIndicatorColor="@color/merah"
+        app:tabIndicatorHeight="2dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabMode="scrollable"
+        android:layout_height="45dp">
+    </com.google.android.material.tabs.TabLayout>
 
 </LinearLayout>

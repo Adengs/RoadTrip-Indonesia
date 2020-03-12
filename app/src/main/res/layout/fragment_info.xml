@@ -55,40 +55,6 @@
            android:layout_height="wrap_content">
 
        </TextView>
-       <LinearLayout
-           android:background="@color/putih"
-           android:orientation="horizontal"
-           android:layout_width="match_parent"
-           android:layout_height="45dp">
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="match_parent"
-               android:layout_weight="0.5"
-               android:paddingTop="15dp"
-               android:layout_marginLeft="60dp"
-               android:text="Hubungi"
-               android:drawableLeft="@drawable/ic_call"
-               android:textStyle="bold"
-               android:textSize="14dp"
-               android:textColor="@color/hitam">
-
-           </TextView>
-
-           <TextView
-               android:layout_marginLeft="80dp"
-               android:drawableLeft="@drawable/ic_whatsapp"
-               android:layout_width="wrap_content"
-               android:layout_height="match_parent"
-               android:layout_weight="0.5"
-               android:paddingTop="15dp"
-               android:text="Product Info"
-               android:textStyle="bold"
-               android:textSize="14dp"
-
-               android:textColor="@color/black">
-
-           </TextView>
-       </LinearLayout>
 
 
 

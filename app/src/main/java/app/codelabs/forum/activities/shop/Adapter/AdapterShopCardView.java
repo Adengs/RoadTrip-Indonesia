@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.shop.ActivityShop;
 
 public class AdapterShopCardView extends RecyclerView.Adapter<AdapterShopCardView.MyHolder> {
 
@@ -34,7 +35,7 @@ public class AdapterShopCardView extends RecyclerView.Adapter<AdapterShopCardVie
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ActivityShopPenjelasan.class);
+                Intent intent = new Intent(v.getContext(), ActivityShop.class);
                 v.getContext().startActivity(intent);
             }
         });
