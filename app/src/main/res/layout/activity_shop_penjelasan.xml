@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.shop.ActivityShopPenjelasan">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/putih"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:background="@drawable/ic_backgroundshop"
+                android:src="@drawable/carwing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/pagerinfo"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/ic_circle_red"
+                    android:baselineAligned="false" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/pagersatu"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/ic_circleputih" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/pagerdua"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/ic_circleputih" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/pagertiga"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/ic_circleputih" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/pagerempat"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/ic_circleputih" />
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+
+        <TextView
+            android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="   Ubud, Bali"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp"
+            android:drawableLeft="@drawable/ic_iconfinder_map_pinlok"
+            android:textColor="@color/colorDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Rp 5.000.000"
+            android:textColor="@color/black"
+            android:paddingBottom="10dp"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"
+            android:textSize="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#F62C4C"
+            android:padding="5dp"
+            android:background="@drawable/draw_shop_pro"
+            android:text="Accessories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/putih"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/lambor"
+            android:layout_width="24dp"
+            android:layout_height="24dp">
+
+
+        </ImageView>
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:text="Mobil 321"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/hitam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:text="Maps"
+            android:paddingHorizontal="13dp"
+            android:paddingVertical="2dp"
+            android:layout_marginLeft="159dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/hitam"
+            android:textSize="14dp"
+            android:background="#E4EAEF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

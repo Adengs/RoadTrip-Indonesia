@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.shop.Fragment.FragmentInfo">
+
+
+
+   <LinearLayout
+       android:background="@color/putih"
+       android:layout_marginTop="7dp"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <LinearLayout
+           android:background="@color/putih"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="45dp">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:layout_weight="0.5"
+               android:drawableBottom="@drawable/ic_retanclemyprofile"
+               android:paddingTop="15dp"
+               android:text="Description"
+               android:textStyle="bold"
+               android:textSize="14dp"
+               android:textAlignment="center"
+               android:textColor="@color/hitam">
+
+       </TextView>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:layout_weight="0.5"
+               android:paddingTop="15dp"
+               android:text="Product Info"
+               android:textStyle="bold"
+               android:textSize="14dp"
+               android:textAlignment="center"
+               android:textColor="@color/black">
+
+           </TextView>
+
+       </LinearLayout>
+
+       <TextView
+           android:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to."
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+       </TextView>
+       <LinearLayout
+           android:background="@color/putih"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="45dp">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:layout_weight="0.5"
+               android:paddingTop="15dp"
+               android:layout_marginLeft="60dp"
+               android:text="Hubungi"
+               android:drawableLeft="@drawable/ic_call"
+               android:textStyle="bold"
+               android:textSize="14dp"
+               android:textColor="@color/hitam">
+
+           </TextView>
+
+           <TextView
+               android:layout_marginLeft="80dp"
+               android:drawableLeft="@drawable/ic_whatsapp"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:layout_weight="0.5"
+               android:paddingTop="15dp"
+               android:text="Product Info"
+               android:textStyle="bold"
+               android:textSize="14dp"
+
+               android:textColor="@color/black">
+
+           </TextView>
+       </LinearLayout>
+
+
+
+
+   </LinearLayout>
+
+
+</LinearLayout>
