@@ -1,104 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:background="@color/colorCircle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorCircle"
+    android:orientation="vertical"
     tools:context=".activities.event.description.DescriptionFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:orientation="vertical"
-        android:background="@color/putih"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:scaleType="centerCrop"
-        android:src="@drawable/fordeverest"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <include layout="@layout/item_viewpagerdescription"></include>
 
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:orientation="horizontal">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="7dp"
-            android:layout_height="7dp"
-            android:layout_marginLeft="166dp"
-            android:background="@drawable/ic_circle_red" />
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pagergray"
-            android:layout_width="7dp"
-            android:layout_height="7dp"
-            android:layout_marginLeft="4dp"
-            android:background="@drawable/ic_circle_gray" />
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pagergrayes"
-            android:layout_width="7dp"
-            android:layout_height="7dp"
-            android:layout_marginLeft="4dp"
-            android:background="@drawable/ic_circle_gray" />
-    </LinearLayout>
-
-
-</FrameLayout>
-
+        android:background="@color/putih"
+        android:orientation="vertical">
 
         <TextView
-            android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
-            android:textColor="@color/black"
-            android:padding="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
+            android:textColor="@color/black" />
 
         <TextView
-            android:text="   20 Feb 2020 - 24 Feb 2020"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:drawableLeft="@drawable/ic_iconfinder_sidebar"
-            android:textColor="@color/colorDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:text="   Ubud, Bali"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
+            android:text="   20 Feb 2020 - 24 Feb 2020"
+            android:textColor="@color/colorDesc" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="21dp"
             android:drawableLeft="@drawable/ic_iconfinder_map_pinlok"
-            android:textColor="@color/colorDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="   Ubud, Bali"
+            android:textColor="@color/colorDesc" />
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/putih"
-        android:layout_marginTop="7dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="7dp"
+        android:background="@color/putih">
+
         <TextView
-            android:textSize="14dp"
-            android:textColor="@color/abu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:padding="20dp"
             android:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used before final copy is available, but it may also be used to temporarily replace copy in a process called greeking, which allows designers to consider form without the meaning of the text influencing the design. Lorem ipsum is typically a corrupted version of De finibus bonorum et malorum, a first-century BCE text by the Roman statesman and philosopher Cicero, with words altered, added, and removed to make it nonsensical, improper Latin. Versions of the Lorem ipsum text have been used in typesetting at least since the 1960s, when it was popularized by advertisements for Letraset transfer sheets. Lorem ipsum was introduced to the digital world in the mid-1980s when Aldus employed it in graphic and word-processing templates for its desktop publishing program PageMaker. Other popular word processors including Pages and Microsoft Word have since adopted Lorem ipsum as well."
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
+            android:textColor="@color/abu"
+            android:textSize="14dp" />
 
 
     </LinearLayout>
+
+
 
 </LinearLayout>
