@@ -40,18 +40,20 @@
 
             </TextView>
 
-            <ImageView
-
-                android:src="@drawable/ic_search"
+            <LinearLayout
+                android:gravity="right"
                 android:layout_width="match_parent"
-                android:layout_height="13.95dp">
+                android:layout_height="wrap_content">
 
-            </ImageView>
-
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_search"
+                    android:textColor="@color/putih"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="13.98dp"
+                    android:layout_height="13.95dp" />
+            </LinearLayout>
         </LinearLayout>
-
-
-
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout

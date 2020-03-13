@@ -1,187 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".FragmentRincian">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="@color/putih"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:background="@drawable/ic_backgroundshop"
-                android:src="@drawable/carwing"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+    tools:context=".activities.shop.Fragment.FragmentRincian">
 
 
-            <LinearLayout
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/pagerinfo"
-                    android:layout_width="7dp"
-                    android:layout_height="7dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/ic_circle_red"
-                    android:baselineAligned="false" />
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/pagersatu"
-                    android:layout_width="7dp"
-                    android:layout_height="7dp"
-                    android:layout_marginLeft="4dp"
-                    android:background="@drawable/ic_circleputih" />
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/pagerdua"
-                    android:layout_width="7dp"
-                    android:layout_height="7dp"
-                    android:layout_marginLeft="4dp"
-                    android:background="@drawable/ic_circleputih" />
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/pagertiga"
-                    android:layout_width="7dp"
-                    android:layout_height="7dp"
-                    android:layout_marginLeft="4dp"
-                    android:background="@drawable/ic_circleputih" />
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/pagerempat"
-                    android:layout_width="7dp"
-                    android:layout_height="7dp"
-                    android:layout_marginLeft="4dp"
-                    android:background="@drawable/ic_circleputih" />
-            </LinearLayout>
-
-
-        </FrameLayout>
-
-
-        <TextView
-            android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="14dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:text="   Ubud, Bali"
-            android:paddingLeft="20dp"
-            android:paddingBottom="10dp"
-            android:drawableLeft="@drawable/ic_iconfinder_map_pinlok"
-            android:textColor="@color/colorDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:text="Rp 5.000.000"
-            android:textColor="@color/black"
-            android:paddingBottom="10dp"
-            android:textStyle="bold"
-            android:paddingLeft="20dp"
-            android:textSize="14dp"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layoutrincian"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shape_walk_through"
+            app:layout_anchor="@id/apprincian"
+            app:layout_anchorGravity="bottom"
+            app:tabIndicator="@color/merah"
+            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="@color/colorText"
+            app:tabMode="fixed"
+            app:tabTextAppearance="@style/Tablayout"
+            app:tabTextColor="@color/colorText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-        </TextView>
-
-        <TextView
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:textColor="#F62C4C"
-            android:padding="5dp"
-            android:background="@drawable/draw_shop_pro"
-            android:text="Accessories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </TextView>
+        </com.google.android.material.tabs.TabLayout>
 
 
+    <include layout="@layout/item_rincian"></include>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:background="@color/putih"
-        android:layout_marginTop="10dp"
-        android:padding="20dp"
-        android:orientation="horizontal"
+    <androidx.viewpager.widget.ViewPager
+        android:layout_marginTop="?actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/viewpagerrincian"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:src="@drawable/lambor"
-            android:layout_width="24dp"
-            android:layout_height="24dp">
+        android:layout_height="match_parent" />
 
 
-        </ImageView>
-
-        <TextView
-            android:layout_marginLeft="20dp"
-            android:text="Mobil 321"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            android:textColor="@color/hitam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </TextView>
-
-        <LinearLayout
-            android:gravity="right"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_gravity="center"
-                android:text="Maps"
-                android:textColor="@color/hitam"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="3dp"
-                android:layout_marginRight="20dp"
-                android:background="#E4EAEF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
-
-    <com.google.android.material.tabs.TabLayout
-        android:layout_marginTop="8dp"
-        android:id="@+id/tab_layoutrincian"
-        android:background="@color/putih"
-        app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="@color/hitam"
-        android:layout_width="match_parent"
-        app:tabTextAppearance ="@style/Tablayout"
-        app:tabIndicatorColor="@color/merah"
-        app:tabIndicatorHeight="2dp"
-        app:tabIndicatorFullWidth="false"
-        app:tabMode="scrollable"
-        android:layout_height="45dp">
-    </com.google.android.material.tabs.TabLayout>
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

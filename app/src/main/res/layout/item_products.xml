@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+
         android:layout_marginTop="2dp"
         android:id="@+id/cardShopPro"
         android:layout_margin="20dp"

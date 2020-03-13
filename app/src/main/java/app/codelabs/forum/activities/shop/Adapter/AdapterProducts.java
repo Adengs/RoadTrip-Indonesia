@@ -1,13 +1,16 @@
 package app.codelabs.forum.activities.shop.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.shop.ActivityShop;
 
 public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.MyHolder> {
     private static Context context;
@@ -22,6 +25,13 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.MyHold
 
     @Override
     public void onBindViewHolder(@NonNull AdapterProducts.MyHolder holder, int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ActivityShop.class);
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 
@@ -31,8 +41,12 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.MyHold
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
+        CardView cardViewPro;
         public MyHolder(@NonNull View itemView) {
+
             super(itemView);
+            cardViewPro = itemView.findViewById(R.id.cardShopPro);
+
         }
     }
 }

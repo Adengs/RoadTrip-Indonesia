@@ -7,6 +7,7 @@
     tools:context=".activities.shop.ActivityShop">
 
     <LinearLayout
+        android:id="@+id/tolbarshop"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,6 +19,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+               android:id="@+id/btnbackShop"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_asset"
                 android:layout_width="wrap_content"
@@ -34,81 +36,54 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_iconfinder_bookmark"
                     android:textColor="@color/putih"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginRight="10dp"
+                    android:layout_width="13.6dp"
+                    android:layout_height="17.48dp" />
             </LinearLayout>
-
-
-
-
-
         </LinearLayout>
     </LinearLayout>
+    <FrameLayout
+        android:layout_above="@id/bottomshop"
+        android:layout_below="@id/tolbarshop"
+        android:id="@+id/fragment_containershop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomshop"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="56dp">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_height="wrap_content">
             <LinearLayout
-                android:gravity="bottom"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <LinearLayout
-                    android:background="@drawable/draw_forgot_putih"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="205dp"
-                    android:layout_height="56dp">
                     <TextView
+                        android:textAlignment="center"
                         android:drawableLeft="@drawable/ic_call"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="16dp"
                         android:text="Hubungi"
-                        android:textSize="14dp"
-                        android:drawablePadding="10dp"
-                        android:textColor="@color/hitam"
                         android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:textColor="@color/hitam"
+                        android:textSize="14dp" />
 
-                    </TextView>
-
+                <TextView
+                    android:layout_marginTop="2dp"
+                    android:drawableLeft="@drawable/ic_whatsapp"
+                    android:background="#32B94C"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:text="WhatsApp"
+                    android:textAlignment="center"
+                    android:textColor="#FFF"
+                    android:textSize="14dp" />
                 </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:background="@color/hijau"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="205dp"
-                        android:layout_height="56dp">
-                        <TextView
-                            android:drawableLeft="@drawable/ic_whatsapp"
-                            android:text="WhatsApp"
-                            android:drawablePadding="10dp"
-                            android:textSize="14dp"
-                            android:textColor="@color/putih"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                        </TextView>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-
-
-            </LinearLayout>
-
-        </FrameLayout>
-
-
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
