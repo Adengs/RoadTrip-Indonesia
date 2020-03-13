@@ -1,6 +1,7 @@
 package app.codelabs.forum.activities.home.fragment.popular.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.fragment.foryou.adapter.ForYouAdapter;
+import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularViewHolder> {
     List<Fragment> items = new ArrayList<>();
@@ -30,7 +32,13 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
 
     @Override
     public void onBindViewHolder(@NonNull PopularViewHolder holder, int position) {
-
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), CardViewActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
     }
 
     @Override

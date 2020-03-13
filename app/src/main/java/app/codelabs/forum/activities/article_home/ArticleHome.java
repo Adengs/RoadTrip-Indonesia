@@ -7,9 +7,12 @@ import app.codelabs.forum.activities.article_home.adapter.TabLayoutArticleAdapte
 import app.codelabs.forum.activities.article_home.fragment.ArticleForyouFragment;
 import app.codelabs.forum.activities.article_home.fragment.ArticleReviewFragment;
 import app.codelabs.forum.activities.article_home.fragment.ArticleTipsFragment;
+import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.home.fragment.adapter.TabLayoutAdapter;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -28,6 +31,17 @@ ViewPager viewPager;
 
         setView();
         setViewPager();
+        setEvent();
+    }
+
+    private void setEvent() {
+        titlebackArticle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ArticleHome.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setView() {

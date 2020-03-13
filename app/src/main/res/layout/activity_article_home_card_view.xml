@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.home.latest_popular_foryou.CardViewActivity">
+    tools:context=".activities.article_home.ArticleHomeCardView">
     <LinearLayout
         android:orientation="horizontal"
         android:background="@drawable/shape_walk_through"

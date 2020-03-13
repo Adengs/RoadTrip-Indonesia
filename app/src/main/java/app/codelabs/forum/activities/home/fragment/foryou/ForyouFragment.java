@@ -55,7 +55,7 @@ Context context;
     }
 
     private void setView(View view) {
-        recyclerView = view.findViewById(R.id.foryoufragment);
+        recyclerView = view.findViewById(R.id.viewtablayout);
 
     }
 }

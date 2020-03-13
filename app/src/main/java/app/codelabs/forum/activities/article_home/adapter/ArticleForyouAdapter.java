@@ -1,6 +1,7 @@
 package app.codelabs.forum.activities.article_home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.article_home.ArticleHomeCardView;
+import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
 
 public class ArticleForyouAdapter extends RecyclerView.Adapter<ArticleForyouAdapter.ForyouViewHolder> {
     ArrayList<Fragment> items = new ArrayList<>();
@@ -28,7 +31,13 @@ public class ArticleForyouAdapter extends RecyclerView.Adapter<ArticleForyouAdap
 
     @Override
     public void onBindViewHolder(@NonNull ForyouViewHolder holder, int position) {
-
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), ArticleHomeCardView.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
     }
 
     @Override
