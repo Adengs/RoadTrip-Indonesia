@@ -1,0 +1,14 @@
+package app.codelabs.forum.activities.club.gallery;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class TampilGalleryActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_tampil_gallery);
+    }
+}
