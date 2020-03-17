@@ -14,12 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.about_home.AboutHome;
+import app.codelabs.forum.activities.article_home.ArticleHome;
 import app.codelabs.forum.activities.menu_event.MenuEventActivity;
 import app.codelabs.forum.activities.menu_gallery.MenuGalleryActivity;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
     Context context;
     ArrayList<Fragment> items = new ArrayList<>();
+
     @NonNull
     @Override
     public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,25 +50,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             setEvent();
         }
 
-        private void setEvent() {
-            imgEvent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), MenuEventActivity.class);
-                    v.getContext().startActivity(intent);
-
-                }
-            });
-            imgGalery.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), MenuGalleryActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-
-        }
-
         private void setView(View view) {
             imgArtikel = view.findViewById(R.id.img_artikel);
             txtArtikel = view.findViewById(R.id.txtArtikel);
@@ -81,6 +65,36 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             txtVote = view.findViewById(R.id.txtVote);
         }
 
+        private void setEvent() {
+            imgArtikel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(),ArticleHome.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+            imgAbout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), AboutHome.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+            imgEvent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), MenuEventActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+            imgGalery.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), MenuGalleryActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+        }
 
     }
 }

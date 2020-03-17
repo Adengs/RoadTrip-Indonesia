@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.home.fragment.latest.adapter;
+package app.codelabs.forum.activities.article_home.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,32 +9,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.article_home.ArticleHomeCardView;
 import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
 
-public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapterViewHolder> {
-    List<Fragment> items = new ArrayList<>();
+public class ArticleReviewAdapter extends RecyclerView.Adapter<ArticleReviewAdapter.ReviewViewHolder> {
+    ArrayList<Fragment> items = new ArrayList<>();
     Context context;
     @NonNull
     @Override
-    public HomeAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ReviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_home, parent, false);
-        return new HomeAdapterViewHolder(view);
+        return new ReviewViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ReviewViewHolder holder, int position) {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), CardViewActivity.class);
+                Intent intent = new Intent(v.getContext(), ArticleHomeCardView.class);
                 v.getContext().startActivity(intent);
             }
         });
@@ -45,15 +45,15 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapte
         return 9;
     }
 
-    public class HomeAdapterViewHolder extends RecyclerView.ViewHolder {
+    public class ReviewViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
-        public HomeAdapterViewHolder(@NonNull View view) {
+        public ReviewViewHolder(@NonNull View view) {
             super(view);
             setView(view);
         }
 
         private void setView(View view) {
-            cardView = view.findViewById(R.id.cardviewtabhome);
+           cardView = view.findViewById(R.id.cardviewtabhome);
         }
     }
 }

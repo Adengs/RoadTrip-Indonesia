@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.home.fragment.foryou;
+package app.codelabs.forum.activities.article_home.fragment;
 
 
 import android.content.Context;
@@ -15,19 +15,17 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.fragment.foryou.adapter.ForYouAdapter;
-import app.codelabs.forum.activities.home.fragment.latest.adapter.LatestAdapter;
+import app.codelabs.forum.activities.article_home.adapter.ArticleReviewAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ForyouFragment extends Fragment {
+public class ArticleReviewFragment extends Fragment {
 RecyclerView recyclerView;
-ForYouAdapter adapter;
+ArticleReviewAdapter adapter;
 Context context;
 
-
-    public ForyouFragment() {
+    public ArticleReviewFragment() {
         // Required empty public constructor
     }
 
@@ -36,26 +34,30 @@ Context context;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_foryou, container, false);
+        return inflater.inflate(R.layout.fragment_article_review, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter = new ForYouAdapter();
+        adapter = new ArticleReviewAdapter();
 
         setView(view);
-        setReyclerView();
+        setRecyclerView();
+        setEvent();
     }
 
-    private void setReyclerView() {
+    private void setView(View view) {
+        recyclerView = view.findViewById(R.id.viewarticletablayout);
+    }
+
+    private void setRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
     }
 
-    private void setView(View view) {
-        recyclerView = view.findViewById(R.id.viewtablayout);
+    private void setEvent() {
 
     }
 }

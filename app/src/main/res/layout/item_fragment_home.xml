@@ -10,7 +10,7 @@
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:layout_width="match_parent"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
         android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="vertical"
