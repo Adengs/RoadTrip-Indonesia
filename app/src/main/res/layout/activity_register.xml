@@ -117,23 +117,6 @@
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
-
-                    <EditText
-                        android:id="@+id/et_password2regis"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:hint="Password"
-                        android:inputType="textPassword" />
-                </com.google.android.material.textfield.TextInputLayout>
-
                 <Button
                     android:id="@+id/btn_regster"
                     android:layout_width="match_parent"

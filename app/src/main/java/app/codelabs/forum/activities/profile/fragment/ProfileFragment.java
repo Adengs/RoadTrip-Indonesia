@@ -12,8 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.profile.EditProfileActivity;
 import app.codelabs.forum.activities.profile.SettingProfile;
 
 /**
@@ -21,6 +23,7 @@ import app.codelabs.forum.activities.profile.SettingProfile;
  */
 public class ProfileFragment extends Fragment {
     ImageView imgSettingPro;
+    TextView txtEditProfile;
 
 
 
@@ -53,9 +56,19 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        txtEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), EditProfileActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setView(View view) {
+        txtEditProfile =view.findViewById(R.id.txtEditProfile);
         imgSettingPro=view.findViewById(R.id.imgSetting);
     }
 
