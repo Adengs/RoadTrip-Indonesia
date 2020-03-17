@@ -20,6 +20,7 @@
             android:layout_height="55dp">
 
             <EditText
+                android:id="@+id/etSreachMember"
                 android:hint="Search here..."
                 android:drawableLeft="@drawable/ic_search"
                 android:drawablePadding="16dp"
