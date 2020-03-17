@@ -1,6 +1,7 @@
 package app.codelabs.forum.activities.conversation.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,6 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             onBindViewRightHolder(holder, position);
         }
-
     }
 
     private void onBindViewRightHolder(RecyclerView.ViewHolder holder, int position) {
