@@ -34,6 +34,7 @@ public class AdapterEventCardView extends RecyclerView.Adapter<AdapterEventCardV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), EventActivity.class);
+
                 v.getContext().startActivity(intent);
             }
         });

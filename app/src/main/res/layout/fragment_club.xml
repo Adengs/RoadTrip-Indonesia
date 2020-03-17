@@ -10,7 +10,7 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         android:layout_gravity="bottom"
         android:background="@color/putih"
         app:layout_anchor="@id/appBar"
@@ -21,17 +21,21 @@
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/hitam"
         app:tabTextAppearance="@style/Tablayout"
-        app:tabTextColor="@color/texttablayout"></com.google.android.material.tabs.TabLayout>
+        app:tabTextColor="@color/texttablayout" />
 
     <include layout="@layout/layout_sticky_header_club" />
 
-    <androidx.viewpager.widget.ViewPager
 
-        android:id="@+id/viewPagerClub"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.viewpager.widget.ViewPager>
+        <androidx.viewpager.widget.ViewPager
+
+            android:id="@+id/viewPagerClub"
+            android:layout_width="match_parent"
+            android:layout_height="664dp"
+            android:layout_marginTop="?actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        </androidx.viewpager.widget.ViewPager>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
