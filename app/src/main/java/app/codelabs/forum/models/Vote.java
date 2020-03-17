@@ -1,16 +1,13 @@
 package app.codelabs.forum.models;
 
 public class Vote {
-    private String imagevote;
+
     private String nama;
     private Boolean rbVote;
 
-    public String getImagevote() {
-        return imagevote;
-    }
-
-    public void setImagevote(String imagevote) {
-        this.imagevote = imagevote;
+    public Vote( String nama, Boolean rbVote) {
+        this.nama = nama;
+        this.rbVote = rbVote;
     }
 
     public String getNama() {

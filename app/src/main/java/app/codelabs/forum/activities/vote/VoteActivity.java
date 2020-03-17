@@ -15,8 +15,12 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
+import app.codelabs.forum.models.Vote;
 
 
 public class VoteActivity extends AppCompatActivity {
@@ -44,6 +48,7 @@ public class VoteActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
+        adapter.setItems(GenerateDataDumi());
     }
 
     private void setEvent() {
@@ -68,6 +73,16 @@ public class VoteActivity extends AppCompatActivity {
         backVote=findViewById(R.id.back_vote);
         btnVoting = findViewById(R.id.btn_Voting_Vote);
         recyclerView = findViewById(R.id.recyclerview_vote);
+    }
+
+    public List<Vote> GenerateDataDumi(){
+        List<Vote> items = new ArrayList<>();
+
+        items.add(new Vote("Vanessa",false));
+        items.add(new Vote("Nurul",false));
+        items.add(new Vote("Adella",false));
+
+        return items;
     }
 
 

@@ -38,28 +38,35 @@
                 android:textSize="14dp" />
 
             <LinearLayout
-                android:gravity="right"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="100dp"
+
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+               >
 
-                <RadioButton
-                    android:id="@+id/rb_selectVote"
-                    android:layout_gravity="center"
+                <RadioGroup
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.864"
-                    app:layout_constraintStart_toEndOf="@+id/txtnamevote"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:id="@+id/rgroup_vote"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/rb_selectVote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.864"
+                        app:layout_constraintStart_toEndOf="@+id/txtnamevote"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </RadioGroup>
+
             </LinearLayout>
 
         </LinearLayout>
 
     </FrameLayout>
-
 
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,12 +23,18 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.models.Vote;
 
 public class AdapterVote extends RecyclerView.Adapter<AdapterVote.MyHolder> {
-    List<Vote> items;
+    List<Vote> items = new ArrayList<>();
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
 
     private static Context context;
 
-    public AdapterVote() {
-        this.items = new ArrayList<>();
+    public void setItems(List<Vote> items) {
+
+        this.items = items;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -40,6 +47,12 @@ public class AdapterVote extends RecyclerView.Adapter<AdapterVote.MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+        /*if (items.get(position).getRbVote()){
+            holder.rbVote.setChecked(true);
+        }else {
+            holder.rbVote.setChecked(false);
+        }*/
+
 
     }
 
@@ -52,6 +65,7 @@ public class AdapterVote extends RecyclerView.Adapter<AdapterVote.MyHolder> {
         ImageView txtImage;
         TextView txtName;
         RadioButton rbVote;
+        RadioGroup rgVote;
 
         public MyHolder(@NonNull View view) {
             super(view);
@@ -60,12 +74,29 @@ public class AdapterVote extends RecyclerView.Adapter<AdapterVote.MyHolder> {
         }
 
         private void setEvent() {
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (Vote item : items) {
+                    item.setRbVote(false);
+                }
+                if (items.get(getAdapterPosition()).getRbVote()) {
+                    items.get(getAdapterPosition()).setRbVote(false);
 
+                }else {
+                    items.get(getAdapterPosition()).setRbVote(true);
+                }
+
+                notifyDataSetChanged();
+
+            }
+        });
 
         }
 
         private void setView(View view) {
             rbVote = view.findViewById(R.id.rb_selectVote);
+            rgVote =view.findViewById(R.id.rgroup_vote);
             txtImage = view.findViewById(R.id.txtImageVote);
             txtName = view.findViewById(R.id.txtnamevote);
 

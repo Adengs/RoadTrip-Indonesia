@@ -26,7 +26,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/toolbar_title"
+            android:id="@+id/toolbar_titleregis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"
@@ -58,7 +58,24 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_name"
+                        android:id="@+id/et_usernameregis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:hint="Username" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:passwordToggleDrawable="@drawable/icon_selector"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/et_nameregis"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -74,7 +91,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_email"
+                        android:id="@+id/et_emailregis"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -91,7 +108,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_password"
+                        android:id="@+id/et_passwordregis"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -108,7 +125,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_password2"
+                        android:id="@+id/et_password2regis"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -145,7 +162,7 @@
                         android:textSize="14dp" />
 
                     <TextView
-                        android:id="@+id/txtlogin"
+                        android:id="@+id/txtloginregis"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"

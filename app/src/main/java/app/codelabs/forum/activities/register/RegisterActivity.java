@@ -3,6 +3,7 @@ package app.codelabs.forum.activities.register;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
+    EditText usernameRegis,etNamaRegis , etEmailRegis,etPassword , etPassword2;
     private TextView txtlogin;
     ImageView btnEditRegister;
 
@@ -34,14 +36,23 @@ public class RegisterActivity extends AppCompatActivity {
         btnEditRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                doRegister();
+                //startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
     }
 
-    private void setView() {
+    private void doRegister() {
 
-        txtlogin = findViewById(R.id.txtlogin);
+    }
+
+    private void setView() {
+        usernameRegis=findViewById(R.id.et_usernameregis);
+        etNamaRegis=findViewById(R.id.et_nameregis);
+        etEmailRegis = findViewById(R.id.et_emailregis);
+        etPassword = findViewById(R.id.et_passwordregis);
+        etPassword2 = findViewById(R.id.et_password2regis);
+        txtlogin = findViewById(R.id.txtloginregis);
         btnEditRegister = findViewById(R.id.imgEditRegis);
     }
 }
