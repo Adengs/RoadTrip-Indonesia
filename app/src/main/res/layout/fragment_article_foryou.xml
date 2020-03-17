@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.home.fragment.foryou.ForyouFragment">
+    tools:context=".activities.article_home.fragment.ArticleForyouFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewtablayout"
+        android:id="@+id/viewarticletablayout"
         android:layout_width="match_parent"
         tools:itemCount="4"
         android:layout_height="match_parent"

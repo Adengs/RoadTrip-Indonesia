@@ -96,8 +96,6 @@ public class AdapterChat  extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tv_message = itemView.findViewById(R.id.txtIsiPesan_kiri);
         }
     }
-
-
     class RightSideChatViewHolder extends RecyclerView.ViewHolder {
         TextView tv_message;
 
