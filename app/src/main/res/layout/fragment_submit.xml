@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.forgotpassword.fragment.SubmitFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="340dp"
+                android:layout_height="520dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/shape_rounded_regis"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="280dp"
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="26dp"
+                    android:text="Please check your email address david@gmail.com and enter the verification code here."
+                    android:textColor="@color/hitam"
+                    android:textSize="14dp">
+
+                </TextView>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_marginTop="48dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:layout_width="38.44dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp" />
+
+                    <EditText
+                        android:layout_width="38.44dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginRight="20dp" />
+
+                    <EditText
+                        android:layout_width="38.44dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginRight="20dp" />
+
+                    <EditText
+                        android:layout_width="38.44dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginRight="20dp" />
+
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btn_regster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/shape_rounded_register"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/titleButton"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Didn't get the code?"
+                        android:textAlignment="center"
+                        android:textColor="@color/titleToolbar"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txtlogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Resending"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorButtonRegister"
+                        android:textSize="14dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+
+</LinearLayout>

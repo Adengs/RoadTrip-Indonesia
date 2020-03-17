@@ -15,7 +15,7 @@ public class Session {
     }
 
     public String getAppToken(){
-        String apptoken = sharedPreferences.getString("apptoken","");
+        String apptoken = sharedPreferences.getString("data","");
         return  apptoken;
     }
 
