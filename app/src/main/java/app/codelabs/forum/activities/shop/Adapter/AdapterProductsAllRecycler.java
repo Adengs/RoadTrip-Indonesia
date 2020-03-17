@@ -12,19 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.ActivityShop;
 
-public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.MyHolder> {
+public class AdapterProductsAllRecycler extends RecyclerView.Adapter<AdapterProductsAllRecycler.MyHolder> {
     private static Context context;
 
     @NonNull
     @Override
-    public AdapterProducts.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterProductsAllRecycler.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View view= LayoutInflater.from(context).inflate(R.layout.item_products,parent,false);
+        View view= LayoutInflater.from(context).inflate(R.layout.item_products_all,parent,false);
         return new MyHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterProducts.MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterProductsAllRecycler.MyHolder holder, int position) {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

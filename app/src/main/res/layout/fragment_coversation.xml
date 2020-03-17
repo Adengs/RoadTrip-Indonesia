@@ -39,7 +39,7 @@
 
             <ImageView
                 android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_height="31dp"
                 android:background="@drawable/draw_conv_user"
                 android:paddingLeft="6dp"
                 android:paddingTop="3dp"

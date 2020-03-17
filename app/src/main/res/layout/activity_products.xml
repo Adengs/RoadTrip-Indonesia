@@ -67,7 +67,7 @@
         app:tabIndicatorColor="@color/merah"
         app:tabIndicatorHeight="2dp"
         app:tabIndicatorFullWidth="false"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         android:layout_height="45dp">
     </com.google.android.material.tabs.TabLayout>
 

@@ -22,6 +22,9 @@ import com.google.android.material.tabs.TabLayout;
 public class ActivityShop extends AppCompatActivity {
     Context context;
     ImageView btnbacks;
+    ViewPager viewPagers;
+
+    AdapterShop adapter;
 
 
     @Override
@@ -34,6 +37,7 @@ public class ActivityShop extends AppCompatActivity {
         setView();
         setEvent();
         setFragment(new FragmentRincian());
+        setViewPager();
     }
 
     private void setFragment(Fragment fragment) {
@@ -55,6 +59,13 @@ public class ActivityShop extends AppCompatActivity {
 
     private void setView() {
         btnbacks = findViewById(R.id.btnbackShop);
+        viewPagers = findViewById(R.id.viewpageractivityshop);
 
+    }
+
+    private void setViewPager(){
+        adapter=new AdapterShop(getSupportFragmentManager());
+
+        viewPagers.setAdapter(adapter);
     }
 }

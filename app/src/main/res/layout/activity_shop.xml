@@ -36,7 +36,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_iconfinder_bookmark"
                     android:textColor="@color/putih"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="1dp"
                     android:layout_width="13.6dp"
                     android:layout_height="17.48dp" />
             </LinearLayout>
@@ -47,7 +47,15 @@
         android:layout_below="@id/tolbarshop"
         android:id="@+id/fragment_containershop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_marginTop="?actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:id="@+id/viewpageractivityshop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

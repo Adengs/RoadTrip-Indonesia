@@ -16,19 +16,19 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.shop.Adapter.AdapterProducts;
+import app.codelabs.forum.activities.shop.Adapter.AdapterProductsAllRecycler;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentShopProducts extends Fragment {
+public class FragmentProductsAll extends Fragment {
     RecyclerView recyclerView;
-    private AdapterProducts adapter;
+    private AdapterProductsAllRecycler adapter;
     Context context;
     CardView cardviewpro;
 
 
-    public FragmentShopProducts() {
+    public FragmentProductsAll() {
         // Required empty public constructor
     }
 
@@ -37,7 +37,7 @@ public class FragmentShopProducts extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shop_products, container, false);
+        return inflater.inflate(R.layout.fragment_products_all, container, false);
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class FragmentShopProducts extends Fragment {
     }
 
     private void setView(View view) {
-        adapter = new AdapterProducts();
+        adapter = new AdapterProductsAllRecycler();
         cardviewpro = view.findViewById(R.id.cardShopPro);
         recyclerView = view.findViewById(R.id.recyclerviewShop);
     }

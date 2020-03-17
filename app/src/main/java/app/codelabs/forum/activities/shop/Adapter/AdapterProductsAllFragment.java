@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-public class AdapterShopProducts extends FragmentPagerAdapter {
+public class AdapterProductsAllFragment extends FragmentPagerAdapter {
 
     List<Fragment> items = new ArrayList<>();
     List<String> titles = new ArrayList<>();
 
 
-    public AdapterShopProducts(FragmentManager fm) {
+    public AdapterProductsAllFragment(FragmentManager fm) {
         super(fm);
     }
 

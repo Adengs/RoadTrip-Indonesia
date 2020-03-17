@@ -8,8 +8,8 @@
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:layout_width="match_parent"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-        android:layout_height="match_parent">
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="vertical"
             android:background="@color/putih"

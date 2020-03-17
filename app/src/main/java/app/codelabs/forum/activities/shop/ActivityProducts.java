@@ -1,20 +1,14 @@
 package app.codelabs.forum.activities.shop;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.adapter.AdapterEventActivity2;
-import app.codelabs.forum.activities.event.chat.ChatFragment;
-import app.codelabs.forum.activities.event.description.DescriptionFragment;
-import app.codelabs.forum.activities.event.participant.ParticipantFragment;
 import app.codelabs.forum.activities.event.schedule.ScheduleFragment;
 import app.codelabs.forum.activities.event.walkietalkie.WalkieTalkieFragment;
 import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.home.fragment.latest.LatestFragment;
-import app.codelabs.forum.activities.shop.Adapter.AdapterShopProducts;
-import app.codelabs.forum.activities.shop.Fragment.FragmentShopProducts;
+import app.codelabs.forum.activities.shop.Adapter.AdapterProductsAllFragment;
+import app.codelabs.forum.activities.shop.Fragment.FragmentProductsAll;
 
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +24,7 @@ public class ActivityProducts extends AppCompatActivity {
     ViewPager viewPagerProducts;
 
 
-    AdapterShopProducts adapter;
+    AdapterProductsAllFragment adapter;
 
     ImageView btnPro;
 
@@ -68,9 +62,9 @@ public class ActivityProducts extends AppCompatActivity {
 
     private void setViewPager() {
 
-        adapter=new AdapterShopProducts(getSupportFragmentManager());
+        adapter=new AdapterProductsAllFragment(getSupportFragmentManager());
 
-        adapter.addFragment(new FragmentShopProducts(),"All");
+        adapter.addFragment(new FragmentProductsAll(),"All");
         adapter.addFragment(new LatestFragment(),"Cars");
         adapter.addFragment(new ScheduleFragment(),"Accessories");
         adapter.addFragment(new WalkieTalkieFragment(),"Parts");

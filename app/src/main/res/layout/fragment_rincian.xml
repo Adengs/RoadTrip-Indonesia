@@ -13,6 +13,7 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layoutrincian"
             android:layout_gravity="bottom"
+            app:tabGravity="fill"
             android:background="@drawable/shape_walk_through"
             app:layout_anchor="@id/apprincian"
             app:layout_anchorGravity="bottom"
