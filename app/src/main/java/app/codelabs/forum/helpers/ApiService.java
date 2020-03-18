@@ -6,7 +6,6 @@ import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.Respons;
 import app.codelabs.forum.models.ResponsLogin;
 import app.codelabs.forum.models.ResponseApi;
-import app.codelabs.forum.models.ResponseForgotPassword;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -28,6 +27,8 @@ public interface ApiService {
     @GET("api/walk_through")
     Call<ResponWalkThrough> Walkthrough(@Header("app-token") String AppToken);
 
+    @GET("api/member")
+    Call<ResponsListMemberCompany> listMember (@Header ("Authorization")String token , @Header ("app-token")String AppToken, @Query("search") String seacrh);
 
     @POST("}recovery")
     Call<ResponseForgotPassword> forgotpassword(@Body Map<String, String> body, @Header("app-token") String apptoken);

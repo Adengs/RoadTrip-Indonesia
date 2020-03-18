@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Session {
-    private static String KEY_APP_TOKEN="app_token";
+    private static String KEY_TOKEN = "token";
+    private static String KEY_APP_TOKEN="app-token";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Context context;
@@ -25,12 +26,13 @@ public class Session {
         editor.putString(KEY_APP_TOKEN,app_token);
         editor.commit();
     }
-    public String getToken(){//sebuah fungsi yang memiliki nilai balik
-        String token =sharedPreferences.getString("token","");
+
+    public String getToken(){
+        String token =sharedPreferences.getString(KEY_TOKEN,"");
         return token;
     }
-    public void  setlogin(){// fungsi yang tidak mengembalikan data
-        editor.putBoolean("sudah_login",true);//myimpan data boolean
+    public void  setlogin(){
+        editor.putBoolean("sudah_login",true);
         editor.commit();
     }
 
@@ -44,7 +46,7 @@ public class Session {
         editor.putString("date_birth",date_birth);
         editor.putString("city",city);
         editor.putString("role",role);
-        editor.putString("token",token);
+        editor.putString(KEY_TOKEN,token);
         editor.commit();
     }
 }
