@@ -31,6 +31,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/foto_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -45,6 +46,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/nameatas_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="David Beckham"
@@ -90,9 +92,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="36.5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginBottom="21dp"
                     android:orientation="horizontal">
 
@@ -104,7 +106,8 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="35dp"
+                            android:id="@+id/post_profile"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="105"
@@ -135,6 +138,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/follower_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -166,6 +170,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/following_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -241,6 +246,7 @@
 
 
                     <TextView
+                        android:id="@+id/nameprofile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
@@ -266,6 +272,7 @@
                         android:textSize="12dp" />
 
                     <TextView
+                        android:id="@+id/emailprofile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
@@ -291,6 +298,7 @@
                         android:textSize="12dp" />
 
                     <TextView
+                        android:id="@+id/dateprofile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
@@ -316,6 +324,7 @@
                         android:textSize="12dp" />
 
                     <TextView
+                        android:id="@+id/cityprofile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"

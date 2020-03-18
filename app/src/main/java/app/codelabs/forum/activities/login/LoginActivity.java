@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponsLogin> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),"Tidak Bisa Login",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 });
             }
