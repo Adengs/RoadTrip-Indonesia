@@ -3,9 +3,11 @@ package app.codelabs.forum.helpers;
 import java.util.Map;
 
 import app.codelabs.forum.models.ResponWalkThrough;
-import app.codelabs.forum.models.Respons;
+import app.codelabs.forum.models.ResponsListMemberCompany;
 import app.codelabs.forum.models.ResponsLogin;
 import app.codelabs.forum.models.ResponseApi;
+import app.codelabs.forum.models.ResponseForgotPassword;
+import app.codelabs.forum.models.ResponseSubmitPassword;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -21,8 +23,7 @@ public interface ApiService {
     @POST("auth/signin")
     Call<ResponsLogin> login (@Body Map<String, String> body, @Header("app-token")String apptoken);
 
-    @GET("api/member")
-    Call<Respons> listMember (@Header ("Authorization")String token , @Header ("app-token")String AppToken, @Query("search") String seacrh);
+
 
     @GET("api/walk_through")
     Call<ResponWalkThrough> Walkthrough(@Header("app-token") String AppToken);
@@ -30,8 +31,13 @@ public interface ApiService {
     @GET("api/member")
     Call<ResponsListMemberCompany> listMember (@Header ("Authorization")String token , @Header ("app-token")String AppToken, @Query("search") String seacrh);
 
-    @POST("}recovery")
+    @POST("recovery")
     Call<ResponseForgotPassword> forgotpassword(@Body Map<String, String> body, @Header("app-token") String apptoken);
+
+    @POST("verify_code")
+    Call<ResponseSubmitPassword> submitpassword(@Body Map<String, String> body, @Header("app-token") String apptoken);
+
+
 
 
 

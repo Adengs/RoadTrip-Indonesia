@@ -60,17 +60,18 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
-        btnBackForgot.setOnClickListener(new View.OnClickListener() {
+        btnSendForgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Map<String,String> data = new HashMap<>();
+                Map<String, String> data = new HashMap<>();
                 data.put("email",et_EmailForgot.getText().toString());
 
-                ConnectionApi.apiService().forgotpassword(data,apptoken).enqueue(new Callback<ResponseForgotPassword>() {
+                ConnectionApi.apiService().forgotpassword(data, apptoken).enqueue(new Callback<ResponseForgotPassword>() {
                     @Override
                     public void onResponse(Call<ResponseForgotPassword> call, Response<ResponseForgotPassword> response) {
                         if (response.isSuccessful()&& response.body().getSuccess()){
-
+                            Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(ForgotPasswordActivity.this, SubmitPasswordActivity.class));
 
                         } else {
                             Toast.makeText(getApplicationContext(),response.body().getMessage(),Toast.LENGTH_SHORT).show();
@@ -80,18 +81,19 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseForgotPassword> call, Throwable t) {
+                        Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
 
-                startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
+
             }
         });
 
-        btnSendForgot.setOnClickListener(new View.OnClickListener() {
+        btnBackForgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ForgotPasswordActivity.this, SubmitPasswordActivity.class));
+                startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
             }
         });
 

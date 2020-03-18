@@ -12,20 +12,22 @@
         <activity android:name=".activities.about_home.AboutHome" />
         <activity android:name=".activities.home.latest_popular_foryou.CardViewActivity" />
         <activity android:name=".activities.article_home.ArticleHome" />
+        <activity android:name=".activities.shop.ActivityProducts"></activity>
+        <activity android:name=".activities.shop.ActivityShop"></activity>
         <activity android:name=".activities.home.notivication.voting_notification.VotingPeriodNotif" />
         <activity android:name=".MainActivity" />
         <activity android:name=".activities.forgotpassword.ForgotPasswordActivity" />
+        <activity android:name=".activities.forgotpassword.SubmitPasswordActivity"></activity>
+        <activity android:name=".activities.forgotpassword.FinishPasswordActivity"></activity>
         <activity android:name=".activities.register.RegisterActivity" />
         <activity android:name=".activities.home.HomeActivity" />
         <activity android:name=".activities.home.notivication.NotivicationHome" />
         <activity android:name=".activities.profile.SettingProfile" />
         <activity android:name=".activities.event.EventActivity" />
         <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity" />
-        <activity android:name=".activities.login.LoginActivity" />
-        <activity android:name=".activities.walktrought.WalkThroughActivity" />
-        <activity android:name=".activities.splashscreen.SplashScreenActivity">
+        <activity android:name=".activities.login.LoginActivity" >
 
-        <activity android:name=".activities.login.LoginActivity" />
+        </activity>
         <activity android:name=".activities.walktrought.WalkThroughActivity" />
         <activity android:name=".activities.splashscreen.SplashScreenActivity">
             <intent-filter>
