@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -13,13 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.models.ResponsListMemberCompany;
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.graphics.Color.rgb;
 
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> {
     private Context context;
