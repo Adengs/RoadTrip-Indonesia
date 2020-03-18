@@ -4,9 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Session {
+    private static String KEY_APP_TOKEN="app_token";
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     private Context context;
-    SharedPreferences.Editor editor;
 
     public Session(Context context){
         sharedPreferences = context.getSharedPreferences("Settings",Context.MODE_PRIVATE);
@@ -17,8 +18,12 @@ public class Session {
     }
 
     public String getAppToken(){
-        String apptoken = sharedPreferences.getString("data","");
+        String apptoken = sharedPreferences.getString(KEY_APP_TOKEN,"");
         return  apptoken;
+    }
+    public void setApptoken(String app_token){
+        editor.putString(KEY_APP_TOKEN,app_token);
+        editor.commit();
     }
     public String getToken(){//sebuah fungsi yang memiliki nilai balik
         String token =sharedPreferences.getString("token","");
@@ -29,10 +34,7 @@ public class Session {
         editor.commit();
     }
 
-    public void setRegister(){
-        editor.putBoolean("succes_register",true);
-        editor.commit();
-    }
+
 
     public void setDataLogin(String token, int id, int company_id, String username, String name, String email, String city, String date_birth, String photo, String role) {
         editor.putInt("id",id);

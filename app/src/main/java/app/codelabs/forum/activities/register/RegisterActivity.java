@@ -76,13 +76,13 @@ public class RegisterActivity extends AppCompatActivity {
                 data.put("name", etNamaRegis.getText().toString());
                 data.put("email", etEmailRegis.getText().toString());
 
-                ConnectionApi.apiService().register(data, Apptoken).enqueue(new Callback<ResponseRegister>() {
+                ConnectionApi.apiService().register(data ,Apptoken).enqueue(new Callback<ResponseRegister>() {
                     @Override
                     public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
                         if (response.isSuccessful() && response.body().getSuccess()) {
 
-                            Toast.makeText(context, "Succes Register", Toast.LENGTH_SHORT).show();
-                            session.setRegister();
+                            Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
                         } else {
 
                             Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -95,7 +95,6 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
 
         });

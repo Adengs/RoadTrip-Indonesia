@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 public class WalkThroughActivity extends AppCompatActivity {
     public ViewPager viewPager;
-    private TextView BtnNext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +37,6 @@ public class WalkThroughActivity extends AppCompatActivity {
 
     private void setView() {
         viewPager = findViewById(R.id.viewpager);
-        BtnNext = findViewById(R.id.txtnext);
     }
 
 }

@@ -14,6 +14,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.models.ResponWalkThrough;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +27,8 @@ import app.codelabs.forum.activities.login.LoginActivity;
 public class WalkTroughtThirdFragment extends Fragment {
     private Button btnGetStarted;
     Context context;
+    String AppToken;
+    Session session;
 
     public WalkTroughtThirdFragment() {
         // Required empty public constructor
@@ -40,8 +48,6 @@ public class WalkTroughtThirdFragment extends Fragment {
 
         setView(view);
         setEvent();
-
-
     }
 
     private void setView(View view) {
