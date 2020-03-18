@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -21,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.Respons;
+import app.codelabs.forum.models.ResponsListMemberCompany;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -90,16 +88,22 @@ public class MemberFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService().listMember(token,apptoken,search).enqueue(new Callback<Respons>(){
+        ConnectionApi.apiService().listMember(token,apptoken,search).enqueue(new Callback<ResponsListMemberCompany>(){
 
             @Override
-            public void onResponse(Call<Respons> call, Response<Respons> response) {
+            public void onResponse(Call<ResponsListMemberCompany> call, Response<ResponsListMemberCompany> response) {
+                if (response.isSuccessful() && response.body().getSuccess()){
 
+                    adapter.setItems(response.body().getData());
+                }
+                else {
+                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<Respons> call, Throwable t) {
-
+            public void onFailure(Call<ResponsListMemberCompany> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

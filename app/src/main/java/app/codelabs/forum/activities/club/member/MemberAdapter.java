@@ -6,15 +6,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-
-import static android.graphics.Color.rgb;
+import app.codelabs.forum.models.ResponsListMemberCompany;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> {
     private Context context;
+    private List<ResponsListMemberCompany.Data>items;
+
+    public MemberAdapter(){
+        items = new ArrayList<>();
+    }
 
     @NonNull
     @Override
@@ -26,16 +35,25 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+        ResponsListMemberCompany.Data data = items.get(position);
+
+        holder.txtNama.setText(data.getName());
+        Picasso.with(context).load(data.getPhoto()).centerCrop().fit().into(holder.imgMember);
 
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return items.size();
+    }
+    public void setItems(List<ResponsListMemberCompany.Data> data) {
+        this.items = data;
+        notifyDataSetChanged();
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        private TextView txtfollow;
+        TextView txtNama;
+        CircleImageView imgMember;
 
         public MyHolder(@NonNull View view) {
             super(view);
@@ -46,18 +64,12 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
         }
 
         private void setEvent() {
-            txtfollow.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    txtfollow.setText("Following");
-                    txtfollow.setTextColor(rgb(255, 255, 255));
-                    txtfollow.setBackgroundColor(ContextCompat.getColor(context, R.color.merah));
-                }
-            });
+
         }
 
         private void setView(View view) {
-            txtfollow = view.findViewById(R.id.txtfollow);
+            txtNama = view.findViewById(R.id.txtMember);
+            imgMember = view.findViewById(R.id.img_member);
         }
     }
 
