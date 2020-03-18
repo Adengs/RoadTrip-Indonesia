@@ -2,9 +2,11 @@ package app.codelabs.forum.helpers;
 
 import java.util.Map;
 
+import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.Respons;
 import app.codelabs.forum.models.ResponsLogin;
 import app.codelabs.forum.models.ResponseApi;
+import app.codelabs.forum.models.ResponseForgotPassword;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -22,6 +24,7 @@ public interface ApiService {
 
     @GET("api/member")
     Call<Respons> listMember (@Header ("Authorization")String token , @Header ("app-token")String AppToken, @Query("search") String seacrh);
+
     @GET("api/walk_through")
     Call<ResponWalkThrough> Walkthrough(@Header("app-token") String AppToken);
 
