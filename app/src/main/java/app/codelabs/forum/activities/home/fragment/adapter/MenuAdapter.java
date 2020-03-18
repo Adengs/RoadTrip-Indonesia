@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.about_home.AboutHome;
 import app.codelabs.forum.activities.article_home.ArticleHome;
+import app.codelabs.forum.activities.menu_event.MenuEventActivity;
+import app.codelabs.forum.activities.menu_gallery.MenuGalleryActivity;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
     Context context;
@@ -75,6 +77,20 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), AboutHome.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+            imgEvent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), MenuEventActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+            imgGalery.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), MenuGalleryActivity.class);
                     v.getContext().startActivity(intent);
                 }
             });

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,69 +9,13 @@
     tools:context=".MainActivity">
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomshop"
-        android:layout_alignParentBottom="true"
+    <Button
+        android:text="event"
+        android:id="@+id/btncoba"
         android:layout_width="match_parent"
-        android:layout_height="56dp">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:gravity="bottom"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_gravity="left"
-                    android:background="@drawable/draw_forgot_putih"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="205dp"
-                    android:layout_height="56dp">
-                    <TextView
-                        android:drawableLeft="@drawable/ic_call"
-                        android:text="Hubungi"
-                        android:textSize="14dp"
-                        android:drawablePadding="10dp"
-                        android:textColor="@color/hitam"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </TextView>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_gravity="right"
-                        android:background="@color/hijau"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="205dp"
-                        android:layout_height="56dp">
-                        <TextView
-                            android:drawableLeft="@drawable/ic_whatsapp"
-                            android:text="WhatsApp"
-                            android:drawablePadding="10dp"
-                            android:textSize="14dp"
-                            android:textColor="@color/putih"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </TextView>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-        </FrameLayout>
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        android:layout_height="wrap_content"></Button>
 
 
 
 
-
-
-</RelativeLayout>
+</LinearLayout>
