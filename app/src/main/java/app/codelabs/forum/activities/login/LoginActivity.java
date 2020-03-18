@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         session = Session.init(context);
         Apptoken = session.getAppToken();
 
+
         setView();
         setEvent();
 
@@ -72,7 +73,6 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<ResponsLogin> call, Response<ResponsLogin> response) {
                         if(response.isSuccessful()&& response.body().getSuccess()){
-                            Toast.makeText(context,response.body().getData().getName(),Toast.LENGTH_SHORT).show();//jika login berhasil maka tampilkan nama yang ada di data
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                             session.setlogin();
                             session.setDataLogin(response.body().getToken(),
@@ -85,23 +85,21 @@ public class LoginActivity extends AppCompatActivity {
                                     response.body().getData().getDate_birth(),
                                     response.body().getData().getPhoto(),
                                     response.body().getData().getRole());
-
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                         }
                         else{
 
-                            ResponsLogin catchErrorresposes = new Gson().fromJson(response.errorBody().charStream(),ResponsLogin.class);
-                            Toast.makeText(getApplicationContext(),catchErrorresposes.getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),response.body().getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponsLogin> call, Throwable t) {
-
+                        Toast.makeText(getApplicationContext(),"Tidak Bisa Login",Toast.LENGTH_SHORT).show();
                     }
                 });
-             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
         });
         txtForgotPassword.setOnClickListener(new View.OnClickListener() {

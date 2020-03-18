@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Session {
+    private static String KEY_TOKEN = "token";
     private SharedPreferences sharedPreferences;
     private Context context;
     SharedPreferences.Editor editor;
@@ -20,12 +21,12 @@ public class Session {
         String apptoken = sharedPreferences.getString("data","");
         return  apptoken;
     }
-    public String getToken(){//sebuah fungsi yang memiliki nilai balik
-        String token =sharedPreferences.getString("token","");
+    public String getToken(){
+        String token =sharedPreferences.getString(KEY_TOKEN,"");
         return token;
     }
-    public void  setlogin(){// fungsi yang tidak mengembalikan data
-        editor.putBoolean("sudah_login",true);//myimpan data boolean
+    public void  setlogin(){
+        editor.putBoolean("sudah_login",true);
         editor.commit();
     }
 
