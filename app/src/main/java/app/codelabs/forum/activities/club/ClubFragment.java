@@ -11,6 +11,8 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.club.about.AboutFragment;
@@ -27,6 +29,7 @@ public class ClubFragment extends Fragment {
     private ViewPager viewPager;
     private PagerAdapter adapter;
     private TabLayout tabLayout;
+
 
     public ClubFragment() {
         // Required empty public constructor
@@ -45,21 +48,25 @@ public class ClubFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setView(view);
+        adapter = new PagerAdapter(getFragmentManager());
+        adapter.addFragment(new PostFragment(), "Post");
+        viewPager.setAdapter(adapter);
         setViewPager();
+
     }
+
 
     private void setViewPager() {
         adapter = new PagerAdapter(getFragmentManager());
-
         adapter.addFragment(new PostFragment(), "Post");
         adapter.addFragment(new MemberFragment(), "Member");
         adapter.addFragment(new Event_Club_Fragment(), "Event");
         adapter.addFragment(new GalleryFragment(), "Gallery");
         adapter.addFragment(new AboutFragment(), "About");
 
-        viewPager.setAdapter(adapter);
+        this.viewPager.setAdapter(adapter);
 
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(this.viewPager);
     }
 
     private void setView(View view) {

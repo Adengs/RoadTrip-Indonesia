@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,16 +23,18 @@ import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseApi;
 import app.codelabs.forum.models.ResponseRegister;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText usernameRegis,etNamaRegis , etEmailRegis,etPassword , etPassword2;
+    private EditText usernameRegis, etNamaRegis, etEmailRegis, etPassword;
     private TextView txtlogin;
-    ImageView btnEditRegister;
-    private Session session;
-    String apptoken;
+    private ImageView btnEditRegister;
+    private Button btnRegis;
+    Session session;
+    private String Apptoken;
     Context context;
 
     @Override
@@ -41,10 +44,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
+        Apptoken = session.getAppToken();
+
         setView();
         setEvent();
-
 
 
     }
@@ -59,41 +62,50 @@ public class RegisterActivity extends AppCompatActivity {
         btnEditRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doRegister();
-                //startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+
             }
+        });
+
+        btnRegis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Map<String, String> data = new HashMap<>();
+                data.put("username", usernameRegis.getText().toString());
+                data.put("password", etPassword.getText().toString());
+                data.put("name", etNamaRegis.getText().toString());
+                data.put("email", etEmailRegis.getText().toString());
+
+                ConnectionApi.apiService().register(data, Apptoken).enqueue(new Callback<ResponseRegister>() {
+                    @Override
+                    public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+                        if (response.isSuccessful() && response.body().getSuccess()) {
+
+                            Toast.makeText(context, "Succes Register", Toast.LENGTH_SHORT).show();
+                            session.setRegister();
+                        } else {
+
+                            Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseRegister> call, Throwable t) {
+                        Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+
         });
     }
 
-    private void doRegister() {
-        Map<String, String> data = new HashMap<>();
-        data.put("username" ,usernameRegis.getText().toString());
-        data.put("password" ,etPassword.getText().toString());
-        data.put("name" ,etNamaRegis.getText().toString());
-        data.put("email",etEmailRegis.getText().toString());
-
-        ConnectionApi.apiService().register(data,apptoken).enqueue(new Callback<ResponseRegister>() {
-            @Override
-            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
-                if (response.isSuccessful() && response.body() .getSuccess()){
-                    Toast.makeText(context,"Succes Register",Toast.LENGTH_SHORT).show();
-                }else {
-                    ResponseRegister catchErrorResponse = new Gson().fromJson(response.errorBody().charStream(),ResponseRegister.class);
-                    Toast.makeText(context ,catchErrorResponse.getMessage(),Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseRegister> call, Throwable t) {
-                Toast.makeText(context , t.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
-            }
 
     private void setView() {
-        usernameRegis=findViewById(R.id.et_usernameregis);
-        etNamaRegis=findViewById(R.id.et_nameregis);
+        btnRegis = findViewById(R.id.btn_regster);
+        usernameRegis = findViewById(R.id.et_usernameregis);
+        etNamaRegis = findViewById(R.id.et_nameregis);
         etEmailRegis = findViewById(R.id.et_emailregis);
         etPassword = findViewById(R.id.et_passwordregis);
         txtlogin = findViewById(R.id.txtloginregis);

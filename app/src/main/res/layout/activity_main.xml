@@ -9,7 +9,11 @@
     tools:context=".MainActivity">
 
 
-
+    <Button
+        android:text="event"
+        android:id="@+id/btncoba"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Button>
 
 
 

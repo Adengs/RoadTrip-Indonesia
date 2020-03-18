@@ -2,7 +2,7 @@ package app.codelabs.forum.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public abstract class ResponseRegister {
+public class ResponseRegister {
 
 
     @SerializedName("success")

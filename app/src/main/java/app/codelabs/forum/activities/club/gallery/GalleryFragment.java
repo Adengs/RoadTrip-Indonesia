@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 
@@ -19,7 +20,7 @@ import app.codelabs.forum.R;
  */
 public class GalleryFragment extends Fragment {
     RecyclerView recyclerView;
-    private GalleryAdapter adapter;
+    private GalleryNameAdapter galleryNameAdapter;
     Context context;
 
 
@@ -46,13 +47,14 @@ public class GalleryFragment extends Fragment {
 
     private void setRecycleView() {
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
-        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(galleryNameAdapter);
+
 
     }
 
     private void setView(View view) {
-        adapter = new GalleryAdapter();
-        recyclerView = view.findViewById(R.id.rv_galery);
+        galleryNameAdapter = new GalleryNameAdapter();
+        recyclerView = view.findViewById(R.id.rv_galery_name);
     }
 }
