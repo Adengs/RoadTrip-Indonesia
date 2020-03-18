@@ -5,9 +5,10 @@ import android.content.SharedPreferences;
 
 public class Session {
     private static String KEY_TOKEN = "token";
+    private static String KEY_APP_TOKEN="app-token";
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     private Context context;
-    SharedPreferences.Editor editor;
 
     public Session(Context context){
         sharedPreferences = context.getSharedPreferences("Settings",Context.MODE_PRIVATE);
@@ -18,9 +19,14 @@ public class Session {
     }
 
     public String getAppToken(){
-        String apptoken = sharedPreferences.getString("data","");
+        String apptoken = sharedPreferences.getString(KEY_APP_TOKEN,"");
         return  apptoken;
     }
+    public void setApptoken(String app_token){
+        editor.putString(KEY_APP_TOKEN,app_token);
+        editor.commit();
+    }
+
     public String getToken(){
         String token =sharedPreferences.getString(KEY_TOKEN,"");
         return token;
@@ -40,7 +46,7 @@ public class Session {
         editor.putString("date_birth",date_birth);
         editor.putString("city",city);
         editor.putString("role",role);
-        editor.putString("token",token);
+        editor.putString(KEY_TOKEN,token);
         editor.commit();
     }
 }

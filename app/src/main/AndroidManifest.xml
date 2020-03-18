@@ -24,16 +24,14 @@
         <activity android:name=".activities.profile.SettingProfile" />
         <activity android:name=".activities.event.EventActivity" />
         <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity" />
-        <activity android:name=".activities.login.LoginActivity" >
+        <activity android:name=".activities.login.LoginActivity" />
+        <activity android:name=".activities.walktrought.WalkThroughActivity" />
+        <activity android:name=".activities.splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".activities.walktrought.WalkThroughActivity" />
-        <activity android:name=".activities.splashscreen.SplashScreenActivity">
-
         </activity>
     </application>
 
