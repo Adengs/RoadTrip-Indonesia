@@ -1,13 +1,16 @@
 package app.codelabs.forum.activities.club.gallery;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.event.EventActivity;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyHolder> {
     private Context context;
@@ -22,6 +25,13 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),TampilGalleryActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 
@@ -31,8 +41,15 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyHolder
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        public MyHolder(@NonNull View itemView) {
-            super(itemView);
+        private CardView cardView;
+        public MyHolder(@NonNull View view) {
+            super(view);
+
+            setView(view);
+        }
+
+        private void setView(View view) {
+            cardView = view.findViewById(R.id.card_galery);
         }
     }
 }

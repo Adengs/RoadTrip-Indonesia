@@ -8,13 +8,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.databinding.adapters.AdapterViewBindingAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.menu_event.JoinPickFragment;
 
 import static android.graphics.Color.rgb;
 
 public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHolder> {
     private Context context;
+    public static OnItemSelection listener;
+
 
     @NonNull
     @Override
@@ -33,9 +40,14 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
     public int getItemCount() {
         return 10;
     }
+    public void setListener (OnItemSelection listener){
+        this.listener = listener ;
+    }
 
-    public class MyHolder extends RecyclerView.ViewHolder {
-        private TextView txtJoin, txtDojoin;
+    public static class MyHolder extends RecyclerView.ViewHolder {
+        private TextView txtJoin;
+
+
 
         public MyHolder(@NonNull View view) {
             super(view);
@@ -47,17 +59,21 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
             txtJoin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    txtDojoin.setText("Congratulations!");
-                    txtJoin.setText("Joined");
-                    txtJoin.setTextColor(rgb(255, 255, 255));
-                    txtJoin.setBackgroundColor(ContextCompat.getColor(context, R.color.merah));
+                    listener.onBtnJoin();
                 }
             });
         }
 
         private void setView(View view) {
             txtJoin = view.findViewById(R.id.txtjoin);
-            txtDojoin = view.findViewById(R.id.txt_do_join);
         }
+
     }
+
+    public interface OnItemSelection{
+        void onBtnJoin();
+
+    }
+
+
 }
