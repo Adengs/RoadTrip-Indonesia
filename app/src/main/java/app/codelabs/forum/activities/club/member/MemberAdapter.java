@@ -38,7 +38,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
         ResponsListMemberCompany.Data data = items.get(position);
 
         holder.txtNama.setText(data.getName());
-        holder.txtfollowers.setText(data.getFollowers());
+        holder.txtfollowers.setText(String.valueOf(data.getFollowers()));
         Picasso.with(context).load(data.getPhoto()).centerCrop().fit().into(holder.imgMember);
 
     }

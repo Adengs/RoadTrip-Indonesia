@@ -13,6 +13,7 @@ import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.walktrought.WalkThroughActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
@@ -54,12 +55,17 @@ Session session;
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-                    Toast.makeText(context,"masuk ke walktrough",Toast.LENGTH_SHORT).show();
                     Gson gson = new Gson();
-                    Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                    intent.putExtra("title",gson.toJson(response.body().getData()));
-                    startActivity(intent);
-                    finish();
+                    Boolean  login = session.islogin();
+                    if(login == true){//jika bisa bernilai benar maka Splachscreen pergi ke home
+                        startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
+
+                    }else{//jika bisa bernilai tidakbenar  maka Splachscreen pergi ke mainactivity
+                        Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
+                        intent.putExtra("title",gson.toJson(response.body().getData()));
+                        startActivity(intent);
+                    }
+
 
                 }else {
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
