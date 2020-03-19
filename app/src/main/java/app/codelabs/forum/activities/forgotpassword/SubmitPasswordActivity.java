@@ -24,19 +24,18 @@ import java.util.Map;
 public class SubmitPasswordActivity extends AppCompatActivity {
     ImageView btnBackSubmit;
     Button btnSubmitForgot;
-
-
+    String code ="";
+    String codesatu,codedua,codetiga,codeempat;
+    EditText codes, coded, codet, codee;
     Session session;
     private String apptoken;
     Context context;
 
-    EditText e;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_password);
-
         context = getApplicationContext();
         session = Session.init(context);
         apptoken = session.getAppToken();
@@ -45,16 +44,21 @@ public class SubmitPasswordActivity extends AppCompatActivity {
         setEvent();
     }
 
-
     private void setView() {
+
         btnBackSubmit = findViewById(R.id.btn_BackSubmit);
         btnSubmitForgot = findViewById(R.id.btn_SubmitForgot);
-        //codes = findViewById(R.id.et_codesatu);
-        //coded = findViewById(R.id.et_codedua);
-        //codet = findViewById(R.id.et_codetiga);
-        //codee = findViewById(R.id.et_codeempat);
-       // String code = findViewById(R.id.et_codesatu),findViewById(R.id.et_codedua),findViewById(R.id.et_codetiga),findViewById(R.id.et_codeempat);
+        codes = findViewById(R.id.et_codesatu);
+        coded = findViewById(R.id.et_codedua);
+        codet = findViewById(R.id.et_codetiga);
+        codee = findViewById(R.id.et_codeempat);
 
+        codesatu = codes.getText().toString();
+        codedua = coded.getText().toString();
+        codetiga = codet.getText().toString();
+        codeempat = codee.getText().toString();
+
+        code = codesatu+codedua+codetiga+codeempat;
     }
 
     private void setEvent() {
@@ -62,7 +66,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Map<String, String> data = new HashMap<>();
-               // data.put("code", codes.getText().toString());
+                data.put("code","5415");
 
                 ConnectionApi.apiService().submitpassword(data, apptoken).enqueue(new Callback<ResponseSubmitPassword>() {
                     @Override

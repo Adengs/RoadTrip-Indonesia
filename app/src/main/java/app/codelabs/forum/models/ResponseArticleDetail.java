@@ -2,23 +2,12 @@ package app.codelabs.forum.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseFinishPassword {
+public  class ResponseArticleDetail {
 
-
-    @SerializedName("status")
-    private int status;
     @SerializedName("success")
     private boolean success;
     @SerializedName("message")
     private String message;
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
     public boolean getSuccess() {
         return success;
