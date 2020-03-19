@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.codelabs.forum">
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,11 +8,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.article_home.ArticleHomeCardView"></activity>
+        <activity android:name=".activities.profile.EditProfileActivity"></activity>
+        <activity android:name=".activities.article_home.ArticleHomeCardView" />
         <activity android:name=".activities.about_home.AboutHome" />
         <activity android:name=".activities.home.latest_popular_foryou.CardViewActivity" />
         <activity android:name=".activities.article_home.ArticleHome" />
         <activity android:name=".activities.home.notivication.voting_notification.VotingPeriodNotif" />
+        <activity android:name=".activities.vote.VoteActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".activities.forgotpassword.ForgotPasswordActivity" />
         <activity android:name=".activities.register.RegisterActivity" />
@@ -24,7 +23,9 @@
         <activity android:name=".activities.profile.SettingProfile" />
         <activity android:name=".activities.event.EventActivity" />
         <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity" />
-        <activity android:name=".activities.login.LoginActivity" />
+        <activity android:name=".activities.login.LoginActivity" >
+
+        </activity>
         <activity android:name=".activities.walktrought.WalkThroughActivity" />
         <activity android:name=".activities.splashscreen.SplashScreenActivity">
             <intent-filter>
@@ -34,5 +35,6 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
 </manifest>

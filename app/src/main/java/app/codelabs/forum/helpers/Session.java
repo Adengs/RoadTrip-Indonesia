@@ -40,6 +40,8 @@ public class Session {
         editor.commit();
     }
 
+
+
     public void setDataLogin(String token, int id, int company_id, String username, String name, String email, String city, String date_birth, String photo, String role) {
         editor.putInt("id",id);
         editor.putInt("company_id",company_id);
