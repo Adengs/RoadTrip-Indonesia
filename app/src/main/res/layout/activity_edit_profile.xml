@@ -4,11 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:background="@color/displayScreen"
+    android:background="@color/colorCircle"
     android:orientation="vertical"
-    tools:context=".activities.register.RegisterActivity">
-
+    tools:context=".activities.profile.EditProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_top"
@@ -19,36 +17,55 @@
         app:theme="@style/Register">
 
         <ImageView
-            android:layout_marginRight="20dp"
-            android:src="@drawable/ic_asset"
-            android:id="@+id/imgEditRegis"
+            android:id="@+id/imgBack_Edit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_asset" />
 
         <TextView
             android:id="@+id/toolbar_titleregis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:text="Edit Profile"
             android:textColor="@color/titleToolbar"
             android:textSize="14dp" />
     </androidx.appcompat.widget.Toolbar>
+
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:gravity="center"
+            android:layout_marginTop="4dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <LinearLayout
-                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/shape_rounded_regis"
                 android:orientation="vertical">
+                <FrameLayout
+                    android:layout_marginTop="23dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imgFoto_EditProfile"
+                        android:layout_gravity="left"
+                        android:src="@drawable/david"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                    <ImageView
+                        android:id="@+id/imgCamera_EditProfile"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_iconfinder_camera_editprofile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -58,12 +75,13 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_usernameregis"
+                        android:id="@+id/etname_EditProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:hint="Username" />
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:hint="Name"
+                        android:textColorHint="@color/pink" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -75,12 +93,13 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_nameregis"
+                        android:id="@+id/etemail_EditProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:hint="Name" />
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:hint="E-Mail"
+                        android:textColorHint="@color/pink" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -91,14 +110,15 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_emailregis"
+                        android:id="@+id/etdate_EditProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:hint="Email" />
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:hint="Date Of Bird" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -108,52 +128,37 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_passwordregis"
+                        android:id="@+id/etCity_EditProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:hint="Password"
-                        android:inputType="textPassword" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:hint="City" />
 
-                <Button
-                    android:id="@+id/btn_regster"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/shape_rounded_register"
-                    android:text="Register"
-                    android:textAllCaps="false"
-                    android:textColor="@color/titleButton"
-                    android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
+                    android:gravity="bottom"
+                    android:layout_marginTop="76dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="40dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/btnSave_EditProfile"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Have an account?"
-                        android:textAlignment="center"
-                        android:textColor="@color/titleToolbar"
-                        android:textSize="14dp" />
-
-                    <TextView
-                        android:id="@+id/txtloginregis"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="Login"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorButtonRegister"
-                        android:textSize="14dp" />
+                        android:background="@drawable/shape_rounded_register"
+                        android:text="Save"
+                        android:textAllCaps="false"
+                        android:textColor="@color/titleButton"
+                        android:textSize="16sp" />
                 </LinearLayout>
+
+
+
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>

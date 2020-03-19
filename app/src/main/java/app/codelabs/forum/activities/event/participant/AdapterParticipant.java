@@ -35,7 +35,7 @@ public class AdapterParticipant extends RecyclerView.Adapter<AdapterParticipant.
     }
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        private TextView txtJoin;
+        private TextView txtJoin , txtjoin2;
         public MyHolder(@NonNull View view) {
             super(view);
 
@@ -53,10 +53,21 @@ public class AdapterParticipant extends RecyclerView.Adapter<AdapterParticipant.
                     txtJoin.setBackgroundColor(ContextCompat.getColor(context,R.color.pink));
                 }
             });
+
+            txtjoin2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    txtjoin2.setText("Joined");
+                    txtjoin2.setTextColor(Color.rgb(255,255,255));
+                    txtjoin2.setBackgroundColor(ContextCompat.getColor(context,R.color.pink));
+                }
+            });
+
         }
 
         private void setView(View view) {
             txtJoin=view.findViewById(R.id.txtjoinedabu);
+            txtjoin2=view.findViewById(R.id.txtJoined);
         }
     }
 

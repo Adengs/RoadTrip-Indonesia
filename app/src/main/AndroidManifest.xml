@@ -8,13 +8,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.article_home.ArticleHomeCardView"></activity>
+        <activity android:name=".activities.profile.EditProfileActivity"></activity>
+        <activity android:name=".activities.article_home.ArticleHomeCardView" />
         <activity android:name=".activities.about_home.AboutHome" />
         <activity android:name=".activities.home.latest_popular_foryou.CardViewActivity" />
         <activity android:name=".activities.article_home.ArticleHome" />
         <activity android:name=".activities.shop.ActivityProducts"></activity>
         <activity android:name=".activities.shop.ActivityShop"></activity>
         <activity android:name=".activities.home.notivication.voting_notification.VotingPeriodNotif" />
+        <activity android:name=".activities.vote.VoteActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".activities.forgotpassword.ForgotPasswordActivity" />
         <activity android:name=".activities.forgotpassword.SubmitPasswordActivity"></activity>
