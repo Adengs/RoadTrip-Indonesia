@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import app.codelabs.forum.models.ResponWalkThrough;
 
 public class WalkThroughAdapter extends FragmentPagerAdapter {
     List<Fragment> items = new ArrayList<>();

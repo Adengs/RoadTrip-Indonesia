@@ -26,6 +26,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 Context context;
 String AppToken;
 Session session;
+ResponWalkThrough data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +55,13 @@ Session session;
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-                    Toast.makeText(context,"masuk ke walktrough",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                     Gson gson = new Gson();
                     Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                    intent.putExtra("title",gson.toJson(response.body().getData()));
+                    intent.putExtra("data",gson.toJson(response.body().getData()));
                     startActivity(intent);
                     finish();
+
 
                 }else {
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();

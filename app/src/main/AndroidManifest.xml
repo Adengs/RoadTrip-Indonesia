@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.codelabs.forum">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +24,7 @@
         <activity android:name=".activities.profile.SettingProfile" />
         <activity android:name=".activities.event.EventActivity" />
         <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity" />
-        <activity android:name=".activities.login.LoginActivity" ></activity>
+        <activity android:name=".activities.login.LoginActivity" />
         <activity android:name=".activities.walktrought.WalkThroughActivity" />
         <activity android:name=".activities.splashscreen.SplashScreenActivity">
             <intent-filter>
@@ -31,6 +34,4 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-
 </manifest>
