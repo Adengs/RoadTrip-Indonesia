@@ -4,6 +4,7 @@ import java.util.Map;
 
 import app.codelabs.forum.models.ResponMyProfile;
 import app.codelabs.forum.models.ResponWalkThrough;
+import app.codelabs.forum.models.ResponsArticleLatest;
 import app.codelabs.forum.models.ResponsListMemberCompany;
 import app.codelabs.forum.models.ResponsLogin;
 import app.codelabs.forum.models.ResponseApi;
@@ -35,4 +36,7 @@ public interface ApiService {
 
     @GET("api/profile")
     Call<ResponMyProfile> myprofile (@Header ("Authorization")String token , @Header("app-token") String AppToken);
+
+    @GET("api/article/list")
+    Call<ResponsArticleLatest> articlelatest (@Header("app-token") String AppToken , @Header ("Authorization")String token);
 }
