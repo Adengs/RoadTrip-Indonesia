@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/displayScreen"
     tools:context=".activities.club.member.MemberFragment">
 
@@ -11,6 +12,19 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progress_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:indeterminate="true"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </ProgressBar>
+
 
         <LinearLayout
             android:layout_marginTop="2dp"
@@ -31,12 +45,17 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:background="@color/putih"
-            android:id="@+id/rv_member"
+        <ScrollView
             android:layout_width="match_parent"
-            tools:listitem="@layout/item_member_club"
-            android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_member"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/putih"
+                tools:listitem="@layout/item_member_club"></androidx.recyclerview.widget.RecyclerView>
+        </ScrollView>
 
     </LinearLayout>
 

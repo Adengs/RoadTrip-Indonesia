@@ -38,6 +38,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
         ResponsListMemberCompany.Data data = items.get(position);
 
         holder.txtNama.setText(data.getName());
+        holder.txtfollowers.setText(data.getFollowers());
         Picasso.with(context).load(data.getPhoto()).centerCrop().fit().into(holder.imgMember);
 
     }
@@ -52,7 +53,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        TextView txtNama;
+        TextView txtNama,txtfollowers;
         CircleImageView imgMember;
 
         public MyHolder(@NonNull View view) {
@@ -69,6 +70,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
 
         private void setView(View view) {
             txtNama = view.findViewById(R.id.txtMember);
+            txtfollowers = view.findViewById(R.id.txt_follow_member);
             imgMember = view.findViewById(R.id.img_member);
         }
     }

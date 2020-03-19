@@ -78,6 +78,14 @@
             android:textAllCaps="false"
             android:textColor="@color/putih"
             android:textSize="16dp" />
+        <TextView
+            android:id="@+id/txtpindahregister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Register"
+            android:textColor="@color/pink"
+            android:textSize="14dp" />
 
 
         <TextView
@@ -88,11 +96,12 @@
             android:textColor="@color/pink"
             android:textSize="16dp" />
 
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginBottom="56dp"
-            android:gravity="bottom"
+            android:gravity="top"
             android:orientation="horizontal">
 
             <TextView
@@ -102,14 +111,7 @@
                 android:textColor="@color/black"
                 android:textSize="14dp" />
 
-            <TextView
-                android:id="@+id/txtpindahregister"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Register"
-                android:textColor="@color/pink"
-                android:textSize="14dp" />
+
 
         </LinearLayout>
     </LinearLayout>
