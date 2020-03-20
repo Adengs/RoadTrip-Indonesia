@@ -16,7 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.fragment.latest.adapter.LatestAdapter;
+import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.models.ResponsArticleLatest;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,10 +50,30 @@ public class LatestFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter = new LatestAdapter();
+
+        context = getContext();
+        session = Session.init(context);
+        apptoken = session.getAppToken();
+        token = session.getToken();
+
 
         setView(view);
         setRecyclerView();
+        loadData();
+    }
+
+    private void loadData() {
+        ConnectionApi.apiService().articlelatest(token,apptoken).enqueue(new Callback<ResponsArticleLatest>() {
+            @Override
+            public void onResponse(Call<ResponsArticleLatest> call, Response<ResponsArticleLatest> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponsArticleLatest> call, Throwable t) {
+
+            }
+        });
     }
 
     private void setRecyclerView() {
@@ -59,6 +84,7 @@ public class LatestFragment extends Fragment {
 
     private void setView(View view) {
         recyclerView = view.findViewById(R.id.viewtablayout);
+        adapter = new LatestAdapter();
 
     }
 }

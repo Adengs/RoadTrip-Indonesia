@@ -17,9 +17,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
+import app.codelabs.forum.models.ResponsArticleLatest;
 
 public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapterViewHolder> {
-    List<Fragment> items = new ArrayList<>();
+    //List<Fragment> items = new ArrayList<>();
+    List<ResponsArticleLatest> items;
+
+
+    public LatestAdapter() {
+       this.items = new ArrayList<>();
+    }
+
     Context context;
     @NonNull
     @Override
@@ -46,7 +54,9 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapte
     }
 
     public class HomeAdapterViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
+        CardView cardView ;
+        ImageView imglogolatest,imgmobillatest;
+        TextView namamobil ,waktulatest,descmobil,carlatest;
         public HomeAdapterViewHolder(@NonNull View view) {
             super(view);
             setView(view);
@@ -54,6 +64,12 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapte
 
         private void setView(View view) {
             cardView = view.findViewById(R.id.cardviewtabhome);
+            imglogolatest=view.findViewById(R.id.img_logo1_latest);
+            imgmobillatest=view.findViewById(R.id.img_mobill_latest);
+            namamobil=view.findViewById(R.id.txtnamamobil1_latest);
+            waktulatest=view.findViewById(R.id.waktu_latest);
+            descmobil= view.findViewById(R.id.txt_desc_mobil_latest);
+            carlatest= view.findViewById(R.id.cars_latest);
         }
     }
 }
