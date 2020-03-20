@@ -27,9 +27,7 @@
         <activity android:name=".activities.profile.SettingProfile" />
         <activity android:name=".activities.event.EventActivity" />
         <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity" />
-        <activity android:name=".activities.login.LoginActivity" >
-
-        </activity>
+        <activity android:name=".activities.login.LoginActivity" ></activity>
         <activity android:name=".activities.walktrought.WalkThroughActivity" />
         <activity android:name=".activities.splashscreen.SplashScreenActivity">
             <intent-filter>
