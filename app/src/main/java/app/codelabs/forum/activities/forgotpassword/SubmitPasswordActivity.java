@@ -53,20 +53,21 @@ public class SubmitPasswordActivity extends AppCompatActivity {
         codet = findViewById(R.id.et_codetiga);
         codee = findViewById(R.id.et_codeempat);
 
-        codesatu = codes.getText().toString();
-        codedua = coded.getText().toString();
-        codetiga = codet.getText().toString();
-        codeempat = codee.getText().toString();
 
-        code = codesatu+codedua+codetiga+codeempat;
     }
 
     private void setEvent() {
         btnSubmitForgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                codesatu = codes.getText().toString();
+                codedua = coded.getText().toString();
+                codetiga = codet.getText().toString();
+                codeempat = codee.getText().toString();
+                code = codesatu+codedua+codetiga+codeempat;
+
                 Map<String, String> data = new HashMap<>();
-                data.put("code","5415");
+                data.put("code",code);
 
                 ConnectionApi.apiService().submitpassword(data, apptoken).enqueue(new Callback<ResponseSubmitPassword>() {
                     @Override
