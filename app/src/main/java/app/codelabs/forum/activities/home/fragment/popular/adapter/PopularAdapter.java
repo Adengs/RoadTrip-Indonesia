@@ -38,7 +38,8 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
 
     @Override
     public void onBindViewHolder(@NonNull PopularViewHolder holder, int position) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+        ResponArticlePopular datapopu = items.get(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), CardViewActivity.class);
@@ -53,7 +54,8 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
     }
 
     public class PopularViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
+        ImageView imglogo_popu,imgcar_popu,circlegray_popu;
+        TextView cars_popu, desc_popu,tik_popu,namamobil_popu;
 
         public PopularViewHolder(@NonNull View view) {
             super(view);
@@ -61,7 +63,13 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
         }
 
         private void setView(View view) {
-            cardView = view.findViewById(R.id.cardviewtabhome);
+            imglogo_popu = view.findViewById(R.id.img_logo1_popu);
+            imgcar_popu = view.findViewById(R.id.img_mobill1_popu);
+            circlegray_popu = view.findViewById(R.id.circlegray_popu);
+            cars_popu = view.findViewById(R.id.cars_popu);
+            desc_popu = view.findViewById(R.id.txt_desc_mobil_popu);
+            tik_popu = view.findViewById(R.id.circlegray_popu);
+            namamobil_popu = view.findViewById(R.id.txtnamamobil1_popu);
         }
     }
 }

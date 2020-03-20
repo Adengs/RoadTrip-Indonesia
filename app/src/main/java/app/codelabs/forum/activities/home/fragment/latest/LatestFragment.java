@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.fragment.latest.adapter.LatestAdapter;
+import app.codelabs.forum.helpers.Session;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +25,9 @@ public class LatestFragment extends Fragment {
     RecyclerView recyclerView;
     LatestAdapter adapter;
     Context context;
+    private Session session;
+    private String token;
+    private String apptoken;
 
     public LatestFragment() {
         // Required empty public constructor

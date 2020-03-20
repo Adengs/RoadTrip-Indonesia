@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         context = getApplicationContext();
         session = Session.init(context);
         Apptoken = session.getAppToken();
-
 
         setView();
         setEvent();
@@ -82,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                     response.body().getData().getDate_birth(),
                                     response.body().getData().getPhoto(),
                                     response.body().getData().getRole());
+
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                             startActivity(intent);
@@ -94,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponsLogin> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),"Tidak Bisa Login",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 });
             }

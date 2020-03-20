@@ -2,6 +2,7 @@ package app.codelabs.forum.activities.splashscreen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 Context context;
 String AppToken;
 Session session;
-ResponWalkThrough data;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,6 @@ ResponWalkThrough data;
                     intent.putExtra("data",gson.toJson(response.body().getData()));
                     startActivity(intent);
                     finish();
-
-
                 }else {
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
@@ -74,7 +73,6 @@ ResponWalkThrough data;
             }
         });
     }
-
 
     private void loadAppToken() {
         Map<String, String> body = new HashMap<>();
