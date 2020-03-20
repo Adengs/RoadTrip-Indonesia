@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ProgressBar
-            android:id="@+id/progress_horizontal"
+            android:id="@+id/progres"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:indeterminate="true"
@@ -50,8 +50,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/putih"
-                android:scrollbars="vertical"
-                style="@style/srollstyle"
                 tools:listitem="@layout/item_member_club"></androidx.recyclerview.widget.RecyclerView>
 
 

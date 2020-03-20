@@ -56,15 +56,14 @@ Session session;
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
                     Gson gson = new Gson();
-                    Boolean  login = session.islogin();
-                    if(login == true){//jika bisa bernilai benar maka Splachscreen pergi ke home
+                   Boolean  login = session.islogin();
+                   if(login == true){//jika bisa bernilai benar maka Splachscreen pergi ke home
                         startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
-
-                    }else{//jika bisa bernilai tidakbenar  maka Splachscreen pergi ke mainactivity
+                   }else{//jika bisa bernilai tidakbenar  maka Splachscreen pergi ke mainactivity
                         Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
                         intent.putExtra("title",gson.toJson(response.body().getData()));
                         startActivity(intent);
-                    }
+                   }
 
 
                 }else {

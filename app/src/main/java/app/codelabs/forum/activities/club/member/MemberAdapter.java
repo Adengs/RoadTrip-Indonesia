@@ -1,6 +1,8 @@
 package app.codelabs.forum.activities.club.member;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> {
     private Context context;
     private List<ResponsListMemberCompany.Data>items;
+    private Boolean is_following = false;
+    private OnItemSelected listener;
 
     public MemberAdapter(){
         items = new ArrayList<>();
@@ -34,12 +38,22 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        ResponsListMemberCompany.Data data = items.get(position);
-
+    public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
+        final ResponsListMemberCompany.Data data = items.get(position);
         holder.txtNama.setText(data.getName());
         holder.txtfollowers.setText(String.valueOf(data.getFollowers()));
         Picasso.with(context).load(data.getPhoto()).centerCrop().fit().into(holder.imgMember);
+        if(data.getIs_following()== true){
+            holder.txtfollow.setText("Following");
+            holder.txtfollow.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.txtfollow.setBackgroundResource(R.drawable.shape_button_follow);
+        }else{
+            holder.txtfollow.setText("+ Follow");
+            holder.txtfollow.setTextColor(Color.parseColor("#F62C4C"));
+            holder.txtfollow.setBackgroundResource(R.drawable.shape_car_club);
+        }
+
+
 
     }
 
@@ -51,9 +65,16 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
         this.items = data;
         notifyDataSetChanged();
     }
+    public void addItems(List<ResponsListMemberCompany.Data> data) {
+        this.items.addAll(data);
+        notifyDataSetChanged();
+    }
+    public void setListener(OnItemSelected listener) {
+        this.listener = listener;
+    }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        TextView txtNama,txtfollowers;
+        TextView txtNama,txtfollowers,txtfollow;
         CircleImageView imgMember;
 
         public MyHolder(@NonNull View view) {
@@ -66,13 +87,25 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
 
         private void setEvent() {
 
+            txtfollow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ResponsListMemberCompany.Data data = items.get(getAdapterPosition());
+                    listener.onFollow(data);
+                }
+            });
+
         }
 
         private void setView(View view) {
             txtNama = view.findViewById(R.id.txtMember);
             txtfollowers = view.findViewById(R.id.txt_follow_member);
             imgMember = view.findViewById(R.id.img_member);
+            txtfollow = view.findViewById(R.id.txtfollow);
         }
+    }
+    public interface OnItemSelected{
+        void  onFollow(ResponsListMemberCompany.Data data);
     }
 
 

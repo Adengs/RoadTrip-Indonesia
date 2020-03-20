@@ -39,6 +39,8 @@ public class ResponsListMemberCompany {
     }
 
     public static class Data {
+        @SerializedName("is_following")
+        private boolean is_following;
         @SerializedName("following")
         private int following;
         @SerializedName("followers")
@@ -61,6 +63,15 @@ public class ResponsListMemberCompany {
         private int company_id;
         @SerializedName("id")
         private int id;
+
+
+        public void setIs_following(boolean is_following) {
+            this.is_following = is_following;
+        }
+
+        public boolean getIs_following() {
+            return is_following;
+        }
 
         public int getFollowing() {
             return following;
