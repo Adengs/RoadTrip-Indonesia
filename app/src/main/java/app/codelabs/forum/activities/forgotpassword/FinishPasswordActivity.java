@@ -1,16 +1,5 @@
 package app.codelabs.forum.activities.forgotpassword;
 
-import androidx.appcompat.app.AppCompatActivity;
-import app.codelabs.forum.R;
-import app.codelabs.forum.activities.login.LoginActivity;
-import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponseFinishPassword;
-import app.codelabs.forum.models.ResponseSubmitPassword;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +11,16 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.appcompat.app.AppCompatActivity;
+import app.codelabs.forum.R;
+import app.codelabs.forum.activities.login.LoginActivity;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.models.ResponseFinishPassword;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FinishPasswordActivity extends AppCompatActivity {
 
@@ -47,7 +46,7 @@ public class FinishPasswordActivity extends AppCompatActivity {
         context = getApplicationContext();
         session = Session.init(context);
         apptoken = session.getAppToken();
-        //xresett = ;
+
 
         setView();
         setEvent();
