@@ -85,8 +85,8 @@ public class ProfileFragment extends Fragment {
                     Picasso.with(context).load(response.body().getData().getPhoto());
                     citypro.setText(response.body().getData().getCity());
                     datepro.setText(response.body().getData().getDate_birth());
-                  //  follower.setText(response.body().getData().getFollowers());
-                   // following.setText(response.body().getData().getFollowing());
+                  follower.setText(String.valueOf(response.body().getData().getFollowers()));
+                  following.setText(String.valueOf(response.body().getData().getFollowing()));
 
                 }else{
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
