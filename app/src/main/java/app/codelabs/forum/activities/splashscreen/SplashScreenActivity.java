@@ -59,20 +59,20 @@ Session session;
 
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
 
-                    Boolean  login = session.islogin();
-                    if(login == true){
+                   // Boolean  login = session.islogin();
+                    //Gson gson = new Gson();
+                  //  if(login == true){
+                       // Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                        //intent.putExtra("data",gson.toJson(response.body()));
+                       // startActivity(intent);
+                       // finish();
+                   //}else{
                         Gson gson = new Gson();
-                        Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-                        intent.putExtra("data",gson.toJson(response.body()));
-                        startActivity(intent);
-                        finish();
-                   }else{
-                       Gson gson = new Gson();
                        Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
                        intent.putExtra("data",gson.toJson(response.body()));
                        startActivity(intent);
                        finish();
-                   }
+                   //}
                 }else {
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
