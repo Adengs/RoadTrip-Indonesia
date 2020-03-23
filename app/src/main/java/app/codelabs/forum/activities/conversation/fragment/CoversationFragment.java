@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,7 +26,7 @@ public class CoversationFragment extends Fragment {
     RecyclerView recyclerView;
     private ConversationAdapter adapter;
     Context context;
-    CardView cardviewe;
+    LinearLayout linearname;
 
 
 
@@ -58,12 +59,12 @@ public class CoversationFragment extends Fragment {
 
     private void setView(View view) {
         adapter = new ConversationAdapter();
-        cardviewe = view.findViewById(R.id.cardvieweventname);
+        linearname = view.findViewById(R.id.linearname);
         recyclerView = view.findViewById(R.id.recyclerviewConv);
     }
 
     private void setEvent() {
-        cardviewe.setOnClickListener(new View.OnClickListener() {
+        linearname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), RecyclerViewMultipleItemActivity.class);

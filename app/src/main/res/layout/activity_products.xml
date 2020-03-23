@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.shop.ActivityProducts">
+
+    <LinearLayout
+        android:background="@color/putih"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="16dp">
+
+            <ImageView
+                android:id="@+id/btnbackpro"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_asset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ImageView>
+
+            <TextView
+                android:layout_gravity="center"
+                android:paddingLeft="20dp"
+                android:textColor="@color/hitam"
+                android:textStyle="bold"
+                android:text="Products"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <LinearLayout
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_search"
+                    android:textColor="@color/putih"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="13.98dp"
+                    android:layout_height="13.95dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_marginTop="2dp"
+        android:id="@+id/tab_layoutshop"
+        android:background="@color/putih"
+        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="@color/hitam"
+        android:layout_width="match_parent"
+        app:tabTextAppearance ="@style/Tablayout"
+        app:tabIndicatorColor="@color/merah"
+        app:tabIndicatorHeight="2dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabMode="fixed"
+        android:layout_height="45dp">
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_marginTop="2dp"
+        android:id="@+id/viewpagershop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+
+</LinearLayout>

@@ -36,15 +36,14 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
-    ImageView imgSettingPro , fotoProfile;
-    TextView txtEditProfile , following ,follower,nameataspro ,namepro ,emailpro,datepro,citypro ,postpro;
+    ImageView imgSettingPro, fotoProfile;
+    TextView txtEditProfile, following, follower, nameataspro, namepro, emailpro, datepro, citypro, postpro;
     Session session;
     private String token;
     private String apptoken;
     Context context;
 
-    private List<ResponMyProfile.DataEntity>items;
-
+    private List<ResponMyProfile.DataEntity> items;
 
 
     public ProfileFragment() {
@@ -74,29 +73,30 @@ public class ProfileFragment extends Fragment {
 
     private void loadData() {
 
-        ConnectionApi.apiService().myprofile(token,apptoken).enqueue(new Callback<ResponMyProfile>() {
+        ConnectionApi.apiService().myprofile(token, apptoken).enqueue(new Callback<ResponMyProfile>() {
             @Override
             public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
-                    Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body().getSuccess()) {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     nameataspro.setText(response.body().getData().getName());
                     namepro.setText(response.body().getData().getName());
                     emailpro.setText(response.body().getData().getEmail());
                     Picasso.with(context).load(response.body().getData().getPhoto());
                     citypro.setText(response.body().getData().getCity());
                     datepro.setText(response.body().getData().getDate_birth());
-                  follower.setText(String.valueOf(response.body().getData().getFollowers()));
-                  following.setText(String.valueOf(response.body().getData().getFollowing()));
+                    follower.setText(String.valueOf(response.body().getData().getFollowers()));
+                    following.setText(String.valueOf(response.body().getData().getFollowing()));
 
-                }else{
-                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<ResponMyProfile> call, Throwable t) {
-                Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -123,17 +123,17 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setView(View view) {
-        txtEditProfile =view.findViewById(R.id.txtEditProfile);
-        imgSettingPro=view.findViewById(R.id.imgSetting);
-        fotoProfile=view.findViewById(R.id.foto_profile);
-        nameataspro=view.findViewById(R.id.nameatas_profile);
-        namepro=view.findViewById(R.id.nameprofile);
-        emailpro=view.findViewById(R.id.emailprofile);
-        datepro=view.findViewById(R.id.dateprofile);
-        citypro=view.findViewById(R.id.cityprofile);
-        follower=view.findViewById(R.id.follower_profile);
-        following=view.findViewById(R.id.following_profile);
-        postpro=view.findViewById(R.id.post_profile);
+        txtEditProfile = view.findViewById(R.id.txtEditProfile);
+        imgSettingPro = view.findViewById(R.id.imgSetting);
+        fotoProfile = view.findViewById(R.id.foto_profile);
+        nameataspro = view.findViewById(R.id.nameatas_profile);
+        namepro = view.findViewById(R.id.nameprofile);
+        emailpro = view.findViewById(R.id.emailprofile);
+        datepro = view.findViewById(R.id.dateprofile);
+        citypro = view.findViewById(R.id.cityprofile);
+        follower = view.findViewById(R.id.follower_profile);
+        following = view.findViewById(R.id.following_profile);
+        postpro = view.findViewById(R.id.post_profile);
     }
 
 }
