@@ -4,7 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public  class ResponsListMemberCompany {
+public class ResponsListMemberCompany {
+
 
     @SerializedName("data")
     private List<Data> data;
@@ -38,6 +39,12 @@ public  class ResponsListMemberCompany {
     }
 
     public static class Data {
+        @SerializedName("is_following")
+        private boolean is_following;
+        @SerializedName("following")
+        private int following;
+        @SerializedName("followers")
+        private int followers;
         @SerializedName("role")
         private String role;
         @SerializedName("city")
@@ -56,6 +63,31 @@ public  class ResponsListMemberCompany {
         private int company_id;
         @SerializedName("id")
         private int id;
+
+
+        public void setIs_following(boolean is_following) {
+            this.is_following = is_following;
+        }
+
+        public boolean getIs_following() {
+            return is_following;
+        }
+
+        public int getFollowing() {
+            return following;
+        }
+
+        public void setFollowing(int following) {
+            this.following = following;
+        }
+
+        public int getFollowers() {
+            return followers;
+        }
+
+        public void setFollowers(int followers) {
+            this.followers = followers;
+        }
 
         public String getRole() {
             return role;

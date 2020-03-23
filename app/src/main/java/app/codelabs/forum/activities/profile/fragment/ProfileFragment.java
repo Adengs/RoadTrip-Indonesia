@@ -4,6 +4,11 @@ package app.codelabs.forum.activities.profile.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +18,14 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.profile.EditProfileActivity;
 import app.codelabs.forum.activities.profile.SettingProfile;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.Constant;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponMyProfile;
 import retrofit2.Call;
@@ -39,7 +43,7 @@ public class ProfileFragment extends Fragment {
     private String apptoken;
     Context context;
 
-    private List<ResponMyProfile.DataEntity>items;
+    private ResponMyProfile.DataEntity data = new ResponMyProfile.DataEntity();
 
 
 
@@ -74,16 +78,15 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-                    Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                     nameataspro.setText(response.body().getData().getName());
-                    namepro.setText(response.body().getData().getName());
-                    emailpro.setText(response.body().getData().getEmail());
-                    Picasso.with(context).load(response.body().getData().getPhoto());
-                    citypro.setText(response.body().getData().getCity());
-                    datepro.setText(response.body().getData().getDate_birth());
                     follower.setText(String.valueOf(response.body().getData().getFollowers()));
                     following.setText(String.valueOf(response.body().getData().getFollowing()));
-
+                    namepro.setText(response.body().getData().getName());
+                    emailpro.setText(response.body().getData().getEmail());
+                    datepro.setText(response.body().getData().getDate_birth());
+                    citypro.setText(response.body().getData().getCity());
+                    Picasso.with(context).load(response.body().getData().getPhoto());
                 }else{
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
