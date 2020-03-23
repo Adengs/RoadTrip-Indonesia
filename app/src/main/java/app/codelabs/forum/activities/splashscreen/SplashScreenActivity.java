@@ -56,20 +56,19 @@ Session session;
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
 
+                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                    Gson gson = new Gson();
+                    Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
+                    intent.putExtra("data",gson.toJson(response.body()));
+                    startActivity(intent);
                     finish();
-                   Boolean  login = session.islogin();
+                   /*Boolean  login = session.islogin();
                    if(login == true){
                         startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
                    }else{
-                       Gson gson = new Gson();
-                       Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                       intent.putExtra("data",gson.toJson(response.body().getData()));
-                       startActivity(intent);
-                   }
 
-
+                   }*/
                 }else {
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
@@ -81,7 +80,6 @@ Session session;
             }
         });
     }
-
 
     private void loadAppToken() {
         Map<String, String> body = new HashMap<>();
