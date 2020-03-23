@@ -49,7 +49,7 @@
                             android:id="@+id/nameatas_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="David Beckham"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="14dp"
                             android:textStyle="bold" />
@@ -142,7 +142,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="20 M"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="14dp"
                             android:textStyle="bold" />
@@ -174,7 +174,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="1"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="14dp"
                             android:textStyle="bold" />
@@ -252,7 +252,7 @@
                         android:gravity="right"
                         android:layout_marginLeft="65dp"
                         android:layout_marginRight="20dp"
-                        android:text="David Beckham"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="12dp" />
 
@@ -278,7 +278,7 @@
                         android:gravity="right"
                         android:layout_marginLeft="65dp"
                         android:layout_marginRight="20dp"
-                        android:text="David_Beckham@gmail.com"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="12dp" />
 

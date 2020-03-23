@@ -2,6 +2,7 @@ package app.codelabs.forum.activities.splashscreen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
@@ -51,18 +52,21 @@ Session session;
     }
 
     private void loadwalktrough() {
-        ConnectionApi.apiService().Walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
+        ConnectionApi.apiService().walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-                    Gson gson = new Gson();
+                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+
+                    finish();
                    Boolean  login = session.islogin();
-                   if(login == true){//jika bisa bernilai benar maka Splachscreen pergi ke home
+                   if(login == true){
                         startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
-                   }else{//jika bisa bernilai tidakbenar  maka Splachscreen pergi ke mainactivity
-                        Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                        intent.putExtra("title",gson.toJson(response.body().getData()));
-                        startActivity(intent);
+                   }else{
+                       Gson gson = new Gson();
+                       Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
+                       intent.putExtra("data",gson.toJson(response.body().getData()));
+                       startActivity(intent);
                    }
 
 
