@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.walktrought.WalkThroughActivity;
 
@@ -39,7 +41,6 @@ public class WalkTroughtFirstFragment extends Fragment {
 
         setView(view);
         setEvent();
-
 
     }
 

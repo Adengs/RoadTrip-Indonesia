@@ -2,6 +2,7 @@ package app.codelabs.forum.activities.splashscreen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
@@ -27,6 +28,8 @@ Context context;
 String AppToken;
 Session session;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +53,16 @@ Session session;
     }
 
     private void loadwalktrough() {
-        ConnectionApi.apiService().Walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
+        ConnectionApi.apiService().walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-                    Toast.makeText(context,"masuk ke walktrough",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                     Gson gson = new Gson();
                     Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                    intent.putExtra("title",gson.toJson(response.body().getData()));
+                    intent.putExtra("data",gson.toJson(response.body().getData()));
                     startActivity(intent);
                     finish();
-
                 }else {
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
@@ -72,7 +74,6 @@ Session session;
             }
         });
     }
-
 
     private void loadAppToken() {
         Map<String, String> body = new HashMap<>();
