@@ -18,9 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.fragment.foryou.adapter.ForYouAdapter;
 import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
+import app.codelabs.forum.models.ResponArticlePopular;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularViewHolder> {
-    List<Fragment> items = new ArrayList<>();
+    List<ResponArticlePopular> items;
+
+    public PopularAdapter(){
+        this.items = new ArrayList<>();
+    }
+
     Context context;
     @NonNull
     @Override
@@ -32,7 +38,8 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
 
     @Override
     public void onBindViewHolder(@NonNull PopularViewHolder holder, int position) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+        ResponArticlePopular datapopu = items.get(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), CardViewActivity.class);
@@ -47,14 +54,12 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
     }
 
     public class PopularViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
         public PopularViewHolder(@NonNull View view) {
             super(view);
             setView(view);
         }
 
         private void setView(View view) {
-            cardView = view.findViewById(R.id.cardviewtabhome);
         }
     }
 }
