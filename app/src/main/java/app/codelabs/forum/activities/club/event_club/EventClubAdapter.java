@@ -7,16 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.databinding.adapters.AdapterViewBindingAdapter;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-import app.codelabs.forum.R;
-import app.codelabs.forum.activities.menu_event.JoinPickFragment;
 
-import static android.graphics.Color.rgb;
+import app.codelabs.forum.R;
 
 public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHolder> {
     private Context context;
