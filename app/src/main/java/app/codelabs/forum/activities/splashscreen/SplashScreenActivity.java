@@ -14,6 +14,7 @@ import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.walktrought.WalkThroughActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
@@ -27,8 +28,6 @@ public class SplashScreenActivity extends AppCompatActivity {
 Context context;
 String AppToken;
 Session session;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +57,19 @@ Session session;
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
-                    Gson gson = new Gson();
-                    Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                    intent.putExtra("data",gson.toJson(response.body().getData()));
-                    startActivity(intent);
+
                     finish();
+                   Boolean  login = session.islogin();
+                   if(login == true){
+                        startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
+                   }else{
+                       Gson gson = new Gson();
+                       Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
+                       intent.putExtra("data",gson.toJson(response.body().getData()));
+                       startActivity(intent);
+                   }
+
+
                 }else {
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
@@ -74,6 +81,7 @@ Session session;
             }
         });
     }
+
 
     private void loadAppToken() {
         Map<String, String> body = new HashMap<>();

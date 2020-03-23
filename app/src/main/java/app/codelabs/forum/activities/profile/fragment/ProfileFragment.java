@@ -4,11 +4,6 @@ package app.codelabs.forum.activities.profile.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +13,15 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.profile.EditProfileActivity;
 import app.codelabs.forum.activities.profile.SettingProfile;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Constant;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponMyProfile;
 import retrofit2.Call;
@@ -36,14 +32,15 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
-    ImageView imgSettingPro, fotoProfile;
-    TextView txtEditProfile, following, follower, nameataspro, namepro, emailpro, datepro, citypro, postpro;
+    ImageView imgSettingPro , fotoProfile;
+    TextView txtEditProfile , following ,follower,nameataspro ,namepro ,emailpro,datepro,citypro ,postpro;
     Session session;
     private String token;
     private String apptoken;
     Context context;
 
-    private List<ResponMyProfile.DataEntity> items;
+    private ResponMyProfile.DataEntity data = new ResponMyProfile.DataEntity();
+
 
 
     public ProfileFragment() {
@@ -73,11 +70,11 @@ public class ProfileFragment extends Fragment {
 
     private void loadData() {
 
-        ConnectionApi.apiService().myprofile(token, apptoken).enqueue(new Callback<ResponMyProfile>() {
+        ConnectionApi.apiService().myprofile(token,apptoken).enqueue(new Callback<ResponMyProfile>() {
             @Override
             public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
-                if (response.isSuccessful() && response.body().getSuccess()) {
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body().getSuccess()){
+                    Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     nameataspro.setText(response.body().getData().getName());
                     namepro.setText(response.body().getData().getName());
                     emailpro.setText(response.body().getData().getEmail());
@@ -87,16 +84,15 @@ public class ProfileFragment extends Fragment {
                     follower.setText(String.valueOf(response.body().getData().getFollowers()));
                     following.setText(String.valueOf(response.body().getData().getFollowing()));
 
-
-                } else {
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<ResponMyProfile> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
     }
