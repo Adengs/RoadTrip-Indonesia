@@ -55,4 +55,18 @@ public class Session {
         editor.putString(KEY_TOKEN,token);
         editor.commit();
     }
+    public void setLogout(){
+
+        editor.remove("id");
+        editor.remove("company_id");
+        editor.remove("email");
+        editor.remove("username");
+        editor.remove("name");
+        editor.remove("photo");
+        editor.remove("date_birth");
+        editor.remove("city");
+        editor.remove("role");
+        editor.remove(KEY_TOKEN);
+        editor.commit();
+    }
 }

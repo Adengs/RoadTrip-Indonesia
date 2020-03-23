@@ -49,7 +49,6 @@ public class MemberFragment extends Fragment {
     private TextView txtfollow;
     private EditText et_sreach_member;
     private ProgressBar progressBar;
-    private String is_following = "";
     private boolean isLoading;
 
     private String search = "";
@@ -105,7 +104,8 @@ public class MemberFragment extends Fragment {
                     adapter.addItems(response.body().getData());
                 }
                 else {
-                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 

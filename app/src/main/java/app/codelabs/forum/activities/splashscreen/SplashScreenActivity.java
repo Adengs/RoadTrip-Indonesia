@@ -57,12 +57,10 @@ Session session;
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
-
-                    finish();
-                   Boolean  login = session.islogin();
+                    Boolean  login = session.islogin();
                    if(login == true){
                         startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
-                   }else{
+                  }else{
                        Gson gson = new Gson();
                        Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
                        intent.putExtra("data",gson.toJson(response.body().getData()));
