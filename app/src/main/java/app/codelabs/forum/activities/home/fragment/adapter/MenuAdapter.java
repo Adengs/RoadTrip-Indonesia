@@ -18,6 +18,8 @@ import app.codelabs.forum.activities.about_home.AboutHome;
 import app.codelabs.forum.activities.article_home.ArticleHome;
 import app.codelabs.forum.activities.menu_event.MenuEventActivity;
 import app.codelabs.forum.activities.menu_gallery.MenuGalleryActivity;
+import app.codelabs.forum.activities.shop.ActivityShop;
+import app.codelabs.forum.activities.vote.VoteActivity;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
     Context context;
@@ -42,7 +44,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     }
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgArtikel,imgEvent,imgShop,imgGalery,imgAbout,imgVote;
         TextView txtArtikel,txtEvent,txtShop,txtGalery,txtAbout,txtVote;
         public MenuViewHolder(@NonNull View view) {
             super(view);
@@ -51,46 +52,54 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         }
 
         private void setView(View view) {
-            imgArtikel = view.findViewById(R.id.img_artikel);
             txtArtikel = view.findViewById(R.id.txtArtikel);
-            imgEvent = view.findViewById(R.id.img_event);
             txtEvent = view.findViewById(R.id.txtEvent);
-            imgShop = view.findViewById(R.id.img_shop);
             txtShop = view.findViewById(R.id.txtShop);
-            imgGalery = view.findViewById(R.id.img_galeri);
             txtGalery = view.findViewById(R.id.txtGalery);
-            imgAbout = view.findViewById(R.id.img_about);
             txtAbout = view.findViewById(R.id.txtAbout);
-            imgVote = view.findViewById(R.id.img_vote);
             txtVote = view.findViewById(R.id.txtVote);
         }
 
         private void setEvent() {
-            imgArtikel.setOnClickListener(new View.OnClickListener() {
+            txtArtikel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(),ArticleHome.class);
                     v.getContext().startActivity(intent);
                 }
             });
-            imgAbout.setOnClickListener(new View.OnClickListener() {
+            txtAbout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), AboutHome.class);
                     v.getContext().startActivity(intent);
                 }
             });
-            imgEvent.setOnClickListener(new View.OnClickListener() {
+            txtEvent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), MenuEventActivity.class);
                     v.getContext().startActivity(intent);
                 }
             });
-            imgGalery.setOnClickListener(new View.OnClickListener() {
+            txtGalery.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), MenuGalleryActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+            txtShop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), ActivityShop.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+            txtVote.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), VoteActivity.class);
                     v.getContext().startActivity(intent);
                 }
             });

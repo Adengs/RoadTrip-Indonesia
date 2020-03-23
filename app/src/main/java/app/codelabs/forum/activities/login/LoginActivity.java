@@ -108,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponsLogin> call, Throwable t) {
+                        setProgressDialog();
                         Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 });

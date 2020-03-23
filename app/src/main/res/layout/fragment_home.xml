@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/displayScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.home.fragment.HomeFragment">
@@ -21,13 +22,13 @@
             app:layout_anchor="@id/appbar"
             app:tabGravity="fill"
             app:layout_anchorGravity="bottom"
-            app:tabIndicator="@color/merah"
+            app:tabIndicatorColor="@color/merah"
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorHeight="2dp"
             app:tabSelectedTextColor="@color/colorText"
             app:tabMode="fixed"
             app:tabTextAppearance="@style/Tablayout"
-            app:tabTextColor="@color/colorText"
+            app:tabTextColor="@color/abuai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </com.google.android.material.tabs.TabLayout>
