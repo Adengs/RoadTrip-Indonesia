@@ -4,11 +4,6 @@ package app.codelabs.forum.activities.profile.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +13,15 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.profile.EditProfileActivity;
 import app.codelabs.forum.activities.profile.SettingProfile;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Constant;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponMyProfile;
 import retrofit2.Call;
@@ -85,8 +81,8 @@ public class ProfileFragment extends Fragment {
                     Picasso.with(context).load(response.body().getData().getPhoto());
                     citypro.setText(response.body().getData().getCity());
                     datepro.setText(response.body().getData().getDate_birth());
-                  //  follower.setText(response.body().getData().getFollowers());
-                   // following.setText(response.body().getData().getFollowing());
+                    follower.setText(String.valueOf(response.body().getData().getFollowers()));
+                    following.setText(String.valueOf(response.body().getData().getFollowing()));
 
                 }else{
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/apprincian"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/putih"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:background="@drawable/ic_backgroundshop"
+                    android:src="@drawable/carwing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/pagerinfo"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/ic_circle_red"
+                        android:baselineAligned="false" />
+
+                    <ImageView
+                        android:id="@+id/pagersatu"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginLeft="4dp"
+                        android:background="@drawable/ic_circleputih" />
+
+                    <ImageView
+                        android:id="@+id/pagerdua"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginLeft="4dp"
+                        android:background="@drawable/ic_circleputih" />
+
+                    <ImageView
+                        android:id="@+id/pagertiga"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginLeft="4dp"
+                        android:background="@drawable/ic_circleputih" />
+
+                    <ImageView
+                        android:id="@+id/pagerempat"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginLeft="4dp"
+                        android:background="@drawable/ic_circleputih" />
+                </LinearLayout>
+            </FrameLayout>
+            <TextView
+                android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="   Ubud, Bali"
+                android:paddingLeft="20dp"
+                android:paddingBottom="10dp"
+                android:drawableLeft="@drawable/ic_iconfinder_map_pinlok"
+                android:textColor="@color/colorDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Rp 5.000.000"
+                android:textColor="@color/black"
+                android:paddingBottom="10dp"
+                android:textStyle="bold"
+                android:paddingLeft="20dp"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#F62C4C"
+                android:padding="5dp"
+                android:background="@drawable/draw_shop_pro"
+                android:text="Accessories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <LinearLayout
+                android:background="@color/putih"
+                android:layout_marginTop="7dp"
+                android:padding="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/lambor"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp">
+                </ImageView>
+
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:text="Mobil 321"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/hitam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:text="Maps"
+                        android:textColor="@color/hitam"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="3dp"
+                        android:layout_marginRight="20dp"
+                        android:background="#E4EAEF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+</com.google.android.material.appbar.AppBarLayout>

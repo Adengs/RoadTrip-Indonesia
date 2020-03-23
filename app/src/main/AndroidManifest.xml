@@ -16,10 +16,14 @@
         <activity android:name=".activities.about_home.AboutHome" />
         <activity android:name=".activities.home.latest_popular_foryou.CardViewActivity" />
         <activity android:name=".activities.article_home.ArticleHome" />
+        <activity android:name=".activities.shop.ActivityProducts"></activity>
+        <activity android:name=".activities.shop.ActivityShop"></activity>
         <activity android:name=".activities.home.notivication.voting_notification.VotingPeriodNotif" />
         <activity android:name=".activities.vote.VoteActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".activities.forgotpassword.ForgotPasswordActivity" />
+        <activity android:name=".activities.forgotpassword.SubmitPasswordActivity"></activity>
+        <activity android:name=".activities.forgotpassword.FinishPasswordActivity"></activity>
         <activity android:name=".activities.register.RegisterActivity" />
         <activity android:name=".activities.home.HomeActivity" />
         <activity android:name=".activities.home.notivication.NotivicationHome" />
