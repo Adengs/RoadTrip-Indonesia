@@ -60,7 +60,7 @@ Session session;
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                     Gson gson = new Gson();
                     Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                    intent.putExtra("data",gson.toJson(response.body().getData()));
+                    intent.putExtra("data",gson.toJson(response.body()));
                     startActivity(intent);
                     finish();
                 }else {
