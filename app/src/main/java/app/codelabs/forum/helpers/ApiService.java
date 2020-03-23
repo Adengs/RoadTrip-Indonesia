@@ -29,7 +29,7 @@ public interface ApiService {
     Call<ResponsLogin> login (@Body Map<String, String> body, @Header("app-token")String apptoken);
 
     @GET("api/walk_through")
-    Call<ResponWalkThrough> Walkthrough(@Header("app-token") String AppToken);
+    Call<ResponWalkThrough> walkthrough(@Header("app-token") String AppToken);
 
     @GET("api/article/popular")
     Call<ResponArticlePopular> popular (@Header("Authorization")String token, @Header("app-token") String AppToken, @Query("short") int sort);

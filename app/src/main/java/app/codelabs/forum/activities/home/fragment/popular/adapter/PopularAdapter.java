@@ -54,22 +54,12 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
     }
 
     public class PopularViewHolder extends RecyclerView.ViewHolder {
-        ImageView imglogo_popu,imgcar_popu,circlegray_popu;
-        TextView cars_popu, desc_popu,tik_popu,namamobil_popu;
-
         public PopularViewHolder(@NonNull View view) {
             super(view);
             setView(view);
         }
 
         private void setView(View view) {
-            imglogo_popu = view.findViewById(R.id.img_logo1_popu);
-            imgcar_popu = view.findViewById(R.id.img_mobill1_popu);
-            circlegray_popu = view.findViewById(R.id.circlegray_popu);
-            cars_popu = view.findViewById(R.id.cars_popu);
-            desc_popu = view.findViewById(R.id.txt_desc_mobil_popu);
-            tik_popu = view.findViewById(R.id.circlegray_popu);
-            namamobil_popu = view.findViewById(R.id.txtnamamobil1_popu);
         }
     }
 }

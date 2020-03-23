@@ -29,6 +29,7 @@ String AppToken;
 Session session;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +53,7 @@ Session session;
     }
 
     private void loadwalktrough() {
-        ConnectionApi.apiService().Walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
+        ConnectionApi.apiService().walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){

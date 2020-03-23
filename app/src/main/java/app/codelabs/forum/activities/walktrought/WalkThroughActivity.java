@@ -8,7 +8,7 @@ import app.codelabs.forum.activities.walktrought.fragment.WalkTroughtFirstFragme
 import app.codelabs.forum.activities.walktrought.fragment.WalkTroughtSecondFragment;
 import app.codelabs.forum.activities.walktrought.fragment.WalkTroughtThirdFragment;
 import app.codelabs.forum.models.ResponWalkThrough;
-import retrofit2.Response;
+
 
 import android.os.Bundle;
 
@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 
 public class WalkThroughActivity extends AppCompatActivity {
     public ViewPager viewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class WalkThroughActivity extends AppCompatActivity {
         adapter.addfragment(new WalkTroughtThirdFragment());
         Gson gson = new Gson();
         String intro = getIntent().getStringExtra("data");
-        ResponWalkThrough response = gson.fromJson(intro, ResponWalkThrough.class);
+        ResponWalkThrough data = gson.fromJson(intro, ResponWalkThrough.class);
         viewPager.setAdapter(adapter);
     }
 
