@@ -73,6 +73,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void loadData() {
+
         ConnectionApi.apiService().myprofile(token,apptoken).enqueue(new Callback<ResponMyProfile>() {
             @Override
             public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
@@ -89,6 +90,7 @@ public class ProfileFragment extends Fragment {
                 }else{
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override

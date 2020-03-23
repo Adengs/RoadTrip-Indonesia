@@ -24,16 +24,14 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="11dp"
                 android:layout_gravity="center"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/pagergray"
-                    android:layout_marginLeft="166dp"
-                    android:background="@drawable/ic_circle_gray"
-                    android:layout_width="7dp"
-                    android:layout_height="7dp" />
-
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_onboard_3" />
                 <ImageView
                     android:id="@+id/pagergrayes"
                     android:layout_marginLeft="4dp"

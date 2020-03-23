@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:hint="Email" />
+                        android:hint="E-mail" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
