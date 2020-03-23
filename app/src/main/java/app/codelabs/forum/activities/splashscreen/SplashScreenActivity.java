@@ -56,18 +56,23 @@ Session session;
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
+
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+
                     Boolean  login = session.islogin();
-                   if(login == true){
-                        startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
-                  }else{
+                    if(login == true){
+                        Gson gson = new Gson();
+                        Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                        intent.putExtra("data",gson.toJson(response.body()));
+                        startActivity(intent);
+                        finish();
+                   }else{
                        Gson gson = new Gson();
                        Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                       intent.putExtra("data",gson.toJson(response.body().getData()));
+                       intent.putExtra("data",gson.toJson(response.body()));
                        startActivity(intent);
+                       finish();
                    }
-
-
                 }else {
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }

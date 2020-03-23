@@ -38,7 +38,6 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
 
     @Override
     public void onBindViewHolder(@NonNull PopularViewHolder holder, int position) {
-        //ResponArticlePopular datapopu = items.get(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

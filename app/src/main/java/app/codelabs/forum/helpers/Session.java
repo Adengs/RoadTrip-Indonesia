@@ -56,7 +56,6 @@ public class Session {
         editor.commit();
     }
     public void setLogout(){
-
         editor.remove("id");
         editor.remove("company_id");
         editor.remove("email");
