@@ -31,6 +31,10 @@ public class Session {
         String token =sharedPreferences.getString(KEY_TOKEN,"");
         return token;
     }
+    public Boolean islogin() {
+        Boolean login = sharedPreferences.getBoolean("sudah_login", false);
+        return login;
+    }
     public void  setlogin(){
         editor.putBoolean("sudah_login",true);
         editor.commit();
