@@ -13,6 +13,7 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.activities.profile.fragment.ProfileFragment;
+import app.codelabs.forum.helpers.Session;
 
 public class SettingProfile extends AppCompatActivity {
     Button btnLogoutSetPro;
@@ -39,7 +40,10 @@ public class SettingProfile extends AppCompatActivity {
         btnLogoutSetPro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SettingProfile.this , LoginActivity.class));
+                Session.init(getApplicationContext()).setLogout();
+                startActivity(new Intent(SettingProfile.this , LoginActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                finish();
             }
         });
     }

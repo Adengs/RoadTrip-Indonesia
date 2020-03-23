@@ -58,17 +58,21 @@ Session session;
                 if (response.isSuccessful() && response.body().getSuccess()){
 
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
-                    Gson gson = new Gson();
-                    Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                    intent.putExtra("data",gson.toJson(response.body()));
-                    startActivity(intent);
-                    finish();
-                   /*Boolean  login = session.islogin();
-                   if(login == true){
-                        startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
-                   }else{
 
-                   }*/
+                   // Boolean  login = session.islogin();
+                    //Gson gson = new Gson();
+                  //  if(login == true){
+                       // Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                        //intent.putExtra("data",gson.toJson(response.body()));
+                       // startActivity(intent);
+                       // finish();
+                   //}else{
+                        Gson gson = new Gson();
+                       Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
+                       intent.putExtra("data",gson.toJson(response.body()));
+                       startActivity(intent);
+                       finish();
+                   //}
                 }else {
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
@@ -80,6 +84,7 @@ Session session;
             }
         });
     }
+
 
     private void loadAppToken() {
         Map<String, String> body = new HashMap<>();
