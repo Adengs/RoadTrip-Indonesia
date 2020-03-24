@@ -4,11 +4,6 @@ package app.codelabs.forum.activities.profile.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +13,15 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.profile.EditProfileActivity;
 import app.codelabs.forum.activities.profile.SettingProfile;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Constant;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponMyProfile;
 import retrofit2.Call;
@@ -78,15 +74,16 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     nameataspro.setText(response.body().getData().getName());
-                    follower.setText(String.valueOf(response.body().getData().getFollowers()));
-                    following.setText(String.valueOf(response.body().getData().getFollowing()));
                     namepro.setText(response.body().getData().getName());
                     emailpro.setText(response.body().getData().getEmail());
-                    datepro.setText(response.body().getData().getDate_birth());
-                    citypro.setText(response.body().getData().getCity());
                     Picasso.with(context).load(response.body().getData().getPhoto());
+                    citypro.setText(response.body().getData().getCity());
+                    datepro.setText(response.body().getData().getDate_birth());
+                    follower.setText(String.valueOf(response.body().getData().getFollowers()));
+                    following.setText(String.valueOf(response.body().getData().getFollowing()));
+
                 }else{
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
@@ -122,17 +119,17 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setView(View view) {
-        txtEditProfile =view.findViewById(R.id.txtEditProfile);
-        imgSettingPro=view.findViewById(R.id.imgSetting);
-        fotoProfile=view.findViewById(R.id.foto_profile);
-        nameataspro=view.findViewById(R.id.nameatas_profile);
-        namepro=view.findViewById(R.id.nameprofile);
-        emailpro=view.findViewById(R.id.emailprofile);
-        datepro=view.findViewById(R.id.dateprofile);
-        citypro=view.findViewById(R.id.cityprofile);
-        follower=view.findViewById(R.id.follower_profile);
-        following=view.findViewById(R.id.following_profile);
-        postpro=view.findViewById(R.id.post_profile);
+        txtEditProfile = view.findViewById(R.id.txtEditProfile);
+        imgSettingPro = view.findViewById(R.id.imgSetting);
+        fotoProfile = view.findViewById(R.id.foto_profile);
+        nameataspro = view.findViewById(R.id.nameatas_profile);
+        namepro = view.findViewById(R.id.nameprofile);
+        emailpro = view.findViewById(R.id.emailprofile);
+        datepro = view.findViewById(R.id.dateprofile);
+        citypro = view.findViewById(R.id.cityprofile);
+        follower = view.findViewById(R.id.follower_profile);
+        following = view.findViewById(R.id.following_profile);
+        postpro = view.findViewById(R.id.post_profile);
     }
 
 }

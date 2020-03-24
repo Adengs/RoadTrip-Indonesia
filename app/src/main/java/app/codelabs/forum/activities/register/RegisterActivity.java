@@ -76,13 +76,18 @@ public class RegisterActivity extends AppCompatActivity {
                 data.put("name", etNamaRegis.getText().toString());
                 data.put("email", etEmailRegis.getText().toString());
 
+
                 ConnectionApi.apiService().register(data ,Apptoken).enqueue(new Callback<ResponseRegister>() {
                     @Override
                     public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
                         if (response.isSuccessful() && response.body().getSuccess()) {
 
-                            Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            Toast.makeText(context,"Succes Register", Toast.LENGTH_SHORT).show();
+                            Apptoken = session.getAppToken();
+                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
 
                         } else {
 
