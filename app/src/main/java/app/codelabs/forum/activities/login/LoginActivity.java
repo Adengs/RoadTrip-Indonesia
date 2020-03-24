@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 ConnectionApi.apiService().login(dataLogin,Apptoken).enqueue(new Callback<ResponsLogin>() {
                     @Override
                     public void onResponse(Call<ResponsLogin> call, Response<ResponsLogin> response) {
-                        progresDialogFragment.dismiss();
+                    progresDialogFragment.dismiss();
                         if(response.isSuccessful() && response.body().getSuccess()){
 
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -103,7 +103,6 @@ public class LoginActivity extends AppCompatActivity {
 
                         }
                         else{
-                            progresDialogFragment.dismiss();
                             Toast.makeText(context,"can not login",Toast.LENGTH_SHORT).show();
 
                         }
