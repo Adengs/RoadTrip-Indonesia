@@ -20,15 +20,16 @@ import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity
 import app.codelabs.forum.models.ResponsArticleLatest;
 
 public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapterViewHolder> {
-    //List<Fragment> items = new ArrayList<>();
+    private OnItemSelected listener;
     List<ResponsArticleLatest> items;
+    Context context;
 
 
     public LatestAdapter() {
        this.items = new ArrayList<>();
     }
 
-    Context context;
+
     @NonNull
     @Override
     public HomeAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,6 +40,8 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapterViewHolder holder, int position) {
+        ResponsArticleLatest item = items.get(position);
+        
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
