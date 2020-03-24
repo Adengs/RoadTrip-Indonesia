@@ -22,6 +22,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
+
     implementation 'com.google.android.material:material:1.0.0-rc01'
     implementation "androidx.core:core:1.0.2"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -34,13 +35,13 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.0.0-rc01'
     implementation 'com.android.support:design:29.0.2'
-    implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.github.smarteist:autoimageslider:1.3.5'
     implementation "commons-io:commons-io:2.4"
 
 

@@ -3,6 +3,7 @@ package app.codelabs.forum.activities.login;
 
 import android.os.Bundle;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,7 +15,8 @@ import app.codelabs.forum.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProgresDialogFragment extends Fragment {
+public class ProgresDialogFragment extends DialogFragment {
+
 
 
     public ProgresDialogFragment() {
@@ -26,6 +28,7 @@ public class ProgresDialogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setCancelable(false);
         return inflater.inflate(R.layout.fragment_progres_dialog, container, false);
     }
 

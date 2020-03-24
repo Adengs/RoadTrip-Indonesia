@@ -9,21 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.about_home.AboutHome;
 import app.codelabs.forum.activities.article_home.ArticleHome;
 import app.codelabs.forum.activities.menu_event.MenuEventActivity;
 import app.codelabs.forum.activities.menu_gallery.MenuGalleryActivity;
-import app.codelabs.forum.activities.shop.ActivityShop;
-import app.codelabs.forum.activities.vote.VoteActivity;
+import app.codelabs.forum.models.HomeMenuItem;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
-    Context context;
-    ArrayList<Fragment> items = new ArrayList<>();
+    private Context context;
+    private List<HomeMenuItem> items = new ArrayList<>();
 
     @NonNull
     @Override
@@ -35,75 +36,47 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
+        HomeMenuItem item = items.get(position);
+        holder.tvName.setText(item.getName());
+        holder.ivIcon.setImageResource(item.getIcon());
+    }
 
+    public void setItems(List<HomeMenuItem> items) {
+        this.items = items;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return items.size();
     }
 
-    public class MenuViewHolder extends RecyclerView.ViewHolder {
-        TextView txtArtikel,txtEvent,txtShop,txtGalery,txtAbout,txtVote;
-        public MenuViewHolder(@NonNull View view) {
+    class MenuViewHolder extends RecyclerView.ViewHolder {
+        ImageView ivIcon;
+        TextView tvName;
+
+        MenuViewHolder(@NonNull View view) {
             super(view);
             setView(view);
             setEvent();
         }
 
         private void setView(View view) {
-            txtArtikel = view.findViewById(R.id.txtArtikel);
-            txtEvent = view.findViewById(R.id.txtEvent);
-            txtShop = view.findViewById(R.id.txtShop);
-            txtGalery = view.findViewById(R.id.txtGalery);
-            txtAbout = view.findViewById(R.id.txtAbout);
-            txtVote = view.findViewById(R.id.txtVote);
+            ivIcon = view.findViewById(R.id.ivIcon);
+            tvName = view.findViewById(R.id.tvName);
         }
 
         private void setEvent() {
-            txtArtikel.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(),ArticleHome.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-            txtAbout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), AboutHome.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-            txtEvent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), MenuEventActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-            txtGalery.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), MenuGalleryActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-            txtShop.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), ActivityShop.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-            txtVote.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), VoteActivity.class);
-                    v.getContext().startActivity(intent);
+                public void onClick(View view) {
+                    HomeMenuItem item = items.get(getAdapterPosition());
+                    Intent intent = new Intent(context, item.getActivity());
+                    context.startActivity(intent);
                 }
             });
         }
 
     }
+
 }

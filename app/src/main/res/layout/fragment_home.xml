@@ -1,45 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/displayScreen"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.home.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        app:layout_anchor="@id/appbar"
-        app:layout_anchorGravity="bottom"
-        android:layout_gravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom">
+
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layouthome"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/tab_layout_home"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:layout_gravity="bottom"
             android:background="@drawable/shape_walk_through"
             app:layout_anchor="@id/appbar"
-            app:tabGravity="fill"
             app:layout_anchorGravity="bottom"
+            app:tabGravity="fill"
             app:tabIndicatorColor="@color/merah"
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorHeight="2dp"
-            app:tabSelectedTextColor="@color/colorText"
             app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/colorText"
             app:tabTextAppearance="@style/Tablayout"
-            app:tabTextColor="@color/abuai"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </com.google.android.material.tabs.TabLayout>
+            app:tabTextColor="@color/colorText" />
     </LinearLayout>
 
     <include layout="@layout/item_fragment_home" />
 
     <androidx.viewpager.widget.ViewPager
-        android:layout_marginTop="?actionBarSize"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/viewpagers"
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="58dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText et_email;
     private EditText et_password;
     private String Apptoken;
+    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     Context context;
     Session session;
 
@@ -73,15 +74,17 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Map<String, String> dataLogin = new HashMap<>();
                 dataLogin.put("email",et_email.getText().toString());
                 dataLogin.put("password",et_password.getText().toString());
-                setProgressDialog();
+                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
                 ConnectionApi.apiService().login(dataLogin,Apptoken).enqueue(new Callback<ResponsLogin>() {
                     @Override
-
                     public void onResponse(Call<ResponsLogin> call, Response<ResponsLogin> response) {
-                        if(response.isSuccessful()&& response.body().getSuccess()){
+                        progresDialogFragment.dismiss();
+                        if(response.isSuccessful() && response.body().getSuccess()){
+
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                             session.setlogin();
                             session.setDataLogin(response.body().getToken(),
@@ -94,22 +97,22 @@ public class LoginActivity extends AppCompatActivity {
                                     response.body().getData().getDate_birth(),
                                     response.body().getData().getPhoto(),
                                     response.body().getData().getRole());
-
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
-
                             startActivity(intent);
+
                         }
                         else{
+                            progresDialogFragment.dismiss();
+                            Toast.makeText(context,"can not login",Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(getApplicationContext(),response.body().getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponsLogin> call, Throwable t) {
-                        setProgressDialog();
-                        Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
+                        progresDialogFragment.dismiss();
+                        Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -126,51 +129,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
-    }
-
-    private void setProgressDialog() {
-        int llPadding = 30;
-        LinearLayout ll = new LinearLayout(this);
-        ll.setOrientation(LinearLayout.HORIZONTAL);
-        ll.setPadding(llPadding, llPadding, llPadding, llPadding);
-        ll.setGravity(Gravity.CENTER);
-        LinearLayout.LayoutParams llParam = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        llParam.gravity = Gravity.CENTER;
-        ll.setLayoutParams(llParam);
-
-        ProgressBar progressBar = new ProgressBar(this);
-        progressBar.setIndeterminate(true);
-        progressBar.setPadding(0, 0, llPadding, 0);
-        progressBar.setLayoutParams(llParam);
-
-        llParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        llParam.gravity = Gravity.CENTER;
-        TextView tvText = new TextView(this);
-        tvText.setText("Loading ...");
-        tvText.setTextColor(Color.parseColor("#000000"));
-        tvText.setTextSize(20);
-        tvText.setLayoutParams(llParam);
-
-        ll.addView(progressBar);
-        ll.addView(tvText);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setView(ll);
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        Window window = dialog.getWindow();
-        if (window != null) {
-            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-            layoutParams.copyFrom(dialog.getWindow().getAttributes());
-            layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;
-            layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-            dialog.getWindow().setAttributes(layoutParams);
-        }
     }
 
 }

@@ -1,62 +1,87 @@
 package app.codelabs.forum.activities.home.fragment.adapter;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.islamkhsh.CardSliderAdapter;
-import com.github.islamkhsh.CardSliderViewPager;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+
+import com.smarteist.autoimageslider.SliderViewAdapter;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.models.SliderItem;
 
-public class HomeCardSliderAdapter extends CardSliderAdapter<HomeCardSliderAdapter.HomeViewHolder> {
-    ArrayList<Fragment> items = new ArrayList<>();
 
-    public HomeCardSliderAdapter(ArrayList<Fragment> items){
-        this.items = items;
+public class HomeCardSliderAdapter extends
+        SliderViewAdapter<HomeCardSliderAdapter.SliderAdapterVH> {
+
+    private Context context;
+    private List<SliderItem> items = new ArrayList<>();
+
+    public HomeCardSliderAdapter(Context context) {
+        this.context = context;
     }
+
+    public void addItem(SliderItem sliderItem) {
+        this.items.add(sliderItem);
+        notifyDataSetChanged();
+    }
+
     @Override
-    public void bindVH(HomeViewHolder homeViewHolder, int i) {
-
-    }
-
-    @NonNull
-    @Override
-    public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_slider, parent, false);
-        return new HomeViewHolder(view);
+    public SliderAdapterVH onCreateViewHolder(ViewGroup parent) {
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_card_slider_layout_item, null);
+        return new SliderAdapterVH(inflate);
     }
 
     @Override
-    public int getItemCount() {
-        return 4;
+    public void onBindViewHolder(final SliderAdapterVH viewHolder, final int position) {
+
+//        SliderItem sliderItem = items.get(position);
+
+        viewHolder.textViewDescription.setText("Ford Everest Club Indonesia");
+        viewHolder.textViewDescription.setTextSize(16);
+        Picasso.with(context)
+                .load(R.drawable.card)
+                .centerCrop()
+                .fit()
+                .into(viewHolder.imageViewBackground);
+
     }
 
-    public class HomeViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgMobil, imgLogo,pager,pagergray,pagergrayes,circlenew;
-        TextView namehome;
-        public HomeViewHolder(@NonNull View view) {
-            super(view);
+    @Override
+    public int getCount() {
+        //slider view count could be dynamic size
+        return 5;
+    }
 
-            setView(view);
+    static class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
 
+        View itemView;
+        ImageView imageViewBackground;
+        TextView textViewDescription;
+
+        SliderAdapterVH(View itemView) {
+            super(itemView);
+            imageViewBackground = itemView.findViewById(R.id.iv_auto_image_slider);
+            textViewDescription = itemView.findViewById(R.id.tv_auto_image_slider);
+            this.itemView = itemView;
         }
+    }
 
-        private void setView(View view) {
-            imgMobil = view.findViewById(R.id.img_mobil);
-            imgLogo = view.findViewById(R.id.img_logo);
-            pager = view.findViewById(R.id.pager);
-            pagergray = view.findViewById(R.id.pagergray);
-            pagergrayes = view.findViewById(R.id.pagergrayes);
-            namehome = view.findViewById(R.id.namehome);
-        }
+    private int toDP(int size, Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return Math.round(size * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 }
