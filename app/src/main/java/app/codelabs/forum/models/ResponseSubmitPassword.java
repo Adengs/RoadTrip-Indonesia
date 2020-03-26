@@ -2,7 +2,7 @@ package app.codelabs.forum.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public  class ResponseSubmitPassword {
+public class ResponseSubmitPassword {
 
     @SerializedName("data")
     private Data data;

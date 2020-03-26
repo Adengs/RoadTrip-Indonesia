@@ -13,7 +13,6 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;

@@ -1,15 +1,5 @@
 package app.codelabs.forum.activities.forgotpassword;
 
-import androidx.appcompat.app.AppCompatActivity;
-import app.codelabs.forum.R;
-import app.codelabs.forum.activities.login.ProgresDialogFragment;
-import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponseSubmitPassword;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +11,16 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.appcompat.app.AppCompatActivity;
+import app.codelabs.forum.R;
+import app.codelabs.forum.activities.login.ProgresDialogFragment;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.models.ResponseSubmitPassword;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SubmitPasswordActivity extends AppCompatActivity {
     ImageView btnBackSubmit;
@@ -71,7 +71,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
                 Map<String, String> data = new HashMap<>();
                 data.put("code",code);
 
-                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
+                progresDialogFragment.show(getSupportFragmentManager(), "proggress");
                 ConnectionApi.apiService().submitpassword(data, apptoken).enqueue(new Callback<ResponseSubmitPassword>() {
                     @Override
                     public void onResponse(Call<ResponseSubmitPassword> call, Response<ResponseSubmitPassword> response) {

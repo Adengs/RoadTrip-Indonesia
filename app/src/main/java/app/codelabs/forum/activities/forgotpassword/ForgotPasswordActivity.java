@@ -9,8 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,7 +65,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Map<String, String> data = new HashMap<>();
                 data.put("email",et_EmailForgot.getText().toString());
-                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
+                progresDialogFragment.show(getSupportFragmentManager(), "proggress");
                 ConnectionApi.apiService().forgotpassword(data, apptoken).enqueue(new Callback<ResponseForgotPassword>() {
                     @Override
                     public void onResponse(Call<ResponseForgotPassword> call, Response<ResponseForgotPassword> response) {

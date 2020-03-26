@@ -10,21 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.gson.Gson;
-
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponseApi;
 import app.codelabs.forum.models.ResponseRegister;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

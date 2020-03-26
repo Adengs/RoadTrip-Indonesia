@@ -76,7 +76,7 @@ public class FinishPasswordActivity extends AppCompatActivity {
                 Map<String, String> data = new HashMap<>();
                 data.put("password", pass.getText().toString());
                 data.put("password-confirm", passd.getText().toString());
-                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
+                progresDialogFragment.show(getSupportFragmentManager(), "proggress");
                 ConnectionApi.apiService().finishpassword(data, apptoken, xresetToken).enqueue(new Callback<ResponseFinishPassword>() {
                     @Override
                     public void onResponse(Call<ResponseFinishPassword> call, Response<ResponseFinishPassword> response) {

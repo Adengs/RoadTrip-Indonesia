@@ -1,6 +1,5 @@
 package app.codelabs.forum.activities.club.member;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;

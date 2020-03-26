@@ -15,20 +15,17 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.article_home.ArticleHomeCardView;
-import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
 import app.codelabs.forum.models.ResponsListArticelbyCategory;
-import app.codelabs.forum.models.ResponsListMemberCompany;
 
 
 public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.ArticleViewHolder> {
     private Context context;
     private List<ResponsListArticelbyCategory.Data> data;
 
-    public ArticleTipsAdapter(){
+    public ArticleTipsAdapter() {
         data = new ArrayList<>();
     }
 
@@ -59,10 +56,12 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
     public int getItemCount() {
         return data.size();
     }
+
     public void setItems(List<ResponsListArticelbyCategory.Data> datas) {
         this.data = datas;
         notifyDataSetChanged();
     }
+
     public void addItems(List<ResponsListArticelbyCategory.Data> datas) {
         this.data.addAll(datas);
         notifyDataSetChanged();
@@ -70,7 +69,7 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
 
     public class ArticleViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
-        TextView txttitle,txtContent;
+        TextView txttitle, txtContent;
         ImageView imgCars;
         public ArticleViewHolder(@NonNull View view) {
             super(view);
