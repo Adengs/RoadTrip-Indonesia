@@ -15,6 +15,7 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
+import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseFinishPassword;
@@ -31,12 +32,13 @@ public class FinishPasswordActivity extends AppCompatActivity {
 
     Session session;
     private String apptoken;
+    private String xresetToken;
+    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
 
-    //private String xresett = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODQ1MTU1OTYsImV4cCI6MTU4NDUyNjM5NiwiZGF0YSI6eyJ1c2VyX2lkIjo2LCJjb2RlIjoiNTQxNSJ9fQ.UW6w4kTrVPaz75pFFwet4--1yJDXYeD8IKX2y4KykGI";
+
 
     Context context;
 
-    private String xresett;
 
 
     @Override
@@ -46,6 +48,7 @@ public class FinishPasswordActivity extends AppCompatActivity {
         context = getApplicationContext();
         session = Session.init(context);
         apptoken = session.getAppToken();
+        xresetToken = session.getXresetToken();
 
 
         setView();
@@ -73,10 +76,11 @@ public class FinishPasswordActivity extends AppCompatActivity {
                 Map<String, String> data = new HashMap<>();
                 data.put("password", pass.getText().toString());
                 data.put("password-confirm", passd.getText().toString());
-
-                ConnectionApi.apiService().finishpassword(data, apptoken, xresett).enqueue(new Callback<ResponseFinishPassword>() {
+                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
+                ConnectionApi.apiService().finishpassword(data, apptoken, xresetToken).enqueue(new Callback<ResponseFinishPassword>() {
                     @Override
                     public void onResponse(Call<ResponseFinishPassword> call, Response<ResponseFinishPassword> response) {
+                        progresDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -92,6 +96,7 @@ public class FinishPasswordActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseFinishPassword> call, Throwable t) {
+                        progresDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }

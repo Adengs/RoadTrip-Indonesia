@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 public class Session {
     private static String KEY_TOKEN = "token";
     private static String KEY_APP_TOKEN="app-token";
+    private static String KEY_XRESET_TOKEN="Xreset";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Context context;
@@ -24,6 +25,14 @@ public class Session {
     }
     public void setApptoken(String app_token){
         editor.putString(KEY_APP_TOKEN,app_token);
+        editor.commit();
+    }
+    public String getXresetToken(){
+        String xreset = sharedPreferences.getString(KEY_XRESET_TOKEN,"");
+        return  xreset;
+    }
+    public void setXresetToken(String xresetToken){
+        editor.putString(KEY_XRESET_TOKEN,xresetToken);
         editor.commit();
     }
 

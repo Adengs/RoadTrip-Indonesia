@@ -38,8 +38,8 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
-        final ResponsListMemberCompany.Data data = items.get(position);
+    public void onBindViewHolder(@NonNull  MyHolder holder, int position) {
+         ResponsListMemberCompany.Data data = items.get(position);
         holder.txtNama.setText(data.getName());
         holder.txtfollowers.setText(String.valueOf(data.getFollowers()));
         Picasso.with(context).load(data.getPhoto()).centerCrop().fit().into(holder.imgMember);

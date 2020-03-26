@@ -19,6 +19,7 @@ import java.util.Map;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
+import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseApi;
@@ -35,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnRegis;
     Session session;
     private String Apptoken;
+    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     Context context;
 
     @Override
@@ -76,10 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
                 data.put("name", etNamaRegis.getText().toString());
                 data.put("email", etEmailRegis.getText().toString());
 
-
+                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
                 ConnectionApi.apiService().register(data ,Apptoken).enqueue(new Callback<ResponseRegister>() {
                     @Override
                     public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+                        progresDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
 
                             Toast.makeText(context,"Succes Register", Toast.LENGTH_SHORT).show();
@@ -98,6 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseRegister> call, Throwable t) {
+                        progresDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

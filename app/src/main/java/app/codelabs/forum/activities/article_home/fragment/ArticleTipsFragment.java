@@ -11,11 +11,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.article_home.adapter.ArticleTipsAdapter;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.models.ResponsListArticelbyCategory;
+import app.codelabs.forum.models.ResponsListMemberCompany;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +34,13 @@ public class ArticleTipsFragment extends Fragment {
     RecyclerView recyclerView;
     ArticleTipsAdapter adapter;
     Context context;
+    private Session session;//definisi variabel session dengan tipe data session
+    private String token;
+    private String apptoken;
+    private String tag ;
+    ResponsListArticelbyCategory.Data data = new ResponsListArticelbyCategory.Data();
+
+
 
     public ArticleTipsFragment() {
         // Required empty public constructor
@@ -42,10 +59,39 @@ public class ArticleTipsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         adapter = new ArticleTipsAdapter();
+        context = getContext();
+        session = Session.init(context);
+        apptoken = session.getAppToken();
+        token = session.getToken();
+        tag = String.valueOf(data.getTags());
+
 
         setView(view);
         setEvent();
         setRecyclerView();
+        loadData();
+    }
+
+    private void loadData() {
+        ConnectionApi.apiService().listarticelbycategory(tag,token,apptoken).enqueue(new Callback<ResponsListArticelbyCategory>() {
+            @Override
+            public void onResponse(Call<ResponsListArticelbyCategory> call, Response<ResponsListArticelbyCategory> response) {
+                if (response.isSuccessful() && response.body().getSuccess()){
+
+                    adapter.setItems(response.body().getData());
+                    adapter.addItems(response.body().getData());
+                }
+                else {
+
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsListArticelbyCategory> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setView(View view) {

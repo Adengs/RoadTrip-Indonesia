@@ -7,6 +7,7 @@ import app.codelabs.forum.models.ResponMyProfile;
 import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.ResponsArticleLatest;
 import app.codelabs.forum.models.ResponsFollow;
+import app.codelabs.forum.models.ResponsListArticelbyCategory;
 import app.codelabs.forum.models.ResponsListMemberCompany;
 import app.codelabs.forum.models.ResponsLogin;
 import app.codelabs.forum.models.ResponsUnFollow;
@@ -68,5 +69,8 @@ public interface ApiService {
 
     @GET("api/article/detail")
     Call<ResponseArticleDetail> articledetail(@Header ("Authorization")String token , @Header("app-token") String AppToken, @Query("article_id") int article_id);
+
+    @GET("@GET(api/article/list?{tag}")
+    Call<ResponsListArticelbyCategory> listarticelbycategory (@Path("tag")String tag, @Header ("Authorization")String token , @Header ("app-token")String AppToken);
 
 }

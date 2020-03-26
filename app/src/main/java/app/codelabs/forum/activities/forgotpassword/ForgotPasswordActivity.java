@@ -17,6 +17,7 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
+import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseForgotPassword;
@@ -31,6 +32,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     Session session;
     private String apptoken;
     Context context;
+    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
 
 
 
@@ -65,10 +67,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Map<String, String> data = new HashMap<>();
                 data.put("email",et_EmailForgot.getText().toString());
-
+                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
                 ConnectionApi.apiService().forgotpassword(data, apptoken).enqueue(new Callback<ResponseForgotPassword>() {
                     @Override
                     public void onResponse(Call<ResponseForgotPassword> call, Response<ResponseForgotPassword> response) {
+                        progresDialogFragment.dismiss();
                         if (response.isSuccessful()&& response.body().getSuccess()){
                             Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(ForgotPasswordActivity.this, SubmitPasswordActivity.class));
@@ -81,6 +84,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseForgotPassword> call, Throwable t) {
+                        progresDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }

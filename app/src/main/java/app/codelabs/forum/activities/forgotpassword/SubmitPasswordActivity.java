@@ -2,6 +2,7 @@ package app.codelabs.forum.activities.forgotpassword;
 
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseSubmitPassword;
@@ -30,6 +31,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
     Session session;
     private String apptoken;
     Context context;
+    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
 
 
     @Override
@@ -69,12 +71,14 @@ public class SubmitPasswordActivity extends AppCompatActivity {
                 Map<String, String> data = new HashMap<>();
                 data.put("code",code);
 
+                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
                 ConnectionApi.apiService().submitpassword(data, apptoken).enqueue(new Callback<ResponseSubmitPassword>() {
                     @Override
                     public void onResponse(Call<ResponseSubmitPassword> call, Response<ResponseSubmitPassword> response) {
+                        progresDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
+                            session.setXresetToken(response.body().getData().getToken());
                             startActivity(new Intent(SubmitPasswordActivity.this, FinishPasswordActivity.class));
 
                         } else {
@@ -86,6 +90,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseSubmitPassword> call, Throwable t) {
+                        progresDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
 
