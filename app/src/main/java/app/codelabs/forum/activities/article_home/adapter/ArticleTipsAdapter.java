@@ -39,14 +39,16 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
-        ResponsListArticelbyCategory.Data datas = data.get(position);
+        final ResponsListArticelbyCategory.Data datas = data.get(position);
         holder.txttitle.setText(datas.getTitle());
         holder.txtContent.setText(datas.getContent());
-        Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.imgCars);
+        holder.txtupdate.setText(datas.getUpdated_at());
+        Picasso.with(context).load(datas.getImage()).into(holder.imgCars);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ArticleHomeCardView.class);
+                intent.putExtra(String.valueOf(datas.getId()),"id");
                 v.getContext().startActivity(intent);
             }
         });
@@ -69,7 +71,7 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
 
     public class ArticleViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
-        TextView txttitle, txtContent;
+        TextView txttitle, txtContent, txtupdate;
         ImageView imgCars;
         public ArticleViewHolder(@NonNull View view) {
             super(view);
@@ -82,6 +84,8 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
             txttitle = view.findViewById(R.id.txtnamamobil1_latest);
             txtContent = view.findViewById(R.id.txt_desc_mobil_latest);
             imgCars = view.findViewById(R.id.img_mobill_latest);
+            txtupdate = view.findViewById(R.id.waktu_latest);
+
         }
     }
 }

@@ -51,7 +51,7 @@
                     android:textSize="12dp"
                     android:layout_gravity="center"
                     android:text="2 day"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
@@ -83,9 +83,9 @@
                         android:paddingRight="7dp"
                         android:paddingLeft="7dp"
                         android:paddingBottom="4dp"
-                        android:paddingTop="4dp"
+                        android:paddingTop="2dp"
                         android:textColor="@color/textcar"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:background="@drawable/shape_car_club"
                         android:layout_width="wrap_content"

@@ -18,6 +18,7 @@
         <activity android:name=".activities.about_home.AboutHome" />
         <activity android:name=".activities.home.latest_popular_foryou.CardViewActivity" />
         <activity android:name=".activities.article_home.ArticleHome" />
+        <activity android:name=".activities.menu_event.MenuEventActivity"/>
         <activity android:name=".activities.shop.ActivityProducts"></activity>
         <activity android:name=".activities.shop.ActivityShop"></activity>
         <activity android:name=".activities.home.notivication.voting_notification.VotingPeriodNotif" />

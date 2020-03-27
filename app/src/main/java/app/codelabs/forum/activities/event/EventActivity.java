@@ -30,6 +30,7 @@ public class EventActivity extends AppCompatActivity {
     ViewPager viewPagerEvent;
     TextView backevent;
     Boolean isJoin;
+    Integer eventid;
 
 
     AdapterEventActivity2 adapter;
@@ -41,18 +42,12 @@ public class EventActivity extends AppCompatActivity {
 
 
         context = getApplicationContext();
+        isJoin = getIntent().getBooleanExtra("is_join",false);
+        eventid = getIntent().getIntExtra("event_id",0);
 
         setView();
         setEvent();
         setViewPager();
-
-
-        isJoin = getIntent().getBooleanExtra("is_join",false);
-
-
-
-
-
 
     }
 
@@ -70,11 +65,16 @@ public class EventActivity extends AppCompatActivity {
         adapter=new AdapterEventActivity2(getSupportFragmentManager());
          DescriptionFragment descriptionFragment = new DescriptionFragment();
          Bundle bundle = new Bundle();
-         bundle.getBoolean("is_join",false);
+         bundle.putBoolean("is_join",false);
          descriptionFragment.setArguments(bundle);
          adapter.addFragment(descriptionFragment,"Description");
 
-        adapter.addFragment(new ParticipantFragment(),"Participant");
+        ParticipantFragment participantFragment = new ParticipantFragment();
+        Bundle participant = new Bundle();
+        participant.putInt("event_id", eventid);
+        participantFragment.setArguments(participant);
+        adapter.addFragment(participantFragment,"Participant");
+
         adapter.addFragment(new ScheduleFragment(),"Schedule");
         adapter.addFragment(new WalkieTalkieFragment(),"Walkie Talkie");
         adapter.addFragment(new ChatFragment(),"Chat");

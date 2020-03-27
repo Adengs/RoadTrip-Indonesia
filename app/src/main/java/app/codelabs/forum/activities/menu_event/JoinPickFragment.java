@@ -13,8 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,13 +27,26 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.activities.event.description.DescriptionFragment;
 import app.codelabs.forum.activities.home.HomeActivity;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.models.ResponsFollow;
+import app.codelabs.forum.models.ResponsJoinEvent;
+import app.codelabs.forum.models.ResponsListEventCommunity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class JoinPickFragment extends BottomSheetDialogFragment {
     Button btnJoin, btnCancel;
+    private Session session;//definisi variabel session dengan tipe data session
+    private String token;
+    private String apptoken;
+    private TextView txtDojoin, txtjoin;
     Context context;
+    Integer id;
 
 
     public JoinPickFragment() {
@@ -47,9 +65,16 @@ public class JoinPickFragment extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        context = getContext();
+        session = Session.init(context);
+        apptoken = session.getAppToken();
+        token = session.getToken();
+
+        Bundle bundle = this.getArguments();
+        id = bundle.getInt("event_id",0);
         setView(view);
         setEvent();
-        context = getContext();
+
     }
 
     private void setEvent() {
@@ -57,23 +82,40 @@ public class JoinPickFragment extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), MenuEventActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), EventActivity.class);
-                intent.putExtra("is_join",true);
-                startActivity(intent);
+                Map<String, String> dataJoin = new HashMap<>();
+                dataJoin.put("event_id", String.valueOf(id));
+               ConnectionApi.apiService().joinEvent(dataJoin, token, apptoken).enqueue(new Callback<ResponsJoinEvent>() {
+                    @Override
+                   public void onResponse(Call<ResponsJoinEvent> call, Response<ResponsJoinEvent> response) {
+                        if (response.isSuccessful() && response.body().getSuccess()) {
+                            Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(context, EventActivity.class);
+
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponsJoinEvent> call, Throwable t) {
+                        Toast.makeText(context,t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
-    }
-
-    private void setView(View view) {
-        btnCancel = view.findViewById(R.id.btn_cancel);
-        btnJoin = view.findViewById(R.id.btn_join);
 
     }
-}
+        private void setView (View view){
+            btnCancel = view.findViewById(R.id.btn_cancel);
+            btnJoin = view.findViewById(R.id.btn_join);
+
+        }
+    }

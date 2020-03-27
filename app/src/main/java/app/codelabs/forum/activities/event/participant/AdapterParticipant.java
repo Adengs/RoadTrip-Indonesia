@@ -7,14 +7,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.models.ResponsListEventCommunity;
+import app.codelabs.forum.models.ResponsListMemberCompany;
+import app.codelabs.forum.models.ResponsParticipantEvent;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterParticipant extends RecyclerView.Adapter<AdapterParticipant.MyHolder> {
-    private static Context context;
+    private  Context context;
+    private List<ResponsParticipantEvent.DataEntity> data;
+
+    public AdapterParticipant(){
+        data = new ArrayList<>();
+    }
 
     @NonNull
     @Override
@@ -26,18 +40,33 @@ public class AdapterParticipant extends RecyclerView.Adapter<AdapterParticipant.
 
     @Override
     public void onBindViewHolder(@NonNull AdapterParticipant.MyHolder holder, int position) {
+        ResponsParticipantEvent.DataEntity datas = data.get(position);
+        holder.txtname.setText(datas.getUsername());
+        holder.txtfollowes.setText(String.valueOf(datas.getFollowers()));
+        Picasso.with(context).load(datas.getPhoto()).into(holder.imgparticipant);
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return data.size() ;
+    }
+    public void setItems(List<ResponsParticipantEvent.DataEntity> datas) {
+        this.data = datas;
+        notifyDataSetChanged();
+    }
+    public void addItems(List<ResponsParticipantEvent.DataEntity> datas) {
+        this.data.addAll(datas);
+        notifyDataSetChanged();
     }
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        private TextView txtJoin , txtjoin2;
+        private TextView txtname,txtfollowes;
+        CircleImageView imgparticipant;
         public MyHolder(@NonNull View view) {
             super(view);
+
 
             setView(view);
             setEvent();
@@ -45,29 +74,13 @@ public class AdapterParticipant extends RecyclerView.Adapter<AdapterParticipant.
         }
 
         private void setEvent() {
-            txtJoin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    txtJoin.setText("Joined");
-                    txtJoin.setTextColor(Color.rgb(255,255,255));
-                    txtJoin.setBackgroundColor(ContextCompat.getColor(context,R.color.pink));
-                }
-            });
-
-            txtjoin2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    txtjoin2.setText("Joined");
-                    txtjoin2.setTextColor(Color.rgb(255,255,255));
-                    txtjoin2.setBackgroundColor(ContextCompat.getColor(context,R.color.pink));
-                }
-            });
 
         }
 
         private void setView(View view) {
-            txtJoin=view.findViewById(R.id.txtjoinedabu);
-            txtjoin2=view.findViewById(R.id.txtJoined);
+            txtname = view.findViewById(R.id.txtname);
+            txtfollowes = view.findViewById(R.id.txt_follow_participant);
+            imgparticipant = view.findViewById(R.id.img_participan);
         }
     }
 

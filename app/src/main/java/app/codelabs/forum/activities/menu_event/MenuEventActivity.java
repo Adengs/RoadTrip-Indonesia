@@ -2,12 +2,16 @@ package app.codelabs.forum.activities.menu_event;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.club.event_club.EventClubAdapter;
+import app.codelabs.forum.activities.club.event_club.Event_Club_Fragment;
 import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.activities.home.HomeActivity;
+import app.codelabs.forum.models.ResponsListEventCommunity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,16 +33,12 @@ public class MenuEventActivity extends AppCompatActivity {
 
         setView();
         setEvent();
-        setRecycleView();
+
+        setFragment(new Event_Club_Fragment());
+
     }
 
     private void setEvent() {
-        adapter.setListener(new EventClubAdapter.OnItemSelection() {
-            @Override
-            public void onBtnJoin() {
-                joinPickFragment.show(getSupportFragmentManager(),"pick");
-            }
-        });
         img_panah_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,15 +47,15 @@ public class MenuEventActivity extends AppCompatActivity {
         });
     }
 
-    private void setRecycleView() {
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(adapter);
-    }
-
     private void setView() {
         adapter = new EventClubAdapter();
-        recyclerView = findViewById(R.id.rv_menu_event);
         img_panah_back = findViewById(R.id.btn_panah_event);
+    }
+
+    private void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentcontaineHomeEvent, fragment);
+        fragmentTransaction.commit();
     }
 }

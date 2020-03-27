@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -32,7 +34,7 @@ public class ArticleTipsFragment extends Fragment {
     private Session session;//definisi variabel session dengan tipe data session
     private String token;
     private String apptoken;
-    private String tag ;
+    private List<String> tag ;
     ResponsListArticelbyCategory.Data data = new ResponsListArticelbyCategory.Data();
 
 
@@ -58,7 +60,7 @@ public class ArticleTipsFragment extends Fragment {
         session = Session.init(context);
         apptoken = session.getAppToken();
         token = session.getToken();
-        tag = String.valueOf(data.getTags());
+        tag =data.getTags();
 
 
         setView(view);

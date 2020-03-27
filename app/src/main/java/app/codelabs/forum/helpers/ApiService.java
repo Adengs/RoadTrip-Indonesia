@@ -1,15 +1,21 @@
 package app.codelabs.forum.helpers;
 
+import java.util.List;
 import java.util.Map;
 
 import app.codelabs.forum.models.ResponArticlePopular;
 import app.codelabs.forum.models.ResponMyProfile;
 import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.ResponsArticleLatest;
+import app.codelabs.forum.models.ResponsDetailList;
 import app.codelabs.forum.models.ResponsFollow;
+import app.codelabs.forum.models.ResponsJoinEvent;
 import app.codelabs.forum.models.ResponsListArticelbyCategory;
+import app.codelabs.forum.models.ResponsListEventCommunity;
 import app.codelabs.forum.models.ResponsListMemberCompany;
 import app.codelabs.forum.models.ResponsLogin;
+import app.codelabs.forum.models.ResponsMyEvent;
+import app.codelabs.forum.models.ResponsParticipantEvent;
 import app.codelabs.forum.models.ResponsUnFollow;
 import app.codelabs.forum.models.ResponseApi;
 import app.codelabs.forum.models.ResponseArticleDetail;
@@ -69,7 +75,25 @@ public interface ApiService {
     @GET("api/article/detail")
     Call<ResponseArticleDetail> articledetail(@Header ("Authorization")String token , @Header("app-token") String AppToken, @Query("article_id") int article_id);
 
-    @GET("@GET(api/article/list?{tag}")
-    Call<ResponsListArticelbyCategory> listarticelbycategory (@Path("tag")String tag, @Header ("Authorization")String token , @Header ("app-token")String AppToken);
+    @GET("api/article/list")
+    Call<ResponsListArticelbyCategory> listarticelbycategory (@Query("tag") List<String> tag, @Header ("Authorization")String token , @Header ("app-token")String AppToken);
 
+    @GET("api/article/list")
+    Call<ResponsDetailList> detailArticel (@Query("acticel_id")int id ,@Header ("Authorization")String token , @Header ("app-token")String AppToken);
+
+    @GET("api/event/list")
+    Call<ResponsListEventCommunity> listEvent ( @Header ("Authorization")String token , @Header ("app-token")String AppToken);
+
+    @POST("api/event/join")
+    Call<ResponsJoinEvent> joinEvent (@Body Map<String, String> boby, @Header ("Authorization")String token , @Header ("app-token")String AppToken );
+
+    @GET("api/event/my_event")
+    Call<ResponsMyEvent> Myevent (@Header ("Authorization")String token , @Header ("app-token")String AppToken);
+
+    @GET("api/article/list")
+    Call<ResponsListArticelbyCategory> listarticelPost (@Query("tag") List<String> tag, @Header ("Authorization")String token , @Header ("app-token")String AppToken);
+
+    @GET("api/event/participant")
+    Call<ResponsParticipantEvent> partisipanevent (@Query("event_id") Integer id, @Header ("Authorization")String token , @Header ("app-token")String AppToken);
 }
+
