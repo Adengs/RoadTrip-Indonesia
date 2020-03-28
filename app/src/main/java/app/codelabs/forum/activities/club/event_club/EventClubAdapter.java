@@ -1,6 +1,7 @@
 package app.codelabs.forum.activities.club.event_club;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.club.member.MemberAdapter;
+import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponsFollow;
 import app.codelabs.forum.models.ResponsJoinEvent;
@@ -50,11 +52,19 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        ResponsListEventCommunity.DataEntity datas =data.get(position);
+        final ResponsListEventCommunity.DataEntity datas =data.get(position);
         holder.txttitle.setText(datas.getTitle());
         holder.txttglmulai.setText(datas.getEvent_start());
         holder.txttglberakhir.setText(datas.getEvent_end());
         Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.imgevent);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EventActivity.class);
+                intent.putExtra("event_id",datas.getId());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
