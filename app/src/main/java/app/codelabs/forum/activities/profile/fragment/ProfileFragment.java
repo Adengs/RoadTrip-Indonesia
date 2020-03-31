@@ -32,16 +32,12 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
-    ImageView imgSettingPro , fotoProfile;
-    TextView txtEditProfile , following ,follower,nameataspro ,namepro ,emailpro,datepro,citypro ,postpro;
-    Session session;
+    private ImageView imgSettingPro , fotoProfile;
+    private TextView txtEditProfile , following ,follower,nameataspro ,namepro ,emailpro,datepro,citypro ,postpro;
+    private Session session;
     private String token;
     private String apptoken;
-    Context context;
-
-    private ResponMyProfile.DataEntity data = new ResponMyProfile.DataEntity();
-
-
+    private Context context;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -74,15 +70,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-                    Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    nameataspro.setText(response.body().getData().getName());
-                    namepro.setText(response.body().getData().getName());
-                    emailpro.setText(response.body().getData().getEmail());
-                    Picasso.with(context).load(response.body().getData().getPhoto());
-                    citypro.setText(response.body().getData().getCity());
-                    datepro.setText(response.body().getData().getDate_birth());
-                    follower.setText(String.valueOf(response.body().getData().getFollowers()));
-                    following.setText(String.valueOf(response.body().getData().getFollowing()));
+                  setProfile(response.body().getData());
 
                 }else{
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
@@ -95,6 +83,17 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void setProfile(ResponMyProfile.DataEntity data) {
+        nameataspro.setText(data.getName());
+        namepro.setText(data.getName());
+        emailpro.setText(data.getEmail());
+        Picasso.with(context).load(data.getPhoto());
+        citypro.setText(data.getCity());
+        datepro.setText(data.getDate_birth());
+        follower.setText(String.valueOf(data.getFollowers()));
+        following.setText(String.valueOf(data.getFollowing()));
     }
 
 
