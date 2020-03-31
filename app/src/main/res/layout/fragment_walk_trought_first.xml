@@ -47,7 +47,7 @@
                 android:background="@drawable/ic_circle_gray" />
         </LinearLayout>
         <TextView
-            android:id="@+id/titlefirst"
+            android:id="@+id/tvtitlefirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -57,7 +57,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/descfirst"
+            android:id="@+id/tvdescfirst"
             android:layout_width="239dp"
             android:layout_height="42dp"
             android:layout_gravity="center"
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/txtnext"
+                android:id="@+id/tvnext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

@@ -26,7 +26,7 @@ import retrofit2.Response;
 
 public class SplashScreenActivity extends AppCompatActivity {
 Context context;
-String AppToken;
+private String appToken;
 Session session;
 
     @Override
@@ -52,7 +52,7 @@ Session session;
     }
 
     private void loadwalktrough() {
-        ConnectionApi.apiService().walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
+        ConnectionApi.apiService().walkthrough(appToken).enqueue(new Callback<ResponWalkThrough>() {
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
@@ -67,9 +67,9 @@ Session session;
                        // startActivity(intent);
                        // finish();
                    //}else{
-                        Gson gson = new Gson();
+                       Gson gson = new Gson();
                        Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                       intent.putExtra("data",gson.toJson(response.body()));
+                       intent.putExtra("data",gson.toJson(response.body().getData()));
                        startActivity(intent);
                        finish();
                    //}
@@ -96,7 +96,7 @@ Session session;
                 if (response.isSuccessful() && response.body().getSuccess()){
                     Toast.makeText(context,"Welcome",Toast.LENGTH_SHORT).show();
                     session.setApptoken(response.body().getData());
-                    AppToken = session.getAppToken();
+                    appToken = session.getAppToken();
                     loadwalktrough();
 
                 }else{

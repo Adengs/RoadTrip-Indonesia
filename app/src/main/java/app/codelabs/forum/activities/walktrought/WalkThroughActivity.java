@@ -24,6 +24,9 @@ public class WalkThroughActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walk_though_activity);
 
+
+
+
         setView();
         setViewPager();
 
@@ -31,12 +34,18 @@ public class WalkThroughActivity extends AppCompatActivity {
 
     private void setViewPager() {
         WalkThroughAdapter adapter = new WalkThroughAdapter(getSupportFragmentManager());
-        adapter.addfragment(new WalkTroughtFirstFragment());
-        adapter.addfragment(new WalkTroughtSecondFragment());
-        adapter.addfragment(new WalkTroughtThirdFragment());
         Gson gson = new Gson();
         String intro = getIntent().getStringExtra("data");
-        ResponWalkThrough data = gson.fromJson(intro, ResponWalkThrough.class);
+        ResponWalkThrough.DataEntity datas = gson.fromJson(intro,ResponWalkThrough.DataEntity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("data", String.valueOf(datas));
+
+        WalkTroughtFirstFragment walkTroughtFirstFragment = new WalkTroughtFirstFragment();
+        walkTroughtFirstFragment.setArguments(bundle);
+        adapter.addfragment(walkTroughtFirstFragment);
+        adapter.addfragment(new WalkTroughtSecondFragment());
+        adapter.addfragment(new WalkTroughtThirdFragment());
+
         viewPager.setAdapter(adapter);
     }
 

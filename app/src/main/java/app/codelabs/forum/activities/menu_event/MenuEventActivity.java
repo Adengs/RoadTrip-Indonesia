@@ -20,10 +20,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class MenuEventActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private EventClubAdapter adapter;
-    JoinPickFragment joinPickFragment = new JoinPickFragment();
-    Context context;
+
     private ImageView img_panah_back;
 
     @Override
@@ -48,7 +45,6 @@ public class MenuEventActivity extends AppCompatActivity {
     }
 
     private void setView() {
-        adapter = new EventClubAdapter();
         img_panah_back = findViewById(R.id.btn_panah_event);
     }
 
