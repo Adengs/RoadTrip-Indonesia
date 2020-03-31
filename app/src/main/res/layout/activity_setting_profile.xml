@@ -8,7 +8,7 @@
     tools:context=".activities.profile.SettingProfile">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_settingProfile"
+        android:id="@+id/toolbar_setting_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/backgroudToolbar"
@@ -16,7 +16,7 @@
         app:theme="@style/Register">
 
         <TextView
-            android:id="@+id/back_settingProfile"
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_back_black"
@@ -40,73 +40,79 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtPushSetPro"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_push_notification"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="21dp"
-                android:layout_marginTop="25.04dp"
                 android:drawableLeft="@drawable/ic_push_notif"
-                android:text="     Push notifications"
+                android:drawablePadding="16dp"
+                android:paddingLeft="21dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="Push notifications"
                 android:textColor="@color/black" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="22.96dp"
                 android:layout_marginRight="19.5dp"
-                android:background="@color/colorCircle" />
+                android:background="@color/colorCircle"
+                android:paddingLeft="21dp" />
 
             <TextView
-                android:id="@+id/txtRateSetPro"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_rate_the_app"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="21dp"
-                android:layout_marginTop="22.5dp"
                 android:drawableLeft="@drawable/ic_setpro_ic_rate"
-                android:text="     Rate the app"
+                android:drawablePadding="16dp"
+                android:paddingLeft="21dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="Rate the app"
                 android:textColor="@color/black" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="21.05dp"
                 android:layout_marginRight="19.5dp"
                 android:background="@color/colorCircle" />
 
             <TextView
-
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_feedback"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="21dp"
-                android:layout_marginTop="22.5dp"
                 android:drawableLeft="@drawable/ic_setpro_ic_feedback"
-                android:text="     Feedback"
+                android:drawablePadding="16dp"
+                android:paddingLeft="21dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="Feedback"
                 android:textColor="@color/black" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="21.05dp"
                 android:layout_marginRight="19.5dp"
                 android:background="@color/colorCircle" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_set_language"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="21dp"
-                android:layout_marginTop="22.5dp"
                 android:drawableLeft="@drawable/ic_setpro_ic_language"
-                android:text="     Language"
+                android:drawablePadding="16dp"
+                android:paddingLeft="21dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="Language"
                 android:textColor="@color/black" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
                 android:layout_marginLeft="21dp"
-                android:layout_marginTop="21.05dp"
                 android:layout_marginRight="19.5dp"
                 android:background="@color/colorCircle" />
 
@@ -116,25 +122,26 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_dark_mode"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="21dp"
-                    android:layout_marginTop="22.5dp"
+                    android:layout_weight="1"
                     android:drawableLeft="@drawable/ic_setpro_ic_moon"
-                    android:text="     Dark mode"
+                    android:drawablePadding="16dp"
+                    android:paddingLeft="21dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="Dark mode"
                     android:textColor="@color/black" />
-                <!-- link java switch https://www.tutlane.com/tutorial/android/android-switch-on-off-button-with-examples-->
+
                 <Switch
-                    android:id="@+id/switch1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="220dp"
+                    android:id="@+id/switch_dark_mode"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="22.5dp"
+                    android:layout_weight="0.3"
                     android:checked="true"
-                    android:paddingTop="22.5dp"
-                    android:paddingBottom="10dp"
                     android:switchMinWidth="56dp"
                     android:textOff="OFF"
                     android:textOn="ON" />
@@ -151,18 +158,15 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnlogoutSetting"
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:background="@color/putih"
             android:text="Logout"
-            android:layout_gravity="bottom"
             android:textAllCaps="false"
-            android:textColor="@color/pink"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/pink" />
     </FrameLayout>
-
-
-
 
 
 </RelativeLayout>

@@ -9,19 +9,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.helpers.Session;
 
 public class SettingProfile extends AppCompatActivity {
-    Button btnLogoutSetPro;
-    TextView backsettingPro;
+    Button btnLogout;
+    TextView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_profile);
-
 
         setView();
         setEvent();
@@ -29,13 +27,13 @@ public class SettingProfile extends AppCompatActivity {
     }
 
     private void setEvent() {
-        backsettingPro.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SettingProfile.this, HomeActivity.class));
+                onBackPressed();
             }
         });
-        btnLogoutSetPro.setOnClickListener(new View.OnClickListener() {
+        btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Session.init(getApplicationContext()).setLogout();
@@ -46,7 +44,7 @@ public class SettingProfile extends AppCompatActivity {
     }
 
     private void setView() {
-        backsettingPro = findViewById(R.id.back_settingProfile);
-        btnLogoutSetPro = findViewById(R.id.btnlogoutSetting);
+        btnBack = findViewById(R.id.btn_back);
+        btnLogout = findViewById(R.id.btn_logout);
     }
 }
