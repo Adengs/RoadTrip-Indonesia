@@ -40,7 +40,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void loadWalkTrough() {
-        ConnectionApi.apiService().walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
+        ConnectionApi.apiService().getWalkTrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {
@@ -73,7 +73,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         Map<String, String> body = new HashMap<>();
         body.put("company_name", "fevci");
         body.put("comp_key", "fevci123");
-        ConnectionApi.apiService().apptoken(body).enqueue(new Callback<ResponseApi>() {
+        ConnectionApi.apiService().getAppToken(body).enqueue(new Callback<ResponseApi>() {
             @Override
             public void onResponse(Call<ResponseApi> call, Response<ResponseApi> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {

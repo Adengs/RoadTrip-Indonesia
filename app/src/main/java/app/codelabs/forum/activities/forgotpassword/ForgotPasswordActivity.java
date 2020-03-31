@@ -15,7 +15,6 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
@@ -45,8 +44,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         setView();
         setEvent();
-
-
     }
 
 
@@ -64,7 +61,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 Map<String, String> data = new HashMap<>();
                 data.put("email", etEmail.getText().toString());
                 progresDialogFragment.show(getSupportFragmentManager(), "proggress");
-                ConnectionApi.apiService().forgotpassword(data, appToken).enqueue(new Callback<ResponseForgotPassword>() {
+                ConnectionApi.apiService().requestResetPassword(data, appToken).enqueue(new Callback<ResponseForgotPassword>() {
                     @Override
                     public void onResponse(Call<ResponseForgotPassword> call, Response<ResponseForgotPassword> response) {
                         progresDialogFragment.dismiss();
@@ -93,7 +90,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
+                onBackPressed();
             }
         });
 

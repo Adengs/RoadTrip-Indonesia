@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -66,7 +64,7 @@ public class ProfileFragment extends Fragment {
 
     private void loadData() {
 
-        ConnectionApi.apiService().myprofile(token,apptoken).enqueue(new Callback<ResponMyProfile>() {
+        ConnectionApi.apiService().myProfile(token,apptoken).enqueue(new Callback<ResponMyProfile>() {
             @Override
             public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){

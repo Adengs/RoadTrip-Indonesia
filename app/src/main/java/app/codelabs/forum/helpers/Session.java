@@ -12,7 +12,6 @@ import app.codelabs.forum.models.ResponsLogin;
 public class Session {
     private static String KEY_TOKEN = "token";
     private static String KEY_APP_TOKEN = "app-token";
-    private static String KEY_X_RESET_TOKEN = "x-reset";
     private static String KEY_IS_LOGIN = "is-login";
     private static String KEY_USER = "user";
 
@@ -36,15 +35,6 @@ public class Session {
 
     public void setAppToken(String app_token) {
         editor.putString(KEY_APP_TOKEN, app_token);
-        editor.commit();
-    }
-
-    public String getXResetToken() {
-        return sharedPreferences.getString(KEY_X_RESET_TOKEN, "");
-    }
-
-    public void setXResetToken(String token) {
-        editor.putString(KEY_X_RESET_TOKEN, token);
         editor.commit();
     }
 

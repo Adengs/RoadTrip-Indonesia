@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
@@ -23,14 +24,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SubmitPasswordActivity extends AppCompatActivity {
-    ImageView btnBackSubmit;
-    Button btnSubmitForgot;
-    String code ="";
-    String codesatu,codedua,codetiga,codeempat;
-    EditText codes, coded, codet, codee;
-    Session session;
+    private ImageView ivBack;
+    private Button btnSubmit;
+    private EditText etCode1, etCode2, etCode3, etCode4;
+    private Session session;
     private String apptoken;
-    Context context;
+    private Context context;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
 
 
@@ -48,38 +47,37 @@ public class SubmitPasswordActivity extends AppCompatActivity {
 
     private void setView() {
 
-        btnBackSubmit = findViewById(R.id.btn_BackSubmit);
-        btnSubmitForgot = findViewById(R.id.btn_SubmitForgot);
-        codes = findViewById(R.id.et_codesatu);
-        coded = findViewById(R.id.et_codedua);
-        codet = findViewById(R.id.et_codetiga);
-        codee = findViewById(R.id.et_codeempat);
+        ivBack = findViewById(R.id.btn_back);
+        btnSubmit = findViewById(R.id.btn_submit);
+        etCode1 = findViewById(R.id.et_code_1);
+        etCode2 = findViewById(R.id.et_code_2);
+        etCode3 = findViewById(R.id.et_code_3);
+        etCode4 = findViewById(R.id.et_code_4);
 
 
     }
 
     private void setEvent() {
-        btnSubmitForgot.setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                codesatu = codes.getText().toString();
-                codedua = coded.getText().toString();
-                codetiga = codet.getText().toString();
-                codeempat = codee.getText().toString();
-                code = codesatu+codedua+codetiga+codeempat;
-
+                if (!isValidCode()) {
+                    return;
+                }
+                String code = etCode1.getText().toString() + etCode2.getText().toString() + etCode3.getText().toString() + etCode4.getText().toString();
                 Map<String, String> data = new HashMap<>();
-                data.put("code",code);
+                data.put("code", code);
 
-                progresDialogFragment.show(getSupportFragmentManager(), "proggress");
-                ConnectionApi.apiService().submitpassword(data, apptoken).enqueue(new Callback<ResponseSubmitPassword>() {
+                progresDialogFragment.show(getSupportFragmentManager(), "progress");
+                ConnectionApi.apiService().verifyCodeResetPassword(data, apptoken).enqueue(new Callback<ResponseSubmitPassword>() {
                     @Override
                     public void onResponse(Call<ResponseSubmitPassword> call, Response<ResponseSubmitPassword> response) {
                         progresDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            session.setXResetToken(response.body().getData().getToken());
-                            startActivity(new Intent(SubmitPasswordActivity.this, FinishPasswordActivity.class));
+                            Intent intent = new Intent(SubmitPasswordActivity.this, FinishPasswordActivity.class);
+                            intent.putExtra("x-token", response.body().getData().getToken());
+                            startActivity(intent);
 
                         } else {
                             Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -100,12 +98,20 @@ public class SubmitPasswordActivity extends AppCompatActivity {
             }
         });
 
-        btnBackSubmit.setOnClickListener(new View.OnClickListener() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SubmitPasswordActivity.this, ForgotPasswordActivity.class));
-
+                onBackPressed();
             }
         });
+    }
+
+    private boolean isValidCode() {
+        if (etCode1.getText().toString().isEmpty() || etCode2.getText().toString().isEmpty() || etCode3.getText().toString().isEmpty() || etCode4.getText().toString().isEmpty()) {
+            Toast.makeText(context, "Fill all code", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+
     }
 }

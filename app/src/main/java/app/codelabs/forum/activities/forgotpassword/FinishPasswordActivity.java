@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
@@ -25,21 +26,14 @@ import retrofit2.Response;
 
 public class FinishPasswordActivity extends AppCompatActivity {
 
-    ImageView btnBackFinish;
-    Button btnFinishForgot;
-
-    EditText pass, passd;
-
-    Session session;
-    private String apptoken;
-    private String xresetToken;
+    private ImageView ivBack;
+    private Button btnFinish;
+    private EditText etPassword, etConfirmPassword;
+    private Session session;
+    private String appToken;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
-
-
-
-    Context context;
-
-
+    private Context context;
+    private String xResetToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,50 +41,52 @@ public class FinishPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_finish_password);
         context = getApplicationContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
-        xresetToken = session.getXResetToken();
+        appToken = session.getAppToken();
 
-
+        getData();
         setView();
         setEvent();
     }
 
+    private void getData() {
+        xResetToken = getIntent().getStringExtra("x-token");
+    }
+
     private void setView() {
-        btnBackFinish = findViewById(R.id.btn_BackFinish);
-        btnFinishForgot = findViewById(R.id.btn_FinishForgot);
-        pass = findViewById(R.id.et_passwordsatu);
-        passd = findViewById(R.id.et_passworddua);
+        ivBack = findViewById(R.id.btn_back);
+        btnFinish = findViewById(R.id.btn_finish);
+        etPassword = findViewById(R.id.et_password);
+        etConfirmPassword = findViewById(R.id.et_confirm_password);
     }
 
     private void setEvent() {
-        btnBackFinish.setOnClickListener(new View.OnClickListener() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FinishPasswordActivity.this, SubmitPasswordActivity.class));
+                onBackPressed();
             }
         });
 
-        btnFinishForgot.setOnClickListener(new View.OnClickListener() {
+        btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Map<String, String> data = new HashMap<>();
-                data.put("password", pass.getText().toString());
-                data.put("password-confirm", passd.getText().toString());
-                progresDialogFragment.show(getSupportFragmentManager(), "proggress");
-                ConnectionApi.apiService().finishpassword(data, apptoken, xresetToken).enqueue(new Callback<ResponseFinishPassword>() {
+                data.put("password", etPassword.getText().toString());
+                data.put("password-confirm", etConfirmPassword.getText().toString());
+                progresDialogFragment.show(getSupportFragmentManager(), "progress");
+                ConnectionApi.apiService().resetPassword(data, appToken, xResetToken).enqueue(new Callback<ResponseFinishPassword>() {
                     @Override
                     public void onResponse(Call<ResponseFinishPassword> call, Response<ResponseFinishPassword> response) {
                         progresDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
-                            startActivity(new Intent(FinishPasswordActivity.this, LoginActivity.class));
+                            startActivity(new Intent(FinishPasswordActivity.this, LoginActivity.class).setFlags(
+                                    Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+                            ));
 
                         } else {
                             Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
-
 
                     }
 
