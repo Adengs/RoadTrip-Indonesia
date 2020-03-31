@@ -32,7 +32,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
 
-                android:id="@+id/etemaillogin"
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="E-mail"
@@ -40,7 +40,7 @@
                 android:paddingTop="21dp"
                 android:paddingBottom="19dp"
                 android:textColorHint="@color/abuemaillogin"
-                android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
+                android:textSize="14dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +55,7 @@
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etpasswordlogin"
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
@@ -63,12 +63,12 @@
                 android:paddingTop="21dp"
                 android:paddingBottom="19dp"
                 android:textColorHint="@color/abuemaillogin"
-                android:textSize="14dp"></com.google.android.material.textfield.TextInputEditText>
+                android:textSize="14dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/buttonlogin"
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
@@ -81,7 +81,7 @@
 
 
         <TextView
-            android:id="@+id/txtforgotpasword"
+            android:id="@+id/tv_forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Forgot password?"
@@ -103,7 +103,7 @@
                 android:textSize="14dp" />
 
             <TextView
-                android:id="@+id/txtpindahregister"
+                android:id="@+id/tv_goto_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"

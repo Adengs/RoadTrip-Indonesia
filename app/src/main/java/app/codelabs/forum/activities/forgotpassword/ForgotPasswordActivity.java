@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
@@ -24,14 +25,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
-    ImageView btnBackForgot;
-    Button btnSendForgot;
-    EditText et_EmailForgot;
-    Session session;
-    private String apptoken;
-    Context context;
+    private ImageView ivBack;
+    private Button btnSend;
+    private EditText etEmail;
+    private Session session;
+    private String appToken;
+    private Context context;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
-
 
 
     @Override
@@ -41,7 +41,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
+        appToken = session.getAppToken();
 
         setView();
         setEvent();
@@ -50,32 +50,30 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
 
-
-
     private void setView() {
-        btnBackForgot = findViewById(R.id.btn_BackForgot);
-        btnSendForgot = findViewById(R.id.btn_sendforgotpass);
-        et_EmailForgot = findViewById(R.id.et_emailforgotpass);
+        ivBack = findViewById(R.id.btn_back);
+        btnSend = findViewById(R.id.btn_send);
+        etEmail = findViewById(R.id.et_email);
 
     }
 
     private void setEvent() {
-        btnSendForgot.setOnClickListener(new View.OnClickListener() {
+        btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Map<String, String> data = new HashMap<>();
-                data.put("email",et_EmailForgot.getText().toString());
+                data.put("email", etEmail.getText().toString());
                 progresDialogFragment.show(getSupportFragmentManager(), "proggress");
-                ConnectionApi.apiService().forgotpassword(data, apptoken).enqueue(new Callback<ResponseForgotPassword>() {
+                ConnectionApi.apiService().forgotpassword(data, appToken).enqueue(new Callback<ResponseForgotPassword>() {
                     @Override
                     public void onResponse(Call<ResponseForgotPassword> call, Response<ResponseForgotPassword> response) {
                         progresDialogFragment.dismiss();
-                        if (response.isSuccessful()&& response.body().getSuccess()){
-                            Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful() && response.body().getSuccess()) {
+                            Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(ForgotPasswordActivity.this, SubmitPasswordActivity.class));
 
                         } else {
-                            Toast.makeText(getApplicationContext(),response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -92,7 +90,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             }
         });
 
-        btnBackForgot.setOnClickListener(new View.OnClickListener() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
