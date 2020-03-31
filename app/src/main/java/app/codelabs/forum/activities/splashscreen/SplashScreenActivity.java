@@ -26,9 +26,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SplashScreenActivity extends AppCompatActivity {
-    Context context;
-    String AppToken;
-    Session session;
+    private Context context;
+    private String AppToken;
+    private Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
