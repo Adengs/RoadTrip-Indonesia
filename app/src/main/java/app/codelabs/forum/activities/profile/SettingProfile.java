@@ -37,8 +37,6 @@ public class SettingProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Session.init(getApplicationContext()).setLogout();
-                startActivity(new Intent(SettingProfile.this, LoginActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
     }

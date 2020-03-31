@@ -48,7 +48,7 @@ public class FinishPasswordActivity extends AppCompatActivity {
         context = getApplicationContext();
         session = Session.init(context);
         apptoken = session.getAppToken();
-        xresetToken = session.getXresetToken();
+        xresetToken = session.getXResetToken();
 
 
         setView();

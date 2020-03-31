@@ -78,7 +78,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
                         progresDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            session.setXresetToken(response.body().getData().getToken());
+                            session.setXResetToken(response.body().getData().getToken());
                             startActivity(new Intent(SubmitPasswordActivity.this, FinishPasswordActivity.class));
 
                         } else {

@@ -1,25 +1,13 @@
 package app.codelabs.forum.activities.login;
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -86,17 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(response.isSuccessful() && response.body().getSuccess()){
 
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                            session.setlogin();
-                            session.setDataLogin(response.body().getToken(),
-                                    response.body().getData().getId(),
-                                    response.body().getData().getCompany_id(),
-                                    response.body().getData().getUsername(),
-                                    response.body().getData().getName(),
-                                    response.body().getData().getEmail(),
-                                    response.body().getData().getCity(),
-                                    response.body().getData().getDate_birth(),
-                                    response.body().getData().getPhoto(),
-                                    response.body().getData().getRole());
+                            session.setLogin(response.body().getData(),response.body().getToken());
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                             startActivity(intent);
