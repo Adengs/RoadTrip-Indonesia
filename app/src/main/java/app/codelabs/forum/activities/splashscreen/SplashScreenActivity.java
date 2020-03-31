@@ -39,7 +39,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     }
 
-    private void loadwalktrough() {
+    private void loadWalkTrough() {
         ConnectionApi.apiService().walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
@@ -80,7 +80,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     session.setAppToken(response.body().getData());
                     AppToken = session.getAppToken();
-                    loadwalktrough();
+                    loadWalkTrough();
 
                 } else {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
