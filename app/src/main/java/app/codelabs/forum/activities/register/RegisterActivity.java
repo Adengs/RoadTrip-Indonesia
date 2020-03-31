@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
@@ -25,14 +26,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
-    private EditText usernameRegis, etNamaRegis, etEmailRegis, etPassword;
-    private TextView txtlogin;
-    private ImageView btnEditRegister;
-    private Button btnRegis;
-    Session session;
-    private String Apptoken;
+    private EditText etUsername, etName, etEmail, etPassword;
+    private TextView tvLogin;
+    private ImageView ivBack;
+    private Button btnRegister;
+    private Session session;
+    private String appToken;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
-    Context context;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         session = Session.init(context);
-        Apptoken = session.getAppToken();
+        appToken = session.getAppToken();
 
         setView();
         setEvent();
@@ -50,47 +51,39 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
-        txtlogin.setOnClickListener(new View.OnClickListener() {
+        tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                onBackPressed();
             }
         });
-        btnEditRegister.setOnClickListener(new View.OnClickListener() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                onBackPressed();
 
             }
         });
 
-        btnRegis.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Map<String, String> data = new HashMap<>();
-                data.put("username", usernameRegis.getText().toString());
+                data.put("username", etUsername.getText().toString());
                 data.put("password", etPassword.getText().toString());
-                data.put("name", etNamaRegis.getText().toString());
-                data.put("email", etEmailRegis.getText().toString());
+                data.put("name", etName.getText().toString());
+                data.put("email", etEmail.getText().toString());
 
-                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
-                ConnectionApi.apiService().register(data ,Apptoken).enqueue(new Callback<ResponseRegister>() {
+                progresDialogFragment.show(getSupportFragmentManager(), "progress");
+                ConnectionApi.apiService().register(data, appToken).enqueue(new Callback<ResponseRegister>() {
                     @Override
                     public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
                         progresDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
-
-                            Toast.makeText(context,"Succes Register", Toast.LENGTH_SHORT).show();
-                            Apptoken = session.getAppToken();
-                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                            Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
-                            startActivity(intent);
-
+                            Toast.makeText(context, "Success Register", Toast.LENGTH_SHORT).show();
+                            onBackPressed();
                         } else {
-
                             Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     }
 
@@ -107,12 +100,12 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private void setView() {
-        btnRegis = findViewById(R.id.btn_regster);
-        usernameRegis = findViewById(R.id.et_usernameregis);
-        etNamaRegis = findViewById(R.id.et_nameregis);
-        etEmailRegis = findViewById(R.id.et_emailregis);
-        etPassword = findViewById(R.id.et_passwordregis);
-        txtlogin = findViewById(R.id.txtloginregis);
-        btnEditRegister = findViewById(R.id.imgEditRegis);
+        btnRegister = findViewById(R.id.btn_register);
+        etUsername = findViewById(R.id.et_username);
+        etName = findViewById(R.id.et_name);
+        etEmail = findViewById(R.id.et_email);
+        etPassword = findViewById(R.id.et_password);
+        tvLogin = findViewById(R.id.tv_login);
+        ivBack = findViewById(R.id.iv_back);
     }
 }

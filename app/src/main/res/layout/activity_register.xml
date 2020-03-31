@@ -19,14 +19,14 @@
         app:theme="@style/Register">
 
         <ImageView
-            android:layout_marginRight="20dp"
-            android:src="@drawable/ic_asset"
-            android:id="@+id/imgEditRegis"
+            android:id="@+id/iv_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_asset" />
 
         <TextView
-            android:id="@+id/toolbar_titleregis"
+            android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"
@@ -39,14 +39,14 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <LinearLayout
-                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="20dp"
                 android:background="@drawable/shape_rounded_regis"
                 android:orientation="vertical">
 
@@ -58,14 +58,14 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_usernameregis"
+                        android:id="@+id/et_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
 
-                        android:textSize="14dp"
-                        android:hint="Username" />
+                        android:hint="Username"
+                        android:textSize="14dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -77,13 +77,13 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_nameregis"
+                        android:id="@+id/et_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:textSize="14dp"
-                        android:hint="Name" />
+                        android:hint="Name"
+                        android:textSize="14dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -94,13 +94,13 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_emailregis"
+                        android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:textSize="14dp"
-                        android:hint="E-mail" />
+                        android:hint="E-mail"
+                        android:textSize="14dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,18 +112,18 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/et_passwordregis"
+                        android:id="@+id/et_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:hint="Password"
-                        android:textSize="14dp"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:textSize="14dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/btn_regster"
+                    android:id="@+id/btn_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -150,7 +150,7 @@
                         android:textSize="14dp" />
 
                     <TextView
-                        android:id="@+id/txtloginregis"
+                        android:id="@+id/tv_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
