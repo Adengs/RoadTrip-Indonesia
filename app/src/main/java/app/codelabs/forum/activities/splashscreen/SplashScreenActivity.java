@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.walktrought.WalkThroughActivity;
@@ -25,28 +26,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SplashScreenActivity extends AppCompatActivity {
-Context context;
-String AppToken;
-Session session;
+    Context context;
+    String AppToken;
+    Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        /*new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, 3000);*/
-
         context = getApplicationContext();
         session = Session.init(context);
-
-
         loadAppToken();
 
     }
@@ -55,31 +45,26 @@ Session session;
         ConnectionApi.apiService().walkthrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
-
-                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
-
-                   // Boolean  login = session.islogin();
-                    //Gson gson = new Gson();
-                  //  if(login == true){
-                       // Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-                        //intent.putExtra("data",gson.toJson(response.body()));
-                       // startActivity(intent);
-                       // finish();
-                   //}else{
-                        Gson gson = new Gson();
-                       Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                       intent.putExtra("data",gson.toJson(response.body()));
-                       startActivity(intent);
-                       finish();
-                   //}
-                }else {
-                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body().getSuccess()) {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    if (session.islogin()) {
+                        Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
+                        intent.putExtra("data", new Gson().toJson(response.body()));
+                        startActivity(intent);
+                    }
+                    finish();
+                } else {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<ResponWalkThrough> call, Throwable t) {
-                Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -88,24 +73,25 @@ Session session;
 
     private void loadAppToken() {
         Map<String, String> body = new HashMap<>();
-        body.put("company_name","fevci");
-        body.put("comp_key","fevci123");
+        body.put("company_name", "fevci");
+        body.put("comp_key", "fevci123");
         ConnectionApi.apiService().apptoken(body).enqueue(new Callback<ResponseApi>() {
             @Override
             public void onResponse(Call<ResponseApi> call, Response<ResponseApi> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
-                    Toast.makeText(context,"Welcome",Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body().getSuccess()) {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     session.setApptoken(response.body().getData());
                     AppToken = session.getAppToken();
                     loadwalktrough();
 
-                }else{
-                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseApi> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
