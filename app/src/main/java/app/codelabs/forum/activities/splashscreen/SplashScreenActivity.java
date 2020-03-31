@@ -2,17 +2,15 @@ package app.codelabs.forum.activities.splashscreen;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
