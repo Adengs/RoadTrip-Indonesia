@@ -1,30 +1,19 @@
 package app.codelabs.forum.activities.login;
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.forgotpassword.ForgotPasswordActivity;
 import app.codelabs.forum.activities.home.HomeActivity;
@@ -38,14 +27,13 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
-    private TextView txtForgotPassword, txtRegister;
-    private EditText et_email;
-    private EditText et_password;
-    private String Apptoken;
+    private TextView tvForgotPassword, tvGotoRegister;
+    private EditText etEmail;
+    private EditText etPassword;
+    private String appToken;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     Context context;
     Session session;
-
 
 
     @Override
@@ -55,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         session = Session.init(context);
-        Apptoken = session.getAppToken();
+        appToken = session.getAppToken();
 
         setView();
         setEvent();
@@ -63,11 +51,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setView() {
-        txtForgotPassword = findViewById(R.id.txtforgotpasword);
-        txtRegister = findViewById(R.id.txtpindahregister);
-        et_email = findViewById(R.id.etemaillogin);
-        et_password = findViewById(R.id.etpasswordlogin);
-        btnLogin = findViewById(R.id.buttonlogin);
+        tvForgotPassword = findViewById(R.id.tv_forgot_password);
+        tvGotoRegister = findViewById(R.id.tv_goto_register);
+        etEmail = findViewById(R.id.et_email);
+        etPassword = findViewById(R.id.et_password);
+        btnLogin = findViewById(R.id.btn_login);
     }
 
     private void setEvent() {
@@ -76,34 +64,25 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Map<String, String> dataLogin = new HashMap<>();
-                dataLogin.put("email",et_email.getText().toString());
-                dataLogin.put("password",et_password.getText().toString());
-                progresDialogFragment.show(getSupportFragmentManager(),"proggress");
-                ConnectionApi.apiService().login(dataLogin,Apptoken).enqueue(new Callback<ResponsLogin>() {
+                dataLogin.put("email", etEmail.getText().toString());
+                dataLogin.put("password", etPassword.getText().toString());
+                progresDialogFragment.show(getSupportFragmentManager(), "proggress");
+                ConnectionApi.apiService().login(dataLogin, appToken).enqueue(new Callback<ResponsLogin>() {
                     @Override
                     public void onResponse(Call<ResponsLogin> call, Response<ResponsLogin> response) {
-                    progresDialogFragment.dismiss();
-                        if(response.isSuccessful() && response.body().getSuccess()){
+                        progresDialogFragment.dismiss();
+                        if (response.isSuccessful() && response.body().getSuccess()) {
+
+                            session.setLogin(response.body().getData(), response.body().getToken());
 
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                            session.setlogin();
-                            session.setDataLogin(response.body().getToken(),
-                                    response.body().getData().getId(),
-                                    response.body().getData().getCompany_id(),
-                                    response.body().getData().getUsername(),
-                                    response.body().getData().getName(),
-                                    response.body().getData().getEmail(),
-                                    response.body().getData().getCity(),
-                                    response.body().getData().getDate_birth(),
-                                    response.body().getData().getPhoto(),
-                                    response.body().getData().getRole());
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                            Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
 
-                        }
-                        else{
-                            Toast.makeText(context,"can not login",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
                     }
@@ -111,18 +90,18 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<ResponsLogin> call, Throwable t) {
                         progresDialogFragment.dismiss();
-                        Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         });
-        txtForgotPassword.setOnClickListener(new View.OnClickListener() {
+        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
             }
         });
-        txtRegister.setOnClickListener(new View.OnClickListener() {
+        tvGotoRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));

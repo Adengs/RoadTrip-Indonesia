@@ -1,82 +1,66 @@
 package app.codelabs.forum.helpers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
+
+import app.codelabs.forum.activities.login.LoginActivity;
+import app.codelabs.forum.models.ResponsLogin;
 
 public class Session {
     private static String KEY_TOKEN = "token";
-    private static String KEY_APP_TOKEN="app-token";
-    private static String KEY_XRESET_TOKEN = "Xreset";
+    private static String KEY_APP_TOKEN = "app-token";
+    private static String KEY_IS_LOGIN = "is-login";
+    private static String KEY_USER = "user";
+
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Context context;
 
-    public Session(Context context){
-        sharedPreferences = context.getSharedPreferences("Settings",Context.MODE_PRIVATE);
+    public Session(Context context) {
+        this.context = context;
+        sharedPreferences = context.getSharedPreferences("session-forum", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
-    public static Session init(Context context){
+
+    public static Session init(Context context) {
         return new Session(context);
     }
 
-    public String getAppToken(){
-        String apptoken = sharedPreferences.getString(KEY_APP_TOKEN,"");
-        return  apptoken;
+    public String getAppToken() {
+        return sharedPreferences.getString(KEY_APP_TOKEN, "");
     }
-    public void setApptoken(String app_token){
-        editor.putString(KEY_APP_TOKEN,app_token);
+
+    public void setAppToken(String app_token) {
+        editor.putString(KEY_APP_TOKEN, app_token);
         editor.commit();
     }
 
-    public String getXresetToken() {
-        String xreset = sharedPreferences.getString(KEY_XRESET_TOKEN, "");
-        return xreset;
+    public String getToken() {
+        return sharedPreferences.getString(KEY_TOKEN, "");
     }
 
-    public void setXresetToken(String xresetToken) {
-        editor.putString(KEY_XRESET_TOKEN, xresetToken);
+    public Boolean isLogin() {
+        return sharedPreferences.getBoolean(KEY_IS_LOGIN, false);
+    }
+
+    public void setLogin(ResponsLogin.Data user, String token) {
+        editor.putBoolean(KEY_IS_LOGIN, true);
+        editor.putString(KEY_USER, new Gson().toJson(user));
+        editor.putString(KEY_TOKEN, token);
         editor.commit();
     }
 
-    public String getToken(){
-        String token =sharedPreferences.getString(KEY_TOKEN,"");
-        return token;
-    }
-    public Boolean islogin() {
-        Boolean login = sharedPreferences.getBoolean("sudah_login", false);
-        return login;
-    }
-    public void  setlogin(){
-        editor.putBoolean("sudah_login",true);
-        editor.commit();
+    public ResponsLogin.Data getUser() {
+        return new Gson().fromJson(sharedPreferences.getString(KEY_USER, "{}"), ResponsLogin.Data.class);
     }
 
-
-
-    public void setDataLogin(String token, int id, int company_id, String username, String name, String email, String city, String date_birth, String photo, String role) {
-        editor.putInt("id",id);
-        editor.putInt("company_id",company_id);
-        editor.putString("email",email);
-        editor.putString("username",username);
-        editor.putString("name",name);
-        editor.putString("photo",photo);
-        editor.putString("date_birth",date_birth);
-        editor.putString("city",city);
-        editor.putString("role",role);
-        editor.putString(KEY_TOKEN,token);
+    public void setLogout() {
+        editor.clear();
         editor.commit();
-    }
-    public void setLogout(){
-        editor.remove("id");
-        editor.remove("company_id");
-        editor.remove("email");
-        editor.remove("username");
-        editor.remove("name");
-        editor.remove("photo");
-        editor.remove("date_birth");
-        editor.remove("city");
-        editor.remove("role");
-        editor.remove(KEY_TOKEN);
-        editor.commit();
+        context.startActivity(new Intent(context, LoginActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 }

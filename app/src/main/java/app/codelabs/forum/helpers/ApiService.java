@@ -34,66 +34,66 @@ import retrofit2.http.Query;
 public interface ApiService {
 
     @POST("api/app_token")
-    Call<ResponseApi>apptoken(@Body Map<String,String> body);
+    Call<ResponseApi> getAppToken(@Body Map<String, String> body);
 
     @POST("auth/signin")
-    Call<ResponsLogin> login (@Body Map<String, String> body, @Header("app-token")String apptoken);
+    Call<ResponsLogin> login(@Body Map<String, String> body, @Header("app-token") String apptoken);
 
-    @POST ("auth/register")
-    Call<ResponseRegister> register(@Body Map<String, String> body , @Header("app-token") String AppToken);
+    @POST("auth/register")
+    Call<ResponseRegister> register(@Body Map<String, String> body, @Header("app-token") String AppToken);
 
     @GET("api/walk_through")
-    Call<ResponWalkThrough> walkthrough(@Header("app-token") String AppToken);
+    Call<ResponWalkThrough> getWalkTrough(@Header("app-token") String AppToken);
 
     @GET("api/article/popular")
-    Call<ResponArticlePopular> popular (@Header("Authorization")String token, @Header("app-token") String AppToken, @Query("short") int sort);
+    Call<ResponArticlePopular> popular(@Header("Authorization") String token, @Header("app-token") String AppToken, @Query("short") int sort);
 
     @GET("api/member")
-    Call<ResponsListMemberCompany> listMember (@Header ("Authorization")String token , @Header ("app-token")String AppToken, @Query("search") String search);
+    Call<ResponsListMemberCompany> listMember(@Header("Authorization") String token, @Header("app-token") String AppToken, @Query("search") String search);
 
     @GET("api/profile")
-    Call<ResponMyProfile> myprofile (@Header ("Authorization")String token , @Header("app-token") String AppToken);
+    Call<ResponMyProfile> myProfile(@Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/article/list")
-    Call<ResponsArticleLatest> articlelatest (@Header("app-token") String AppToken , @Header ("Authorization")String token);
+    Call<ResponsArticleLatest> articlelatest(@Header("app-token") String AppToken, @Header("Authorization") String token);
 
     @POST("api/follow")
-    Call<ResponsFollow> follow (@Body Map<String, String> body , @Header("app-token") String AppToken , @Header ("Authorization")String token);
+    Call<ResponsFollow> follow(@Body Map<String, String> body, @Header("app-token") String AppToken, @Header("Authorization") String token);
 
     @POST("api/unfollow")
-    Call<ResponsUnFollow> unfollow (@Body Map<String, String> body, @Header("app-token") String AppToken , @Header ("Authorization")String token);
+    Call<ResponsUnFollow> unfollow(@Body Map<String, String> body, @Header("app-token") String AppToken, @Header("Authorization") String token);
 
     @POST("recovery")
-    Call<ResponseForgotPassword> forgotpassword(@Body Map<String, String> body, @Header("app-token") String apptoken);
+    Call<ResponseForgotPassword> requestResetPassword(@Body Map<String, String> body, @Header("app-token") String apptoken);
 
     @POST("verify_code")
-    Call<ResponseSubmitPassword> submitpassword(@Body Map<String, String> body, @Header("app-token") String apptoken);
+    Call<ResponseSubmitPassword> verifyCodeResetPassword(@Body Map<String, String> body, @Header("app-token") String apptoken);
 
     @POST("set_new_password")
-    Call<ResponseFinishPassword> finishpassword(@Body Map<String, String> body, @Header("app-token") String apptoken, @Header("X-Reset-Token") String xreset);
+    Call<ResponseFinishPassword> resetPassword(@Body Map<String, String> body, @Header("app-token") String apptoken, @Header("X-Reset-Token") String xReset);
 
     @GET("api/article/detail")
-    Call<ResponseArticleDetail> articledetail(@Header ("Authorization")String token , @Header("app-token") String AppToken, @Query("article_id") int article_id);
+    Call<ResponseArticleDetail> articledetail(@Header("Authorization") String token, @Header("app-token") String AppToken, @Query("article_id") int article_id);
 
     @GET("api/article/list")
-    Call<ResponsListArticelbyCategory> listarticelbycategory (@Query("tag") List<String> tag, @Header ("Authorization")String token , @Header ("app-token")String AppToken);
+    Call<ResponsListArticelbyCategory> listarticelbycategory(@Query("tag") List<String> tag, @Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/article/list")
-    Call<ResponsDetailList> detailArticel (@Query("acticel_id")int id ,@Header ("Authorization")String token , @Header ("app-token")String AppToken);
+    Call<ResponsDetailList> detailArticel(@Query("acticel_id") int id, @Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/event/list")
-    Call<ResponsListEventCommunity> listEvent ( @Header ("Authorization")String token , @Header ("app-token")String AppToken);
+    Call<ResponsListEventCommunity> listEvent(@Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @POST("api/event/join")
-    Call<ResponsJoinEvent> joinEvent (@Body Map<String, String> boby, @Header ("Authorization")String token , @Header ("app-token")String AppToken );
+    Call<ResponsJoinEvent> joinEvent(@Body Map<String, String> boby, @Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/event/my_event")
-    Call<ResponsMyEvent> Myevent (@Header ("Authorization")String token , @Header ("app-token")String AppToken);
+    Call<ResponsMyEvent> Myevent(@Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/article/list")
-    Call<ResponsListArticelbyCategory> listarticelPost (@Query("tag") List<String> tag, @Header ("Authorization")String token , @Header ("app-token")String AppToken);
+    Call<ResponsListArticelbyCategory> listarticelPost(@Query("tag") List<String> tag, @Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/event/participant")
-    Call<ResponsParticipantEvent> partisipanevent (@Query("event_id") Integer id, @Header ("Authorization")String token , @Header ("app-token")String AppToken);
+    Call<ResponsParticipantEvent> partisipanevent(@Query("event_id") Integer id, @Header("Authorization") String token, @Header("app-token") String AppToken);
 }
 
