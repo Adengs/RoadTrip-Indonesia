@@ -34,9 +34,6 @@ public class WalkThroughActivity extends AppCompatActivity {
         adapter.addfragment(new WalkTroughtFirstFragment());
         adapter.addfragment(new WalkTroughtSecondFragment());
         adapter.addfragment(new WalkTroughtThirdFragment());
-        Gson gson = new Gson();
-        String intro = getIntent().getStringExtra("data");
-        ResponWalkThrough data = gson.fromJson(intro, ResponWalkThrough.class);
         viewPager.setAdapter(adapter);
     }
 

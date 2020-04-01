@@ -5,13 +5,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.List;
 
 import app.codelabs.forum.activities.login.LoginActivity;
+import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.ResponsLogin;
 
 public class Session {
     private static String KEY_TOKEN = "token";
     private static String KEY_APP_TOKEN = "app-token";
+    private static String KEY_WALK_TROUGH = "walk-trough";
     private static String KEY_IS_LOGIN = "is-login";
     private static String KEY_USER = "user";
 
@@ -62,5 +67,17 @@ public class Session {
         editor.commit();
         context.startActivity(new Intent(context, LoginActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
+
+    public void setWalkTrough(List<ResponWalkThrough.DataEntity> data) {
+        editor.putString(KEY_WALK_TROUGH, new Gson().toJson(data));
+        editor.commit();
+    }
+
+    public List<ResponWalkThrough.DataEntity> getWalkTrough() {
+        List<ResponWalkThrough.DataEntity> items = new Gson().fromJson(sharedPreferences.getString(KEY_WALK_TROUGH, "[]"),
+                new TypeToken<List<ResponWalkThrough.DataEntity>>() {
+                }.getType());
+        return items;
     }
 }

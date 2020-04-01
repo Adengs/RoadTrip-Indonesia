@@ -8,27 +8,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.squareup.picasso.Picasso;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
-import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponWalkThrough;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class WalkTroughtThirdFragment extends Fragment {
     private Button btnGetStarted;
-    Context context;
-    String AppToken;
-    Session session;
+    private TextView tvTitle, tvDesc;
+    private ImageView ivBackground;
+    private Context context;
 
     public WalkTroughtThirdFragment() {
         // Required empty public constructor
@@ -41,17 +42,32 @@ public class WalkTroughtThirdFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_walk_trought_third, container, false);
     }
+
     @Override
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        context = getContext();
 
         setView(view);
         setEvent();
+        setData();
+
     }
 
+    private void setData() {
+        ResponWalkThrough.DataEntity item = Session.init(context).getWalkTrough().get(2);
+        tvTitle.setText(item.getTitle());
+        tvDesc.setText(item.getDescription());
+        Picasso.with(context).load(item.getImage()).fit().centerCrop().into(ivBackground);
+    }
+
+
     private void setView(View view) {
-        btnGetStarted = view.findViewById(R.id.btnnext_third);
+        btnGetStarted = view.findViewById(R.id.btn_get_started);
+        tvTitle = view.findViewById(R.id.tv_title);
+        tvDesc = view.findViewById(R.id.tv_desc);
+        ivBackground = view.findViewById(R.id.iv_background);
     }
 
     private void setEvent() {

@@ -51,7 +51,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                         finish();
                     } else {
                         Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
-                        intent.putExtra("data", new Gson().toJson(response.body()));
+                        session.setWalkTrough(response.body().getData());
                         startActivity(intent);
                     }
                     finish();
