@@ -32,12 +32,12 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class Event_Club_Fragment extends Fragment {
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private EventClubAdapter adapter;
-    JoinPickFragment joinPickFragment = new JoinPickFragment();
+    private JoinPickFragment joinPickFragment = new JoinPickFragment();
     private String token;
-    private String apptoken;
-    Context context;
+    private String appToken;
+    private Context context;
     private Session session;
 
 
@@ -60,7 +60,7 @@ public class Event_Club_Fragment extends Fragment {
 
         context = getContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
+        appToken = session.getAppToken();
         token = session.getToken();
 
         setView(view);
@@ -83,7 +83,7 @@ public class Event_Club_Fragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService().listEvent(token,apptoken).enqueue(new Callback<ResponsListEventCommunity>() {
+        ConnectionApi.apiService().listEvent(token,appToken).enqueue(new Callback<ResponsListEventCommunity>() {
             @Override
             public void onResponse(Call<ResponsListEventCommunity> call, Response<ResponsListEventCommunity> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){

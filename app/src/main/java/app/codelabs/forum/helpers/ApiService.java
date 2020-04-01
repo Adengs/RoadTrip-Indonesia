@@ -9,6 +9,7 @@ import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.ResponsArticleLatest;
 import app.codelabs.forum.models.ResponsDetailList;
 import app.codelabs.forum.models.ResponsFollow;
+import app.codelabs.forum.models.ResponsHighlight;
 import app.codelabs.forum.models.ResponsJoinEvent;
 import app.codelabs.forum.models.ResponsListArticelbyCategory;
 import app.codelabs.forum.models.ResponsListEventCommunity;
@@ -95,5 +96,8 @@ public interface ApiService {
 
     @GET("api/event/participant")
     Call<ResponsParticipantEvent> partisipanevent(@Query("event_id") Integer id, @Header("Authorization") String token, @Header("app-token") String AppToken);
+
+    @GET("api/highlight")
+    Call<ResponsHighlight> Highlight( @Header("Authorization") String token, @Header("app-token") String AppToken);
 }
 

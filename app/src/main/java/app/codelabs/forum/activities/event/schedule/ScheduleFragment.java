@@ -20,9 +20,9 @@ import app.codelabs.forum.R;
  * A simple {@link Fragment} subclass.
  */
 public class ScheduleFragment extends Fragment {
-RecyclerView recycleView;
-private AdapterSchedule adapter;
-Context context;
+private RecyclerView recycleView;
+private AdapterDateSchedule adapter;
+private Context context;
 
     public ScheduleFragment() {
         // Required empty public constructor
@@ -52,8 +52,8 @@ Context context;
     }
 
     private void setView(View view) {
-        adapter= new AdapterSchedule();
-        recycleView=view.findViewById(R.id.recyclerviewshedule);
+        adapter= new AdapterDateSchedule();
+        recycleView=view.findViewById(R.id.rv_date_schedule);
 
     }
 

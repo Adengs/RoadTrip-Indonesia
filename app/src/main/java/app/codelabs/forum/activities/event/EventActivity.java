@@ -42,7 +42,7 @@ public class EventActivity extends AppCompatActivity {
 
 
         context = getApplicationContext();
-        isJoin = getIntent().getBooleanExtra("is_join",false);
+        isJoin = getIntent().getBooleanExtra("is_join",true);
         eventid = getIntent().getIntExtra("event_id",0);
 
         setView();

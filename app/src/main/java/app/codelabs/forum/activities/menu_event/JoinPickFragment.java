@@ -40,13 +40,13 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class JoinPickFragment extends BottomSheetDialogFragment {
-    Button btnJoin, btnCancel;
+    private Button btnJoin, btnCancel;
     private Session session;//definisi variabel session dengan tipe data session
     private String token;
     private String apptoken;
-    private TextView txtDojoin, txtjoin;
-    Context context;
-    Integer id;
+    private Boolean isJoin;
+    private Context context;
+    private Integer id;
 
 
     public JoinPickFragment() {
@@ -97,7 +97,7 @@ public class JoinPickFragment extends BottomSheetDialogFragment {
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(context, EventActivity.class);
-
+                            intent.putExtra("is_join",true);
                             startActivity(intent);
                         } else {
                             Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();

@@ -33,7 +33,7 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 2;
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {

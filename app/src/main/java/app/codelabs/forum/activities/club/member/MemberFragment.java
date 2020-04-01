@@ -40,13 +40,13 @@ import retrofit2.Response;
  */
 public class MemberFragment extends Fragment {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private MemberAdapter adapter;
-    Context context;
-    private Session session;//definisi variabel session dengan tipe data session
+    private Context context;
+    private Session session;
     private String token;
     private String apptoken;
-    private TextView txtfollow;
+    private TextView tvfollow;
     private EditText et_sreach_member;
     private ProgressBar progressBar;
     private boolean isLoading;
@@ -207,6 +207,6 @@ public class MemberFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rv_member);
         et_sreach_member = view.findViewById(R.id.etSreachMember);
         progressBar = view.findViewById(R.id.progres);
-        txtfollow = view.findViewById(R.id.txtfollow);
+        tvfollow = view.findViewById(R.id.txtfollow);
     }
 }

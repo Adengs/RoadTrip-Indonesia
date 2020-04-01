@@ -52,21 +52,6 @@ public class WalkTroughtFirstFragment extends Fragment {
         setView(view);
         setEvent();
 
-        Gson gson = new Gson();
-        Bundle bundle = this.getArguments();
-        data = bundle.getString("data");
-        datas = gson.fromJson(data, ResponWalkThrough.DataEntity.class);
-        loadData();
-
-    }
-
-    private void loadData() {
-        if(datas.getId()==1){
-            tvTitle.setText(datas.getTitle());
-            tvDes.setText(datas.getDescription());
-            Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(ivWalkTrought);
-        }
-
 
     }
 

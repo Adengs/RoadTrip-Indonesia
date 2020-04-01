@@ -21,7 +21,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> {
     private Context context;
     private List<ResponsListMemberCompany.Data>items;
-    private Boolean is_following = false;
     private OnItemSelected listener;
 
     public MemberAdapter(){
@@ -38,7 +37,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull  MyHolder holder, int position) {
-         ResponsListMemberCompany.Data data = items.get(position);
+        ResponsListMemberCompany.Data data = items.get(position);
         holder.txtNama.setText(data.getName());
         holder.txtfollowers.setText(String.valueOf(data.getFollowers()));
         Picasso.with(context).load(data.getPhoto()).centerCrop().fit().into(holder.imgMember);
