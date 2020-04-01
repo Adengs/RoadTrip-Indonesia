@@ -42,7 +42,8 @@ public class DescriptionFragment extends Fragment {
 
         setView(view);
 
-        isjoind = this.getArguments().getBoolean("is_join", true);
+        Bundle bundle = this.getArguments();
+        isjoind = bundle.getBoolean("is_join",false);
 
         if(isjoind==true){
            line_join.setVisibility(View.VISIBLE);

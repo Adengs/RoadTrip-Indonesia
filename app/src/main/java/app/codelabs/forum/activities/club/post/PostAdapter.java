@@ -1,6 +1,7 @@
 package app.codelabs.forum.activities.club.post;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,9 +37,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         final ResponsListArticelbyCategory.Data datas = data.get(position);
-        holder.txttitle.setText(datas.getTitle());
-        holder.txtContent.setText(datas.getContent());
-        holder.txtupdate.setText(datas.getUpdated_at());
+        holder.txttitle.setText(Html.fromHtml(datas.getTitle()));
+        holder.txtContent.setText(Html.fromHtml(datas.getContent()));
+        holder.txtupdate.setText(Html.fromHtml(datas.getUpdated_at()));
         Picasso.with(context).load(datas.getImage()).into(holder.imgCars);
 
     }

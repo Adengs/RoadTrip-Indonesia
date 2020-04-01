@@ -35,8 +35,6 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
     private  List<ResponsListEventCommunity.DataEntity> data;
     public  OnItemSelection listener;
 
-
-
     public EventClubAdapter(){
         data = new ArrayList<>();
     }
@@ -53,10 +51,10 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         final ResponsListEventCommunity.DataEntity datas =data.get(position);
-        holder.txttitle.setText(datas.getTitle());
-        holder.txttglmulai.setText(datas.getEvent_start());
-        holder.txttglberakhir.setText(datas.getEvent_end());
-        Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.imgevent);
+        holder.tvtitle.setText(datas.getTitle());
+        holder.tvStartEvent.setText(datas.getEvent_start());
+        holder.tvEndEvent.setText(datas.getEvent_end());
+        Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.ivEvent);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,8 +84,8 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
 
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        private TextView txtJoin,txttitle, txttglmulai, txttglberakhir;
-        private ImageView imgevent;
+        private TextView tvJoin,tvtitle, tvStartEvent, tvEndEvent;
+        private ImageView ivEvent;
 
 
         public MyHolder(@NonNull View view) {
@@ -97,7 +95,7 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
         }
 
         private void setEvent() {
-            txtJoin.setOnClickListener(new View.OnClickListener() {
+            tvJoin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ResponsListEventCommunity.DataEntity datas = data.get(getAdapterPosition());
@@ -107,11 +105,11 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
         }
 
         private void setView(View view) {
-            txtJoin = view.findViewById(R.id.txtjoin);
-            txttitle = view.findViewById(R.id.txt_desc_event);
-            txttglmulai = view.findViewById(R.id.txt_tgl_event_mulai);
-            txttglberakhir = view.findViewById(R.id.txt_tgl_event_akhir);
-            imgevent = view.findViewById(R.id.img_event);
+            tvJoin = view.findViewById(R.id.tvjoin);
+            tvtitle = view.findViewById(R.id.tvTitle);
+            tvStartEvent = view.findViewById(R.id.tvStartEvent);
+            tvEndEvent = view.findViewById(R.id.tvEndEvent);
+            ivEvent = view.findViewById(R.id.img_event);
         }
 
     }

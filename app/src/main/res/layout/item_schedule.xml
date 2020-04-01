@@ -5,16 +5,6 @@
     android:layout_marginTop="2dp"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:text="20 Feb 2020"
-        android:textSize="14dp"
-        android:textColor="@color/abu"
-        android:layout_marginLeft="138dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="138dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -32,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/tv_tittle_schedule"
             android:text="Meeting point at"
             android:textSize="14dp"
             android:textColor="@color/black"
@@ -44,7 +35,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="91dp"
             android:orientation="vertical">
 
             <TextView
@@ -68,78 +58,12 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_desc_schedule"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="110dp"
         android:layout_marginBottom="24.5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="In publishing and graphic design, Lorem ipsum is a" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginLeft="20.5dp"
-        android:layout_marginRight="19.5dp"
-        android:background="@color/colorCircle" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="2"
-            android:paddingLeft="9dp"
-            android:paddingRight="9dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="25dp"
-            android:textColor="@color/putih"
-            android:background="@drawable/ic_lingkaran"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:text="Drive to Jimbaran"
-            android:textSize="14dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="91dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/shape_schedulemaps"
-                android:paddingLeft="19dp"
-                android:paddingTop="6dp"
-                android:paddingRight="19dp"
-                android:paddingBottom="6dp"
-                android:text="Maps"
-                android:textColor="@color/putih"
-                android:textSize="12dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_marginLeft="64dp"
-        android:layout_marginRight="110dp"
-        android:layout_marginBottom="24.5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="In publishing and graphic design, Lorem ipsum is a" />
-
 
 </LinearLayout>

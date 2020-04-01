@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.models.ResponsHighlight;
+import app.codelabs.forum.models.ResponsListMemberCompany;
 import app.codelabs.forum.models.SliderItem;
 
 
@@ -28,16 +30,19 @@ public class HomeCardSliderAdapter extends
         SliderViewAdapter<HomeCardSliderAdapter.SliderAdapterVH> {
 
     private Context context;
-    private List<SliderItem> items = new ArrayList<>();
+    private List<ResponsHighlight.DataEntity> data = new ArrayList<>();
+
+
+    //private List<SliderItem> items = new ArrayList<>();
 
     public HomeCardSliderAdapter(Context context) {
         this.context = context;
     }
 
-    public void addItem(SliderItem sliderItem) {
-        this.items.add(sliderItem);
-        notifyDataSetChanged();
-    }
+    //public void addItem(SliderItem sliderItem) {
+       // this.items.add(sliderItem);
+        //notifyDataSetChanged();
+    //}
 
     @Override
     public SliderAdapterVH onCreateViewHolder(ViewGroup parent) {
@@ -48,12 +53,14 @@ public class HomeCardSliderAdapter extends
     @Override
     public void onBindViewHolder(final SliderAdapterVH viewHolder, final int position) {
 
-//        SliderItem sliderItem = items.get(position);
 
-        viewHolder.textViewDescription.setText("Ford Everest Club Indonesia");
+//        SliderItem sliderItem = items.get(position);
+        ResponsHighlight.DataEntity datas = data.get(position);
+
+        viewHolder.textViewDescription.setText(datas.getTitle());
         viewHolder.textViewDescription.setTextSize(16);
         Picasso.with(context)
-                .load(R.drawable.card)
+                .load(datas.getImage())
                 .centerCrop()
                 .fit()
                 .into(viewHolder.imageViewBackground);
@@ -63,8 +70,13 @@ public class HomeCardSliderAdapter extends
     @Override
     public int getCount() {
         //slider view count could be dynamic size
-        return 5;
+        return data.size();
     }
+    public void setItems(List<ResponsHighlight.DataEntity> datas) {
+        this.data = datas;
+        notifyDataSetChanged();
+    }
+
 
     static class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
 
