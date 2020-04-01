@@ -3,19 +3,23 @@ package app.codelabs.forum.activities.profile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.HomeActivity;
+import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.models.ResponsLogin;
 
 public class EditProfileActivity extends AppCompatActivity {
-    ImageView backEdit;
-    Button saveEdit;
-    Context context;
+    private ImageView ivBack, ivPhoto;
+    private EditText etName, etEmail, etDob, etCity;
+    private Button btnSaveEdit;
+    private Context context;
 
 
     @Override
@@ -25,19 +29,27 @@ public class EditProfileActivity extends AppCompatActivity {
         context = getApplicationContext();
         setView();
         setEvent();
+        setData();
+    }
+
+    private void setData() {
+        ResponsLogin.Data user = Session.init(context).getUser();
+        etName.setText(user.getName());
+        etEmail.setText(user.getEmail());
+        etDob.setText(user.getDate_birth());
+        etCity.setText(user.getCity());
+        Picasso.with(context).load(user.getPhoto()).fit().centerCrop().into(ivPhoto);
     }
 
     private void setEvent() {
-        backEdit.setOnClickListener(new View.OnClickListener() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
-        saveEdit.setOnClickListener(new View.OnClickListener() {
+        btnSaveEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -46,8 +58,13 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void setView() {
-        backEdit =findViewById(R.id.imgBack_Edit);
-        saveEdit=findViewById(R.id.btnSave_EditProfile);
+        ivBack = findViewById(R.id.iv_back);
+        btnSaveEdit = findViewById(R.id.btn_save);
+        ivPhoto = findViewById(R.id.iv_photo);
+        etName = findViewById(R.id.et_name);
+        etEmail = findViewById(R.id.et_email);
+        etDob = findViewById(R.id.et_dob);
+        etCity = findViewById(R.id.et_city);
     }
 
 }

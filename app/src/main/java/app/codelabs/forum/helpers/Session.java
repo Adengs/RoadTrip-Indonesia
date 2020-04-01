@@ -53,9 +53,9 @@ public class Session {
 
     public void setLogin(ResponsLogin.Data user, String token) {
         editor.putBoolean(KEY_IS_LOGIN, true);
-        editor.putString(KEY_USER, new Gson().toJson(user));
         editor.putString(KEY_TOKEN, token);
         editor.commit();
+        setUser(user);
     }
 
     public ResponsLogin.Data getUser() {
@@ -79,5 +79,10 @@ public class Session {
                 new TypeToken<List<ResponWalkThrough.DataEntity>>() {
                 }.getType());
         return items;
+    }
+
+    public void setUser(ResponsLogin.Data user) {
+        editor.putString(KEY_USER, new Gson().toJson(user));
+        editor.commit();
     }
 }

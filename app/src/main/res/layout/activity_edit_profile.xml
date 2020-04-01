@@ -17,7 +17,7 @@
         app:theme="@style/Register">
 
         <ImageView
-            android:id="@+id/imgBack_Edit"
+            android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
@@ -53,18 +53,19 @@
                     android:layout_marginLeft="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
-                        android:id="@+id/imgFoto_EditProfile"
-                        android:layout_gravity="left"
-                        android:src="@drawable/david"
+                        android:id="@+id/iv_photo"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:src="@drawable/david" />
+
                     <ImageView
-                        android:id="@+id/imgCamera_EditProfile"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_iconfinder_camera_editprofile"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_iconfinder_camera_editprofile" />
                 </FrameLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +76,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/etname_EditProfile"
+                        android:id="@+id/et_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
@@ -93,7 +94,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/etemail_EditProfile"
+                        android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
@@ -110,7 +111,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/etdate_EditProfile"
+                        android:id="@+id/et_dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
@@ -128,7 +129,7 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-                        android:id="@+id/etCity_EditProfile"
+                        android:id="@+id/et_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
@@ -147,7 +148,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/btnSave_EditProfile"
+                        android:id="@+id/btn_save"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_rounded_register"
