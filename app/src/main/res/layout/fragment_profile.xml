@@ -32,8 +32,8 @@
 
                     <ImageView
                         android:id="@+id/iv_photo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="19dp"
                         android:src="@drawable/david" />
@@ -58,7 +58,7 @@
                             android:id="@+id/tv_edit_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
                             android:background="@drawable/shape_editprofile"
                             android:paddingLeft="8dp"
                             android:paddingTop="6dp"
