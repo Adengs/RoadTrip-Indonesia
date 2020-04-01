@@ -38,7 +38,7 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapterViewHolder holder, int position) {
-        ResponsArticleLatest.DataEntity item = items.get(position);
+       // ResponsArticleLatest.DataEntity item = items.get(position);
 
         
         holder.itemView.setOnClickListener(new View.OnClickListener() {
