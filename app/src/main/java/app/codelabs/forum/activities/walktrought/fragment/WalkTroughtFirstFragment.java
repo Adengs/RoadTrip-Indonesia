@@ -14,22 +14,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.walktrought.WalkThroughActivity;
+import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponWalkThrough;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class WalkTroughtFirstFragment extends Fragment {
-    private TextView tvnext,tvTitle,tvDes,tvid;
-    private ImageView ivWalkTrought;
-    public String data;
-    public ResponWalkThrough.DataEntity datas;
-    Context context;
+    private TextView tvNext, tvTitle, tvDesc;
+    private ImageView ivBackground;
+    private Context context;
 
     public WalkTroughtFirstFragment() {
         // Required empty public constructor
@@ -46,27 +44,31 @@ public class WalkTroughtFirstFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         context = getContext();
-
         setView(view);
         setEvent();
+        setData();
+    }
 
-
+    private void setData() {
+        ResponWalkThrough.DataEntity item = Session.init(context).getWalkTrough().get(0);
+        tvTitle.setText(item.getTitle());
+        tvDesc.setText(item.getDescription());
+        Picasso.with(context).load(item.getImage()).fit().centerCrop().into(ivBackground);
     }
 
     private void setView(View view) {
-        tvnext = view.findViewById(R.id.tvnext);
-        tvTitle = view.findViewById(R.id.tvtitlefirst);
-        tvDes = view.findViewById(R.id.tvdescfirst);
-        ivWalkTrought = view.findViewById(R.id.img_fist);
+        tvNext = view.findViewById(R.id.tv_next);
+        tvTitle = view.findViewById(R.id.tv_title);
+        tvDesc = view.findViewById(R.id.tv_desc);
+        ivBackground = view.findViewById(R.id.iv_background);
     }
 
     private void setEvent() {
-        tvnext.setOnClickListener(new View.OnClickListener() {
+        tvNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((WalkThroughActivity)getActivity()).viewPager.setCurrentItem(1);
+                ((WalkThroughActivity) getActivity()).viewPager.setCurrentItem(1);
             }
         });
     }

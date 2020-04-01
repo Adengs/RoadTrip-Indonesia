@@ -13,9 +13,10 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/iv_background"
             android:layout_width="match_parent"
+            android:layout_height="400dp"
             android:layout_gravity="center"
-            android:layout_height="wrap_content"
             android:src="@drawable/img_onboard_2" />
 
         <LinearLayout
@@ -48,7 +49,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/titlefirst"
+            android:id="@+id/tv_title"
             android:layout_marginTop="51dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,7 +59,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/descfirst"
+            android:id="@+id/tv_desc"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:layout_width="239dp"
@@ -73,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/btnnext_second"
+                android:id="@+id/tv_next"
                 android:text="Next"
                 android:textSize="16dp"
                 android:textColor="@color/colorNext"
