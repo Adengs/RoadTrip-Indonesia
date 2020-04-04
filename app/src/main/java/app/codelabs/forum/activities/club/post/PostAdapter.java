@@ -20,7 +20,7 @@ import app.codelabs.forum.models.ResponsListArticelbyCategory;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
     private Context context;
-    private List<ResponsListArticelbyCategory.Data> data;
+    private List<ResponsListArticelbyCategory.DataEntity> data;
 
     public PostAdapter() {
         data = new ArrayList<>();
@@ -36,11 +36,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        final ResponsListArticelbyCategory.Data datas = data.get(position);
-        holder.txttitle.setText(Html.fromHtml(datas.getTitle()));
-        holder.txtContent.setText(Html.fromHtml(datas.getContent()));
-        holder.txtupdate.setText(Html.fromHtml(datas.getUpdated_at()));
-        Picasso.with(context).load(datas.getImage()).into(holder.imgCars);
+        final ResponsListArticelbyCategory.DataEntity datas = data.get(position);
+        holder.tvtitle.setText(Html.fromHtml(datas.getTitle()));
+        holder.tvContent.setText(Html.fromHtml(datas.getContent()));
+        holder.tvupdate.setText(datas.getUpdated_at());
+        Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.ivCarsArticel);
 
     }
 
@@ -49,20 +49,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
         return data.size();
     }
 
-    public void setItems(List<ResponsListArticelbyCategory.Data> datas) {
+    public void setItems(List<ResponsListArticelbyCategory.DataEntity> datas) {
         this.data = datas;
         notifyDataSetChanged();
     }
 
-    public void addItems(List<ResponsListArticelbyCategory.Data> datas) {
+    public void addItems(List<ResponsListArticelbyCategory.DataEntity> datas) {
         this.data.addAll(datas);
         notifyDataSetChanged();
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
 
-        TextView txttitle, txtContent, txtupdate;
-        ImageView imgCars;
+        TextView tvtitle, tvContent, tvupdate;
+        ImageView ivCarsArticel;
         public MyHolder(@NonNull View view) {
             super(view);
 
@@ -70,10 +70,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
         }
 
         private void setView(View view) {
-            txttitle = view.findViewById(R.id.txttitlepost);
-            txtContent = view.findViewById(R.id.txtContenpost);
-            imgCars = view.findViewById(R.id.imgpost);
-            txtupdate = view.findViewById(R.id.txtupdatepost);
+            tvtitle = view.findViewById(R.id.tvtitleArticel);
+            tvContent = view.findViewById(R.id.tvContentArticel);
+            ivCarsArticel = view.findViewById(R.id.ivArticel);
+            tvupdate = view.findViewById(R.id.tvUpdateArticel);
         }
     }
 }

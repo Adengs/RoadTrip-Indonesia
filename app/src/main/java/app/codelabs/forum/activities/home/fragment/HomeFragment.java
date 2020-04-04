@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
                     cardSliderAdapter.setItems(response.body().getData());
                 }
                 else {
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
                 }
             }
 

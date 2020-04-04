@@ -2,6 +2,7 @@ package app.codelabs.forum.activities.article_home.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,35 +24,41 @@ import app.codelabs.forum.models.ResponsListArticelbyCategory;
 
 public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.ArticleViewHolder> {
     private Context context;
-    private List<ResponsListArticelbyCategory.Data> data;
+    private Integer category_id;
+    private List<ResponsListArticelbyCategory.DataEntity> data;
 
     public ArticleTipsAdapter() {
-        data = new ArrayList<>();
+        this.data = new ArrayList<>();
     }
+
 
     @NonNull
     @Override
     public ArticleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.item_home, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_post_club, parent, false);
         return new ArticleViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
-        final ResponsListArticelbyCategory.Data datas = data.get(position);
-        holder.txttitle.setText(datas.getTitle());
-        holder.txtContent.setText(datas.getContent());
-        holder.txtupdate.setText(datas.getUpdated_at());
-        Picasso.with(context).load(datas.getImage()).into(holder.imgCars);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ArticleHomeCardView.class);
-                intent.putExtra(String.valueOf(datas.getId()),"id");
-                v.getContext().startActivity(intent);
-            }
-        });
+         final ResponsListArticelbyCategory.DataEntity datas = data.get(position);
+         if(datas.getCategory_id() == 1){
+             holder.tvtitle.setText(Html.fromHtml(datas.getTitle()));
+             holder.tvContent.setText(Html.fromHtml(datas.getContent()));
+             holder.tvupdate.setText(datas.getUpdated_at());
+             Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.ivCars);
+             holder.itemView.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     Intent intent = new Intent(v.getContext(), ArticleHomeCardView.class);
+                     intent.putExtra(String.valueOf(datas.getId()),"id");
+                     v.getContext().startActivity(intent);
+                 }
+             });
+
+         }
+
     }
 
     @Override
@@ -59,20 +66,20 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
         return data.size();
     }
 
-    public void setItems(List<ResponsListArticelbyCategory.Data> datas) {
+    public void setItems(List<ResponsListArticelbyCategory.DataEntity> datas) {
         this.data = datas;
         notifyDataSetChanged();
     }
-
-    public void addItems(List<ResponsListArticelbyCategory.Data> datas) {
+    public void addItems(List<ResponsListArticelbyCategory.DataEntity> datas) {
         this.data.addAll(datas);
         notifyDataSetChanged();
     }
 
+
     public class ArticleViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
-        TextView txttitle, txtContent, txtupdate;
-        ImageView imgCars;
+        TextView tvtitle, tvContent, tvupdate;
+        ImageView ivCars;
         public ArticleViewHolder(@NonNull View view) {
             super(view);
 
@@ -80,11 +87,11 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
         }
 
         private void setView(View view) {
-            cardView = view.findViewById(R.id.cardviewtabhome);
-            txttitle = view.findViewById(R.id.txtnamamobil1_latest);
-            txtContent = view.findViewById(R.id.txt_desc_mobil_latest);
-            imgCars = view.findViewById(R.id.img_mobill_latest);
-            txtupdate = view.findViewById(R.id.waktu_latest);
+            //cardView = view.findViewById(R.id.cv_articel);
+            tvtitle = view.findViewById(R.id.tvtitleArticel);
+            tvContent = view.findViewById(R.id.tvContentArticel);
+            ivCars = view.findViewById(R.id.ivArticel);
+            tvupdate = view.findViewById(R.id.tvUpdateArticel);
 
         }
     }

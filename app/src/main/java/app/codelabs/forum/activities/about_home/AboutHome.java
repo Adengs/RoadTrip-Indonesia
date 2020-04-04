@@ -3,50 +3,89 @@ package app.codelabs.forum.activities.about_home;
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.models.ResponMyProfile;
+import app.codelabs.forum.models.ResponsAbout;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class AboutHome extends AppCompatActivity {
-CircleImageView logoAbout;
-TextView titleBackAbout,jdlAbout,txthistory,descAbout,jdlsekreAbout,descsekreAbout,txtmapsAbout,txtjdlorga;
-ImageView imgAbout,img_linesabout,img_lineabout,linesabout3;
+    private CircleImageView ivLogo;
+    private TextView tvBackAbout,tvCompany_name,tvhistory,tvSecretariat;
+    private Session session;
+    private String token;
+    private String apptoken;
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_home);
 
+        context = getApplicationContext();
+        session = Session.init(context);
+        apptoken = session.getAppToken();
+        token = session.getToken();
+
         setView();
         setEvent();
+        loadData();
+    }
+
+    private void loadData() {
+
+        ConnectionApi.apiService().aboutCompany(token, apptoken).enqueue(new Callback<ResponsAbout>() {
+            @Override
+            public void onResponse(Call<ResponsAbout> call, Response<ResponsAbout> response) {
+                if (response.isSuccessful() && response.body().getSuccess()){
+                        setAbout(response.body().getData());
+                }else {
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsAbout> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setAbout(ResponsAbout.DataEntity data) {
+        Picasso.with(context).load(data.getLogo()).fit().centerCrop().into(ivLogo);
+        tvCompany_name.setText(data.getCompany_name());
+        tvhistory.setText(data.getHistory());
+        tvSecretariat.setText(data.getSecretariat());
+
     }
 
     private void setEvent() {
-        titleBackAbout.setOnClickListener(new View.OnClickListener() {
+        tvBackAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AboutHome.this, HomeActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
     }
 
     private void setView() {
-        logoAbout = findViewById(R.id.logoAbout);
-        titleBackAbout = findViewById(R.id.titleBackAbout);
-        jdlAbout = findViewById(R.id.jdlAbout);
-        txthistory = findViewById(R.id.txthistoryabout);
-        descAbout = findViewById(R.id.descAbout);
-        jdlsekreAbout = findViewById(R.id.jdlsekreAbout);
-        descsekreAbout = findViewById(R.id.descsekreAbout);
-        txtmapsAbout = findViewById(R.id.txtmapsAbout);
-        txtjdlorga = findViewById(R.id.txtjdlorga);
-        imgAbout = findViewById(R.id.imgAbout);
-        img_linesabout = findViewById(R.id.img_linesabout);
-        img_lineabout = findViewById(R.id.img_lineabout);
-        linesabout3 = findViewById(R.id.linesabout3);
+        ivLogo = findViewById(R.id.logo);
+        tvCompany_name = findViewById(R.id.tvcompany_name);
+        tvhistory = findViewById(R.id.tvHistory);
+        tvSecretariat = findViewById(R.id.tvSecretariat);
+        tvBackAbout = findViewById(R.id.tvBackAbout);
     }
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -28,14 +29,15 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class ArticleTipsFragment extends Fragment {
-    RecyclerView recyclerView;
-    ArticleTipsAdapter adapter;
-    Context context;
-    private Session session;//definisi variabel session dengan tipe data session
+    private RecyclerView recyclerView;
+    private ArticleTipsAdapter adapter;
+    private Context context;
+    private Session session;
     private String token;
-    private String apptoken;
-    private List<String> tag ;
-    ResponsListArticelbyCategory.Data data = new ResponsListArticelbyCategory.Data();
+    private String appToken;
+    private Integer category_id ;
+    private ResponsListArticelbyCategory.DataEntity data = new ResponsListArticelbyCategory.DataEntity();
+    //private List<ResponsListArticelbyCategory.DataEntity> data = new ArrayList<>();
 
 
 
@@ -58,25 +60,22 @@ public class ArticleTipsFragment extends Fragment {
         adapter = new ArticleTipsAdapter();
         context = getContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
+        appToken = session.getAppToken();
         token = session.getToken();
-        tag =data.getTags();
 
 
         setView(view);
-        setEvent();
         setRecyclerView();
         loadData();
     }
 
     private void loadData() {
-        ConnectionApi.apiService().listarticelbycategory(tag,token,apptoken).enqueue(new Callback<ResponsListArticelbyCategory>() {
+        ConnectionApi.apiService().listarticel(category_id,token,appToken).enqueue(new Callback<ResponsListArticelbyCategory>() {
             @Override
             public void onResponse(Call<ResponsListArticelbyCategory> call, Response<ResponsListArticelbyCategory> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-
-                    adapter.setItems(response.body().getData());
-                    adapter.addItems(response.body().getData());
+                    
+                        adapter.setItems(response.body().getData());
                 }
                 else {
 
@@ -93,10 +92,6 @@ public class ArticleTipsFragment extends Fragment {
 
     private void setView(View view) {
         recyclerView = view.findViewById(R.id.viewarticletablayout);
-    }
-
-    private void setEvent() {
-
     }
 
     private void setRecyclerView() {

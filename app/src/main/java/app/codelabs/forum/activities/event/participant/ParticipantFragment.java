@@ -81,7 +81,6 @@ public class ParticipantFragment extends Fragment {
                 if (response.isSuccessful() && response.body().getSuccess()){
 
                     adapter.setItems(response.body().getData());
-                    adapter.addItems(response.body().getData());
                 }
                 else {
 

@@ -34,8 +34,8 @@ public class PostFragment extends Fragment {
     private Session session;//definisi variabel session dengan tipe data session
     private String token;
     private String apptoken;
-    private List<String> tag ;
-    ResponsListArticelbyCategory.Data data = new ResponsListArticelbyCategory.Data();
+    private Integer id ;
+    ResponsListArticelbyCategory.DataEntity data = new ResponsListArticelbyCategory.DataEntity();
 
     public PostFragment() {
         // Required empty public constructor
@@ -59,7 +59,7 @@ public class PostFragment extends Fragment {
         session = Session.init(context);
         apptoken = session.getAppToken();
         token = session.getToken();
-        tag =data.getTags();
+        id = data.getCategory_id();
 
         setView(view);
         setRecycleView();
@@ -67,13 +67,12 @@ public class PostFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService().listarticelPost(tag,token,apptoken).enqueue(new Callback<ResponsListArticelbyCategory>() {
+        ConnectionApi.apiService().listarticel(id,token,apptoken).enqueue(new Callback<ResponsListArticelbyCategory>() {
             @Override
             public void onResponse(Call<ResponsListArticelbyCategory> call, Response<ResponsListArticelbyCategory> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
 
                     adapter.setItems(response.body().getData());
-                    adapter.addItems(response.body().getData());
                 }
                 else {
 

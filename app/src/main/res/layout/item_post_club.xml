@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_marginTop="2dp"
+    android:layout_marginTop="1dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -10,8 +10,7 @@
         android:padding="20dp"
         android:background="@color/putih"
         android:layout_width="match_parent"
-        android:layout_marginBottom="5dp"
-        android:layout_height="170dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -25,7 +24,7 @@
                 android:layout_height="24dp" />
 
             <TextView
-                android:id="@+id/txttitlepost"
+                android:id="@+id/tvtitleArticel"
                 android:layout_gravity="center"
                 android:textSize="12dp"
                 android:layout_marginRight="5dp"
@@ -43,7 +42,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/txtupdatepost"
+                android:id="@+id/tvUpdateArticel"
                 android:textSize="12dp"
                 android:layout_gravity="center"
                 android:text="2 day"
@@ -66,13 +65,14 @@
                     android:text="Bayerische Motoren Werke AG,translated in English as Bavarian Motor Works."
                     android:lines="3"
                     android:gravity="left"
-                    android:id="@+id/txtContenpost"
+                    android:id="@+id/tvContentArticel"
                     android:textSize="14dp"
                     android:textColor="@color/hitam"
                     android:layout_width="180dp"
                     android:layout_height="50dp" />
 
                 <TextView
+                    android:id="@+id/tvCars"
                     android:text="Cars"
                     android:textSize="12dp"
                     android:paddingRight="7dp"
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imgpost"
+                    android:id="@+id/ivArticel"
                     android:layout_width="116dp"
                     android:layout_height="88dp"
                     android:background="@drawable/shape_img_post" />

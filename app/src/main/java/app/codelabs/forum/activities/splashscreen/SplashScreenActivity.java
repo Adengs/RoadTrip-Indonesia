@@ -45,9 +45,9 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    if (session.isLogin()) {
-                        Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-                        startActivity(intent);
+                   if (session.isLogin()) {
+                      Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                       startActivity(intent);
                         finish();
                     } else {
                         Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);

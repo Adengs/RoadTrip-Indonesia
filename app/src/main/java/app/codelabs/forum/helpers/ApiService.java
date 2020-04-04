@@ -6,6 +6,7 @@ import java.util.Map;
 import app.codelabs.forum.models.ResponArticlePopular;
 import app.codelabs.forum.models.ResponMyProfile;
 import app.codelabs.forum.models.ResponWalkThrough;
+import app.codelabs.forum.models.ResponsAbout;
 import app.codelabs.forum.models.ResponsArticleLatest;
 import app.codelabs.forum.models.ResponsDetailList;
 import app.codelabs.forum.models.ResponsFollow;
@@ -92,12 +93,15 @@ public interface ApiService {
     Call<ResponsMyEvent> Myevent(@Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/article/list")
-    Call<ResponsListArticelbyCategory> listarticelPost(@Query("tag") List<String> tag, @Header("Authorization") String token, @Header("app-token") String AppToken);
+    Call<ResponsListArticelbyCategory> listarticel(@Query("category_id") Integer article_id, @Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/event/participant")
     Call<ResponsParticipantEvent> partisipanevent(@Query("event_id") Integer id, @Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/highlight")
     Call<ResponsHighlight> Highlight( @Header("Authorization") String token, @Header("app-token") String AppToken);
+
+    @GET("api/about")
+    Call<ResponsAbout> aboutCompany(@Header("Authorization") String token, @Header("app-token") String AppToken);
 }
 

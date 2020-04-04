@@ -32,7 +32,7 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapte
     @Override
     public HomeAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.item_home, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_post_club, parent, false);
         return new HomeAdapterViewHolder(view);
     }
 
@@ -67,11 +67,11 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.HomeAdapte
         private void setView(View view) {
             cardView = view.findViewById(R.id.cardviewtabhome);
             imglogolatest=view.findViewById(R.id.img_logo1_latest);
-            imgmobillatest=view.findViewById(R.id.img_mobill_latest);
-            namamobil=view.findViewById(R.id.txtnamamobil1_latest);
-            waktulatest=view.findViewById(R.id.waktu_latest);
-            descmobil= view.findViewById(R.id.txt_desc_mobil_latest);
-            carlatest= view.findViewById(R.id.cars_latest);
+            imgmobillatest=view.findViewById(R.id.ivCararticel);
+            namamobil=view.findViewById(R.id.tvtitleArticel);
+            waktulatest=view.findViewById(R.id.tvUpdateActicel);
+            descmobil= view.findViewById(R.id.tvContentArticel);
+            carlatest= view.findViewById(R.id.tvcars);
         }
     }
 }
