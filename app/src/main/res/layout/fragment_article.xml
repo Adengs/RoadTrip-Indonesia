@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/displayScreen"
     android:layout_height="match_parent"
-    tools:context=".activities.home.fragment.latest.LatestFragment">
+    tools:context=".activities.home.fragment.ArticleFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView

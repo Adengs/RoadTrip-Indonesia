@@ -24,7 +24,7 @@
                 android:layout_height="24dp" />
 
             <TextView
-                android:id="@+id/tvtitleArticel"
+                android:id="@+id/tvTitle"
                 android:layout_gravity="center"
                 android:textSize="12dp"
                 android:layout_marginRight="5dp"
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/tvUpdateArticel"
+                android:id="@+id/tvTime"
                 android:textSize="12dp"
                 android:layout_gravity="center"
                 android:text="2 day"
@@ -65,14 +65,14 @@
                     android:text="Bayerische Motoren Werke AG,translated in English as Bavarian Motor Works."
                     android:lines="3"
                     android:gravity="left"
-                    android:id="@+id/tvContentArticel"
+                    android:id="@+id/tvContent"
                     android:textSize="14dp"
                     android:textColor="@color/hitam"
                     android:layout_width="180dp"
                     android:layout_height="50dp" />
 
                 <TextView
-                    android:id="@+id/tvCars"
+                    android:id="@+id/tvCategory"
                     android:text="Cars"
                     android:textSize="12dp"
                     android:paddingRight="7dp"
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/ivArticel"
+                    android:id="@+id/ivArticle"
                     android:layout_width="116dp"
                     android:layout_height="88dp"
                     android:background="@drawable/shape_img_post" />

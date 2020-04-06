@@ -20,12 +20,9 @@ import app.codelabs.forum.activities.home.fragment.HomeFragment;
 import app.codelabs.forum.activities.profile.fragment.ProfileFragment;
 
 public class HomeActivity extends AppCompatActivity {
-
-    Context context;
-    ViewPager  viewPager;
-
     ImageView imgHomes, imgClubs, imgChats, imgEvents, imgProfile;
 
+    HomeFragment homeFragment = new HomeFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +32,12 @@ public class HomeActivity extends AppCompatActivity {
         setView();
         setEvent();
         imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active_klik));
-        setFragment(new HomeFragment());
+        setFragment(homeFragment);
 
     }
 
 
     private void setView() {
-        //BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        //bottomNav.setOnNavigationItemSelectedListener(navListener);
         imgHomes = findViewById(R.id.img_homes);
         imgClubs = findViewById(R.id.img_clubs);
         imgChats = findViewById(R.id.img_chats);
@@ -55,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         imgHomes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new HomeFragment());
+                setFragment(homeFragment);
                 imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active_klik));
                 imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event));
                 imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community));

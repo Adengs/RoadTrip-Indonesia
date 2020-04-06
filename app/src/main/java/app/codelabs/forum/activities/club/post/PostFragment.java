@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -31,9 +29,6 @@ public class PostFragment extends Fragment {
     RecyclerView recyclerView;
     private PostAdapter adapter;
     Context context;
-    private Session session;//definisi variabel session dengan tipe data session
-    private String token;
-    private String apptoken;
     private Integer id ;
     ResponsListArticelbyCategory.DataEntity data = new ResponsListArticelbyCategory.DataEntity();
 
@@ -56,9 +51,6 @@ public class PostFragment extends Fragment {
 
 
         context = getContext();
-        session = Session.init(context);
-        apptoken = session.getAppToken();
-        token = session.getToken();
         id = data.getCategory_id();
 
         setView(view);
@@ -67,7 +59,7 @@ public class PostFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService().listarticel(id,token,apptoken).enqueue(new Callback<ResponsListArticelbyCategory>() {
+        ConnectionApi.apiService(context).listArticle(id).enqueue(new Callback<ResponsListArticelbyCategory>() {
             @Override
             public void onResponse(Call<ResponsListArticelbyCategory> call, Response<ResponsListArticelbyCategory> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){

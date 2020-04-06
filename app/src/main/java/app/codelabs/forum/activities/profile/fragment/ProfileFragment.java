@@ -35,8 +35,6 @@ public class ProfileFragment extends Fragment {
     private ImageView ivSettingApp, ivPhoto;
     private TextView tvEditProfile, tvCountFollowing, tvCountFollower, tvHeaderName, tvName, tvEmail, tvDob, tvCity, tvCountPost;
     private Session session;
-    private String token;
-    private String apptoken;
     private Context context;
 
     public ProfileFragment() {
@@ -57,8 +55,6 @@ public class ProfileFragment extends Fragment {
 
         context = getContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
-        token = session.getToken();
         setView(view);
         setEvent();
         loadData();
@@ -66,7 +62,7 @@ public class ProfileFragment extends Fragment {
 
     private void loadData() {
 
-        ConnectionApi.apiService().myProfile(token, apptoken).enqueue(new Callback<ResponMyProfile>() {
+        ConnectionApi.apiService(context).getProfile().enqueue(new Callback<ResponMyProfile>() {
             @Override
             public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {

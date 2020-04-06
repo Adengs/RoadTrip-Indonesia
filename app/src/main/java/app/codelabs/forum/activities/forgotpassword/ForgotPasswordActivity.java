@@ -28,7 +28,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private Button btnSend;
     private EditText etEmail;
     private Session session;
-    private String appToken;
     private Context context;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
 
@@ -40,7 +39,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         session = Session.init(context);
-        appToken = session.getAppToken();
 
         setView();
         setEvent();
@@ -60,8 +58,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Map<String, String> data = new HashMap<>();
                 data.put("email", etEmail.getText().toString());
-                progresDialogFragment.show(getSupportFragmentManager(), "proggress");
-                ConnectionApi.apiService().requestResetPassword(data, appToken).enqueue(new Callback<ResponseForgotPassword>() {
+                progresDialogFragment.show(getSupportFragmentManager(), "progress");
+                ConnectionApi.apiService(context).requestResetPassword(data).enqueue(new Callback<ResponseForgotPassword>() {
                     @Override
                     public void onResponse(Call<ResponseForgotPassword> call, Response<ResponseForgotPassword> response) {
                         progresDialogFragment.dismiss();

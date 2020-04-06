@@ -30,7 +30,6 @@ public class FinishPasswordActivity extends AppCompatActivity {
     private Button btnFinish;
     private EditText etPassword, etConfirmPassword;
     private Session session;
-    private String appToken;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     private Context context;
     private String xResetToken;
@@ -41,7 +40,6 @@ public class FinishPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_finish_password);
         context = getApplicationContext();
         session = Session.init(context);
-        appToken = session.getAppToken();
 
         getData();
         setView();
@@ -74,7 +72,7 @@ public class FinishPasswordActivity extends AppCompatActivity {
                 data.put("password", etPassword.getText().toString());
                 data.put("password-confirm", etConfirmPassword.getText().toString());
                 progresDialogFragment.show(getSupportFragmentManager(), "progress");
-                ConnectionApi.apiService().resetPassword(data, appToken, xResetToken).enqueue(new Callback<ResponseFinishPassword>() {
+                ConnectionApi.apiService(context).resetPassword(data,  xResetToken).enqueue(new Callback<ResponseFinishPassword>() {
                     @Override
                     public void onResponse(Call<ResponseFinishPassword> call, Response<ResponseFinishPassword> response) {
                         progresDialogFragment.dismiss();

@@ -8,9 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -33,8 +30,6 @@ public class ArticleTipsFragment extends Fragment {
     private ArticleTipsAdapter adapter;
     private Context context;
     private Session session;
-    private String token;
-    private String appToken;
     private Integer category_id ;
     private ResponsListArticelbyCategory.DataEntity data = new ResponsListArticelbyCategory.DataEntity();
     //private List<ResponsListArticelbyCategory.DataEntity> data = new ArrayList<>();
@@ -60,8 +55,6 @@ public class ArticleTipsFragment extends Fragment {
         adapter = new ArticleTipsAdapter();
         context = getContext();
         session = Session.init(context);
-        appToken = session.getAppToken();
-        token = session.getToken();
 
 
         setView(view);
@@ -70,7 +63,7 @@ public class ArticleTipsFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService().listarticel(category_id,token,appToken).enqueue(new Callback<ResponsListArticelbyCategory>() {
+        ConnectionApi.apiService(context).listArticle(category_id).enqueue(new Callback<ResponsListArticelbyCategory>() {
             @Override
             public void onResponse(Call<ResponsListArticelbyCategory> call, Response<ResponsListArticelbyCategory> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){

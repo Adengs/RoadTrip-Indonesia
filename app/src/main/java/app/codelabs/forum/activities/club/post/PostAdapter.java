@@ -70,10 +70,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
         }
 
         private void setView(View view) {
-            tvtitle = view.findViewById(R.id.tvtitleArticel);
-            tvContent = view.findViewById(R.id.tvContentArticel);
-            ivCarsArticel = view.findViewById(R.id.ivArticel);
-            tvupdate = view.findViewById(R.id.tvUpdateArticel);
+            tvtitle = view.findViewById(R.id.tvTitle);
+            tvContent = view.findViewById(R.id.tvContent);
+            ivCarsArticel = view.findViewById(R.id.ivArticle);
+            tvupdate = view.findViewById(R.id.tvTime);
         }
     }
 }

@@ -26,8 +26,6 @@ public class AboutHome extends AppCompatActivity {
     private CircleImageView ivLogo;
     private TextView tvBackAbout,tvCompany_name,tvhistory,tvSecretariat;
     private Session session;
-    private String token;
-    private String apptoken;
     private Context context;
 
     @Override
@@ -37,8 +35,6 @@ public class AboutHome extends AppCompatActivity {
 
         context = getApplicationContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
-        token = session.getToken();
 
         setView();
         setEvent();
@@ -47,7 +43,7 @@ public class AboutHome extends AppCompatActivity {
 
     private void loadData() {
 
-        ConnectionApi.apiService().aboutCompany(token, apptoken).enqueue(new Callback<ResponsAbout>() {
+        ConnectionApi.apiService(context).getAboutCompany().enqueue(new Callback<ResponsAbout>() {
             @Override
             public void onResponse(Call<ResponsAbout> call, Response<ResponsAbout> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){

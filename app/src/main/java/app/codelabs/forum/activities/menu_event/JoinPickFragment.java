@@ -41,9 +41,6 @@ import retrofit2.Response;
  */
 public class JoinPickFragment extends BottomSheetDialogFragment {
     private Button btnJoin, btnCancel;
-    private Session session;//definisi variabel session dengan tipe data session
-    private String token;
-    private String apptoken;
     private Boolean isJoin;
     private Context context;
     private Integer id;
@@ -66,9 +63,6 @@ public class JoinPickFragment extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         context = getContext();
-        session = Session.init(context);
-        apptoken = session.getAppToken();
-        token = session.getToken();
 
         Bundle bundle = this.getArguments();
         id = bundle.getInt("event_id",0);
@@ -91,7 +85,7 @@ public class JoinPickFragment extends BottomSheetDialogFragment {
             public void onClick(View v) {
                 Map<String, String> dataJoin = new HashMap<>();
                 dataJoin.put("event_id", String.valueOf(id));
-               ConnectionApi.apiService().joinEvent(dataJoin, token, apptoken).enqueue(new Callback<ResponsJoinEvent>() {
+               ConnectionApi.apiService(context).joinEvent(dataJoin).enqueue(new Callback<ResponsJoinEvent>() {
                     @Override
                    public void onResponse(Call<ResponsJoinEvent> call, Response<ResponsJoinEvent> response) {
                         if (response.isSuccessful() && response.body().getSuccess()) {

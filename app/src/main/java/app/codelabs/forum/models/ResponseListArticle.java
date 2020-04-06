@@ -4,21 +4,20 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponsArticleLatest {
-
+public class ResponseListArticle {
 
     @SerializedName("data")
-    private List<DataEntity> data;
+    private List<Article> data;
     @SerializedName("success")
     private boolean success;
     @SerializedName("message")
     private String message;
 
-    public List<DataEntity> getData() {
+    public List<Article> getData() {
         return data;
     }
 
-    public void setData(List<DataEntity> data) {
+    public void setData(List<Article> data) {
         this.data = data;
     }
 
@@ -38,13 +37,15 @@ public class ResponsArticleLatest {
         this.message = message;
     }
 
-    public static class DataEntity {
+    public static class Article {
+        @SerializedName("category")
+        private CategoryEntity category;
         @SerializedName("updated_at")
         private String updated_at;
-        @SerializedName("created_at")
-        private String created_at;
-        @SerializedName("category")
-        private String category;
+        @SerializedName("views")
+        private int views;
+        @SerializedName("category_id")
+        private int category_id;
         @SerializedName("tags")
         private List<String> tags;
         @SerializedName("image")
@@ -58,6 +59,14 @@ public class ResponsArticleLatest {
         @SerializedName("id")
         private int id;
 
+        public CategoryEntity getCategory() {
+            return category;
+        }
+
+        public void setCategory(CategoryEntity category) {
+            this.category = category;
+        }
+
         public String getUpdated_at() {
             return updated_at;
         }
@@ -66,20 +75,20 @@ public class ResponsArticleLatest {
             this.updated_at = updated_at;
         }
 
-        public String getCreated_at() {
-            return created_at;
+        public int getViews() {
+            return views;
         }
 
-        public void setCreated_at(String created_at) {
-            this.created_at = created_at;
+        public void setViews(int views) {
+            this.views = views;
         }
 
-        public String getCategory() {
-            return category;
+        public int getCategory_id() {
+            return category_id;
         }
 
-        public void setCategory(String category) {
-            this.category = category;
+        public void setCategory_id(int category_id) {
+            this.category_id = category_id;
         }
 
         public List<String> getTags() {
@@ -120,6 +129,39 @@ public class ResponsArticleLatest {
 
         public void setCompany_id(int company_id) {
             this.company_id = company_id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
+
+    public static class CategoryEntity {
+        @SerializedName("company_id")
+        private int company_id;
+        @SerializedName("category")
+        private String category;
+        @SerializedName("id")
+        private int id;
+
+        public int getCompany_id() {
+            return company_id;
+        }
+
+        public void setCompany_id(int company_id) {
+            this.company_id = company_id;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public void setCategory(String category) {
+            this.category = category;
         }
 
         public int getId() {

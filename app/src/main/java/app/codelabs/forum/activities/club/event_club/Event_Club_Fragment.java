@@ -35,10 +35,7 @@ public class Event_Club_Fragment extends Fragment {
     private RecyclerView recyclerView;
     private EventClubAdapter adapter;
     private JoinPickFragment joinPickFragment = new JoinPickFragment();
-    private String token;
-    private String appToken;
     private Context context;
-    private Session session;
 
 
 
@@ -59,9 +56,6 @@ public class Event_Club_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         context = getContext();
-        session = Session.init(context);
-        appToken = session.getAppToken();
-        token = session.getToken();
 
         setView(view);
         setEvent();
@@ -83,7 +77,7 @@ public class Event_Club_Fragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService().listEvent(token,appToken).enqueue(new Callback<ResponsListEventCommunity>() {
+        ConnectionApi.apiService(context).listEvent().enqueue(new Callback<ResponsListEventCommunity>() {
             @Override
             public void onResponse(Call<ResponsListEventCommunity> call, Response<ResponsListEventCommunity> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){

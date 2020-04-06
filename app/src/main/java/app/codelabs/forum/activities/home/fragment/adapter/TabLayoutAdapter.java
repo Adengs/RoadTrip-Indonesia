@@ -8,10 +8,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class TabLayoutAdapter extends FragmentPagerAdapter {
-    List<Fragment> items = new ArrayList<>();
-    List<String> titles = new ArrayList<>();
+    List<Fragment> items;
+    List<String> titles;
+
     public TabLayoutAdapter(FragmentManager fm) {
         super(fm);
+        items = new ArrayList<>();
+        titles = new ArrayList<>();
     }
 
     @Override
@@ -23,12 +26,13 @@ public class TabLayoutAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return items.size();
     }
-    public void addFragment(Fragment fragment, String title){
+
+    public void addFragment(Fragment fragment, String title) {
         items.add(fragment);
         titles.add(title);
-        notifyDataSetChanged();
     }
-    public CharSequence getPageTitle(int position){
+
+    public CharSequence getPageTitle(int position) {
         return titles.get(position);
     }
 }
