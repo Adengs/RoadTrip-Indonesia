@@ -31,7 +31,6 @@ public class RegisterActivity extends AppCompatActivity {
     private ImageView ivBack;
     private Button btnRegister;
     private Session session;
-    private String appToken;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     private Context context;
 
@@ -42,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         session = Session.init(context);
-        appToken = session.getAppToken();
 
         setView();
         setEvent();
@@ -75,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                 data.put("email", etEmail.getText().toString());
 
                 progresDialogFragment.show(getSupportFragmentManager(), "progress");
-                ConnectionApi.apiService().register(data, appToken).enqueue(new Callback<ResponseRegister>() {
+                ConnectionApi.apiService(context).register(data).enqueue(new Callback<ResponseRegister>() {
                     @Override
                     public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
                         progresDialogFragment.dismiss();

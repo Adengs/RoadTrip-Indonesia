@@ -88,10 +88,10 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
 
         private void setView(View view) {
             //cardView = view.findViewById(R.id.cv_articel);
-            tvtitle = view.findViewById(R.id.tvtitleArticel);
-            tvContent = view.findViewById(R.id.tvContentArticel);
-            ivCars = view.findViewById(R.id.ivArticel);
-            tvupdate = view.findViewById(R.id.tvUpdateArticel);
+            tvtitle = view.findViewById(R.id.tvTitle);
+            tvContent = view.findViewById(R.id.tvContent);
+            ivCars = view.findViewById(R.id.ivArticle);
+            tvupdate = view.findViewById(R.id.tvTime);
 
         }
     }

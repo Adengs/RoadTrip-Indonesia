@@ -13,10 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
@@ -31,12 +28,9 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class ParticipantFragment extends Fragment {
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private AdapterParticipant adapter;
-    Context context;
-    private String token;
-    private String apptoken;
-    private Session session;
+    private Context context;
     private Integer id;
     ResponsListEventCommunity.DataEntity datas = new ResponsListEventCommunity.DataEntity();
 
@@ -62,9 +56,6 @@ public class ParticipantFragment extends Fragment {
         super.onViewCreated(view , savedInstanceState);
 
         context = getContext();
-        session = Session.init(context);
-        apptoken = session.getAppToken();
-        token = session.getToken();
 
         Bundle bundle = this.getArguments();
         id = bundle.getInt("event_id",0);
@@ -74,7 +65,7 @@ public class ParticipantFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService().partisipanevent(id,token,apptoken).enqueue(new Callback<ResponsParticipantEvent>() {
+        ConnectionApi.apiService(context).eventParticipant(id).enqueue(new Callback<ResponsParticipantEvent>() {
 
             @Override
             public void onResponse(Call<ResponsParticipantEvent> call, Response<ResponsParticipantEvent> response) {

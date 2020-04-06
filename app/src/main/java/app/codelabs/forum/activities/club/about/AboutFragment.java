@@ -28,8 +28,6 @@ import retrofit2.Response;
 public class AboutFragment extends Fragment {
     private TextView tvHistory, tvSecretarian;
     private Session session;
-    private String token;
-    private String apptoken;
     private Context context;
 
 
@@ -51,15 +49,13 @@ public class AboutFragment extends Fragment {
 
         context = getContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
-        token = session.getToken();
 
         setView(view);
         loadData();
     }
 
     private void loadData() {
-        ConnectionApi.apiService().aboutCompany(token, apptoken).enqueue(new Callback<ResponsAbout>() {
+        ConnectionApi.apiService(context).getAboutCompany().enqueue(new Callback<ResponsAbout>() {
             @Override
             public void onResponse(Call<ResponsAbout> call, Response<ResponsAbout> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){

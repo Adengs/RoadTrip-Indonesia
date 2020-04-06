@@ -26,8 +26,6 @@ public class ArticleHomeCardView extends AppCompatActivity {
     View vwline, linehome;
     private Context context;
     private Session session;
-    private String token;
-    private String apptoken;
     private Integer id;
     ResponsDetailList.DataEntity data = new ResponsDetailList.DataEntity();
 
@@ -38,8 +36,6 @@ public class ArticleHomeCardView extends AppCompatActivity {
 
         context = getApplicationContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
-        token = session.getToken();
         id = data.getId();
 
 
@@ -49,7 +45,7 @@ public class ArticleHomeCardView extends AppCompatActivity {
     }
 
     private void loadData() {
-        ConnectionApi.apiService().detailArticel(id,token,apptoken).enqueue(new Callback<ResponsDetailList>() {
+        ConnectionApi.apiService(context).detailArticel(id).enqueue(new Callback<ResponsDetailList>() {
             @Override
             public void onResponse(Call<ResponsDetailList> call, Response<ResponsDetailList> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){

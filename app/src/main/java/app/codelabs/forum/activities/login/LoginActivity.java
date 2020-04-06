@@ -30,10 +30,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvForgotPassword, tvGotoRegister;
     private EditText etEmail;
     private EditText etPassword;
-    private String appToken;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
-    Context context;
-    Session session;
+    private Context context;
+    private Session session;
 
 
     @Override
@@ -43,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         session = Session.init(context);
-        appToken = session.getAppToken();
 
         setView();
         setEvent();
@@ -67,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 dataLogin.put("email", etEmail.getText().toString());
                 dataLogin.put("password", etPassword.getText().toString());
                 progresDialogFragment.show(getSupportFragmentManager(), "proggress");
-                ConnectionApi.apiService().login(dataLogin, appToken).enqueue(new Callback<ResponsLogin>() {
+                ConnectionApi.apiService(context).login(dataLogin).enqueue(new Callback<ResponsLogin>() {
                     @Override
                     public void onResponse(Call<ResponsLogin> call, Response<ResponsLogin> response) {
                         progresDialogFragment.dismiss();

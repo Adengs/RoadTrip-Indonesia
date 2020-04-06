@@ -28,7 +28,6 @@ public class SubmitPasswordActivity extends AppCompatActivity {
     private Button btnSubmit;
     private EditText etCode1, etCode2, etCode3, etCode4;
     private Session session;
-    private String apptoken;
     private Context context;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
 
@@ -39,7 +38,6 @@ public class SubmitPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_submit_password);
         context = getApplicationContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
 
         setView();
         setEvent();
@@ -69,7 +67,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
                 data.put("code", code);
 
                 progresDialogFragment.show(getSupportFragmentManager(), "progress");
-                ConnectionApi.apiService().verifyCodeResetPassword(data, apptoken).enqueue(new Callback<ResponseSubmitPassword>() {
+                ConnectionApi.apiService(context).verifyCodeResetPassword(data).enqueue(new Callback<ResponseSubmitPassword>() {
                     @Override
                     public void onResponse(Call<ResponseSubmitPassword> call, Response<ResponseSubmitPassword> response) {
                         progresDialogFragment.dismiss();

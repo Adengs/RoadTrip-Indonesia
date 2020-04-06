@@ -6,7 +6,7 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.schedule.ScheduleFragment;
 import app.codelabs.forum.activities.event.walkietalkie.WalkieTalkieFragment;
 import app.codelabs.forum.activities.home.HomeActivity;
-import app.codelabs.forum.activities.home.fragment.latest.LatestFragment;
+import app.codelabs.forum.activities.home.fragment.ArticleFragment;
 import app.codelabs.forum.activities.shop.Adapter.AdapterProductsAllFragment;
 import app.codelabs.forum.activities.shop.Fragment.FragmentProductsAll;
 
@@ -65,7 +65,7 @@ public class ActivityProducts extends AppCompatActivity {
         adapter=new AdapterProductsAllFragment(getSupportFragmentManager());
 
         adapter.addFragment(new FragmentProductsAll(),"All");
-        adapter.addFragment(new LatestFragment(),"Cars");
+        adapter.addFragment(new ArticleFragment(),"Cars");
         adapter.addFragment(new ScheduleFragment(),"Accessories");
         adapter.addFragment(new WalkieTalkieFragment(),"Parts");
         viewPagerProducts.setAdapter(adapter);

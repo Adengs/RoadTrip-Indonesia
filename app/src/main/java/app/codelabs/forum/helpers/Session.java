@@ -63,7 +63,10 @@ public class Session {
     }
 
     public void setLogout() {
-        editor.clear();
+
+        editor.remove(KEY_IS_LOGIN);
+        editor.remove(KEY_USER);
+        editor.remove(KEY_TOKEN);
         editor.commit();
         context.startActivity(new Intent(context, LoginActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));

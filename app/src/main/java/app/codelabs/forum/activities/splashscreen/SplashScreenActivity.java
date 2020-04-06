@@ -25,7 +25,6 @@ import retrofit2.Response;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private Context context;
-    private String AppToken;
     private Session session;
 
     @Override
@@ -40,7 +39,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void loadWalkTrough() {
-        ConnectionApi.apiService().getWalkTrough(AppToken).enqueue(new Callback<ResponWalkThrough>() {
+        ConnectionApi.apiService(context).getWalkTrough().enqueue(new Callback<ResponWalkThrough>() {
             @Override
             public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {
@@ -73,13 +72,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         Map<String, String> body = new HashMap<>();
         body.put("company_name", "fevci");
         body.put("comp_key", "fevci123");
-        ConnectionApi.apiService().getAppToken(body).enqueue(new Callback<ResponseApi>() {
+        ConnectionApi.apiService(context).getAppToken(body).enqueue(new Callback<ResponseApi>() {
             @Override
             public void onResponse(Call<ResponseApi> call, Response<ResponseApi> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     session.setAppToken(response.body().getData());
-                    AppToken = session.getAppToken();
                     loadWalkTrough();
 
                 } else {

@@ -44,8 +44,6 @@ public class MemberFragment extends Fragment {
     private MemberAdapter adapter;
     private Context context;
     private Session session;
-    private String token;
-    private String apptoken;
     private TextView tvfollow;
     private EditText et_sreach_member;
     private ProgressBar progressBar;
@@ -71,8 +69,6 @@ public class MemberFragment extends Fragment {
 
         context = getContext();
         session = Session.init(context);
-        apptoken = session.getAppToken();
-        token = session.getToken();
 
         setView(view);
         setEvent();
@@ -94,7 +90,7 @@ public class MemberFragment extends Fragment {
 
 
     private void loadData() {
-        ConnectionApi.apiService().listMember(token,apptoken,search).enqueue(new Callback<ResponsListMemberCompany>(){
+        ConnectionApi.apiService(context).listMember(search).enqueue(new Callback<ResponsListMemberCompany>(){
 
             @Override
             public void onResponse(Call<ResponsListMemberCompany> call, Response<ResponsListMemberCompany> response) {
@@ -144,7 +140,7 @@ public class MemberFragment extends Fragment {
                     setLoading(true, false);
                     Map<String , String > dataFollow = new HashMap<>();
                     dataFollow.put("followed_id", String.valueOf(data.getId()));
-                    ConnectionApi.apiService().follow(dataFollow,apptoken,token).enqueue(new Callback<ResponsFollow>() {
+                    ConnectionApi.apiService(context).follow(dataFollow).enqueue(new Callback<ResponsFollow>() {
                         @Override
                         public void onResponse(Call<ResponsFollow> call, Response<ResponsFollow> response) {
                             setLoading(false, false);
@@ -170,7 +166,7 @@ public class MemberFragment extends Fragment {
                     setLoading(true, false);
                     Map<String , String > dataUnFollow = new HashMap<>();
                     dataUnFollow.put("followed_id", String.valueOf(data.getId()));
-                    ConnectionApi.apiService().unfollow(dataUnFollow,apptoken,token).enqueue(new Callback<ResponsUnFollow>() {
+                    ConnectionApi.apiService(context).unfollow(dataUnFollow).enqueue(new Callback<ResponsUnFollow>() {
                         @Override
                         public void onResponse(Call<ResponsUnFollow> call, Response<ResponsUnFollow> response) {
                             setLoading(false, false);
