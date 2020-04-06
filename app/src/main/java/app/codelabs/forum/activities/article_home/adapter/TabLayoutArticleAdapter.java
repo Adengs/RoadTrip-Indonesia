@@ -6,10 +6,14 @@ import java.util.List;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import app.codelabs.forum.models.ArticelCategory;
+import app.codelabs.forum.models.ResponsListArticelbyCategory;
 
 public class TabLayoutArticleAdapter extends FragmentPagerAdapter {
+    //List<ArticelCategory.DataEntity>item = new ArrayList<>();
     List<Fragment> items = new ArrayList<>();
     List<String> titles = new ArrayList<>();
+
     public TabLayoutArticleAdapter(FragmentManager fm) {
         super(fm);
     }

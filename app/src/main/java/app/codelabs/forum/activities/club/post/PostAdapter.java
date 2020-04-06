@@ -38,7 +38,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         final ResponsListArticelbyCategory.DataEntity datas = data.get(position);
         holder.tvtitle.setText(Html.fromHtml(datas.getTitle()));
-        holder.tvContent.setText(Html.fromHtml(datas.getContent()));
         holder.tvupdate.setText(datas.getUpdated_at());
         Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.ivCarsArticel);
 
@@ -61,7 +60,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
 
     public class MyHolder extends RecyclerView.ViewHolder {
 
-        TextView tvtitle, tvContent, tvupdate;
+        TextView tvtitle, tvComunityName, tvupdate;
         ImageView ivCarsArticel;
         public MyHolder(@NonNull View view) {
             super(view);
@@ -71,7 +70,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
 
         private void setView(View view) {
             tvtitle = view.findViewById(R.id.tvtitleArticel);
-            tvContent = view.findViewById(R.id.tvContentArticel);
             ivCarsArticel = view.findViewById(R.id.ivArticel);
             tvupdate = view.findViewById(R.id.tvUpdateArticel);
         }

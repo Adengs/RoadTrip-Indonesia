@@ -28,9 +28,9 @@ import retrofit2.Response;
  */
 public class PostFragment extends Fragment {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private PostAdapter adapter;
-    Context context;
+    private Context context;
     private Session session;//definisi variabel session dengan tipe data session
     private String token;
     private String apptoken;
