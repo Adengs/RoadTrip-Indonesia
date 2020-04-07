@@ -44,8 +44,8 @@ public class ActivityProducts extends AppCompatActivity {
 
 
     private void setView() {
-        tabLayoutProducts = findViewById(R.id.tab_layoutshop);
-        viewPagerProducts = findViewById(R.id.viewpagershop);
+        tabLayoutProducts = findViewById(R.id.tab_layout);
+        viewPagerProducts = findViewById(R.id.viewpager);
 
         btnPro = findViewById(R.id.btnbackpro);
     }

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.article.ArticleHomeCardView;
 import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
 import app.codelabs.forum.models.ResponseListArticle;
 
@@ -70,7 +71,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), CardViewActivity.class);
+                    Intent intent = new Intent(v.getContext(), ArticleHomeCardView.class);
                     v.getContext().startActivity(intent);
                 }
             });

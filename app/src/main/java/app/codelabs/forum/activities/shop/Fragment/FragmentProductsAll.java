@@ -16,14 +16,14 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.shop.Adapter.AdapterProductsAllRecycler;
+import app.codelabs.forum.activities.shop.Adapter.AdapterListShop;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentProductsAll extends Fragment {
     RecyclerView recyclerView;
-    private AdapterProductsAllRecycler adapter;
+    private AdapterListShop adapter;
     Context context;
     CardView cardviewpro;
 
@@ -56,7 +56,7 @@ public class FragmentProductsAll extends Fragment {
     }
 
     private void setView(View view) {
-        adapter = new AdapterProductsAllRecycler();
+        adapter = new AdapterListShop();
         cardviewpro = view.findViewById(R.id.cardShopPro);
         recyclerView = view.findViewById(R.id.recyclerviewShop);
     }
