@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.article_home.adapter;
+package app.codelabs.forum.activities.article.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.article_home.ArticleHomeCardView;
+import app.codelabs.forum.activities.article.ArticleHomeCardView;
 import app.codelabs.forum.models.ResponsListArticelbyCategory;
 
 

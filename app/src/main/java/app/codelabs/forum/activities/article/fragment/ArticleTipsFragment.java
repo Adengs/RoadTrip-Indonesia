@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.article_home.fragment;
+package app.codelabs.forum.activities.article.fragment;
 
 
 import android.content.Context;
@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.article_home.adapter.ArticleTipsAdapter;
+import app.codelabs.forum.activities.article.adapter.ArticleTipsAdapter;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponsListArticelbyCategory;

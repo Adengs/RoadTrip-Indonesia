@@ -27,7 +27,7 @@ import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.about_home.AboutHome;
-import app.codelabs.forum.activities.article_home.ArticleHome;
+import app.codelabs.forum.activities.article.ArticleActivity;
 import app.codelabs.forum.activities.home.fragment.adapter.HomeCardSliderAdapter;
 import app.codelabs.forum.activities.home.fragment.adapter.MenuAdapter;
 import app.codelabs.forum.activities.home.fragment.adapter.TabLayoutAdapter;
@@ -126,7 +126,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(menuAdapter);
 
         List<HomeMenuItem> menus = new ArrayList<>();
-        menus.add(new HomeMenuItem(R.drawable.ic_article, "Article", ArticleHome.class)); // article
+        menus.add(new HomeMenuItem(R.drawable.ic_article, "Article", ArticleActivity.class)); // article
         menus.add(new HomeMenuItem(R.drawable.ic_events, "Events", MenuEventActivity.class)); // events
         menus.add(new HomeMenuItem(R.drawable.ic_shop, "Shop", ActivityShop.class)); // shop
         menus.add(new HomeMenuItem(R.drawable.ic_gallery, "Gallery", MenuGalleryActivity.class)); // gallery

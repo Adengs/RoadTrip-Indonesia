@@ -1,11 +1,10 @@
-package app.codelabs.forum.activities.article_home;
+package app.codelabs.forum.activities.article;
 
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponsDetailList;
-import app.codelabs.forum.models.ResponsListArticelbyCategory;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,7 +67,7 @@ public class ArticleHomeCardView extends AppCompatActivity {
         img_panahkirihome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ArticleHomeCardView.this,ArticleHome.class);
+                Intent intent = new Intent(ArticleHomeCardView.this, ArticleActivity.class);
                 startActivity(intent);
             }
         });
