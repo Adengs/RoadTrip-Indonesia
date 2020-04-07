@@ -34,6 +34,7 @@ import app.codelabs.forum.activities.home.fragment.adapter.TabLayoutAdapter;
 import app.codelabs.forum.activities.home.notivication.NotivicationHome;
 import app.codelabs.forum.activities.menu_event.MenuEventActivity;
 import app.codelabs.forum.activities.menu_gallery.MenuGalleryActivity;
+import app.codelabs.forum.activities.shop.ActivityProducts;
 import app.codelabs.forum.activities.shop.ActivityShop;
 import app.codelabs.forum.activities.vote.VoteActivity;
 import app.codelabs.forum.helpers.ConnectionApi;

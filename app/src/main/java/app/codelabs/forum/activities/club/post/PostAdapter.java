@@ -40,6 +40,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
         holder.tvtitle.setText(Html.fromHtml(datas.getTitle()));
         holder.tvContent.setText(Html.fromHtml(datas.getContent()));
         holder.tvupdate.setText(datas.getUpdated_at());
+        holder.tvCategory.setText(datas.getCategory().getCategory());
         Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.ivCarsArticel);
 
     }
@@ -61,7 +62,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
 
     public class MyHolder extends RecyclerView.ViewHolder {
 
-        TextView tvtitle, tvContent, tvupdate;
+        TextView tvtitle, tvContent, tvupdate,tvCategory;
         ImageView ivCarsArticel;
         public MyHolder(@NonNull View view) {
             super(view);
@@ -73,6 +74,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
             tvtitle = view.findViewById(R.id.tvTitle);
             tvContent = view.findViewById(R.id.tvContent);
             ivCarsArticel = view.findViewById(R.id.ivArticle);
+            tvCategory = view.findViewById(R.id.tvCategory);
             tvupdate = view.findViewById(R.id.tvTime);
         }
     }

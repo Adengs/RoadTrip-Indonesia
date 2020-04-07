@@ -74,7 +74,7 @@ public class ArticleHome extends AppCompatActivity {
     }
 
     private void setViewPager() {
-        ConnectionApi.apiService().dataCategory(token, appToken).enqueue(new Callback<ArticelCategory>() {
+        ConnectionApi.apiService(context).dataCategory().enqueue(new Callback<ArticelCategory>() {
             @Override
             public void onResponse(Call<ArticelCategory> call, Response<ArticelCategory> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {

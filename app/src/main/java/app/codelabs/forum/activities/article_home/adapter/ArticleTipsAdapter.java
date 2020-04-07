@@ -45,7 +45,6 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
          final ResponsListArticelbyCategory.DataEntity datas = data.get(position);
          if(datas.getCategory_id() == 1){
              holder.tvtitle.setText(Html.fromHtml(datas.getTitle()));
-             holder.tvContent.setText(Html.fromHtml(datas.getContent()));
              holder.tvupdate.setText(datas.getUpdated_at());
              Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.ivCars);
              holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +88,6 @@ public class ArticleTipsAdapter extends RecyclerView.Adapter<ArticleTipsAdapter.
         private void setView(View view) {
             //cardView = view.findViewById(R.id.cv_articel);
             tvtitle = view.findViewById(R.id.tvTitle);
-            tvContent = view.findViewById(R.id.tvContent);
             ivCars = view.findViewById(R.id.ivArticle);
             tvupdate = view.findViewById(R.id.tvTime);
 

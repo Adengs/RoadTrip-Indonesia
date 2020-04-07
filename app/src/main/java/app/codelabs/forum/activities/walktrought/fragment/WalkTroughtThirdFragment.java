@@ -59,7 +59,7 @@ public class WalkTroughtThirdFragment extends Fragment {
         ResponWalkThrough.DataEntity item = Session.init(context).getWalkTrough().get(2);
         tvTitle.setText(item.getTitle());
         tvDesc.setText(item.getDescription());
-       // Picasso.with(context).load(item.getImage()).fit().centerCrop().into(ivBackground);
+        Picasso.with(context).load(item.getImage()).fit().centerCrop().into(ivBackground);
     }
 
 

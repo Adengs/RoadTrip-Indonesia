@@ -3,6 +3,7 @@ package app.codelabs.forum.helpers;
 import java.util.List;
 import java.util.Map;
 
+import app.codelabs.forum.models.ArticelCategory;
 import app.codelabs.forum.models.ResponArticlePopular;
 import app.codelabs.forum.models.ResponMyProfile;
 import app.codelabs.forum.models.ResponWalkThrough;
@@ -103,5 +104,8 @@ public interface ApiService {
 
     @GET("api/about")
     Call<ResponsAbout> getAboutCompany();
+
+    @GET("/api/article_category/list")
+    Call<ArticelCategory>dataCategory();
 }
 

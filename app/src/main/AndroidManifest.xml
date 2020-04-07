@@ -19,8 +19,9 @@
         <activity android:name=".activities.home.latest_popular_foryou.CardViewActivity" />
         <activity android:name=".activities.article_home.ArticleHome" />
         <activity android:name=".activities.menu_event.MenuEventActivity"/>
-        <activity android:name=".activities.shop.ActivityProducts"></activity>
-        <activity android:name=".activities.shop.ActivityShop"></activity>
+        <activity android:name=".activities.shop.ActivityProducts"/>
+        <activity android:name=".activities.shop.ActivityShop"/>
+        <activity android:name=".activities.menu_gallery.MenuGalleryActivity"/>
         <activity android:name=".activities.home.notivication.voting_notification.VotingPeriodNotif" />
         <activity android:name=".activities.vote.VoteActivity" />
         <activity android:name=".MainActivity" />
