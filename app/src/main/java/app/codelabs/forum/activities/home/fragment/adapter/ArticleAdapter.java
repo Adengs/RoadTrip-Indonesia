@@ -12,12 +12,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.article.DetailArticleActivity;
 import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
 import app.codelabs.forum.models.ResponseListArticle;
 
@@ -26,7 +28,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     private Context context;
 
     public ArticleAdapter() {
-       this.items = new ArrayList<>();
+        this.items = new ArrayList<>();
     }
 
     @NonNull
@@ -57,8 +59,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     }
 
     class ArticleVH extends RecyclerView.ViewHolder {
-        TextView tvTitle,tvContent,tvTime,tvCategory;
+        TextView tvTitle, tvContent, tvTime, tvCategory;
         ImageView ivImage;
+
         ArticleVH(@NonNull View view) {
             super(view);
             setView(view);
@@ -70,8 +73,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), CardViewActivity.class);
-                    v.getContext().startActivity(intent);
+                    ResponseListArticle.Article item = items.get(getAdapterPosition());
+                    Intent intent = new Intent(context, DetailArticleActivity.class);
+                    intent.putExtra("data", new Gson().toJson(item));
+                    context.startActivity(intent);
                 }
             });
 

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.home.latest_popular_foryou.CardViewActivity">
+
     <LinearLayout
         android:orientation="horizontal"
         android:background="@drawable/shape_walk_through"
@@ -21,24 +22,25 @@
             android:layout_height="20dp"/>
         <ImageView
             android:id="@+id/img_savedhome"
-            android:src="@drawable/ic_saved_home"
+            android:src="@drawable/ic_bookmark"
             android:layout_marginLeft="245dp"
             android:layout_marginTop="18dp"
             android:layout_width="20dp"
             android:layout_height="20dp"/>
         <ImageView
             android:id="@+id/img_sharehome"
-            android:src="@drawable/ic_share_home"
+            android:src="@drawable/ic_share"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="18dp"
             android:layout_width="20dp"
             android:layout_height="20dp"/>
     </LinearLayout>
+
     <View
         android:id="@+id/vwline"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorCircle"></View>
+        android:background="@color/colorCircle" />
     <LinearLayout
         android:orientation="vertical"
         android:background="@color/colorBackground"
