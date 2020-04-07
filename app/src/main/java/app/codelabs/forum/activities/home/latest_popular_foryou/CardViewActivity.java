@@ -1,6 +1,7 @@
 package app.codelabs.forum.activities.home.latest_popular_foryou;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.home.fragment.HomeFragment;
@@ -12,9 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CardViewActivity extends AppCompatActivity {
-TextView txtcarhome, timehome,datehome,txtmobilhome,deschome;
-ImageView img_panahkirihome, img_savedhome,img_sharehome,img_logohome,img_carhome,circlehome;
-View vwline, linehome;
+    TextView txtcarhome, timehome, datehome, txtmobilhome, deschome;
+    ImageView img_panahkirihome, img_savedhome, img_sharehome, img_logohome, img_carhome, circlehome;
+    View vwline, linehome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
