@@ -31,8 +31,8 @@
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
-
                 android:id="@+id/et_email"
+                android:text="edi@mailinator.com"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="E-mail"
@@ -58,6 +58,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="password"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:paddingTop="21dp"

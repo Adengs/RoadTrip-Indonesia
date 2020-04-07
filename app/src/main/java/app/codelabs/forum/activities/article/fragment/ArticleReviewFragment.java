@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.article_home.fragment;
+package app.codelabs.forum.activities.article.fragment;
 
 
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.article_home.adapter.ArticleReviewAdapter;
+import app.codelabs.forum.activities.article.adapter.ArticleReviewAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

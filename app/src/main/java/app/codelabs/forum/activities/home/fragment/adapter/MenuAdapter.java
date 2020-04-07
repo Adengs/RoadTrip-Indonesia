@@ -12,14 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.about_home.AboutHome;
-import app.codelabs.forum.activities.article_home.ArticleHome;
-import app.codelabs.forum.activities.menu_event.MenuEventActivity;
-import app.codelabs.forum.activities.menu_gallery.MenuGalleryActivity;
 import app.codelabs.forum.models.HomeMenuItem;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {

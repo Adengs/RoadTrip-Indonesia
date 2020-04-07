@@ -33,6 +33,7 @@ public class ArticleFragment extends Fragment {
 
     public final static int LATEST = 0;
     public final static int POPULAR = 1;
+    public final static int CATEGORY = 2;
 
     public ArticleFragment() {
         // Required empty public constructor
@@ -57,26 +58,57 @@ public class ArticleFragment extends Fragment {
     }
 
     private void loadData() {
-        int type = getArguments().getInt("type",0);
-        if(type == LATEST){
-            getLatestArticle();
-        }else if(type == POPULAR){
-            getPopularArticle();
+        if (getArguments() != null) {
+            int type = getArguments().getInt("type", 0);
+            if (type == LATEST) {
+                getLatestArticle();
+            } else if (type == POPULAR) {
+                getPopularArticle();
+            } else if (type == CATEGORY) {
+                getArticleByCategory();
+            }
         }
     }
+
+    private void getArticleByCategory() {
+        if (getArguments() != null) {
+            int referenceId = getArguments().getInt("reference_id", 0);
+            ConnectionApi.apiService(context).getArticleByCategory(referenceId).enqueue(new Callback<ResponseListArticle>() {
+                @Override
+                public void onResponse(Call<ResponseListArticle> call, Response<ResponseListArticle> response) {
+                    if (response.body() != null) {
+                        if (response.isSuccessful() & response.body().getSuccess()) {
+                            setArticles(response.body().getData());
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseListArticle> call, Throwable t) {
+                    if (t.getMessage() != null) {
+                        Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
     private void getPopularArticle() {
         ConnectionApi.apiService(context).getPopularArticle().enqueue(new Callback<ResponseListArticle>() {
             @Override
             public void onResponse(Call<ResponseListArticle> call, Response<ResponseListArticle> response) {
-                if(response.isSuccessful() & response.body().getSuccess()){
-                    setArticles(response.body().getData());
+                if (response.body() != null) {
+                    if (response.isSuccessful() & response.body().getSuccess()) {
+                        setArticles(response.body().getData());
+                    }
                 }
-
             }
 
             @Override
             public void onFailure(Call<ResponseListArticle> call, Throwable t) {
-                Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -85,15 +117,18 @@ public class ArticleFragment extends Fragment {
         ConnectionApi.apiService(context).getLatestArticle().enqueue(new Callback<ResponseListArticle>() {
             @Override
             public void onResponse(Call<ResponseListArticle> call, Response<ResponseListArticle> response) {
-                if(response.isSuccessful() & response.body().getSuccess()){
-                    setArticles(response.body().getData());
+                if (response.body() != null) {
+                    if (response.isSuccessful() & response.body().getSuccess()) {
+                        setArticles(response.body().getData());
+                    }
                 }
-
             }
 
             @Override
             public void onFailure(Call<ResponseListArticle> call, Throwable t) {
-                Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
+                if(t.getMessage() != null){
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -114,9 +149,17 @@ public class ArticleFragment extends Fragment {
 
     }
 
-    public ArticleFragment setType(int type){
+    public ArticleFragment setType(int type) {
         Bundle args = new Bundle();
-        args.putInt("type",type);
+        args.putInt("type", type);
+        setArguments(args);
+        return this;
+    }
+
+    public ArticleFragment setTypeAndReferenceId(int type, int referenceId) {
+        Bundle args = new Bundle();
+        args.putInt("type", type);
+        args.putInt("reference_id", referenceId);
         setArguments(args);
         return this;
     }

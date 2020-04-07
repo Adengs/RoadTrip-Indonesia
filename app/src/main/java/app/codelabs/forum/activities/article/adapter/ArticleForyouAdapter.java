@@ -1,12 +1,10 @@
-package app.codelabs.forum.activities.article_home.adapter;
+package app.codelabs.forum.activities.article.adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -15,8 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.article_home.ArticleHomeCardView;
-import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
+import app.codelabs.forum.activities.article.ArticleHomeCardView;
 
 public class ArticleForyouAdapter extends RecyclerView.Adapter<ArticleForyouAdapter.ForyouViewHolder> {
     ArrayList<Fragment> items = new ArrayList<>();

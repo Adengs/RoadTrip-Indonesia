@@ -3,11 +3,11 @@ package app.codelabs.forum.helpers;
 import java.util.List;
 import java.util.Map;
 
-import app.codelabs.forum.models.ArticelCategory;
 import app.codelabs.forum.models.ResponArticlePopular;
 import app.codelabs.forum.models.ResponMyProfile;
 import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.ResponsAbout;
+import app.codelabs.forum.models.ResponseArticleCategory;
 import app.codelabs.forum.models.ResponseListArticle;
 import app.codelabs.forum.models.ResponsDetailList;
 import app.codelabs.forum.models.ResponsFollow;
@@ -31,7 +31,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -105,7 +104,10 @@ public interface ApiService {
     @GET("api/about")
     Call<ResponsAbout> getAboutCompany();
 
-    @GET("/api/article_category/list")
-    Call<ArticelCategory>dataCategory();
+    @GET("api/article_category/list")
+    Call<ResponseArticleCategory> getArticleCategories();
+
+    @GET("api/article/list")
+    Call<ResponseListArticle> getArticleByCategory(@Query("category") int referenceId);
 }
 

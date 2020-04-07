@@ -57,7 +57,7 @@ public class ClubFragment extends Fragment {
 
 
     private void setViewPager() {
-        adapter = new PagerAdapter(getFragmentManager());
+        adapter = new PagerAdapter(getChildFragmentManager());
         adapter.addFragment(new PostFragment(), "Post");
         adapter.addFragment(new MemberFragment(), "Member");
         adapter.addFragment(new Event_Club_Fragment(), "Event");
