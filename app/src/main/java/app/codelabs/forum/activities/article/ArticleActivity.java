@@ -56,14 +56,18 @@ public class ArticleActivity extends AppCompatActivity {
         ConnectionApi.apiService(context).getArticleCategories().enqueue(new Callback<ResponseArticleCategory>() {
             @Override
             public void onResponse(Call<ResponseArticleCategory> call, Response<ResponseArticleCategory> response) {
-                if (response.isSuccessful() && response.body().getSuccess()) {
-                    setTabLayout(response.body().getData());
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        setTabLayout(response.body().getData());
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseArticleCategory> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -84,8 +88,10 @@ public class ArticleActivity extends AppCompatActivity {
 
     private void setToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Articles");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void setEvent() {
