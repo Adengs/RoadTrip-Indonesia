@@ -58,46 +58,57 @@ public class ArticleFragment extends Fragment {
     }
 
     private void loadData() {
-        int type = getArguments().getInt("type",0);
-        if(type == LATEST){
-            getLatestArticle();
-        }else if(type == POPULAR){
-            getPopularArticle();
-        }else if(type == CATEGORY){
-            getArticleByCategory();
+        if (getArguments() != null) {
+            int type = getArguments().getInt("type", 0);
+            if (type == LATEST) {
+                getLatestArticle();
+            } else if (type == POPULAR) {
+                getPopularArticle();
+            } else if (type == CATEGORY) {
+                getArticleByCategory();
+            }
         }
     }
 
     private void getArticleByCategory() {
-        int referenceId = getArguments().getInt("reference_id",0);
-        ConnectionApi.apiService(context).getArticleByCategory(referenceId).enqueue(new Callback<ResponseListArticle>() {
-            @Override
-            public void onResponse(Call<ResponseListArticle> call, Response<ResponseListArticle> response) {
-                if(response.isSuccessful() & response.body().getSuccess()){
-                    setArticles(response.body().getData());
+        if (getArguments() != null) {
+            int referenceId = getArguments().getInt("reference_id", 0);
+            ConnectionApi.apiService(context).getArticleByCategory(referenceId).enqueue(new Callback<ResponseListArticle>() {
+                @Override
+                public void onResponse(Call<ResponseListArticle> call, Response<ResponseListArticle> response) {
+                    if (response.body() != null) {
+                        if (response.isSuccessful() & response.body().getSuccess()) {
+                            setArticles(response.body().getData());
+                        }
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<ResponseListArticle> call, Throwable t) {
-                Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<ResponseListArticle> call, Throwable t) {
+                    if (t.getMessage() != null) {
+                        Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
     private void getPopularArticle() {
         ConnectionApi.apiService(context).getPopularArticle().enqueue(new Callback<ResponseListArticle>() {
             @Override
             public void onResponse(Call<ResponseListArticle> call, Response<ResponseListArticle> response) {
-                if(response.isSuccessful() & response.body().getSuccess()){
-                    setArticles(response.body().getData());
+                if (response.body() != null) {
+                    if (response.isSuccessful() & response.body().getSuccess()) {
+                        setArticles(response.body().getData());
+                    }
                 }
-
             }
 
             @Override
             public void onFailure(Call<ResponseListArticle> call, Throwable t) {
-                Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -106,15 +117,18 @@ public class ArticleFragment extends Fragment {
         ConnectionApi.apiService(context).getLatestArticle().enqueue(new Callback<ResponseListArticle>() {
             @Override
             public void onResponse(Call<ResponseListArticle> call, Response<ResponseListArticle> response) {
-                if(response.isSuccessful() & response.body().getSuccess()){
-                    setArticles(response.body().getData());
+                if (response.body() != null) {
+                    if (response.isSuccessful() & response.body().getSuccess()) {
+                        setArticles(response.body().getData());
+                    }
                 }
-
             }
 
             @Override
             public void onFailure(Call<ResponseListArticle> call, Throwable t) {
-                Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
+                if(t.getMessage() != null){
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -135,17 +149,17 @@ public class ArticleFragment extends Fragment {
 
     }
 
-    public ArticleFragment setType(int type){
+    public ArticleFragment setType(int type) {
         Bundle args = new Bundle();
-        args.putInt("type",type);
+        args.putInt("type", type);
         setArguments(args);
         return this;
     }
 
-    public ArticleFragment setTypeAndReferenceId(int type,int referenceId){
+    public ArticleFragment setTypeAndReferenceId(int type, int referenceId) {
         Bundle args = new Bundle();
-        args.putInt("type",type);
-        args.putInt("reference_id",referenceId);
+        args.putInt("type", type);
+        args.putInt("reference_id", referenceId);
         setArguments(args);
         return this;
     }
