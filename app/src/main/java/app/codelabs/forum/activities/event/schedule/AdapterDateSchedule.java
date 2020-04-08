@@ -6,12 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.club.gallery.GalleryAdapter;
-import app.codelabs.forum.activities.club.gallery.GalleryNameAdapter;
 
 public class AdapterDateSchedule extends RecyclerView.Adapter<AdapterDateSchedule.MyHolder> {
 

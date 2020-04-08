@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.forgotpassword;
+package app.codelabs.forum.activities.forgot_password;
 
 import android.content.Context;
 import android.content.Intent;

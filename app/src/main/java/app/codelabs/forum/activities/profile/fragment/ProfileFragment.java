@@ -19,7 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.profile.EditProfileActivity;
-import app.codelabs.forum.activities.profile.SettingProfile;
+import app.codelabs.forum.activities.profile.SettingActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponMyProfile;
@@ -28,24 +28,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import static android.app.Activity.RESULT_OK;
+
 public class ProfileFragment extends Fragment {
+    private static final int REQ_EDIT_PROFILE = 1001;
     private ImageView ivSettingApp, ivPhoto;
     private TextView tvEditProfile, tvCountFollowing, tvCountFollower, tvHeaderName, tvName, tvEmail, tvDob, tvCity, tvCountPost;
     private Session session;
     private Context context;
 
     public ProfileFragment() {
-        // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -57,25 +54,28 @@ public class ProfileFragment extends Fragment {
         session = Session.init(context);
         setView(view);
         setEvent();
-        loadData();
+        setProfileToView();
+        getProfile();
     }
 
-    private void loadData() {
-
+    private void getProfile() {
         ConnectionApi.apiService(context).getProfile().enqueue(new Callback<ResponMyProfile>() {
             @Override
             public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
-                if (response.isSuccessful() && response.body().getSuccess()) {
-                    setProfile(response.body().getData());
-                } else {
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        setProfile(response.body().getData());
+                    } else {
+                        Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-
             }
 
             @Override
             public void onFailure(Call<ResponMyProfile> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -90,14 +90,21 @@ public class ProfileFragment extends Fragment {
         user.setPhoto(data.getPhoto());
 
         session.setUser(user);
-        tvHeaderName.setText(data.getName());
-        tvName.setText(data.getName());
-        tvEmail.setText(data.getEmail());
-        Picasso.with(context).load(data.getPhoto()).fit().centerCrop().into(ivPhoto);
-        tvCity.setText(data.getCity());
-        tvDob.setText(data.getDate_birth());
+        tvCountPost.setText("-");
         tvCountFollower.setText(String.valueOf(data.getFollowers()));
         tvCountFollowing.setText(String.valueOf(data.getFollowing()));
+        setProfileToView();
+    }
+
+    private void setProfileToView() {
+        ResponsLogin.Data user = session.getUser();
+        tvHeaderName.setText(user.getName());
+        tvName.setText(user.getName());
+        tvEmail.setText(user.getEmail());
+        Picasso.with(context).load(user.getPhoto()).fit().centerCrop().into(ivPhoto);
+        tvCity.setText(user.getCity());
+        tvDob.setText(user.getDate_birth());
+
     }
 
 
@@ -105,7 +112,7 @@ public class ProfileFragment extends Fragment {
         ivSettingApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SettingProfile.class);
+                Intent intent = new Intent(getContext(), SettingActivity.class);
                 startActivity(intent);
             }
         });
@@ -114,7 +121,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EditProfileActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQ_EDIT_PROFILE);
             }
         });
     }
@@ -133,4 +140,11 @@ public class ProfileFragment extends Fragment {
         tvCountPost = view.findViewById(R.id.tv_count_post);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == REQ_EDIT_PROFILE) {
+            setProfileToView();
+            getProfile();
+        }
+    }
 }

@@ -8,7 +8,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.activities.menu_event.MenuEventActivity;
-import app.codelabs.forum.activities.menu_gallery.MenuGalleryActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button btn_coba;

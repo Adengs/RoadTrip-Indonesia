@@ -33,8 +33,8 @@ import app.codelabs.forum.activities.home.fragment.adapter.MenuAdapter;
 import app.codelabs.forum.activities.home.fragment.adapter.TabLayoutAdapter;
 import app.codelabs.forum.activities.home.notivication.NotivicationHome;
 import app.codelabs.forum.activities.menu_event.MenuEventActivity;
-import app.codelabs.forum.activities.menu_gallery.MenuGalleryActivity;
-import app.codelabs.forum.activities.shop.ActivityProducts;
+import app.codelabs.forum.activities.gallery.GalleryActivity;
+import app.codelabs.forum.activities.shop.ActivityShop;
 import app.codelabs.forum.activities.vote.VoteActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
@@ -88,18 +88,22 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadHighlight() {
-        ConnectionApi.apiService(context).getHighlight().enqueue(new Callback<ResponsHighlight>(){
+        ConnectionApi.apiService(context).getHighlight().enqueue(new Callback<ResponsHighlight>() {
 
             @Override
             public void onResponse(Call<ResponsHighlight> call, Response<ResponsHighlight> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
-                    cardSliderAdapter.setItems(response.body().getData());
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        cardSliderAdapter.setItems(response.body().getData());
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ResponsHighlight> call, Throwable t) {
-                Toast.makeText(context,t.getMessage(),Toast.LENGTH_LONG).show();
+                if(t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -128,8 +132,8 @@ public class HomeFragment extends Fragment {
         List<HomeMenuItem> menus = new ArrayList<>();
         menus.add(new HomeMenuItem(R.drawable.ic_article, "Article", ArticleActivity.class)); // article
         menus.add(new HomeMenuItem(R.drawable.ic_events, "Events", MenuEventActivity.class)); // events
-        menus.add(new HomeMenuItem(R.drawable.ic_shop, "Shop", ActivityProducts.class)); // shop
-        menus.add(new HomeMenuItem(R.drawable.ic_gallery, "Gallery", MenuGalleryActivity.class)); // gallery
+        menus.add(new HomeMenuItem(R.drawable.ic_shop, "Shop", ActivityShop.class)); // shop
+        menus.add(new HomeMenuItem(R.drawable.ic_gallery, "Gallery", GalleryActivity.class)); // gallery
         menus.add(new HomeMenuItem(R.drawable.ic_about, "About", AboutHome.class)); // about
         menus.add(new HomeMenuItem(R.drawable.ic_vote, "Vote", VoteActivity.class)); // vote
         menuAdapter.setItems(menus);

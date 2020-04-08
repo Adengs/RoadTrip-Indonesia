@@ -11,13 +11,11 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.club.about.AboutFragment;
 import app.codelabs.forum.activities.club.event_club.Event_Club_Fragment;
-import app.codelabs.forum.activities.club.gallery.GalleryFragment;
+import app.codelabs.forum.activities.gallery.fragment.GalleryFragment;
 import app.codelabs.forum.activities.club.member.MemberFragment;
 import app.codelabs.forum.activities.club.post.PostFragment;
 

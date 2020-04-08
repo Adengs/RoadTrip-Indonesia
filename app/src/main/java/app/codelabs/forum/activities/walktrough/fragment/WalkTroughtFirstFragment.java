@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.walktrought.fragment;
+package app.codelabs.forum.activities.walktrough.fragment;
 
 
 import android.content.Context;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.walktrought.WalkThroughActivity;
+import app.codelabs.forum.activities.walktrough.WalkThroughActivity;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponWalkThrough;
 

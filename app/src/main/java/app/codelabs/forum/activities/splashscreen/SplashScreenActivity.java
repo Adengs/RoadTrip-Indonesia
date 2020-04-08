@@ -7,14 +7,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.Gson;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
-import app.codelabs.forum.activities.walktrought.WalkThroughActivity;
+import app.codelabs.forum.activities.walktrough.WalkThroughActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponWalkThrough;

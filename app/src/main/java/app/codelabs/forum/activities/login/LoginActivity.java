@@ -15,7 +15,7 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.forgotpassword.ForgotPasswordActivity;
+import app.codelabs.forum.activities.forgot_password.ForgotPasswordActivity;
 import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.register.RegisterActivity;
 import app.codelabs.forum.helpers.ConnectionApi;

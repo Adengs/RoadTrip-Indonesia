@@ -11,18 +11,14 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
-import org.w3c.dom.Text;
-
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.adapter.AdapterEventActivity2;
 import app.codelabs.forum.activities.event.chat.ChatFragment;
 import app.codelabs.forum.activities.event.description.DescriptionFragment;
-import app.codelabs.forum.activities.event.fragment.EventFragment;
 import app.codelabs.forum.activities.event.participant.ParticipantFragment;
 import app.codelabs.forum.activities.event.schedule.ScheduleFragment;
 import app.codelabs.forum.activities.event.walkietalkie.WalkieTalkieFragment;
 import app.codelabs.forum.activities.home.HomeActivity;
-import app.codelabs.forum.activities.profile.SettingProfile;
 
 public class EventActivity extends AppCompatActivity {
     Context context;

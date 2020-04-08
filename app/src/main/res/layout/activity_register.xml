@@ -11,7 +11,7 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_top"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/backgroudToolbar"
@@ -97,6 +97,7 @@
                         android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:hint="E-mail"
