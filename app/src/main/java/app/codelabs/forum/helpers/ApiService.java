@@ -8,6 +8,7 @@ import app.codelabs.forum.models.ResponMyProfile;
 import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.ResponsAbout;
 import app.codelabs.forum.models.ResponseArticleCategory;
+import app.codelabs.forum.models.ResponseGallery;
 import app.codelabs.forum.models.ResponseListArticle;
 import app.codelabs.forum.models.ResponsDetailList;
 import app.codelabs.forum.models.ResponsFollow;
@@ -109,5 +110,8 @@ public interface ApiService {
 
     @GET("api/article/list")
     Call<ResponseListArticle> getArticleByCategory(@Query("category_id") int referenceId);
+
+    @GET("api/event/gallery")
+    Call<ResponseGallery> getGallery();
 }
 

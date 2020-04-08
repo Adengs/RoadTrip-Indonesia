@@ -16,6 +16,8 @@
         <activity android:name=".activities.profile.EditProfileActivity"></activity>
         <activity android:name=".activities.article.DetailArticleActivity" />
         <activity android:name=".activities.about_home.AboutHome" />
+        <activity android:name=".activities.gallery.GalleryActivity" />
+        <activity android:name=".activities.gallery.DetailGalleryActivity" />
         <activity android:name=".activities.home.latest_popular_foryou.CardViewActivity" />
         <activity android:name=".activities.article.ArticleActivity" />
         <activity android:name=".activities.menu_event.MenuEventActivity"/>
