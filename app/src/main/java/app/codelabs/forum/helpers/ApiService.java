@@ -108,6 +108,6 @@ public interface ApiService {
     Call<ResponseArticleCategory> getArticleCategories();
 
     @GET("api/article/list")
-    Call<ResponseListArticle> getArticleByCategory(@Query("category") int referenceId);
+    Call<ResponseListArticle> getArticleByCategory(@Query("category_id") int referenceId);
 }
 
