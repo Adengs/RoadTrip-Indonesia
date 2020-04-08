@@ -19,6 +19,7 @@ import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.helpers.Validator;
 import app.codelabs.forum.models.ResponseFinishPassword;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -68,11 +69,15 @@ public class FinishPasswordActivity extends AppCompatActivity {
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!isValidForm()) {
+                    return;
+                }
+
                 Map<String, String> data = new HashMap<>();
                 data.put("password", etPassword.getText().toString());
                 data.put("password-confirm", etConfirmPassword.getText().toString());
                 progresDialogFragment.show(getSupportFragmentManager(), "progress");
-                ConnectionApi.apiService(context).resetPassword(data,  xResetToken).enqueue(new Callback<ResponseFinishPassword>() {
+                ConnectionApi.apiService(context).resetPassword(data, xResetToken).enqueue(new Callback<ResponseFinishPassword>() {
                     @Override
                     public void onResponse(Call<ResponseFinishPassword> call, Response<ResponseFinishPassword> response) {
                         progresDialogFragment.dismiss();
@@ -99,6 +104,21 @@ public class FinishPasswordActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    private boolean isValidForm() {
+        if (etPassword.getText().toString().isEmpty()) {
+            Toast.makeText(context, "New Password is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        if (etConfirmPassword.getText().toString().isEmpty()) {
+            Toast.makeText(context, "Confirmation Password is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
 }

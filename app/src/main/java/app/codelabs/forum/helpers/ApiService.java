@@ -28,6 +28,7 @@ import app.codelabs.forum.models.ResponseForgotPassword;
 import app.codelabs.forum.models.ResponseRegister;
 import app.codelabs.forum.models.ResponseSubmitPassword;
 import app.codelabs.forum.models.ResponseUpdateProfile;
+import app.codelabs.forum.models.ResponseVote;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -123,5 +124,8 @@ public interface ApiService {
     @Multipart
     @POST("api/update_profile")
     Call<ResponseUpdateProfile> updateProfile(@PartMap Map<String, RequestBody> data, @Part MultipartBody.Part fileImagePart);
+
+    @GET("api/vote")
+    Call<ResponseVote> getVote();
 }
 

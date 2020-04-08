@@ -18,6 +18,7 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.helpers.Validator;
 import app.codelabs.forum.models.ResponseForgotPassword;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,6 +57,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!isValidForm()){
+                    return;
+                }
+
                 Map<String, String> data = new HashMap<>();
                 data.put("email", etEmail.getText().toString());
                 progresDialogFragment.show(getSupportFragmentManager(), "progress");
@@ -93,4 +98,18 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         });
 
     }
+
+
+    private boolean isValidForm() {
+        if (etEmail.getText().toString().isEmpty()) {
+            Toast.makeText(context, "Email is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!Validator.isEmailValid(etEmail.getText().toString())) {
+            Toast.makeText(context, "Email is not valid", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
 }

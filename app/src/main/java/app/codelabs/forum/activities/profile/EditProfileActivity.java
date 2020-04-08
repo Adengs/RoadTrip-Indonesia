@@ -33,6 +33,7 @@ import app.codelabs.forum.helpers.CompressImage;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.RealPath;
 import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.helpers.Validator;
 import app.codelabs.forum.models.ResponsLogin;
 import app.codelabs.forum.models.ResponseUpdateProfile;
 import okhttp3.MediaType;
@@ -92,6 +93,10 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void saveProfile() {
+        if(!isFormValid()){
+            return;
+        }
+
         MultipartBody.Part fileImagePart = null;
         if (byteArrayStream != null && byteArrayStream.size() > 0) {
             File file = RealPath.with(context).getTempFileImage(byteArrayStream, "image");
@@ -221,5 +226,31 @@ public class EditProfileActivity extends AppCompatActivity {
                 }).execute();
             }
         }
+    }
+
+    private boolean isFormValid(){
+        if(Validator.isFieldEmpty(etName)){
+            Toast.makeText(context, "Name is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (Validator.isFieldEmpty(etEmail)) {
+            Toast.makeText(context, "Email is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!Validator.isEmailValid(etEmail.getText().toString())) {
+            Toast.makeText(context, "Email is not valid", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if(Validator.isFieldEmpty(etDob)){
+            Toast.makeText(context, "Date of Birth is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+
+        return true;
     }
 }

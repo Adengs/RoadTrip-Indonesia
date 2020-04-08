@@ -59,7 +59,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isValidCode()) {
+                if (!isValidForm()) {
                     return;
                 }
                 String code = etCode1.getText().toString() + etCode2.getText().toString() + etCode3.getText().toString() + etCode4.getText().toString();
@@ -104,7 +104,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isValidCode() {
+    private boolean isValidForm() {
         if (etCode1.getText().toString().isEmpty() || etCode2.getText().toString().isEmpty() || etCode3.getText().toString().isEmpty() || etCode4.getText().toString().isEmpty()) {
             Toast.makeText(context, "Fill all code", Toast.LENGTH_SHORT).show();
             return false;

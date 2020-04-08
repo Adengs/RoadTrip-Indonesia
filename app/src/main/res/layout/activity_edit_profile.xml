@@ -65,6 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
+                    android:inputType="textPersonName"
                     android:layout_marginRight="16dp"
                     android:hint="Name"
                     android:textColorHint="@color/pink" />
@@ -84,6 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:enabled="false"
                     android:hint="E-Mail"
                     android:inputType="textEmailAddress"
                     android:textColorHint="@color/pink" />
@@ -102,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:inputType="date"
                     android:hint="Date Of Bird" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,6 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:inputType="textPersonName"
                     android:hint="City" />
 
             </com.google.android.material.textfield.TextInputLayout>
