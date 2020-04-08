@@ -32,7 +32,7 @@
         <activity android:name=".activities.register.RegisterActivity" />
         <activity android:name=".activities.home.HomeActivity" />
         <activity android:name=".activities.home.notivication.NotivicationHome" />
-        <activity android:name=".activities.profile.SettingProfile" />
+        <activity android:name=".activities.profile.SettingActivity" />
         <activity android:name=".activities.event.EventActivity" />
         <activity android:name=".activities.conversation.recyclerview_multipleview.RecyclerViewMultipleItemActivity" />
         <activity android:name=".activities.login.LoginActivity" ></activity>

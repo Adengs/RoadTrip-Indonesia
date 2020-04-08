@@ -9,28 +9,12 @@
     tools:context=".activities.profile.EditProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_top"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/backgroudToolbar"
         android:minHeight="?attr/actionBarSize"
-        app:theme="@style/Register">
-
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/ic_asset" />
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit Profile"
-            android:textColor="@color/titleToolbar"
-            android:textSize="14dp" />
-    </androidx.appcompat.widget.Toolbar>
+        app:theme="@style/Register" />
 
 
     <FrameLayout
@@ -38,9 +22,9 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
             android:gravity="center">
 
             <LinearLayout
@@ -48,18 +32,19 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/shape_rounded_regis"
                 android:orientation="vertical">
-                <FrameLayout
-                    android:layout_marginTop="23dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
 
-                    <ImageView
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="23dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv_photo"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:layout_gravity="left"
-                        android:src="@drawable/david" />
+                        android:scaleType="centerCrop"
+                        tools:src="@color/abu" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -98,9 +83,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:inputType="textEmailAddress"
                         android:layout_marginRight="40dp"
                         android:hint="E-Mail"
+                        android:inputType="textEmailAddress"
                         android:textColorHint="@color/pink" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,13 +125,13 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
-                    android:gravity="bottom"
-                    android:layout_marginTop="76dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginTop="76dp"
                     android:layout_marginRight="40dp"
                     android:layout_marginBottom="40dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:gravity="bottom">
 
                     <Button
                         android:id="@+id/btn_save"
@@ -158,7 +143,6 @@
                         android:textColor="@color/titleButton"
                         android:textSize="16sp" />
                 </LinearLayout>
-
 
 
             </LinearLayout>

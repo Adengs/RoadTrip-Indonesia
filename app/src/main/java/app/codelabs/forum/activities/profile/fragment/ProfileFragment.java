@@ -19,7 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.profile.EditProfileActivity;
-import app.codelabs.forum.activities.profile.SettingProfile;
+import app.codelabs.forum.activities.profile.SettingActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponMyProfile;
@@ -28,9 +28,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ProfileFragment extends Fragment {
     private ImageView ivSettingApp, ivPhoto;
     private TextView tvEditProfile, tvCountFollowing, tvCountFollower, tvHeaderName, tvName, tvEmail, tvDob, tvCity, tvCountPost;
@@ -105,7 +102,7 @@ public class ProfileFragment extends Fragment {
         ivSettingApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SettingProfile.class);
+                Intent intent = new Intent(getContext(), SettingActivity.class);
                 startActivity(intent);
             }
         });

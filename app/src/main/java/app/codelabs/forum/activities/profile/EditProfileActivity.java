@@ -1,9 +1,12 @@
 package app.codelabs.forum.activities.profile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +19,8 @@ import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponsLogin;
 
 public class EditProfileActivity extends AppCompatActivity {
-    private ImageView ivBack, ivPhoto;
+    private Toolbar toolbar;
+    private ImageView ivPhoto;
     private EditText etName, etEmail, etDob, etCity;
     private Button btnSaveEdit;
     private Context context;
@@ -28,6 +32,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
         context = getApplicationContext();
         setView();
+        setToolbar();
         setEvent();
         setData();
     }
@@ -42,13 +47,6 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
-        ivBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
         btnSaveEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,8 +55,24 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setToolbar() {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        setTitle("Edit Profile");
+    }
+
     private void setView() {
-        ivBack = findViewById(R.id.iv_back);
+        toolbar = findViewById(R.id.toolbar);
         btnSaveEdit = findViewById(R.id.btn_save);
         ivPhoto = findViewById(R.id.iv_photo);
         etName = findViewById(R.id.et_name);

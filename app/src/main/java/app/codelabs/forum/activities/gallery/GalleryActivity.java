@@ -49,7 +49,6 @@ public class GalleryActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
