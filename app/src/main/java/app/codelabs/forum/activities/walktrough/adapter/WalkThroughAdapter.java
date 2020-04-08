@@ -1,21 +1,11 @@
-package app.codelabs.forum.activities.walktrought.adapter;
-
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+package app.codelabs.forum.activities.walktrough.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import app.codelabs.forum.models.ResponWalkThrough;
 
 public class WalkThroughAdapter extends FragmentPagerAdapter {
     List<Fragment> items = new ArrayList<>();

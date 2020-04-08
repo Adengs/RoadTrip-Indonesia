@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.walktrought.WalkThroughActivity">
+    tools:context=".activities.walktrough.WalkThroughActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"

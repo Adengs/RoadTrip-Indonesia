@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.forgotpassword;
+package app.codelabs.forum.activities.forgot_password;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,15 +18,15 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponseSubmitPassword;
+import app.codelabs.forum.models.ResponseForgotPassword;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SubmitPasswordActivity extends AppCompatActivity {
+public class ForgotPasswordActivity extends AppCompatActivity {
     private ImageView ivBack;
-    private Button btnSubmit;
-    private EditText etCode1, etCode2, etCode3, etCode4;
+    private Button btnSend;
+    private EditText etEmail;
     private Session session;
     private Context context;
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
@@ -35,7 +35,8 @@ public class SubmitPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_submit_password);
+        setContentView(R.layout.activity_forgot_password);
+
         context = getApplicationContext();
         session = Session.init(context);
 
@@ -43,55 +44,43 @@ public class SubmitPasswordActivity extends AppCompatActivity {
         setEvent();
     }
 
+
     private void setView() {
-
         ivBack = findViewById(R.id.btn_back);
-        btnSubmit = findViewById(R.id.btn_submit);
-        etCode1 = findViewById(R.id.et_code_1);
-        etCode2 = findViewById(R.id.et_code_2);
-        etCode3 = findViewById(R.id.et_code_3);
-        etCode4 = findViewById(R.id.et_code_4);
-
+        btnSend = findViewById(R.id.btn_send);
+        etEmail = findViewById(R.id.et_email);
 
     }
 
     private void setEvent() {
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isValidCode()) {
-                    return;
-                }
-                String code = etCode1.getText().toString() + etCode2.getText().toString() + etCode3.getText().toString() + etCode4.getText().toString();
                 Map<String, String> data = new HashMap<>();
-                data.put("code", code);
-
+                data.put("email", etEmail.getText().toString());
                 progresDialogFragment.show(getSupportFragmentManager(), "progress");
-                ConnectionApi.apiService(context).verifyCodeResetPassword(data).enqueue(new Callback<ResponseSubmitPassword>() {
+                ConnectionApi.apiService(context).requestResetPassword(data).enqueue(new Callback<ResponseForgotPassword>() {
                     @Override
-                    public void onResponse(Call<ResponseSubmitPassword> call, Response<ResponseSubmitPassword> response) {
+                    public void onResponse(Call<ResponseForgotPassword> call, Response<ResponseForgotPassword> response) {
                         progresDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SubmitPasswordActivity.this, FinishPasswordActivity.class);
-                            intent.putExtra("x-token", response.body().getData().getToken());
-                            startActivity(intent);
+                            startActivity(new Intent(ForgotPasswordActivity.this, SubmitPasswordActivity.class));
 
                         } else {
                             Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
 
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseSubmitPassword> call, Throwable t) {
+                    public void onFailure(Call<ResponseForgotPassword> call, Throwable t) {
                         progresDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
-
                     }
                 });
+
 
             }
         });
@@ -102,14 +91,6 @@ public class SubmitPasswordActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-    }
-
-    private boolean isValidCode() {
-        if (etCode1.getText().toString().isEmpty() || etCode2.getText().toString().isEmpty() || etCode3.getText().toString().isEmpty() || etCode4.getText().toString().isEmpty()) {
-            Toast.makeText(context, "Fill all code", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
 
     }
 }

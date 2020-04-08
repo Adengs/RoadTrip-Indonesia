@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="horizontal"
-    tools:context=".activities.walktrought.fragment.WalkTroughtFirstFragment">
+    tools:context=".activities.walktrough.fragment.WalkTroughtFirstFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

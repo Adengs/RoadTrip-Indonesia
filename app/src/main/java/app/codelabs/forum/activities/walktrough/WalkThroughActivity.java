@@ -1,18 +1,15 @@
-package app.codelabs.forum.activities.walktrought;
+package app.codelabs.forum.activities.walktrough;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.walktrought.adapter.WalkThroughAdapter;
-import app.codelabs.forum.activities.walktrought.fragment.WalkTroughtFirstFragment;
-import app.codelabs.forum.activities.walktrought.fragment.WalkTroughtSecondFragment;
-import app.codelabs.forum.activities.walktrought.fragment.WalkTroughtThirdFragment;
-import app.codelabs.forum.models.ResponWalkThrough;
+import app.codelabs.forum.activities.walktrough.adapter.WalkThroughAdapter;
+import app.codelabs.forum.activities.walktrough.fragment.WalkTroughtFirstFragment;
+import app.codelabs.forum.activities.walktrough.fragment.WalkTroughtSecondFragment;
+import app.codelabs.forum.activities.walktrough.fragment.WalkTroughtThirdFragment;
 
 
 import android.os.Bundle;
-
-import com.google.gson.Gson;
 
 
 public class WalkThroughActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.walktrought.fragment;
+package app.codelabs.forum.activities.walktrough.fragment;
 
 
 import android.content.Context;

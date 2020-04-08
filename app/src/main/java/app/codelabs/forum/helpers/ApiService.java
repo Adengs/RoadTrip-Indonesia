@@ -27,11 +27,17 @@ import app.codelabs.forum.models.ResponseFinishPassword;
 import app.codelabs.forum.models.ResponseForgotPassword;
 import app.codelabs.forum.models.ResponseRegister;
 import app.codelabs.forum.models.ResponseSubmitPassword;
+import app.codelabs.forum.models.ResponseUpdateProfile;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -113,5 +119,9 @@ public interface ApiService {
 
     @GET("api/event/gallery")
     Call<ResponseGallery> getGallery();
+
+    @Multipart
+    @POST("api/update_profile")
+    Call<ResponseUpdateProfile> updateProfile(@PartMap Map<String, RequestBody> data, @Part MultipartBody.Part fileImagePart);
 }
 
