@@ -4,21 +4,22 @@
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/displayScreen"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context=".activities.shop.Fragment.FragmentRincian">
 
-
-
         <com.google.android.material.tabs.TabLayout
+            android:layout_marginBottom="5dp"
             android:id="@+id/tab_layoutrincian"
             android:layout_gravity="bottom"
             app:tabGravity="fill"
             android:background="@drawable/shape_walk_through"
             app:layout_anchor="@id/apprincian"
             app:layout_anchorGravity="bottom"
-            app:tabIndicator="@color/merah"
+            app:tabIndicatorColor="@color/merah"
             app:tabIndicatorHeight="2dp"
+            app:tabIndicatorFullWidth="false"
             app:tabSelectedTextColor="@color/colorText"
             app:tabMode="fixed"
             app:tabTextAppearance="@style/Tablayout"

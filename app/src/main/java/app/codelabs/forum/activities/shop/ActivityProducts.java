@@ -1,32 +1,41 @@
 package app.codelabs.forum.activities.shop;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.schedule.ScheduleFragment;
-import app.codelabs.forum.activities.event.walkietalkie.WalkieTalkieFragment;
-import app.codelabs.forum.activities.home.HomeActivity;
-import app.codelabs.forum.activities.home.fragment.ArticleFragment;
-import app.codelabs.forum.activities.shop.Adapter.AdapterProductsAllFragment;
-import app.codelabs.forum.activities.shop.Fragment.FragmentProductsAll;
+import app.codelabs.forum.activities.shop.Adapter.AdapterTabLayoutShop;
+import app.codelabs.forum.activities.shop.Fragment.ListShopFragment;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.models.ResponsShopCategory;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.List;
+
 public class ActivityProducts extends AppCompatActivity {
-    Context context;
-    TabLayout tabLayoutProducts;
-    ViewPager viewPagerProducts;
+    private Context context;
+    private EditText etSearch;
+    private ProgressBar progressBar;
+    private TabLayout tabLayout;
+    private ViewPager viewPagerProducts;
+    private Toolbar toolbar;
+    private AdapterTabLayoutShop adapterTabLayoutShop;
 
 
-    AdapterProductsAllFragment adapter;
-
-    ImageView btnPro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,39 +46,77 @@ public class ActivityProducts extends AppCompatActivity {
 
         setView();
         setEvent();
-        setViewPager();
+        setToolbar();
+        getCategories();
     }
 
-
-
-
-    private void setView() {
-        tabLayoutProducts = findViewById(R.id.tab_layout);
-        viewPagerProducts = findViewById(R.id.viewpager);
-
-        btnPro = findViewById(R.id.btnbackpro);
-    }
-
-    private void setEvent() {
-
-        btnPro.setOnClickListener(new View.OnClickListener() {
+    private void getCategories() {
+        ConnectionApi.apiService(context).getShopCategories().enqueue(new Callback<ResponsShopCategory>() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ActivityProducts.this, HomeActivity.class));
+            public void onResponse(Call<ResponsShopCategory> call, Response<ResponsShopCategory> response) {
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        setTabLayout(response.body().getData());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsShopCategory> call, Throwable t) {
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
-    private void setViewPager() {
+    private void setTabLayout(List<ResponsShopCategory.DataEntity> data) {
+        tabLayout.setVisibility(View.VISIBLE);
+        viewPagerProducts.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
 
-        adapter=new AdapterProductsAllFragment(getSupportFragmentManager());
+        AdapterTabLayoutShop adapterTabLayoutShop = new AdapterTabLayoutShop(getSupportFragmentManager());
 
-        adapter.addFragment(new FragmentProductsAll(),"All");
-        adapter.addFragment(new ArticleFragment(),"Cars");
-        adapter.addFragment(new ScheduleFragment(),"Accessories");
-        adapter.addFragment(new WalkieTalkieFragment(),"Parts");
-        viewPagerProducts.setAdapter(adapter);
+        for (ResponsShopCategory.DataEntity item : data){
+            adapterTabLayoutShop.addFragment(new ListShopFragment().setTypeAndReferenceId(ListShopFragment.CATEGORIES,
+                    item.getId()),item.getCategory());
+        }
+        viewPagerProducts.setAdapter(adapterTabLayoutShop);
+        tabLayout.setupWithViewPager(viewPagerProducts);
 
-        tabLayoutProducts.setupWithViewPager(viewPagerProducts);
+
+    }
+
+    private void setToolbar() {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        setTitle("Product");
+    }
+
+
+
+    private void setView() {
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPagerProducts = findViewById(R.id.viewpager);
+        toolbar = findViewById(R.id.toolbar);
+        etSearch = findViewById(R.id.etSreach);
+        progressBar = findViewById(R.id.progressbar);
+
+    }
+
+    private void setEvent() {
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

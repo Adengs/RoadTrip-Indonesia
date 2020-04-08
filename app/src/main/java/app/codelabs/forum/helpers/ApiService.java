@@ -7,6 +7,8 @@ import app.codelabs.forum.models.ResponArticlePopular;
 import app.codelabs.forum.models.ResponMyProfile;
 import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.ResponsAbout;
+import app.codelabs.forum.models.ResponsListShopByCategories;
+import app.codelabs.forum.models.ResponsShopCategory;
 import app.codelabs.forum.models.ResponseArticleCategory;
 import app.codelabs.forum.models.ResponseListArticle;
 import app.codelabs.forum.models.ResponsDetailList;
@@ -109,5 +111,11 @@ public interface ApiService {
 
     @GET("api/article/list")
     Call<ResponseListArticle> getArticleByCategory(@Query("category") int referenceId);
+
+    @GET("api/shop/category")
+    Call<ResponsShopCategory> getShopCategories();
+
+    @GET("api/shop/list")
+    Call<ResponsListShopByCategories> getShopByCategories(@Query("category") int referenceId);
 }
 

@@ -2,59 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.shop.ActivityShop">
+    tools:context=".activities.shop.DetailProductActivity">
 
-    <LinearLayout
-        android:id="@+id/tolbarshop"
-        android:orientation="vertical"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:padding="20dp"
-            android:background="@color/putih"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/putih">
+    </androidx.appcompat.widget.Toolbar>
 
-            <ImageView
-               android:id="@+id/btnbackShop"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_asset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </ImageView>
-
-            <LinearLayout
-                android:gravity="right"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_iconfinder_bookmark"
-                    android:textColor="@color/putih"
-                    android:layout_marginRight="1dp"
-                    android:layout_width="13.6dp"
-                    android:layout_height="17.48dp" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
     <FrameLayout
+        android:layout_below="@+id/toolbar"
         android:layout_above="@id/bottomshop"
-        android:layout_below="@id/tolbarshop"
         android:id="@+id/fragment_containershop"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-
-        <androidx.viewpager.widget.ViewPager
-            android:layout_marginTop="?actionBarSize"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:id="@+id/viewpageractivityshop"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </FrameLayout>
 
 
@@ -68,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/tvHubungi"
                         android:textAlignment="center"
                         android:drawableLeft="@drawable/ic_call"
                         android:layout_width="0dp"
@@ -80,6 +46,7 @@
                         android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/tvWA"
                     android:layout_marginTop="2dp"
                     android:drawableLeft="@drawable/ic_whatsapp"
                     android:background="#32B94C"

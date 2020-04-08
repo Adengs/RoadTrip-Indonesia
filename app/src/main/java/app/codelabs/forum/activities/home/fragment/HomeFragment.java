@@ -35,7 +35,6 @@ import app.codelabs.forum.activities.home.notivication.NotivicationHome;
 import app.codelabs.forum.activities.menu_event.MenuEventActivity;
 import app.codelabs.forum.activities.menu_gallery.MenuGalleryActivity;
 import app.codelabs.forum.activities.shop.ActivityProducts;
-import app.codelabs.forum.activities.shop.ActivityShop;
 import app.codelabs.forum.activities.vote.VoteActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
@@ -129,7 +128,7 @@ public class HomeFragment extends Fragment {
         List<HomeMenuItem> menus = new ArrayList<>();
         menus.add(new HomeMenuItem(R.drawable.ic_article, "Article", ArticleActivity.class)); // article
         menus.add(new HomeMenuItem(R.drawable.ic_events, "Events", MenuEventActivity.class)); // events
-        menus.add(new HomeMenuItem(R.drawable.ic_shop, "Shop", ActivityShop.class)); // shop
+        menus.add(new HomeMenuItem(R.drawable.ic_shop, "Shop", ActivityProducts.class)); // shop
         menus.add(new HomeMenuItem(R.drawable.ic_gallery, "Gallery", MenuGalleryActivity.class)); // gallery
         menus.add(new HomeMenuItem(R.drawable.ic_about, "About", AboutHome.class)); // about
         menus.add(new HomeMenuItem(R.drawable.ic_vote, "Vote", VoteActivity.class)); // vote
