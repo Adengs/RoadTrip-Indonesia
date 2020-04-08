@@ -125,12 +125,11 @@ public interface ApiService {
     @Multipart
     @POST("api/update_profile")
     Call<ResponseUpdateProfile> updateProfile(@PartMap Map<String, RequestBody> data, @Part MultipartBody.Part fileImagePart);
-    Call<ResponseListArticle> getArticleByCategory(@Query("category") int referenceId);
 
     @GET("api/shop/category")
     Call<ResponsShopCategory> getShopCategories();
 
     @GET("api/shop/list")
-    Call<ResponsListShopByCategories> getShopByCategories(@Query("category") int referenceId);
+    Call<ResponsListShopByCategories> getShopByCategories(@Query("category_id") int referenceId);
 }
 

@@ -95,9 +95,7 @@ public class MemberFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponsListMemberCompany> call, Response<ResponsListMemberCompany> response) {
                 if (response.isSuccessful() && response.body().getSuccess()){
-
                     adapter.setItems(response.body().getData());
-                    adapter.addItems(response.body().getData());
                 }
                 else {
 

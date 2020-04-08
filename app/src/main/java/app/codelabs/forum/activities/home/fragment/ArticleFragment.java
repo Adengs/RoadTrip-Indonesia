@@ -34,6 +34,7 @@ public class ArticleFragment extends Fragment {
     public final static int LATEST = 0;
     public final static int POPULAR = 1;
     public final static int CATEGORY = 2;
+    public final static int POST = 3;
 
     public ArticleFragment() {
         // Required empty public constructor
@@ -65,6 +66,8 @@ public class ArticleFragment extends Fragment {
             } else if (type == POPULAR) {
                 getPopularArticle();
             } else if (type == CATEGORY) {
+                getArticleByCategory();
+            } else if (type == POST ){
                 getArticleByCategory();
             }
         }

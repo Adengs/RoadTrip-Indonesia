@@ -43,7 +43,7 @@
         <activity android:name=".activities.article.ArticleActivity" />
         <activity android:name=".activities.menu_event.MenuEventActivity" />
         <activity android:name=".activities.shop.ActivityProducts" />
-        <activity android:name=".activities.shop.ActivityShop" />
+        <activity android:name=".activities.shop.DetailProductActivity" />
         <activity android:name=".activities.home.notivication.voting_notification.VotingPeriodNotif" />
         <activity android:name=".activities.vote.VoteActivity" />
         <activity android:name=".MainActivity" />
