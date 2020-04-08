@@ -7,7 +7,7 @@ android {
         applicationId "app.codelabs.forum"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 2
+        versionCode 4
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

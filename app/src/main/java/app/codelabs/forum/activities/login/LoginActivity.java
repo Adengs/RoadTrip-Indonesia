@@ -20,6 +20,7 @@ import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.register.RegisterActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.helpers.Validator;
 import app.codelabs.forum.models.ResponsLogin;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,7 +61,9 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (!isValidForm()) {
+                    return;
+                }
                 Map<String, String> dataLogin = new HashMap<>();
                 dataLogin.put("email", etEmail.getText().toString());
                 dataLogin.put("password", etPassword.getText().toString());
@@ -105,6 +108,24 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
+    }
+
+    private boolean isValidForm() {
+        if (etEmail.getText().toString().isEmpty()) {
+            Toast.makeText(context, "Email is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (etPassword.getText().toString().isEmpty()) {
+            Toast.makeText(context, "Password is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!Validator.isEmailValid(etEmail.getText().toString())) {
+            Toast.makeText(context, "Email is not valid", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
 }

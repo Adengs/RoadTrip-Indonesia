@@ -30,6 +30,7 @@ import app.codelabs.forum.models.ResponseForgotPassword;
 import app.codelabs.forum.models.ResponseRegister;
 import app.codelabs.forum.models.ResponseSubmitPassword;
 import app.codelabs.forum.models.ResponseUpdateProfile;
+import app.codelabs.forum.models.ResponseVote;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -131,5 +132,8 @@ public interface ApiService {
 
     @GET("api/shop/list")
     Call<ResponsListShopByCategories> getShopByCategories(@Query("category_id") int referenceId);
+
+    @GET("api/vote")
+    Call<ResponseVote> getVote();
 }
 

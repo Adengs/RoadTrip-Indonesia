@@ -8,94 +8,102 @@
     android:orientation="vertical"
     tools:context=".activities.vote.VoteActivity">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroudToolbar"
+        app:theme="@style/Register" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorCircle" />
+
     <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorCircle"
         android:orientation="vertical">
-
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_vote"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/backgroudToolbar"
-            android:minHeight="?attr/actionBarSize"
-            app:theme="@style/Register">
-
-            <TextView
-                android:id="@+id/back_vote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_back_black"
-                android:drawablePadding="20dp"
-                android:text="Vote"
-                android:textColor="@color/titleToolbar"
-                android:textSize="14dp"
-                android:textStyle="bold" />
-        </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
             android:background="@color/putih"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txt_judulVote"
+                android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="20dp"
-                android:text="Pemilihan duta shampo lain periode 2020 - 2025"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Pemilihan duta shampo lain periode 2020 - 2025" />
 
             <TextView
+                android:id="@+id/tv_time_left"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="25dp"
-                android:text="2 days left"
-                android:textColor="@color/abuai" />
+                android:textColor="@color/abuai"
+                tools:text="2 days left" />
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_vote"
-            android:background="@color/putih"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            tools:listitem="@layout/item_vote" />
+            android:layout_height="match_parent">
 
-        <LinearLayout
-            android:gravity="bottom"
-            android:background="@color/putih"
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/btn_Voting_Vote"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:background="@drawable/shape_buttonlogin"
-                android:text="Voting"
-                android:textAllCaps="false"
-                android:textColor="@color/putih" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:background="@color/putih">
 
-        </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingBottom="56dp"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_vote" />
+            </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/putih"
+                android:paddingVertical="8dp">
+
+                <Button
+                    android:id="@+id/btn_vote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:background="@drawable/shape_buttonlogin"
+                    android:text="Voting"
+                    android:textAllCaps="false"
+                    android:textColor="@color/putih" />
+
+            </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:scaleX="0.15"
+        android:scaleY="0.15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

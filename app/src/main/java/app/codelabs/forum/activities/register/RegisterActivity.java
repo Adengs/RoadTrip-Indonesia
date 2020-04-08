@@ -3,6 +3,7 @@ package app.codelabs.forum.activities.register;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.helpers.Validator;
 import app.codelabs.forum.models.ResponseRegister;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,8 +46,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         setView();
         setEvent();
-
-
     }
 
     private void setEvent() {
@@ -62,10 +62,13 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
-
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!isValidForm()) {
+                    return;
+                }
+                
                 Map<String, String> data = new HashMap<>();
                 data.put("username", etUsername.getText().toString());
                 data.put("password", etPassword.getText().toString());
@@ -106,4 +109,35 @@ public class RegisterActivity extends AppCompatActivity {
         tvLogin = findViewById(R.id.tv_login);
         ivBack = findViewById(R.id.iv_back);
     }
+
+
+    private boolean isValidForm() {
+
+        if (etUsername.getText().toString().isEmpty()) {
+            Toast.makeText(context, "Username is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (etName.getText().toString().isEmpty()) {
+            Toast.makeText(context, "Name is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (etEmail.getText().toString().isEmpty()) {
+            Toast.makeText(context, "Email is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (etPassword.getText().toString().isEmpty()) {
+            Toast.makeText(context, "Password is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!Validator.isEmailValid(etEmail.getText().toString())) {
+            Toast.makeText(context, "Email is not valid", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
 }
