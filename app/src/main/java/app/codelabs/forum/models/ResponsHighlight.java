@@ -6,6 +6,7 @@ import java.util.List;
 
 public  class ResponsHighlight {
 
+
     @SerializedName("data")
     private List<DataEntity> data;
     @SerializedName("success")
@@ -38,25 +39,45 @@ public  class ResponsHighlight {
     }
 
     public static class DataEntity {
-        @SerializedName("image")
-        private String image;
-        @SerializedName("title")
-        private String title;
+        @SerializedName("module_title")
+        private String module_title;
+        @SerializedName("module_image")
+        private String module_image;
+        @SerializedName("module_type")
+        private String module_type;
+        @SerializedName("module_id")
+        private int module_id;
 
-        public String getImage() {
-            return image;
+        public String getModule_title() {
+            return module_title;
         }
 
-        public void setImage(String image) {
-            this.image = image;
+        public void setModule_title(String module_title) {
+            this.module_title = module_title;
         }
 
-        public String getTitle() {
-            return title;
+        public String getModule_image() {
+            return module_image;
         }
 
-        public void setTitle(String title) {
-            this.title = title;
+        public void setModule_image(String module_image) {
+            this.module_image = module_image;
+        }
+
+        public String getModule_type() {
+            return module_type;
+        }
+
+        public void setModule_type(String module_type) {
+            this.module_type = module_type;
+        }
+
+        public int getModule_id() {
+            return module_id;
+        }
+
+        public void setModule_id(int module_id) {
+            this.module_id = module_id;
         }
     }
 }

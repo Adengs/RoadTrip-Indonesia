@@ -59,30 +59,23 @@
         <TextView
             android:id="@+id/tv_desc"
             android:layout_width="239dp"
-            android:layout_height="42dp"
+            android:lines="5"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:text="The world is the planet Earth and all life on it, including human."
             android:textAlignment="center"
             android:textColor="@color/colorDesc"
             android:textSize="14dp" />
-        <LinearLayout
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_next"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginBottom="53dp"
                 android:text="Next"
                 android:textColor="@color/colorNext"
                 android:textSize="16dp" />
         </LinearLayout>
-
-
-    </LinearLayout>
 
 </FrameLayout>

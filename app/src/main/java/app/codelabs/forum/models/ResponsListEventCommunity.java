@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ResponsListEventCommunity {
 
+
     @SerializedName("data")
     private List<DataEntity> data;
     @SerializedName("success")
@@ -38,6 +39,8 @@ public class ResponsListEventCommunity {
     }
 
     public static class DataEntity {
+        @SerializedName("is_join")
+        private boolean is_join;
         @SerializedName("longitude")
         private String longitude;
         @SerializedName("latitude")
@@ -58,6 +61,14 @@ public class ResponsListEventCommunity {
         private int company_id;
         @SerializedName("id")
         private int id;
+
+        public boolean getIs_join() {
+            return is_join;
+        }
+
+        public void setIs_join(boolean is_join) {
+            this.is_join = is_join;
+        }
 
         public String getLongitude() {
             return longitude;

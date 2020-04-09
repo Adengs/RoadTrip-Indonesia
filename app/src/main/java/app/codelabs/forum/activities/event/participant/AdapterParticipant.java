@@ -43,7 +43,7 @@ public class AdapterParticipant extends RecyclerView.Adapter<AdapterParticipant.
         ResponsParticipantEvent.DataEntity datas = data.get(position);
         holder.txtname.setText(datas.getUsername());
         holder.txtfollowes.setText(String.valueOf(datas.getFollowers()));
-        Picasso.with(context).load(datas.getPhoto()).into(holder.imgparticipant);
+        Picasso.with(context).load(datas.getPhoto()).fit().into(holder.imgparticipant);
 
 
     }

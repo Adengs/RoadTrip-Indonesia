@@ -2,12 +2,15 @@ package app.codelabs.forum.activities.club.event_club;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.CDATASection;
@@ -28,6 +31,7 @@ import app.codelabs.forum.models.ResponsFollow;
 import app.codelabs.forum.models.ResponsJoinEvent;
 import app.codelabs.forum.models.ResponsListEventCommunity;
 import app.codelabs.forum.models.ResponsListMemberCompany;
+import app.codelabs.forum.models.ResponseListArticle;
 import retrofit2.Callback;
 
 public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHolder> {
@@ -50,19 +54,19 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        final ResponsListEventCommunity.DataEntity datas =data.get(position);
+        final ResponsListEventCommunity.DataEntity datas = data.get(position);
         holder.tvtitle.setText(datas.getTitle());
         holder.tvStartEvent.setText(datas.getEvent_start());
         holder.tvEndEvent.setText(datas.getEvent_end());
         Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.ivEvent);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, EventActivity.class);
-                intent.putExtra("event_id",datas.getId());
-                context.startActivity(intent);
-            }
-        });
+        if (datas.getIs_join() == true) {
+            holder.llJoin.setVisibility(View.GONE);
+            holder.tvDojoin.setTextColor(Color.parseColor("#F62C4C"));
+            holder.tvDojoin.setText("You are join this event");
+        }else {
+            holder.llJoin.setVisibility(View.VISIBLE);
+            holder.tvDojoin.setText("Do you want to join?");
+        }
 
     }
 
@@ -84,7 +88,8 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
 
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        private TextView tvJoin,tvtitle, tvStartEvent, tvEndEvent;
+        private TextView tvJoin,tvtitle, tvStartEvent, tvEndEvent,tvDojoin;
+        private LinearLayout llJoin;
         private ImageView ivEvent;
 
 
@@ -95,6 +100,15 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
         }
 
         private void setEvent() {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ResponsListEventCommunity.DataEntity item = data.get(getAdapterPosition());
+                    Intent intent = new Intent(context, EventActivity.class);
+                    intent.putExtra("data", new Gson().toJson(item));
+                    context.startActivity(intent);
+                }
+            });
             tvJoin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,7 +119,9 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
         }
 
         private void setView(View view) {
+            llJoin = view.findViewById(R.id.llJoin);
             tvJoin = view.findViewById(R.id.tvjoin);
+            tvDojoin = view.findViewById(R.id.tv_do_join);
             tvtitle = view.findViewById(R.id.tvTitle);
             tvStartEvent = view.findViewById(R.id.tvStartEvent);
             tvEndEvent = view.findViewById(R.id.tvEndEvent);

@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@color/putih"
     tools:context=".activities.walktrough.fragment.WalkTroughtThirdFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,27 +14,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_marginTop="11dp"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <ImageView
+                    android:id="@+id/iv_background"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="400dp"
                     android:layout_gravity="center" />
                 <ImageView
-                    android:id="@+id/pagergrayes"
-                    android:layout_marginLeft="4dp"
+                    android:id="@+id/pagergray"
+                    android:layout_marginLeft="166dp"
                     android:background="@drawable/ic_circle_gray"
                     android:layout_width="7dp"
                     android:layout_height="7dp" />
 
                 <ImageView
                     android:id="@+id/pager"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/ic_circle_gray"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp" />
+
+                <ImageView
+                    android:id="@+id/pagergrayes"
                     android:layout_marginLeft="4dp"
                     android:background="@drawable/ic_circle_red"
                     android:layout_width="7dp"
@@ -58,24 +64,18 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_width="239dp"
-                android:layout_height="42dp"
+                android:layout_height="wrap_content"
+                android:lines="5"
                 android:text="The world is the planet Earth and all life on it, including human."
                 android:textAlignment="center"
                 android:textColor="@color/colorDesc"
                 android:textSize="14dp" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
                 <Button
+                    android:layout_marginTop="70dp"
                     android:id="@+id/btn_get_started"
                     android:text="Get Started"
                     android:background="@drawable/shape_button_walkthrough"
                     android:textColor="@color/colorBackground"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="40dp"
                     android:textSize="16dp"
                     android:textAllCaps="false"
                     android:layout_width="match_parent"
@@ -83,6 +83,5 @@
                     android:layout_marginRight="40dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-        </LinearLayout>
 
     </FrameLayout>

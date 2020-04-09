@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,9 +70,9 @@ public class Event_Club_Fragment extends Fragment {
             @Override
             public void onBtnJoin(ResponsListEventCommunity.DataEntity datas) {
                 Fragment fragment = joinPickFragment;
-                Bundle bundle = new Bundle();
-                bundle.putInt("event_id",datas.getId());
-                fragment.setArguments(bundle);
+                Bundle ags = new Bundle();
+                ags.putString("data",(new Gson().toJson(datas)));
+                fragment.setArguments(ags);
                 joinPickFragment.show(getFragmentManager(),"pick");
             }
         });
