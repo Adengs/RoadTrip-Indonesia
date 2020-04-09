@@ -60,7 +60,7 @@ public class DescriptionFragment extends Fragment {
 
         setView(view);
         getData();
-       // setEvent();
+        setEvent();
         SetData();
 
 
@@ -76,33 +76,30 @@ public class DescriptionFragment extends Fragment {
         Picasso.with(context).load(data.getImage()).centerCrop().fit().into(ivImage);
     }
 
-    /**
-     *  private void setEvent() {
-     *         if(data.getIs_join() == true){
-     *             tvDojoin.setText("You are join this event");
-     *             tvjoined.setText("Joined");
-     *             tvjoined.setTextColor(Color.parseColor("#FFFFFF"));
-     *             tvjoined.setBackgroundResource(R.drawable.shape_button_follow);
-     *         }
-     *         else {
-     *             tvDojoin.setText("Do you want to join?");
-     *             tvjoined.setText("Join");
-     *             tvjoined.setTextColor(Color.parseColor("#F62C4C"));
-     *             tvjoined.setBackgroundResource(R.drawable.shape_car_club);
-     *         }
-     *         tvjoined.setOnClickListener(new View.OnClickListener() {
-     *             @Override
-     *             public void onClick(View v) {
-     *                 Fragment fragment = joinPickFragment;
-     *                 Bundle ags = new Bundle();
-     *                 ags.putString("data",(new Gson().toJson(data)));
-     *                 fragment.setArguments(ags);
-     *                 joinPickFragment.show(getFragmentManager(),"pick");
-     *             }
-     *         });
-     *     }
-     */
-
+    private void setEvent() {
+        if(data.getIs_join() == true){
+            tvDojoin.setText("You are join this event");
+            tvjoined.setText("Joined");
+            tvjoined.setTextColor(Color.parseColor("#FFFFFF"));
+            tvjoined.setBackgroundResource(R.drawable.shape_button_follow);
+        }
+        else {
+            tvDojoin.setText("Do you want to join?");
+            tvjoined.setText("Join");
+            tvjoined.setTextColor(Color.parseColor("#F62C4C"));
+            tvjoined.setBackgroundResource(R.drawable.shape_car_club);
+        }
+        tvjoined.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = joinPickFragment;
+                Bundle ags = new Bundle();
+                ags.putString("data",(new Gson().toJson(data)));
+                fragment.setArguments(ags);
+                joinPickFragment.show(getFragmentManager(),"pick");
+            }
+        });
+    }
 
     private void getData() {
         Bundle bundle = this.getArguments();
