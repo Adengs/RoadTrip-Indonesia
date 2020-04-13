@@ -45,7 +45,10 @@ public class DetailArticleActivity extends AppCompatActivity {
         tvTitle.setText(article.getTitle());
         tvCategoryName.setText(article.getCategory().getCategory());
         tvContent.setText(Html.fromHtml(article.getContent()));
-        Picasso.with(context).load(article.getImage()).fit().centerCrop().into(ivImage);
+        Picasso.with(context).load(article.getImage())
+                .placeholder(R.drawable.default_image)
+                .error(R.drawable.default_no_image)
+                .fit().centerCrop().into(ivImage);
 
     }
 

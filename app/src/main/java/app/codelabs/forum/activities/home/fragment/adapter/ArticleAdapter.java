@@ -20,7 +20,6 @@ import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.article.DetailArticleActivity;
-import app.codelabs.forum.activities.home.latest_popular_foryou.CardViewActivity;
 import app.codelabs.forum.models.ResponseListArticle;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleVH> {
@@ -45,7 +44,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         holder.tvCategory.setText(item.getCategory().getCategory());
         holder.tvContent.setText(Html.fromHtml(item.getContent()));
         holder.tvTitle.setText(item.getTitle());
-        Picasso.with(context).load(item.getImage()).fit().centerCrop().into(holder.ivImage);
+        Picasso.with(context).load(item.getImage())
+                .placeholder(R.drawable.default_image)
+                .error(R.drawable.default_no_image)
+                .fit().centerCrop().into(holder.ivImage);
     }
 
     @Override

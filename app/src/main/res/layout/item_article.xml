@@ -85,8 +85,7 @@
             <ImageView
                 android:id="@+id/iv_image"
                 android:layout_width="116dp"
-                android:layout_height="88dp"
-                android:background="@drawable/shape_img_post" />
+                android:layout_height="88dp" />
 
 
         </LinearLayout>

@@ -101,7 +101,9 @@ public class ProfileFragment extends Fragment {
         tvHeaderName.setText(user.getName());
         tvName.setText(user.getName());
         tvEmail.setText(user.getEmail());
-        Picasso.with(context).load(user.getPhoto()).fit().centerCrop().into(ivPhoto);
+        Picasso.with(context).load(user.getPhoto())
+                .placeholder(R.drawable.default_photo)
+                .fit().centerCrop().into(ivPhoto);
         tvCity.setText(user.getCity());
         tvDob.setText(user.getDate_birth());
 

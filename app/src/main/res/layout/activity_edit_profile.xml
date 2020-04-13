@@ -105,7 +105,8 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:inputType="date"
-                    android:hint="Date Of Bird" />
+                    android:drawableRight="@drawable/ic_date"
+                    android:hint="Date Of Birth" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

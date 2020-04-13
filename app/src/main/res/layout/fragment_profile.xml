@@ -6,7 +6,6 @@
     android:background="@color/colorCircle"
     tools:context=".activities.profile.fragment.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -297,7 +296,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_weight="0.3"
-                        android:text="Date of bird"
+                        android:text="Date of birth"
                         android:textSize="14sp" />
 
                     <TextView
