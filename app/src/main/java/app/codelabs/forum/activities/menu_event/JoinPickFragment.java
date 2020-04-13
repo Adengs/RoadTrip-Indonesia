@@ -43,7 +43,6 @@ import retrofit2.Response;
  */
 public class JoinPickFragment extends BottomSheetDialogFragment {
     private Button btnJoin, btnCancel;
-    private Boolean isJoin;
     private Context context;
     private ResponsListEventCommunity.DataEntity data;
     private String strData;
@@ -95,7 +94,6 @@ public class JoinPickFragment extends BottomSheetDialogFragment {
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(context, EventActivity.class);
-                            intent.putExtra("is_join",true);
                             intent.putExtra("data", new Gson().toJson(data));
                             startActivity(intent);
                         } else {

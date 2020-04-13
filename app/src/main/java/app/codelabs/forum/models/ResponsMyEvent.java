@@ -4,7 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponsMyEvent {
+public  class ResponsMyEvent {
+
 
     @SerializedName("data")
     private List<DataEntity> data;
@@ -38,27 +39,57 @@ public class ResponsMyEvent {
     }
 
     public static class DataEntity {
-        @SerializedName("image")
-        private String image;
+        @SerializedName("longitude")
+        private String longitude;
+        @SerializedName("latitude")
+        private String latitude;
+        @SerializedName("location")
+        private String location;
+        @SerializedName("description")
+        private String description;
         @SerializedName("event_end")
         private String event_end;
         @SerializedName("event_start")
         private String event_start;
-        @SerializedName("event_title")
-        private String event_title;
-        @SerializedName("event_id")
-        private int event_id;
-        @SerializedName("user_id")
-        private int user_id;
+        @SerializedName("title")
+        private String title;
+        @SerializedName("image")
+        private String image;
+        @SerializedName("company_id")
+        private int company_id;
         @SerializedName("id")
         private int id;
 
-        public String getImage() {
-            return image;
+        public String getLongitude() {
+            return longitude;
         }
 
-        public void setImage(String image) {
-            this.image = image;
+        public void setLongitude(String longitude) {
+            this.longitude = longitude;
+        }
+
+        public String getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(String latitude) {
+            this.latitude = latitude;
+        }
+
+        public String getLocation() {
+            return location;
+        }
+
+        public void setLocation(String location) {
+            this.location = location;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
         }
 
         public String getEvent_end() {
@@ -77,28 +108,28 @@ public class ResponsMyEvent {
             this.event_start = event_start;
         }
 
-        public String getEvent_title() {
-            return event_title;
+        public String getTitle() {
+            return title;
         }
 
-        public void setEvent_title(String event_title) {
-            this.event_title = event_title;
+        public void setTitle(String title) {
+            this.title = title;
         }
 
-        public int getEvent_id() {
-            return event_id;
+        public String getImage() {
+            return image;
         }
 
-        public void setEvent_id(int event_id) {
-            this.event_id = event_id;
+        public void setImage(String image) {
+            this.image = image;
         }
 
-        public int getUser_id() {
-            return user_id;
+        public int getCompany_id() {
+            return company_id;
         }
 
-        public void setUser_id(int user_id) {
-            this.user_id = user_id;
+        public void setCompany_id(int company_id) {
+            this.company_id = company_id;
         }
 
         public int getId() {

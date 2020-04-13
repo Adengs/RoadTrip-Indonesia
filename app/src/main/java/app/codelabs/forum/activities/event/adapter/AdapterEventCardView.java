@@ -26,7 +26,8 @@ import app.codelabs.forum.models.ResponsListMemberCompany;
 import app.codelabs.forum.models.ResponsMyEvent;
 
 public class AdapterEventCardView extends RecyclerView.Adapter<AdapterEventCardView.MyHolder> {
-    Context context;
+    private Context context;
+    private Boolean is_join;
     private List<ResponsMyEvent.DataEntity>data;
 
     public AdapterEventCardView(){
@@ -44,7 +45,7 @@ public class AdapterEventCardView extends RecyclerView.Adapter<AdapterEventCardV
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         final ResponsMyEvent.DataEntity datas = data.get(position);
-        holder.txttitle.setText(datas.getEvent_title());
+        holder.txttitle.setText(datas.getTitle());
         holder.txttglmulai.setText(datas.getEvent_start());
         holder.txttglberakhir.setText(datas.getEvent_end());
         Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.imgEventCars);
@@ -77,17 +78,16 @@ public class AdapterEventCardView extends RecyclerView.Adapter<AdapterEventCardV
         }
 
         private void setEvent() {
-            /**
-             *  itemView.setOnClickListener(new View.OnClickListener() {
-             *                 @Override
-             *                 public void onClick(View v) {
-             *                     ResponsMyEvent.DataEntity item = data.get(getAdapterPosition());
-             *                     Intent intent = new Intent(context, EventActivity.class);
-             *                     intent.putExtra("data", new Gson().toJson(item));
-             *                     context.startActivity(intent);
-             *                 }
-             *             });
-             */
+              itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                           public void onClick(View v) {
+                                ResponsMyEvent.DataEntity item = data.get(getAdapterPosition());
+                                Intent intent = new Intent(context, EventActivity.class);
+                                intent.putExtra("data", new Gson().toJson(item));
+                                intent.putExtra("is_join",true);
+                               context.startActivity(intent);
+                           }
+                       });
 
         }
 

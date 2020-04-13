@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -51,7 +52,7 @@ public class HomeFragment extends Fragment {
     private MenuAdapter menuAdapter;
     private Session session;
     private Context context;
-    private ImageView img_bell;
+    private TextView img_bell;
     private TabLayout tabLayout;
     private RecyclerView recyclerView;
 
@@ -81,10 +82,14 @@ public class HomeFragment extends Fragment {
         setView(view);
         setEvent();
         setViewPager();
+        setToolbar();
         setRecyclerView();
         setSliderView();
         loadHighlight();
 
+    }
+
+    private void setToolbar() {
     }
 
     private void loadHighlight() {

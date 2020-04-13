@@ -9,6 +9,7 @@ import app.codelabs.forum.models.ResponWalkThrough;
 import app.codelabs.forum.models.ResponsAbout;
 import app.codelabs.forum.models.ResponsListShopByCategories;
 import app.codelabs.forum.models.ResponsShopCategory;
+import app.codelabs.forum.models.ResponsUnjoinEvent;
 import app.codelabs.forum.models.ResponseArticleCategory;
 import app.codelabs.forum.models.ResponseGallery;
 import app.codelabs.forum.models.ResponseListArticle;
@@ -99,6 +100,9 @@ public interface ApiService {
     @POST("api/event/join")
     Call<ResponsJoinEvent> joinEvent(@Body Map<String, String> body);
 
+    @POST("api/event/unjoin")
+    Call<ResponsUnjoinEvent> unJoin(@Body Map<String, String> body);
+
     @GET("api/event/my_event")
     Call<ResponsMyEvent> myEvent();
 
@@ -135,5 +139,6 @@ public interface ApiService {
 
     @GET("api/vote")
     Call<ResponseVote> getVote();
+
 }
 

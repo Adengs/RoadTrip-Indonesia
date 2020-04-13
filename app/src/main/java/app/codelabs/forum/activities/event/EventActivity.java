@@ -45,7 +45,7 @@ public class EventActivity extends AppCompatActivity {
 
 
         context = getApplicationContext();
-        isJoin = getIntent().getBooleanExtra("is_join",true);
+        isJoin = getIntent().getBooleanExtra("is_join",false);
 
 
 
@@ -77,6 +77,7 @@ public class EventActivity extends AppCompatActivity {
 
          Bundle ags = new Bundle();
          ags.putString("data",new Gson().toJson(data));
+         ags.putBoolean("is_join",false);
 
          DescriptionFragment descriptionFragment = new DescriptionFragment();
          descriptionFragment.setArguments(ags);
