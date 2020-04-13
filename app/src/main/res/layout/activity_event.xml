@@ -17,15 +17,6 @@
         android:background="@color/backgroudToolbar"
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/Register">
-
-        <TextView
-            android:id="@+id/toolbar_titleBackEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_back_black"
-            android:drawablePadding="20dp"
-            android:textColor="@color/titleToolbar"
-            android:textSize="14dp" />
     </androidx.appcompat.widget.Toolbar>
 
 

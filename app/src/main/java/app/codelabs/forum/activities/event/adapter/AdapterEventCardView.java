@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
@@ -20,11 +21,13 @@ import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
+import app.codelabs.forum.models.ResponsListEventCommunity;
 import app.codelabs.forum.models.ResponsListMemberCompany;
 import app.codelabs.forum.models.ResponsMyEvent;
 
 public class AdapterEventCardView extends RecyclerView.Adapter<AdapterEventCardView.MyHolder> {
-    Context context;
+    private Context context;
+    private Boolean is_join;
     private List<ResponsMyEvent.DataEntity>data;
 
     public AdapterEventCardView(){
@@ -42,19 +45,10 @@ public class AdapterEventCardView extends RecyclerView.Adapter<AdapterEventCardV
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         final ResponsMyEvent.DataEntity datas = data.get(position);
-        holder.txttitle.setText(datas.getEvent_title());
+        holder.txttitle.setText(datas.getTitle());
         holder.txttglmulai.setText(datas.getEvent_start());
         holder.txttglberakhir.setText(datas.getEvent_end());
         Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.imgEventCars);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, EventActivity.class);
-                intent.putExtra("event_id",datas.getEvent_id());
-                context.startActivity(intent);
-            }
-        });
-
     }
 
     @Override
@@ -77,6 +71,27 @@ public class AdapterEventCardView extends RecyclerView.Adapter<AdapterEventCardV
 
         public MyHolder(@NonNull View view) {
             super(view);
+
+            setView(view);
+            setEvent();
+
+        }
+
+        private void setEvent() {
+              itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                           public void onClick(View v) {
+                                ResponsMyEvent.DataEntity item = data.get(getAdapterPosition());
+                                Intent intent = new Intent(context, EventActivity.class);
+                                intent.putExtra("data", new Gson().toJson(item));
+                                intent.putExtra("is_join",true);
+                               context.startActivity(intent);
+                           }
+                       });
+
+        }
+
+        private void setView(View view) {
             cardView = view.findViewById(R.id.cardviewevent);
             imgEventCars = view.findViewById(R.id.imgListEvent);
             txttitle = view.findViewById(R.id.txttitleEvent);

@@ -15,11 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponsListEventCommunity;
 import app.codelabs.forum.models.ResponsParticipantEvent;
+import app.codelabs.forum.models.ResponseListArticle;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,8 +34,8 @@ public class ParticipantFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterParticipant adapter;
     private Context context;
-    private Integer id;
-    ResponsListEventCommunity.DataEntity datas = new ResponsListEventCommunity.DataEntity();
+    private String strData;
+    private ResponsListEventCommunity.DataEntity data ;
 
 
 
@@ -57,15 +60,21 @@ public class ParticipantFragment extends Fragment {
 
         context = getContext();
 
-        Bundle bundle = this.getArguments();
-        id = bundle.getInt("event_id",0);
+
         setView(view);
         setRecycleView();
+        getData();
         loadData();
     }
 
+    private void getData() {
+        Bundle bundle = this.getArguments();
+        strData = bundle.getString("data");
+        data = new Gson().fromJson(strData, ResponsListEventCommunity.DataEntity.class);
+    }
+
     private void loadData() {
-        ConnectionApi.apiService(context).eventParticipant(id).enqueue(new Callback<ResponsParticipantEvent>() {
+        ConnectionApi.apiService(context).eventParticipant(data.getId()).enqueue(new Callback<ResponsParticipantEvent>() {
 
             @Override
             public void onResponse(Call<ResponsParticipantEvent> call, Response<ResponsParticipantEvent> response) {

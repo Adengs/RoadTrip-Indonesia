@@ -66,21 +66,26 @@
 
 
         <LinearLayout
+            android:gravity="center"
             android:layout_marginTop="20dp"
             android:padding="20dp"
             android:background="@drawable/shape_join_event_club"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/txt_do_join"
-                android:layout_gravity="center"
-                android:text="Do you want to join?"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_do_join"
+                    android:gravity="center"
+                    android:text="Do you want to join?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llJoin"
                 android:gravity="right"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -99,6 +104,9 @@
                     android:paddingRight="22dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+
+
+
 
         </LinearLayout>
     </LinearLayout>

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,7 @@ import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponsFollow;
 import app.codelabs.forum.models.ResponsJoinEvent;
 import app.codelabs.forum.models.ResponsListEventCommunity;
+import app.codelabs.forum.models.ResponseListArticle;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,9 +43,9 @@ import retrofit2.Response;
  */
 public class JoinPickFragment extends BottomSheetDialogFragment {
     private Button btnJoin, btnCancel;
-    private Boolean isJoin;
     private Context context;
-    private Integer id;
+    private ResponsListEventCommunity.DataEntity data;
+    private String strData;
 
 
     public JoinPickFragment() {
@@ -65,7 +67,8 @@ public class JoinPickFragment extends BottomSheetDialogFragment {
         context = getContext();
 
         Bundle bundle = this.getArguments();
-        id = bundle.getInt("event_id",0);
+        strData = bundle.getString("data");
+        data = new Gson().fromJson(strData, ResponsListEventCommunity.DataEntity.class);
         setView(view);
         setEvent();
 
@@ -84,14 +87,14 @@ public class JoinPickFragment extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 Map<String, String> dataJoin = new HashMap<>();
-                dataJoin.put("event_id", String.valueOf(id));
+                dataJoin.put("event_id", String.valueOf(data.getId()));
                ConnectionApi.apiService(context).joinEvent(dataJoin).enqueue(new Callback<ResponsJoinEvent>() {
                     @Override
                    public void onResponse(Call<ResponsJoinEvent> call, Response<ResponsJoinEvent> response) {
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(context, EventActivity.class);
-                            intent.putExtra("is_join",true);
+                            intent.putExtra("data", new Gson().toJson(data));
                             startActivity(intent);
                         } else {
                             Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();

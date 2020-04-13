@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -20,9 +21,8 @@ import app.codelabs.forum.activities.home.fragment.HomeFragment;
 import app.codelabs.forum.activities.profile.fragment.ProfileFragment;
 
 public class HomeActivity extends AppCompatActivity {
-    ImageView imgHomes, imgClubs, imgChats, imgEvents, imgProfile;
-
-    HomeFragment homeFragment = new HomeFragment();
+    private ImageView imgHomes, imgClubs, imgChats, imgEvents, imgProfile;
+    private HomeFragment homeFragment = new HomeFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,4 +111,5 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
     }
+
 }

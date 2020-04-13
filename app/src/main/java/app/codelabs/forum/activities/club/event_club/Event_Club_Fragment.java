@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.activities.menu_event.JoinPickFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
@@ -24,6 +27,8 @@ import app.codelabs.forum.models.ResponsFollow;
 import app.codelabs.forum.models.ResponsJoinEvent;
 import app.codelabs.forum.models.ResponsListEventCommunity;
 import app.codelabs.forum.models.ResponsListMemberCompany;
+import app.codelabs.forum.models.ResponsUnFollow;
+import app.codelabs.forum.models.ResponsUnjoinEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +40,7 @@ public class Event_Club_Fragment extends Fragment {
     private RecyclerView recyclerView;
     private EventClubAdapter adapter;
     private JoinPickFragment joinPickFragment = new JoinPickFragment();
+    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     private Context context;
 
 
@@ -67,11 +73,40 @@ public class Event_Club_Fragment extends Fragment {
         adapter.setListener(new EventClubAdapter.OnItemSelection() {
             @Override
             public void onBtnJoin(ResponsListEventCommunity.DataEntity datas) {
-                Fragment fragment = joinPickFragment;
-                Bundle bundle = new Bundle();
-                bundle.putInt("event_id",datas.getId());
-                fragment.setArguments(bundle);
-                joinPickFragment.show(getFragmentManager(),"pick");
+                if(datas.getIs_join() == false){
+                    Fragment fragment = joinPickFragment;
+                    Bundle ags = new Bundle();
+                    ags.putString("data",(new Gson().toJson(datas)));
+                    fragment.setArguments(ags);
+                    joinPickFragment.show(getFragmentManager(),"pick");
+                }else {
+                    Map<String , String > dataUnJoin = new HashMap<>();
+                    dataUnJoin.put("event_id", String.valueOf(datas.getId()));
+                    progresDialogFragment.show(getFragmentManager(), "proggress");
+                    ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponsUnjoinEvent>() {
+                        @Override
+                        public void onResponse(Call<ResponsUnjoinEvent> call, Response<ResponsUnjoinEvent> response) {
+                            progresDialogFragment.dismiss();
+                            if (response.body() != null) {
+                                if (response.isSuccessful() && response.body().getSuccess()) {
+
+                                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                    loadData();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponsUnjoinEvent> call, Throwable t) {
+                            progresDialogFragment.dismiss();
+                            if (t.getMessage() != null) {
+                                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+
             }
         });
     }
@@ -80,18 +115,19 @@ public class Event_Club_Fragment extends Fragment {
         ConnectionApi.apiService(context).listEvent().enqueue(new Callback<ResponsListEventCommunity>() {
             @Override
             public void onResponse(Call<ResponsListEventCommunity> call, Response<ResponsListEventCommunity> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
-                    adapter.setItems(response.body().getData());
-                }
-                else {
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        adapter.setItems(response.body().getData());
+                    }
                 }
 
             }
 
             @Override
             public void onFailure(Call<ResponsListEventCommunity> call, Throwable t) {
-                Toast.makeText(context,t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

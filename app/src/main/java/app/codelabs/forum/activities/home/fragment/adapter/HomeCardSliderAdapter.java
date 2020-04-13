@@ -57,10 +57,10 @@ public class HomeCardSliderAdapter extends
 //        SliderItem sliderItem = items.get(position);
         ResponsHighlight.DataEntity datas = data.get(position);
 
-        viewHolder.textViewDescription.setText(datas.getTitle());
+        viewHolder.textViewDescription.setText(datas.getModule_title());
         viewHolder.textViewDescription.setTextSize(16);
         Picasso.with(context)
-                .load(datas.getImage())
+                .load(datas.getModule_image())
                 .centerCrop()
                 .fit()
                 .into(viewHolder.imageViewBackground);

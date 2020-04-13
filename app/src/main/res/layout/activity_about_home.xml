@@ -62,14 +62,14 @@
                             android:layout_width="76dp"
                             android:layout_height="76dp"
                             android:background="@drawable/shape_bulat"
-                            android:src="@drawable/logologinbaru" />
+                            tools:src="@drawable/logologinbaru" />
 
                         <TextView
                             android:id="@+id/tvcompany_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="20dp"
-                            android:text="Ford Everest Club Indonesia"
+                            tools:text="Ford Everest Club Indonesia"
                             android:textColor="@color/putih"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -107,7 +107,7 @@
                     <TextView
                         android:id="@+id/tvHistory"
                         android:layout_marginTop="12.5dp"
-                        android:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a do. Read more"
+                        tools:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a do. Read more"
                         android:layout_width="match_parent"
                         android:textColor="@color/texttablayout"
                         android:layout_height="wrap_content" />
@@ -144,7 +144,7 @@
                         <TextView
                             android:id="@+id/tvSecretariat"
                             android:layout_marginTop="10dp"
-                            android:text="Pabuaran, Karawaci Sub-District, Tangerang City, Banten 15114"
+                            tools:text="Pabuaran, Karawaci Sub-District, Tangerang City, Banten 15114"
                             android:layout_width="223dp"
                             android:layout_height="wrap_content" />
 
