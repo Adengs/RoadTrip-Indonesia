@@ -20,6 +20,7 @@ import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.article.DetailArticleActivity;
+import app.codelabs.forum.helpers.DateTimeHelper;
 import app.codelabs.forum.models.ResponseListArticle;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleVH> {
@@ -44,6 +45,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         holder.tvCategory.setText(item.getCategory().getCategory());
         holder.tvContent.setText(Html.fromHtml(item.getContent()));
         holder.tvTitle.setText(item.getTitle());
+        holder.tvTime.setText(DateTimeHelper.instance(item.getCreated_at()).getReadableTime());
         Picasso.with(context).load(item.getImage())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)
@@ -90,6 +92,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             tvContent = view.findViewById(R.id.tv_content);
             tvTime = view.findViewById(R.id.tv_time);
             ivImage = view.findViewById(R.id.iv_image);
+
         }
     }
 }

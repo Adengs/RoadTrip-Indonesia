@@ -42,6 +42,17 @@ public class ResponseListArticle {
         private CategoryEntity category;
         @SerializedName("updated_at")
         private String updated_at;
+        @SerializedName("created_at")
+        private String created_at;
+
+        public String getCreated_at() {
+            return created_at;
+        }
+
+        public void setCreated_at(String created_at) {
+            this.created_at = created_at;
+        }
+
         @SerializedName("views")
         private int views;
         @SerializedName("category_id")

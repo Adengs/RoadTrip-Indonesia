@@ -2,6 +2,8 @@ package app.codelabs.forum;
 
 import org.junit.Test;
 
+import app.codelabs.forum.helpers.DateTimeHelper;
+
 import static org.junit.Assert.*;
 
 /**
@@ -12,6 +14,10 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
+        String strDate = "2020-04-01 00:00:00";
+        System.out.println("diff "+strDate);
+
+        System.out.println(DateTimeHelper.instance(strDate).getReadableTime());
         assertEquals(4, 2 + 2);
     }
 }

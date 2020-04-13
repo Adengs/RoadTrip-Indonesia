@@ -112,8 +112,8 @@ public class EditProfileActivity extends AppCompatActivity {
                         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
                         String patternDate = "yyyy-MM-dd";
-                        SimpleDateFormat sdf = new SimpleDateFormat(patternDate);
-                        etDob.setText(sdf.format(calendar.getTime()));
+                        SimpleDateFormat format = new SimpleDateFormat(patternDate);
+                        etDob.setText(format.format(calendar.getTime()));
                     }
                 },
                         calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),

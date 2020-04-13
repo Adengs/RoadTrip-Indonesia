@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.helpers.DateTimeHelper;
 import app.codelabs.forum.models.ResponseListArticle;
 
 public class DetailArticleActivity extends AppCompatActivity {
@@ -49,6 +50,8 @@ public class DetailArticleActivity extends AppCompatActivity {
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)
                 .fit().centerCrop().into(ivImage);
+
+        tvTime.setText(DateTimeHelper.instance(article.getCreated_at()).getReadableTime());
 
     }
 
