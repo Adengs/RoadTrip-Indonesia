@@ -58,7 +58,11 @@ public class EventClubAdapter extends RecyclerView.Adapter<EventClubAdapter.MyHo
         holder.tvtitle.setText(datas.getTitle());
         holder.tvStartEvent.setText(datas.getEvent_start());
         holder.tvEndEvent.setText(datas.getEvent_end());
-        Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.ivEvent);
+        Picasso.with(context).load(datas.getImage())
+                .placeholder(R.drawable.default_image)
+                .error(R.drawable.default_no_image)
+                .fit().centerCrop().into(holder.ivEvent);
+
         if (datas.getIs_join() == true) {
             holder.tvJoin.setTextColor(Color.parseColor("#FFFFFF"));
             holder.tvJoin.setText("joined");

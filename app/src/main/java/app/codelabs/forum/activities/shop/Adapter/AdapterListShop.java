@@ -45,7 +45,10 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
         holder.tvLocation.setText(Html.fromHtml(item.getLocation()));
         holder.tvPrice.setText(Html.fromHtml(String.valueOf(item.getPrice())));
         holder.tvCategory.setText(Html.fromHtml(item.getCategory()));
-        Picasso.with(context).load(item.getPhoto()).fit().centerCrop().into(holder.ivImage);
+        Picasso.with(context).load(item.getPhoto())
+                .placeholder(R.drawable.default_image)
+                .error(R.drawable.default_no_image)
+                .fit().centerCrop().into(holder.ivImage);
 
     }
 

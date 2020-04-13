@@ -74,9 +74,6 @@ public class DescriptionFragment extends Fragment {
         SetData();
         setEvent();
 
-
-
-
     }
 
     private void SetData() {
@@ -85,7 +82,11 @@ public class DescriptionFragment extends Fragment {
         tvEndEvent.setText(data.getEvent_end());
         tvLocation.setText(data.getLocation());
         tvDeskrip.setText(Html.fromHtml(data.getDescription()));
-        Picasso.with(context).load(data.getImage()).centerCrop().fit().into(ivImage);
+        Picasso.with(context).load(data.getImage())
+                .placeholder(R.drawable.default_image)
+                .error(R.drawable.default_no_image)
+                .fit().centerCrop().into(ivImage);
+
         if(data.getIs_join() == true){
             tvDojoin.setText("You are join this event");
             tvjoined.setText("Joined");
