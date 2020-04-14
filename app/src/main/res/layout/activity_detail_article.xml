@@ -77,13 +77,6 @@
                         android:textSize="12dp"
                         tools:text="09:45" />
 
-                    <ImageView
-                        android:layout_width="2dp"
-                        android:layout_height="2dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:src="@drawable/ic_circle_latest" />
-
                     <TextView
                         android:id="@+id/tv_date"
                         android:layout_width="wrap_content"

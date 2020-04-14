@@ -17,6 +17,7 @@ public class DateTimeHelper {
     public static String PATTERN_DEFAULT = "yyyy-MM-dd HH:mm:ss";
     public static String PATTERN_ONLY_DATE = "yyyy-MM-dd";
     public static String PATTERN_ONLY_TIME = "HH:mm:ss";
+    public static String PATTERN_DATETIME_SPACE = "HH:mm dd MMM yyyy";
     private Date date;
 
     public static DateTimeHelper instance(String dateTime) {
@@ -101,5 +102,10 @@ public class DateTimeHelper {
             str = "Few moment ago";
         }
         return str;
+    }
+
+    public String get(String pattern) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+        return dateFormat.format(date);
     }
 }

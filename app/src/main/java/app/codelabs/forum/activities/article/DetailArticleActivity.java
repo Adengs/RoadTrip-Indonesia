@@ -20,6 +20,8 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.DateTimeHelper;
 import app.codelabs.forum.models.ResponseListArticle;
 
+import static app.codelabs.forum.helpers.DateTimeHelper.PATTERN_DATETIME_SPACE;
+
 public class DetailArticleActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageView ivCompany, ivImage;
@@ -51,7 +53,7 @@ public class DetailArticleActivity extends AppCompatActivity {
                 .error(R.drawable.default_no_image)
                 .fit().centerCrop().into(ivImage);
 
-        tvTime.setText(DateTimeHelper.instance(article.getCreated_at()).getReadableTime());
+        tvTime.setText(DateTimeHelper.instance(article.getCreated_at()).get(PATTERN_DATETIME_SPACE));
     }
 
     private void getData() {

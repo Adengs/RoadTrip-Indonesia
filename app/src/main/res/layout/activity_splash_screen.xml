@@ -8,9 +8,9 @@
     android:background="@color/putih">
 
     <ImageView
-        android:layout_width="174.5dp"
-        android:layout_height="174.5dp"
-        android:src="@drawable/logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_logo_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
