@@ -22,7 +22,7 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.models.ResponsListEventCommunity;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyHolder> {
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder> {
     private Context context;
     private List<ResponsListEventCommunity.DataEntity> items;
     public OnItemSelection listener;
@@ -34,19 +34,25 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyHolder> {
 
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EventHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_event_club, parent, false);
-        return new MyHolder(view);
+        return new EventHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EventHolder holder, int position) {
         final ResponsListEventCommunity.DataEntity item = items.get(position);
         holder.tvTitle.setText(item.getTitle());
         holder.tvStartEvent.setText(item.getEvent_start());
         holder.tvEndEvent.setText(item.getEvent_end());
-        Picasso.with(context).load(item.getImage()).centerCrop().fit().into(holder.ivEvent);
+        holder.tvStartEvent.setText(item.getEvent_start());
+        holder.tvEndEvent.setText(item.getEvent_end());
+        Picasso.with(context).load(item.getImage())
+                .placeholder(R.drawable.default_image)
+                .error(R.drawable.default_no_image)
+                .fit().centerCrop().into(holder.ivEvent);
+
         if (item.getIs_join() == true) {
             holder.tvJoin.setTextColor(Color.parseColor("#FFFFFF"));
             holder.tvJoin.setText("Joined");
@@ -81,12 +87,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyHolder> {
     }
 
 
-    public class MyHolder extends RecyclerView.ViewHolder {
+    public class EventHolder extends RecyclerView.ViewHolder {
         private TextView tvJoin, tvTitle, tvStartEvent, tvEndEvent, tvDoJoin;
         private ImageView ivEvent;
 
 
-        public MyHolder(@NonNull View view) {
+        public EventHolder(@NonNull View view) {
             super(view);
             setView(view);
             setEvent();
