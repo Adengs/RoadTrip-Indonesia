@@ -14,16 +14,18 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import app.codelabs.forum.R;
+import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponsListMemberCompany;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> {
     private Context context;
-    private List<ResponsListMemberCompany.Data>items;
+    private List<ResponsListMemberCompany.Data> items;
     private OnItemSelected listener;
 
-    public MemberAdapter(){
+    public MemberAdapter() {
         items = new ArrayList<>();
     }
 
@@ -36,43 +38,52 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull  MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         ResponsListMemberCompany.Data data = items.get(position);
         holder.txtNama.setText(data.getName());
         holder.txtfollowers.setText(String.valueOf(data.getFollowers()));
-        Picasso.with(context).load(data.getPhoto()).centerCrop().fit().into(holder.imgMember);
-        if(data.getIs_following()== true){
+        Picasso.with(context).load(data.getPhoto())
+                .placeholder(R.drawable.default_photo)
+                .centerCrop().fit().into(holder.imgMember);
+
+        if (data.getId() == Session.init(context).getUser().getId()) {
+            holder.txtfollow.setVisibility(View.INVISIBLE);
+        }else{
+            holder.txtfollow.setVisibility(View.VISIBLE);
+        }
+
+        if (data.getIs_following() == true) {
             holder.txtfollow.setText("Following");
             holder.txtfollow.setTextColor(Color.parseColor("#FFFFFF"));
             holder.txtfollow.setBackgroundResource(R.drawable.shape_button_follow);
-        }else{
+        } else {
             holder.txtfollow.setText("+ Follow");
             holder.txtfollow.setTextColor(Color.parseColor("#F62C4C"));
             holder.txtfollow.setBackgroundResource(R.drawable.shape_car_club);
         }
-
-
-
     }
 
     @Override
     public int getItemCount() {
         return items.size();
     }
+
     public void setItems(List<ResponsListMemberCompany.Data> data) {
         this.items = data;
         notifyDataSetChanged();
     }
+
     public void addItems(List<ResponsListMemberCompany.Data> data) {
         this.items.addAll(data);
         notifyDataSetChanged();
     }
+
     public void setListener(OnItemSelected listener) {
         this.listener = listener;
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        TextView txtNama,txtfollowers,txtfollow;
+        TextView txtNama, txtfollowers, txtfollow;
         CircleImageView imgMember;
 
         public MyHolder(@NonNull View view) {
@@ -102,8 +113,9 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
             txtfollow = view.findViewById(R.id.txtfollow);
         }
     }
-    public interface OnItemSelected{
-        void  onFollow(ResponsListMemberCompany.Data data);
+
+    public interface OnItemSelected {
+        void onFollow(ResponsListMemberCompany.Data data);
     }
 
 

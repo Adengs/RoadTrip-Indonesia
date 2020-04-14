@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ProgressBar
-            android:id="@+id/progres"
+            android:id="@+id/progress"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:indeterminate="true"
@@ -34,7 +34,7 @@
             android:layout_height="55dp">
 
             <EditText
-                android:id="@+id/etSreachMember"
+                android:id="@+id/et_search_member"
                 android:hint="Search here..."
                 android:drawableLeft="@drawable/ic_search"
                 android:drawablePadding="16dp"
