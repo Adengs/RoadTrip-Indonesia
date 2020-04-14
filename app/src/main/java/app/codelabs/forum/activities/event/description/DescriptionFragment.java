@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
@@ -37,13 +38,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DescriptionFragment extends Fragment {
-    private ResponseListEventCommunity.DataEntity data;
     private TextView tvTitle, tvStartEvent, tvEndEvent, tvLocation, tvDescription, tvDoJoin, tvJoined;
     private ImageView ivImage;
     private BottomSheetJoinEvent bottomSheetJoinEvent = new BottomSheetJoinEvent();
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     private Context context;
-    private int selectionIndex = -1;
 
 
     public DescriptionFragment() {
@@ -70,17 +69,17 @@ public class DescriptionFragment extends Fragment {
     }
 
     private void setData() {
-        tvTitle.setText(Html.fromHtml(data.getTitle()));
-        tvStartEvent.setText(data.getEvent_start());
-        tvEndEvent.setText(data.getEvent_end());
-        tvLocation.setText(data.getLocation());
-        tvDescription.setText(Html.fromHtml(data.getDescription()));
-        Picasso.with(context).load(data.getImage())
+        tvTitle.setText(Html.fromHtml(((EventActivity) getActivity()).data.getTitle()));
+        tvStartEvent.setText(((EventActivity) getActivity()).data.getEvent_start());
+        tvEndEvent.setText(((EventActivity) getActivity()).data.getEvent_end());
+        tvLocation.setText(((EventActivity) getActivity()).data.getLocation());
+        tvDescription.setText(Html.fromHtml(((EventActivity) getActivity()).data.getDescription()));
+        Picasso.with(context).load(((EventActivity) getActivity()).data.getImage())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)
                 .fit().centerCrop().into(ivImage);
 
-        if (data.getIs_join() == true) {
+        if (((EventActivity) getActivity()).data.getIs_join() == true) {
             tvDoJoin.setText("Congratulation!");
             tvJoined.setText("Joined");
             tvJoined.setTextColor(Color.parseColor("#FFFFFF"));
@@ -97,33 +96,28 @@ public class DescriptionFragment extends Fragment {
         bottomSheetJoinEvent.setListener(new BottomSheetJoinEvent.Listener() {
             @Override
             public void onJoinClick(BottomSheetJoinEvent dialog, ResponseListEventCommunity.DataEntity data, int index) {
-                joinEvent(dialog,data,index);
+                joinEvent(dialog, data, index);
             }
         });
         tvJoined.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (data.getIs_join() == false) {
-                    joinEventDialog(data);
+                if (((EventActivity) getActivity()).data.getIs_join() == false) {
+                    joinEventDialog(((EventActivity) getActivity()).data);
                 } else {
-                    unJoinEvent(data);
+                    unJoinEvent(((EventActivity) getActivity()).data);
                 }
             }
         });
 
     }
 
-    private void joinEventDialog(ResponseListEventCommunity.DataEntity data){
-        bottomSheetJoinEvent.setData(data,selectionIndex);
+    private void joinEventDialog(ResponseListEventCommunity.DataEntity data) {
+        bottomSheetJoinEvent.setData(data, ((EventActivity) getActivity()).selectedIndex);
         bottomSheetJoinEvent.show(getChildFragmentManager(), "join_event");
     }
 
     private void getData() {
-        Bundle bundle = this.getArguments();
-        String strData = bundle.getString("data");
-        this.selectionIndex = bundle.getInt("index");
-        data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
-
     }
 
     private void setView(View view) {
@@ -149,12 +143,12 @@ public class DescriptionFragment extends Fragment {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         data.setIs_join(false);
-                        DescriptionFragment.this.data = data;
+                        ((EventActivity) getActivity()).data = data;
                         setData();
                         Intent intent = new Intent();
-                        intent.putExtra("data",new Gson().toJson(data));
-                        intent.putExtra("index",selectionIndex);
-                        getActivity().setResult(Activity.RESULT_OK,intent);
+                        intent.putExtra("data", new Gson().toJson(data));
+                        intent.putExtra("index", ((EventActivity) getActivity()).selectedIndex);
+                        getActivity().setResult(Activity.RESULT_OK, intent);
                     }
                 }
             }
@@ -180,13 +174,13 @@ public class DescriptionFragment extends Fragment {
                 progresDialogFragment.dismiss();
                 if (response.isSuccessful() && response.body().getSuccess()) {
                     data.setIs_join(true);
-                    DescriptionFragment.this.data = data;
+                    ((EventActivity) getActivity()).data = data;
                     setData();
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
-                    intent.putExtra("data",new Gson().toJson(data));
-                    intent.putExtra("index",selectionIndex);
-                    getActivity().setResult(Activity.RESULT_OK,intent);
+                    intent.putExtra("data", new Gson().toJson(data));
+                    intent.putExtra("index", selectionIndex);
+                    getActivity().setResult(Activity.RESULT_OK, intent);
                 } else {
                     Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }

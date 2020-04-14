@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.adapter.AdapterEventActivity2;
+import app.codelabs.forum.activities.event.adapter.EventPagerAdapter;
 import app.codelabs.forum.activities.event.chat.ChatFragment;
 import app.codelabs.forum.activities.event.description.DescriptionFragment;
 import app.codelabs.forum.activities.event.participant.ParticipantFragment;
@@ -27,11 +27,11 @@ public class EventActivity extends AppCompatActivity {
     private TabLayout tabLayoutEvent;
     private ViewPager viewPagerEvent;
     private String strData;
-    private ResponseListEventCommunity.DataEntity data;
+    public ResponseListEventCommunity.DataEntity data;
     private Toolbar toolbar;
+    public int selectedIndex = -1;
 
-
-    AdapterEventActivity2 adapter;
+    private EventPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class EventActivity extends AppCompatActivity {
     private void getData() {
         if (getIntent().getStringExtra("data") != null) {
             strData = getIntent().getStringExtra("data");
+            selectedIndex = getIntent().getIntExtra("index",-1);
             data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
         }
     }
@@ -63,19 +64,10 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void setViewPager() {
-        adapter = new AdapterEventActivity2(getSupportFragmentManager());
+        adapter = new EventPagerAdapter(getSupportFragmentManager());
 
-        Bundle ags = new Bundle();
-        ags.putString("data", new Gson().toJson(data));
-
-        DescriptionFragment descriptionFragment = new DescriptionFragment();
-        descriptionFragment.setArguments(ags);
-        adapter.addFragment(descriptionFragment, "Description");
-
-        ParticipantFragment participantFragment = new ParticipantFragment();
-        participantFragment.setArguments(ags);
-        adapter.addFragment(participantFragment, "Participant");
-
+        adapter.addFragment(new DescriptionFragment(), "Description");
+        adapter.addFragment( new ParticipantFragment(), "Participant");
         adapter.addFragment(new ScheduleFragment(), "Schedule");
         adapter.addFragment(new WalkieTalkieFragment(), "Walkie Talkie");
         adapter.addFragment(new ChatFragment(), "Chat");
