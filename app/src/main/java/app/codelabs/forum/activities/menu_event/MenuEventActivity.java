@@ -6,21 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import app.codelabs.forum.R;
-import app.codelabs.forum.activities.club.event_club.EventClubAdapter;
-import app.codelabs.forum.activities.club.event_club.Event_Club_Fragment;
-import app.codelabs.forum.activities.event.EventActivity;
-import app.codelabs.forum.activities.home.HomeActivity;
-import app.codelabs.forum.models.ResponsListEventCommunity;
 
-import android.content.Context;
-import android.content.Intent;
+import app.codelabs.forum.R;
+import app.codelabs.forum.activities.club.event.EventFragment;
+
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 
 public class MenuEventActivity extends AppCompatActivity {
 
@@ -34,7 +25,7 @@ public class MenuEventActivity extends AppCompatActivity {
         setView();
         setToolbar();
 
-        setFragment(new Event_Club_Fragment());
+        setFragment(new EventFragment());
 
     }
 

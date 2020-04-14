@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.event_club;
+package app.codelabs.forum.activities.club.event;
 
 
 import android.content.Context;
@@ -18,34 +18,26 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.activities.menu_event.JoinPickFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponsFollow;
-import app.codelabs.forum.models.ResponsJoinEvent;
 import app.codelabs.forum.models.ResponsListEventCommunity;
-import app.codelabs.forum.models.ResponsListMemberCompany;
-import app.codelabs.forum.models.ResponsUnFollow;
 import app.codelabs.forum.models.ResponsUnjoinEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class Event_Club_Fragment extends Fragment {
+public class EventFragment extends Fragment {
     private RecyclerView recyclerView;
-    private EventClubAdapter adapter;
+    private EventAdapter adapter;
     private JoinPickFragment joinPickFragment = new JoinPickFragment();
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     private Context context;
 
 
-
-    public Event_Club_Fragment() {
+    public EventFragment() {
         // Required empty public constructor
     }
 
@@ -70,43 +62,45 @@ public class Event_Club_Fragment extends Fragment {
     }
 
     private void setEvent() {
-        adapter.setListener(new EventClubAdapter.OnItemSelection() {
+        adapter.setListener(new EventAdapter.OnItemSelection() {
             @Override
-            public void onBtnJoin(ResponsListEventCommunity.DataEntity datas) {
-                if(datas.getIs_join() == false){
+            public void onBtnJoin(ResponsListEventCommunity.DataEntity data) {
+                if (data.getIs_join() == false) {
                     Fragment fragment = joinPickFragment;
                     Bundle ags = new Bundle();
-                    ags.putString("data",(new Gson().toJson(datas)));
+                    ags.putString("data", (new Gson().toJson(data)));
                     fragment.setArguments(ags);
-                    joinPickFragment.show(getFragmentManager(),"pick");
-                }else {
-                    Map<String , String > dataUnJoin = new HashMap<>();
-                    dataUnJoin.put("event_id", String.valueOf(datas.getId()));
-                    progresDialogFragment.show(getFragmentManager(), "proggress");
-                    ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponsUnjoinEvent>() {
-                        @Override
-                        public void onResponse(Call<ResponsUnjoinEvent> call, Response<ResponsUnjoinEvent> response) {
-                            progresDialogFragment.dismiss();
-                            if (response.body() != null) {
-                                if (response.isSuccessful() && response.body().getSuccess()) {
-
-                                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
-                                    loadData();
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponsUnjoinEvent> call, Throwable t) {
-                            progresDialogFragment.dismiss();
-                            if (t.getMessage() != null) {
-                                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                    joinPickFragment.show(getChildFragmentManager(), "pick");
+                } else {
+                    unJoin(data);
                 }
 
+            }
+        });
+    }
+
+    private void unJoin(ResponsListEventCommunity.DataEntity data) {
+        Map<String, String> dataUnJoin = new HashMap<>();
+        dataUnJoin.put("event_id", String.valueOf(data.getId()));
+        progresDialogFragment.show(getChildFragmentManager(), "progress");
+        ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponsUnjoinEvent>() {
+            @Override
+            public void onResponse(Call<ResponsUnjoinEvent> call, Response<ResponsUnjoinEvent> response) {
+                progresDialogFragment.dismiss();
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        loadData();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsUnjoinEvent> call, Throwable t) {
+                progresDialogFragment.dismiss();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -139,7 +133,7 @@ public class Event_Club_Fragment extends Fragment {
     }
 
     private void setView(View view) {
-        adapter = new EventClubAdapter();
+        adapter = new EventAdapter();
         recyclerView = view.findViewById(R.id.rv_event);
     }
 }

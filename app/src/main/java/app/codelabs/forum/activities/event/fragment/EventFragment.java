@@ -16,11 +16,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.club.event_club.EventClubAdapter;
 import app.codelabs.forum.activities.event.adapter.AdapterEventCardView;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponsListEventCommunity;
 import app.codelabs.forum.models.ResponsMyEvent;
 import retrofit2.Call;
 import retrofit2.Callback;

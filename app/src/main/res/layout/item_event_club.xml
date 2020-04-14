@@ -21,7 +21,7 @@
             android:layout_height="163dp" />
 
         <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/tv_title"
             android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
             android:layout_marginTop="20dp"
             android:lines="2"
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/tvStartEvent"
+                android:id="@+id/tv_start_event"
                 android:text="20 Feb 2020"
                 android:textSize="12dp"
                 android:textColor="@color/abu"
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/tvEndEvent"
+                android:id="@+id/tv_end_event"
                 android:text="20 Feb 2020"
                 android:textSize="12dp"
                 android:textColor="@color/abu"
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tvjoin"
+                    android:id="@+id/tv_join"
                     android:gravity="right"
                     android:text="Join"
                     android:textColor="@color/merah"

@@ -2,7 +2,6 @@ package app.codelabs.forum.activities.event.description;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -168,9 +167,9 @@ public class DescriptionFragment extends Fragment {
         tvDojoin = view.findViewById(R.id.tvDojoin);
         tvjoined = view.findViewById(R.id.tvJoined);
         line_join = view.findViewById(R.id.liner_join);
-        tvTitle = view.findViewById(R.id.tvTitle);
-        tvStartEvent = view.findViewById(R.id.tvStartEvent);
-        tvEndEvent = view.findViewById(R.id.tvEndEvent);
+        tvTitle = view.findViewById(R.id.tv_title);
+        tvStartEvent = view.findViewById(R.id.tv_start_event);
+        tvEndEvent = view.findViewById(R.id.tv_end_event);
         tvLocation = view.findViewById(R.id.tvlocation);
         tvDeskrip = view.findViewById(R.id.tvDeskrip);
         ivImage = view.findViewById(R.id.ivImage);

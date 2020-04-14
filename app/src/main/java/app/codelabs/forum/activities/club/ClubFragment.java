@@ -12,17 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.club.about.AboutFragment;
-import app.codelabs.forum.activities.club.event_club.Event_Club_Fragment;
+import app.codelabs.forum.activities.club.event.EventFragment;
 import app.codelabs.forum.activities.gallery.fragment.GalleryFragment;
 import app.codelabs.forum.activities.club.member.MemberFragment;
 import app.codelabs.forum.activities.club.post.PostFragment;
 import app.codelabs.forum.activities.home.fragment.ArticleFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ClubFragment extends Fragment {
 
     private ViewPager viewPager;
@@ -59,7 +57,7 @@ public class ClubFragment extends Fragment {
         adapter = new PagerAdapter(getChildFragmentManager());
         adapter.addFragment(new ArticleFragment().setType(ArticleFragment.POST), "Post");
         adapter.addFragment(new MemberFragment(), "Member");
-        adapter.addFragment(new Event_Club_Fragment(), "Event");
+        adapter.addFragment(new EventFragment(), "Event");
         adapter.addFragment(new GalleryFragment(), "Gallery");
         adapter.addFragment(new AboutFragment(), "About");
 

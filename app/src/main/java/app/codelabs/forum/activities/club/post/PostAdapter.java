@@ -71,7 +71,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
         }
 
         private void setView(View view) {
-            tvtitle = view.findViewById(R.id.tvTitle);
+            tvtitle = view.findViewById(R.id.tv_title);
             tvContent = view.findViewById(R.id.tvContent);
             ivCarsArticel = view.findViewById(R.id.ivArticle);
             tvCategory = view.findViewById(R.id.tvCategory);
