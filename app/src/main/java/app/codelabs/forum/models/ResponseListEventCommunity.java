@@ -40,7 +40,7 @@ public class ResponseListEventCommunity {
 
     public static class DataEntity {
         @SerializedName("is_join")
-        private boolean is_join;
+        private boolean is_join = true;
         @SerializedName("longitude")
         private String longitude;
         @SerializedName("latitude")

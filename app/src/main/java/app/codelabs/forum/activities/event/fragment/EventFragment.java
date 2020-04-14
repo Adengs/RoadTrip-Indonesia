@@ -92,9 +92,10 @@ public class EventFragment extends Fragment {
         if (resultCode == RESULT_OK && requestCode == EventActivity.REQ_REFRESH_EVENT) {
             int index = data.getIntExtra("index", -1);
             ResponseListEventCommunity.DataEntity resultData = new Gson().fromJson(data.getStringExtra("data"), ResponseListEventCommunity.DataEntity.class);
-
             if (index != -1) {
-                adapter.setItemByIndex(resultData, index);
+                if(!resultData.getIs_join()){
+                    adapter.removeItemByIndex(index);
+                }
             }
         }
     }

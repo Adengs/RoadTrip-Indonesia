@@ -74,6 +74,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
         notifyDataSetChanged();
     }
 
+    public void removeItemByIndex(int index) {
+        items.remove(index);
+        notifyDataSetChanged();
+    }
+
     public class EventVH extends RecyclerView.ViewHolder {
         private TextView tvTitle, tvStartEvent, tvEndEvent;
         private ImageView ivEvent;
