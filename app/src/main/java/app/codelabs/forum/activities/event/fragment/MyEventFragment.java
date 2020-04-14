@@ -15,8 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.List;
+
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.adapter.AdapterEventCardView;
+import app.codelabs.forum.activities.event.adapter.AdapterMyEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponsMyEvent;
 import retrofit2.Call;
@@ -26,12 +28,12 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventFragment extends Fragment {
-    RecyclerView recyclerView;
-    private AdapterEventCardView adapter;
-    Context context;
+public class MyEventFragment extends Fragment {
+    private RecyclerView recyclerView;
+    private AdapterMyEvent adapter;
+    private Context context;
 
-    public EventFragment() {
+    public MyEventFragment() {
         // Required empty public constructor
     }
 
@@ -69,15 +71,16 @@ public class EventFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponsMyEvent> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     private void setView(View view) {
-        adapter = new AdapterEventCardView();
-        recyclerView = view.findViewById(R.id.recyclerviewevent);
+        adapter = new AdapterMyEvent();
+        recyclerView = view.findViewById(R.id.recyclerView);
     }
 
     private void setRecycleView() {

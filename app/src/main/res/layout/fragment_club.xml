@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/displayScreen"
-    tools:context=".activities.club.ClubFragment">
+    tools:context=".activities.community.ClubFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
@@ -28,7 +28,7 @@
 
         <androidx.viewpager.widget.ViewPager
 
-            android:id="@+id/viewPagerClub"
+            android:id="@+id/view_Pager_Club"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="?actionBarSize"

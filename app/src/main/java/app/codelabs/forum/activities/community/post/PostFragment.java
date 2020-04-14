@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.post;
+package app.codelabs.forum.activities.community.post;
 
 
 import android.content.Context;
@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponsListArticelbyCategory;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,11 +25,11 @@ import retrofit2.Response;
  */
 public class PostFragment extends Fragment {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private PostAdapter adapter;
-    Context context;
+    private Context context;
     private Integer id ;
-    ResponsListArticelbyCategory.DataEntity data = new ResponsListArticelbyCategory.DataEntity();
+    private ResponsListArticelbyCategory.DataEntity data = new ResponsListArticelbyCategory.DataEntity();
 
     public PostFragment() {
         // Required empty public constructor
@@ -62,19 +61,18 @@ public class PostFragment extends Fragment {
         ConnectionApi.apiService(context).listArticle(id).enqueue(new Callback<ResponsListArticelbyCategory>() {
             @Override
             public void onResponse(Call<ResponsListArticelbyCategory> call, Response<ResponsListArticelbyCategory> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
-
-                    adapter.setItems(response.body().getData());
-                }
-                else {
-
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        adapter.setItems(response.body().getData());
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ResponsListArticelbyCategory> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

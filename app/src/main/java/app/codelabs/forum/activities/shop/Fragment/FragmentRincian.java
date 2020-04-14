@@ -83,24 +83,25 @@ public class FragmentRincian extends Fragment {
 
 
     private void setView(View view) {
-        tvLocation = view.findViewById(R.id.tvlocation);
-        tvPrice = view.findViewById(R.id.tvPrice);
-        tvCategories = view.findViewById(R.id.tvCategory);
-        tvProductName = view.findViewById(R.id.tvproductName);
-        ivImage = view.findViewById(R.id.ivimage);
-        viewPagerShop = view.findViewById(R.id.viewpagerrincian);
-        tabLayout = view.findViewById(R.id.tab_layoutrincian);
+        tvLocation = view.findViewById(R.id.tv_Location);
+        tvPrice = view.findViewById(R.id.tv_Price);
+        tvCategories = view.findViewById(R.id.tv_Category);
+        tvProductName = view.findViewById(R.id.tv_Product_Name);
+        ivImage = view.findViewById(R.id.iv_Image);
+        viewPagerShop = view.findViewById(R.id.viewPager);
+        tabLayout = view.findViewById(R.id.tab_layout);
     }
 
     private void setViewPager(){
         AdapterShop adapterShop = new AdapterShop(getChildFragmentManager());
-        adapterShop.addFragment(new FragmentProDescription().setTypeAndData(FragmentProDescription.DESKRIP, new Gson().toJson(data)), "Description");
-        adapterShop.addFragment(new FragmentProDescription().setTypeAndData(FragmentProDescription.PRODUCT_INFO,new Gson().toJson(data)), "Product Info");
+        adapterShop.addFragment(new FragmentProDescription().
+                setTypeAndData(FragmentProDescription.DESKRIP, new Gson().toJson(data)), "Description");
+        adapterShop.addFragment(new FragmentProDescription().
+                setTypeAndData(FragmentProDescription.PRODUCT_INFO,new Gson().toJson(data)), "Product Info");
+
         viewPagerShop.setAdapter(adapterShop);
 
         tabLayout.setupWithViewPager(viewPagerShop);
-
-
     }
 
 }

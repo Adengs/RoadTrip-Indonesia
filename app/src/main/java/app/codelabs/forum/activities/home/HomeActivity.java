@@ -1,22 +1,17 @@
 package app.codelabs.forum.activities.home;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.club.ClubFragment;
-import app.codelabs.forum.activities.club.PagerAdapter;
-import app.codelabs.forum.activities.club.post.PostFragment;
+import app.codelabs.forum.activities.community.ClubFragment;
 import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
-import app.codelabs.forum.activities.event.fragment.EventFragment;
+import app.codelabs.forum.activities.event.fragment.MyEventFragment;
 import app.codelabs.forum.activities.home.fragment.HomeFragment;
 import app.codelabs.forum.activities.profile.fragment.ProfileFragment;
 
@@ -83,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
         imgEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new EventFragment());
+                setFragment(new MyEventFragment());
                 imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active));
                 imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event_klik));
                 imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community));

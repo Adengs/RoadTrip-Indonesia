@@ -1,6 +1,8 @@
 package app.codelabs.forum.activities.about_home;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
@@ -15,6 +17,7 @@ import retrofit2.Response;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +29,7 @@ public class AboutHome extends AppCompatActivity {
     private CircleImageView ivLogo;
     private TextView tvBackAbout,tvCompany_name,tvhistory,tvSecretariat;
     private Session session;
+    private Toolbar toolbar;
     private Context context;
 
     @Override
@@ -38,7 +42,16 @@ public class AboutHome extends AppCompatActivity {
 
         setView();
         setEvent();
+        setToolbar();
         loadData();
+    }
+
+    private void setToolbar() {
+        setSupportActionBar(toolbar);
+        setTitle("About");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void loadData() {
@@ -46,16 +59,18 @@ public class AboutHome extends AppCompatActivity {
         ConnectionApi.apiService(context).getAboutCompany().enqueue(new Callback<ResponsAbout>() {
             @Override
             public void onResponse(Call<ResponsAbout> call, Response<ResponsAbout> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()){
                         setAbout(response.body().getData());
-                }else {
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ResponsAbout> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -69,19 +84,21 @@ public class AboutHome extends AppCompatActivity {
     }
 
     private void setEvent() {
-        tvBackAbout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
     }
 
     private void setView() {
-        ivLogo = findViewById(R.id.logo);
-        tvCompany_name = findViewById(R.id.tvcompany_name);
-        tvhistory = findViewById(R.id.tvHistory);
-        tvSecretariat = findViewById(R.id.tvSecretariat);
-        tvBackAbout = findViewById(R.id.tvBackAbout);
+        ivLogo = findViewById(R.id.iv_logo);
+        tvCompany_name = findViewById(R.id.tv_company_name);
+        tvhistory = findViewById(R.id.tv_History);
+        tvSecretariat = findViewById(R.id.tv_Secretariat);
+        toolbar = findViewById(R.id.toolbar);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

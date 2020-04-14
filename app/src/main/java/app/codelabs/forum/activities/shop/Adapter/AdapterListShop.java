@@ -23,11 +23,11 @@ import app.codelabs.forum.activities.shop.DetailProductActivity;
 import app.codelabs.forum.models.ResponsListShopByCategories;
 
 public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHolder> {
-    private static Context context;
-    private List<ResponsListShopByCategories.DataEntity> data ;
+    private  Context context;
+    private List<ResponsListShopByCategories.DataEntity> item ;
 
     public AdapterListShop() {
-        this.data = new ArrayList<>();
+        this.item = new ArrayList<>();
     }
 
     @NonNull
@@ -40,12 +40,12 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
 
     @Override
     public void onBindViewHolder(@NonNull AdapterListShop.MyHolder holder, int position) {
-        ResponsListShopByCategories.DataEntity item = data.get(position);
-        holder.tvProductName.setText(Html.fromHtml(item.getName()));
-        holder.tvLocation.setText(Html.fromHtml(item.getLocation()));
-        holder.tvPrice.setText(Html.fromHtml(String.valueOf(item.getPrice())));
-        holder.tvCategory.setText(Html.fromHtml(item.getCategory()));
-        Picasso.with(context).load(item.getPhoto())
+        ResponsListShopByCategories.DataEntity items = item.get(position);
+        holder.tvProductName.setText(Html.fromHtml(items.getName()));
+        holder.tvLocation.setText(Html.fromHtml(items.getLocation()));
+        holder.tvPrice.setText(Html.fromHtml(String.valueOf(items.getPrice())));
+        holder.tvCategory.setText(Html.fromHtml(items.getCategory()));
+        Picasso.with(context).load(items.getPhoto())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)
                 .fit().centerCrop().into(holder.ivImage);
@@ -54,11 +54,11 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return item.size();
     }
 
-    public void setItems(List<ResponsListShopByCategories.DataEntity> datas) {
-        this.data= datas;
+    public void setItems(List<ResponsListShopByCategories.DataEntity> items) {
+        this.item= items;
         notifyDataSetChanged();
     }
 
@@ -80,9 +80,9 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ResponsListShopByCategories.DataEntity item = data.get(getAdapterPosition());
+                    ResponsListShopByCategories.DataEntity items = item.get(getAdapterPosition());
                     Intent intent = new Intent(context, DetailProductActivity.class);
-                    intent.putExtra("data", new Gson().toJson(item));
+                    intent.putExtra("data", new Gson().toJson(items));
                     context.startActivity(intent);
                 }
             });
@@ -90,12 +90,12 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
         }
 
         private void setView(View view) {
-            tvProductName = view.findViewById(R.id.tvproductName);
-            tvLocation = view.findViewById(R.id.tvlocation);
-            tvPrice = view.findViewById(R.id.tvPrice);
-            tvCategory = view.findViewById(R.id.tvCategory);
+            tvProductName = view.findViewById(R.id.tv_Product_Name);
+            tvLocation = view.findViewById(R.id.tv_Location);
+            tvPrice = view.findViewById(R.id.tv_Price);
+            tvCategory = view.findViewById(R.id.tv_Category);
             cardViewPro = itemView.findViewById(R.id.cardShopPro);
-            ivImage = view.findViewById(R.id.ivimage);
+            ivImage = view.findViewById(R.id.iv_Image);
 
         }
     }

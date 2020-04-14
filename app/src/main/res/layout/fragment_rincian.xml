@@ -11,7 +11,7 @@
 
         <com.google.android.material.tabs.TabLayout
             android:layout_marginBottom="5dp"
-            android:id="@+id/tab_layoutrincian"
+            android:id="@+id/tab_layout"
             android:layout_gravity="bottom"
             app:tabGravity="fill"
             android:background="@drawable/shape_walk_through"
@@ -34,7 +34,7 @@
     <androidx.viewpager.widget.ViewPager
         android:layout_marginTop="?actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/viewpagerrincian"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

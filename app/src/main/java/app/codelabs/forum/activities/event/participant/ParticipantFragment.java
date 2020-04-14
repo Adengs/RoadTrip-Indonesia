@@ -78,20 +78,19 @@ public class ParticipantFragment extends Fragment {
 
             @Override
             public void onResponse(Call<ResponsParticipantEvent> call, Response<ResponsParticipantEvent> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        adapter.setItems(response.body().getData());
+                    }
 
-                    adapter.setItems(response.body().getData());
                 }
-                else {
-
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
             }
 
             @Override
             public void onFailure(Call<ResponsParticipantEvent> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -105,7 +104,7 @@ public class ParticipantFragment extends Fragment {
 
     private void setView(View view) {
         adapter = new AdapterParticipant();
-        recyclerView = view.findViewById(R.id.recyclerviewparticipant);
+        recyclerView = view.findViewById(R.id.recyclerView);
     }
 
 

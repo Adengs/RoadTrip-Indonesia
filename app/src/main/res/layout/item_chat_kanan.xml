@@ -61,7 +61,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/txtIsiPesan_kanan"
+            android:id="@+id/tv_message_right_side"
             android:layout_width="wrap_content"
             android:layout_height="16dp"
             android:layout_marginLeft="14dp"

@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club;
+package app.codelabs.forum.activities.community;
 
 
 import android.os.Bundle;
@@ -14,11 +14,11 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.club.about.AboutFragment;
-import app.codelabs.forum.activities.club.event.EventFragment;
+import app.codelabs.forum.activities.community.about.AboutFragment;
+import app.codelabs.forum.activities.community.event.EventFragment;
 import app.codelabs.forum.activities.gallery.fragment.GalleryFragment;
-import app.codelabs.forum.activities.club.member.MemberFragment;
-import app.codelabs.forum.activities.club.post.PostFragment;
+import app.codelabs.forum.activities.community.member.MemberFragment;
+import app.codelabs.forum.activities.community.post.PostFragment;
 import app.codelabs.forum.activities.home.fragment.ArticleFragment;
 
 public class ClubFragment extends Fragment {
@@ -67,7 +67,7 @@ public class ClubFragment extends Fragment {
     }
 
     private void setView(View view) {
-        viewPager = view.findViewById(R.id.viewPagerClub);
+        viewPager = view.findViewById(R.id.view_Pager_Club);
         tabLayout = view.findViewById(R.id.tab_layout);
     }
 

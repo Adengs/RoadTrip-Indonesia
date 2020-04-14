@@ -14,7 +14,7 @@
         android:background="@color/putih">
             <EditText
                 android:layout_gravity="right"
-                android:id="@+id/etSreach"
+                android:id="@+id/et_Search"
                 android:drawableRight="@drawable/ic_search"
                 android:background="@null"
                 android:inputType="text"

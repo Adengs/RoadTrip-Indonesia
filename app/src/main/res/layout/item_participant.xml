@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="90dp">
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_participan"
+            android:id="@+id/iv_Image"
             android:layout_margin="20dp"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/txtname"
+                    android:id="@+id/tv_Name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="19dp"
@@ -42,7 +42,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
                     <TextView
-                        android:id="@+id/txtfollowesPartisicant"
                         android:layout_width="wrap_content"
                         android:layout_height="14dp"
                         android:layout_marginLeft="19dp"
@@ -51,7 +50,7 @@
                         android:textSize="12dp"
                         android:textStyle="bold" />
                     <TextView
-                        android:id="@+id/txt_follow_participant"
+                        android:id="@+id/tv_Followers"
                         android:text="550"
                         android:textSize="12dp"
                         android:textColor="@color/member"
@@ -66,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/txtJoined"
+                    android:id="@+id/tv_Joined"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_participantjoined2"

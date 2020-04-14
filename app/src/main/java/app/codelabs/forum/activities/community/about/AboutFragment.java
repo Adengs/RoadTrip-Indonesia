@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.about;
+package app.codelabs.forum.activities.community.about;
 
 
 import android.content.Context;
@@ -58,16 +58,17 @@ public class AboutFragment extends Fragment {
         ConnectionApi.apiService(context).getAboutCompany().enqueue(new Callback<ResponsAbout>() {
             @Override
             public void onResponse(Call<ResponsAbout> call, Response<ResponsAbout> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
-                    setAbout(response.body().getData());
-                }else {
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()){
+                        setAbout(response.body().getData());
+                    }
                 }
             }
-
             @Override
             public void onFailure(Call<ResponsAbout> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -78,7 +79,7 @@ public class AboutFragment extends Fragment {
     }
 
     private void setView(View view) {
-        tvHistory = view.findViewById(R.id.tvHistoryAbout);
-        tvSecretarian = view.findViewById(R.id.tvSecretariatAbout);
+        tvHistory = view.findViewById(R.id.tv_History);
+        tvSecretarian = view.findViewById(R.id.tv_Secretariat);
     }
 }

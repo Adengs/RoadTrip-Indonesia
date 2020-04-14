@@ -23,7 +23,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:layout_marginTop="2dp"
-        android:id="@+id/tab_layoutevent"
+        android:id="@+id/tab_layout"
         android:background="@color/putih"
         app:tabTextColor="@color/black"
         app:tabSelectedTextColor="@color/hitam"
@@ -37,7 +37,7 @@
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpagerevent"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

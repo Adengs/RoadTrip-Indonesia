@@ -52,7 +52,7 @@ public class FragmentProDescription extends Fragment {
     }
 
     private void setView(View view) {
-        tvDeskrip = view.findViewById(R.id.tvDeskrip);
+        tvDeskrip = view.findViewById(R.id.tv_Deskription);
     }
 
     private void loadData() {
@@ -61,7 +61,7 @@ public class FragmentProDescription extends Fragment {
             String strData = this.getArguments().getString("data");
             data =new Gson().fromJson(strData, ResponsListShopByCategories.DataEntity.class);
             if (type == DESKRIP) {
-               tvDeskrip.setText(Html.fromHtml(data.getDescription()));
+                tvDeskrip.setText(Html.fromHtml(data.getDescription()));
             } else if (type == PRODUCT_INFO) {
                 geProductInfo();
             }

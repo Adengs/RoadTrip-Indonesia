@@ -103,7 +103,7 @@ public class ListShopFragment extends Fragment {
     }
 
     private void setView(View view) {
-        recyclerView = view.findViewById(R.id.recyclerviewShop);
+        recyclerView = view.findViewById(R.id.recyclerview);
         adapter = new AdapterListShop();
 
     }

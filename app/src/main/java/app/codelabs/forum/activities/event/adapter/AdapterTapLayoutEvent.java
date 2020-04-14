@@ -8,14 +8,14 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterEventActivity2 extends FragmentPagerAdapter {
+public class AdapterTapLayoutEvent extends FragmentPagerAdapter {
 
     List<Fragment> items = new ArrayList<>();
     List<String> titles = new ArrayList<>();
 
 
 
-    public AdapterEventActivity2(FragmentManager fm) {
+    public AdapterTapLayoutEvent(FragmentManager fm) {
         super(fm);
     }
 

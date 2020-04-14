@@ -13,7 +13,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:background="@color/putih"
-        android:id="@+id/recyclerviewpesan"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         tools:listitem="@layout/item_chat_kiri"
@@ -27,7 +27,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_sendChat"
+            android:id="@+id/et_send_Chat"
             android:hint="Type reply here..."
             android:textSize="14dp"
             android:layout_width="0dp"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
         <ImageView
-            android:id="@+id/imgSendChat"
+            android:id="@+id/img_Send_Chat"
             android:layout_width="30dp"
             android:layout_height="20dp"
             android:layout_gravity="center"

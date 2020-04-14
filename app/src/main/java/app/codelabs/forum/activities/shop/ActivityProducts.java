@@ -101,7 +101,7 @@ public class ActivityProducts extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         viewPagerProducts = findViewById(R.id.viewpager);
         toolbar = findViewById(R.id.toolbar);
-        etSearch = findViewById(R.id.etSreach);
+        etSearch = findViewById(R.id.et_Search);
         progressBar = findViewById(R.id.progressbar);
 
     }

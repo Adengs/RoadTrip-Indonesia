@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:id="@+id/ivimage"
+                    android:id="@+id/iv_Image"
                     android:background="@drawable/ic_backgroundshop"
                     android:src="@drawable/carwing"
                     android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                 </LinearLayout>
             </FrameLayout>
             <TextView
-                android:id="@+id/tvproductName"
+                android:id="@+id/tv_Product_Name"
                 android:background="@color/putih"
                 android:text="Bayerische Motoren Werke AG, translated in English as Bavarian Motor Works."
                 android:textColor="@color/black"
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/tvlocation"
+                android:id="@+id/tv_Location"
                 android:background="@color/putih"
                 android:text="Ubud, Bali"
                 android:paddingLeft="20dp"
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/tvPrice"
+                android:id="@+id/tv_Price"
                 android:background="@color/putih"
                 android:text="Rp 5.000.000"
                 android:textColor="@color/black"
@@ -113,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/tvCategory"
+                    android:id="@+id/tv_Category"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:textColor="#F62C4C"
@@ -134,12 +134,14 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/iv_ikon"
                     android:src="@drawable/lambor"
                     android:layout_width="24dp"
                     android:layout_height="24dp">
                 </ImageView>
 
                 <TextView
+                    android:id="@+id/tv_Community"
                     android:layout_marginLeft="20dp"
                     android:text="Mobil 321"
                     android:textSize="14dp"
@@ -156,6 +158,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
+                        android:id="@+id/tv_Maps"
                         android:layout_gravity="center"
                         android:text="Maps"
                         android:textColor="@color/hitam"

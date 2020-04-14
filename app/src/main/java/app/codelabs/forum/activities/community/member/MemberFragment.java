@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.member;
+package app.codelabs.forum.activities.community.member;
 
 
 import android.content.Context;
@@ -83,18 +83,18 @@ public class MemberFragment extends Fragment {
 
             @Override
             public void onResponse(Call<ResponsListMemberCompany> call, Response<ResponsListMemberCompany> response) {
-                if (response.isSuccessful() && response.body().getSuccess()) {
-                    adapter.setItems(response.body().getData());
-                } else {
-
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        adapter.setItems(response.body().getData());
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ResponsListMemberCompany> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -124,48 +124,61 @@ public class MemberFragment extends Fragment {
             @Override
             public void onFollow(final ResponsListMemberCompany.Data data) {
                 if (data.getIs_following() == false) {
-                    setLoading(true, false);
-                    Map<String, String> dataFollow = new HashMap<>();
-                    dataFollow.put("followed_id", String.valueOf(data.getId()));
-                    ConnectionApi.apiService(context).follow(dataFollow).enqueue(new Callback<ResponsFollow>() {
-                        @Override
-                        public void onResponse(Call<ResponsFollow> call, Response<ResponsFollow> response) {
-                            setLoading(false, false);
-                            if (response.isSuccessful() && response.body().getSuccess()) {
-                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                loadData();
-                            } else {
-                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponsFollow> call, Throwable t) {
-                            Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    follow(data);
                 } else {
-                    setLoading(true, false);
-                    Map<String, String> dataUnFollow = new HashMap<>();
-                    dataUnFollow.put("followed_id", String.valueOf(data.getId()));
-                    ConnectionApi.apiService(context).unfollow(dataUnFollow).enqueue(new Callback<ResponsUnFollow>() {
-                        @Override
-                        public void onResponse(Call<ResponsUnFollow> call, Response<ResponsUnFollow> response) {
-                            setLoading(false, false);
-                            if (response.isSuccessful() && response.body().getSuccess()) {
-                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                loadData();
-                            } else {
-                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponsUnFollow> call, Throwable t) {
-                            Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    unFollow(data);
                 }
+            }
+        });
+    }
+
+    private void unFollow(ResponsListMemberCompany.Data data) {
+        setLoading(true, false);
+        Map<String, String> dataUnFollow = new HashMap<>();
+        dataUnFollow.put("followed_id", String.valueOf(data.getId()));
+        ConnectionApi.apiService(context).unfollow(dataUnFollow).enqueue(new Callback<ResponsUnFollow>() {
+            @Override
+            public void onResponse(Call<ResponsUnFollow> call, Response<ResponsUnFollow> response) {
+                setLoading(false, false);
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()){
+                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        loadData();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsUnFollow> call, Throwable t) {
+                if (t.getMessage() != null) {
+                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void follow(ResponsListMemberCompany.Data data) {
+        setLoading(true, false);
+        Map<String, String> dataFollow = new HashMap<>();
+        dataFollow.put("followed_id", String.valueOf(data.getId()));
+        ConnectionApi.apiService(context).follow(dataFollow).enqueue(new Callback<ResponsFollow>() {
+            @Override
+            public void onResponse(Call<ResponsFollow> call, Response<ResponsFollow> response) {
+                setLoading(false, false);
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        loadData();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsFollow> call, Throwable t) {
+                if (t.getMessage() != null) {
+                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
