@@ -45,7 +45,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         holder.tvCategory.setText(item.getCategory().getCategory());
         holder.tvContent.setText(Html.fromHtml(item.getContent()));
         holder.tvTitle.setText(item.getTitle());
-        holder.tvTime.setText(DateTimeHelper.instance(item.getCreated_at()).getReadableTime());
+        holder.tvTime.setText(DateTimeHelper.instance(item.getCreated_at()).getTimeElapsed());
         Picasso.with(context).load(item.getImage())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)

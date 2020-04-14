@@ -1,13 +1,8 @@
 package app.codelabs.forum.activities.vote;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -15,20 +10,26 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.HomeActivity;
+import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.DateTimeHelper;
 import app.codelabs.forum.models.ResponseVote;
-import app.codelabs.forum.models.Vote;
+import app.codelabs.forum.models.ResponseVoting;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
 public class VoteActivity extends AppCompatActivity {
+    private TextView tvTitle, tvTimeLeft;
     private Button btnVoting;
     private Context context;
     private RecyclerView recyclerView;
@@ -36,6 +37,8 @@ public class VoteActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ProgressBar progressBar;
     private LinearLayout container;
+    private ResponseVote.DataEntity data;
+    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
 
 
     @Override
@@ -60,9 +63,9 @@ public class VoteActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseVote> call, Response<ResponseVote> response) {
                 progressBar.setVisibility(View.GONE);
                 container.setVisibility(View.VISIBLE);
-                if(response.body() != null){
-                    if(response.isSuccessful()){
-                        
+                if (response.body() != null) {
+                    if (response.isSuccessful()) {
+                        setData(response.body().getData());
                     }
                 }
             }
@@ -72,10 +75,27 @@ public class VoteActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 container.setVisibility(View.VISIBLE);
                 if (t.getMessage() != null) {
-                    Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void setData(ResponseVote.DataEntity data) {
+        this.data = data;
+        tvTitle.setText(data.getTitle());
+        tvTimeLeft.setText(DateTimeHelper.instance(data.getEnd_vote()).getTimeLeft());
+        adapter.setItems(data.getCandidate(),data.getIsAlreadyVote());
+        if(data.getIsAlreadyVote()){
+            btnVoting.setText("You Have Participated");
+            btnVoting.setBackgroundResource(R.drawable.shape_button_disable);
+            btnVoting.setTextColor(ContextCompat.getColor(context,R.color.hitam));
+        }else{
+            btnVoting.setText("Voting");
+            btnVoting.setBackgroundResource(R.drawable.shape_button_login);
+            btnVoting.setTextColor(ContextCompat.getColor(context,R.color.putih));
+
+        }
     }
 
     private void setRecycleView() {
@@ -83,15 +103,50 @@ public class VoteActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
-        adapter.setItems(GenerateDataDumi());
     }
 
     private void setEvent() {
         btnVoting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomSheetVote bottomSheetVote = new BottomSheetVote();
-                bottomSheetVote.show(getSupportFragmentManager(), "bottomvote");
+                if(data.getIsAlreadyVote()){
+                    Toast.makeText(context, "You Have Participated.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                votingCandidate();
+            }
+        });
+
+    }
+
+    private void votingCandidate() {
+        if (adapter.getSelectedCandidate() == null) {
+            Toast.makeText(context, "Harus memilih salah satu kandidat.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        progresDialogFragment.show(getSupportFragmentManager(), "do-voting");
+        ConnectionApi.apiService(context).doVote(data.getId(), adapter.getSelectedCandidate().getUser_id()).enqueue(new Callback<ResponseVoting>() {
+            @Override
+            public void onResponse(Call<ResponseVoting> call, Response<ResponseVoting> response) {
+                progresDialogFragment.dismiss();
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        BottomSheetVote bottomSheetVote = new BottomSheetVote();
+                        bottomSheetVote.show(getSupportFragmentManager(), "bottom_vote");
+                        getVoteData();
+                    } else {
+                        Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseVoting> call, Throwable t) {
+                progresDialogFragment.dismiss();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -111,17 +166,15 @@ public class VoteActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview);
         container = findViewById(R.id.container);
         progressBar = findViewById(R.id.progressbar);
+        tvTimeLeft = findViewById(R.id.tv_time_left);
+        tvTitle = findViewById(R.id.tv_title);
     }
 
-    public List<Vote> GenerateDataDumi() {
-        List<Vote> items = new ArrayList<>();
-
-        items.add(new Vote("Vanessa", false));
-        items.add(new Vote("Nurul", false));
-        items.add(new Vote("Adella", false));
-
-        return items;
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
-
-
 }

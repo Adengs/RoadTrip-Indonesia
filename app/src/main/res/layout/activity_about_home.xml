@@ -160,7 +160,7 @@
                                 android:text="Maps"
                                 android:textColor="@color/putih"
                                 android:layout_marginRight="20dp"
-                                android:background="@drawable/shape_buttonlogin"
+                                android:background="@drawable/shape_button_login"
                                 android:paddingTop="6dp"
                                 android:paddingBottom="6dp"
                                 android:paddingLeft="19dp"

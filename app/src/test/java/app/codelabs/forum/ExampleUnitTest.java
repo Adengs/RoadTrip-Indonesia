@@ -17,7 +17,7 @@ public class ExampleUnitTest {
         String strDate = "2020-04-01 00:00:00";
         System.out.println("diff "+strDate);
 
-        System.out.println(DateTimeHelper.instance(strDate).getReadableTime());
+        System.out.println(DateTimeHelper.instance(strDate).getTimeElapsed());
         assertEquals(4, 2 + 2);
     }
 }

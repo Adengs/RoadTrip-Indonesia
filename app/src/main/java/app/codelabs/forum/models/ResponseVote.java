@@ -122,6 +122,16 @@ public class ResponseVote {
         @SerializedName("user_id")
         private int user_id;
 
+        private boolean isSelect = false;
+
+        public boolean isSelect() {
+            return isSelect;
+        }
+
+        public void setSelect(boolean select) {
+            isSelect = select;
+        }
+
         public String getUser_photo() {
             return user_photo;
         }

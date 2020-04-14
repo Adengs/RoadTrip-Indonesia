@@ -1,8 +1,10 @@
 package app.codelabs.forum.helpers;
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.Hours;
 import org.joda.time.Minutes;
+import org.joda.time.Seconds;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,7 +36,7 @@ public class DateTimeHelper {
 
 
     private DateTimeHelper(String dateTime) {
-        if(dateTime == null){
+        if (dateTime == null) {
             return;
         }
 
@@ -49,7 +51,7 @@ public class DateTimeHelper {
 
 
     private DateTimeHelper(String dateTime, String pattern) {
-        if(dateTime == null){
+        if (dateTime == null) {
             return;
         }
 
@@ -65,8 +67,8 @@ public class DateTimeHelper {
         this.date = date;
     }
 
-    public String getReadableTime() {
-        if(date == null){
+    public String getTimeElapsed() {
+        if (date == null) {
             return "Datetime is null";
         }
         Date now = new Date();
@@ -107,5 +109,38 @@ public class DateTimeHelper {
     public String get(String pattern) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
         return dateFormat.format(date);
+    }
+
+    public String getTimeLeft() {
+        if (date == null) {
+            return "Datetime is null";
+        }
+        Date now = new Date();
+        String str = "NaN";
+        DateTime nowDateTime = new DateTime(now);
+        DateTime dateTime = new DateTime(date);
+
+        if (nowDateTime.getMillis() >= dateTime.getMillis()) {
+            return "Time is over";
+        }
+
+        if (Days.daysBetween(nowDateTime, dateTime).getDays() >= 1) {
+            str = Days.daysBetween(nowDateTime, dateTime).getDays() + " day" +
+                    (Days.daysBetween(nowDateTime, dateTime).getDays() == 1 ? "" : "s") + " left";
+
+        } else if (Hours.hoursBetween(nowDateTime, dateTime).getHours() > 0) {
+            str = Hours.hoursBetween(nowDateTime, dateTime).getHours() + " hour" +
+                    (Hours.hoursBetween(nowDateTime, dateTime).getHours() == 1 ? "" : "s")
+                    + " left";
+
+        } else if (Minutes.minutesBetween(nowDateTime, dateTime).getMinutes() > 0) {
+            str = Minutes.minutesBetween(nowDateTime, dateTime).getMinutes() + " minute" +
+                    (Minutes.minutesBetween(nowDateTime, dateTime).getMinutes() == 1 ? "" : "s")
+                    + " left";
+        } else {
+            str = Seconds.secondsBetween(nowDateTime, dateTime).getSeconds() + " second" +
+                    (Seconds.secondsBetween(nowDateTime, dateTime).getSeconds() == 1 ? "" : "s") + " left";
+        }
+        return str;
     }
 }

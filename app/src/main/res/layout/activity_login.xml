@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
-            android:background="@drawable/shape_buttonlogin"
+            android:background="@drawable/shape_button_login"
             android:text="Login"
             android:textAlignment="center"
             android:textAllCaps="false"
