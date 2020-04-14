@@ -20,11 +20,11 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.DetailProductActivity;
-import app.codelabs.forum.models.ResponsListShopByCategories;
+import app.codelabs.forum.models.ResponseListShopByCategories;
 
 public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHolder> {
     private  Context context;
-    private List<ResponsListShopByCategories.DataEntity> item ;
+    private List<ResponseListShopByCategories.DataEntity> item ;
 
     public AdapterListShop() {
         this.item = new ArrayList<>();
@@ -40,7 +40,7 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
 
     @Override
     public void onBindViewHolder(@NonNull AdapterListShop.MyHolder holder, int position) {
-        ResponsListShopByCategories.DataEntity items = item.get(position);
+        ResponseListShopByCategories.DataEntity items = item.get(position);
         holder.tvProductName.setText(Html.fromHtml(items.getName()));
         holder.tvLocation.setText(Html.fromHtml(items.getLocation()));
         holder.tvPrice.setText(Html.fromHtml(String.valueOf(items.getPrice())));
@@ -57,7 +57,7 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
         return item.size();
     }
 
-    public void setItems(List<ResponsListShopByCategories.DataEntity> items) {
+    public void setItems(List<ResponseListShopByCategories.DataEntity> items) {
         this.item= items;
         notifyDataSetChanged();
     }
@@ -80,7 +80,7 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ResponsListShopByCategories.DataEntity items = item.get(getAdapterPosition());
+                    ResponseListShopByCategories.DataEntity items = item.get(getAdapterPosition());
                     Intent intent = new Intent(context, DetailProductActivity.class);
                     intent.putExtra("data", new Gson().toJson(items));
                     context.startActivity(intent);

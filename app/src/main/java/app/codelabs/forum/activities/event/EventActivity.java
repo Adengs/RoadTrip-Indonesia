@@ -19,15 +19,15 @@ import app.codelabs.forum.activities.event.description.DescriptionFragment;
 import app.codelabs.forum.activities.event.participant.ParticipantFragment;
 import app.codelabs.forum.activities.event.schedule.ScheduleFragment;
 import app.codelabs.forum.activities.event.walkietalkie.WalkieTalkieFragment;
-import app.codelabs.forum.models.ResponsListEventCommunity;
+import app.codelabs.forum.models.ResponseListEventCommunity;
 
 public class EventActivity extends AppCompatActivity {
+    public static final int REQ_REFRESH_EVENT = 1001;
     private Context context;
     private TabLayout tabLayoutEvent;
     private ViewPager viewPagerEvent;
-    private Boolean isJoin;
     private String strData;
-    private ResponsListEventCommunity.DataEntity data;
+    private ResponseListEventCommunity.DataEntity data;
     private Toolbar toolbar;
 
 
@@ -37,7 +37,6 @@ public class EventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
-
 
         context = getApplicationContext();
 
@@ -50,9 +49,8 @@ public class EventActivity extends AppCompatActivity {
 
     private void getData() {
         if (getIntent().getStringExtra("data") != null) {
-            isJoin = getIntent().getBooleanExtra("is_join",false);
             strData = getIntent().getStringExtra("data");
-            data = new Gson().fromJson(strData, ResponsListEventCommunity.DataEntity.class);
+            data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
         }
     }
 
@@ -65,26 +63,25 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void setViewPager() {
-         adapter=new AdapterTapLayoutEvent(getSupportFragmentManager());
+        adapter = new AdapterTapLayoutEvent(getSupportFragmentManager());
 
-         Bundle ags = new Bundle();
-         ags.putString("data",new Gson().toJson(data));
-         ags.putBoolean("is_join",false);
+        Bundle ags = new Bundle();
+        ags.putString("data", new Gson().toJson(data));
 
-         DescriptionFragment descriptionFragment = new DescriptionFragment();
-         descriptionFragment.setArguments(ags);
-         adapter.addFragment(descriptionFragment,"Description");
+        DescriptionFragment descriptionFragment = new DescriptionFragment();
+        ParticipantFragment participantFragment = new ParticipantFragment();
+        participantFragment.setArguments(ags);
+        descriptionFragment.setArguments(ags);
 
-         ParticipantFragment participantFragment = new ParticipantFragment();
-         participantFragment.setArguments(ags);
-         adapter.addFragment(participantFragment,"Participant");
 
-         adapter.addFragment(new ScheduleFragment(),"Schedule");
-         adapter.addFragment(new WalkieTalkieFragment(),"Walkie Talkie");
-         adapter.addFragment(new ChatFragment(),"Chat");
-         viewPagerEvent.setAdapter(adapter);
+        adapter.addFragment(descriptionFragment, "Description");
+        adapter.addFragment(participantFragment, "Participant");
+        adapter.addFragment(new ScheduleFragment(), "Schedule");
+        adapter.addFragment(new WalkieTalkieFragment(), "Walkie Talkie");
+        adapter.addFragment(new ChatFragment(), "Chat");
+        viewPagerEvent.setAdapter(adapter);
 
-         tabLayoutEvent.setupWithViewPager(viewPagerEvent);
+        tabLayoutEvent.setupWithViewPager(viewPagerEvent);
 
     }
 
@@ -94,6 +91,7 @@ public class EventActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
 
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -102,5 +100,4 @@ public class EventActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

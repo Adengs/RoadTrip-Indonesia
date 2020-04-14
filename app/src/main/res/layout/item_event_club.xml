@@ -16,7 +16,8 @@
 
         <ImageView
             android:id="@+id/img_event"
-            android:background="@drawable/shape_img_event_club"
+            android:src="@drawable/default_image"
+            android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="163dp" />
 

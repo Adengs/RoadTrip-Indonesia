@@ -5,7 +5,7 @@
     android:layout_height="253dp"
     android:orientation="vertical"
     android:background="@drawable/shape_join"
-    tools:context=".activities.menu_event.JoinPickFragment">
+    tools:context=".activities.club.event.bottom_sheet.BottomSheetJoinEvent">
 
    <LinearLayout
        android:layout_width="match_parent"

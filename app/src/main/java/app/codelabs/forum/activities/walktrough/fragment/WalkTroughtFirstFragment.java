@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.walktrough.WalkThroughActivity;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponWalkThrough;
+import app.codelabs.forum.models.ResponseWalkThrough;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,7 +51,7 @@ public class WalkTroughtFirstFragment extends Fragment {
     }
 
     private void setData() {
-        ResponWalkThrough.DataEntity item = Session.init(context).getWalkTrough().get(0);
+        ResponseWalkThrough.DataEntity item = Session.init(context).getWalkTrough().get(0);
         tvTitle.setText(item.getTitle());
         tvDesc.setText(item.getDescription());
         Picasso.with(context).load(item.getImage()).fit().centerCrop().into(ivBackground);

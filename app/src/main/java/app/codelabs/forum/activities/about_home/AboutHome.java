@@ -4,22 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponMyProfile;
-import app.codelabs.forum.models.ResponsAbout;
+import app.codelabs.forum.models.ResponseAbout;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,9 +51,9 @@ public class AboutHome extends AppCompatActivity {
 
     private void loadData() {
 
-        ConnectionApi.apiService(context).getAboutCompany().enqueue(new Callback<ResponsAbout>() {
+        ConnectionApi.apiService(context).getAboutCompany().enqueue(new Callback<ResponseAbout>() {
             @Override
-            public void onResponse(Call<ResponsAbout> call, Response<ResponsAbout> response) {
+            public void onResponse(Call<ResponseAbout> call, Response<ResponseAbout> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()){
                         setAbout(response.body().getData());
@@ -67,7 +62,7 @@ public class AboutHome extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponsAbout> call, Throwable t) {
+            public void onFailure(Call<ResponseAbout> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -75,7 +70,7 @@ public class AboutHome extends AppCompatActivity {
         });
     }
 
-    private void setAbout(ResponsAbout.DataEntity data) {
+    private void setAbout(ResponseAbout.DataEntity data) {
         Picasso.with(context).load(data.getLogo()).fit().centerCrop().into(ivLogo);
         tvCompany_name.setText(data.getCompany_name());
         tvhistory.setText(data.getHistory());

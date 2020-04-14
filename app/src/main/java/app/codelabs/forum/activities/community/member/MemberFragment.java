@@ -22,10 +22,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.community.member.MemberAdapter;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponsFollow;
-import app.codelabs.forum.models.ResponsListMemberCompany;
-import app.codelabs.forum.models.ResponsUnFollow;
+import app.codelabs.forum.models.ResponseFollow;
+import app.codelabs.forum.models.ResponseListMemberCompany;
+import app.codelabs.forum.models.ResponseUnFollow;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -79,10 +80,10 @@ public class MemberFragment extends Fragment {
 
 
     private void loadData() {
-        ConnectionApi.apiService(context).listMember(search).enqueue(new Callback<ResponsListMemberCompany>() {
+        ConnectionApi.apiService(context).listMember(search).enqueue(new Callback<ResponseListMemberCompany>() {
 
             @Override
-            public void onResponse(Call<ResponsListMemberCompany> call, Response<ResponsListMemberCompany> response) {
+            public void onResponse(Call<ResponseListMemberCompany> call, Response<ResponseListMemberCompany> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         adapter.setItems(response.body().getData());
@@ -91,7 +92,7 @@ public class MemberFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponsListMemberCompany> call, Throwable t) {
+            public void onFailure(Call<ResponseListMemberCompany> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -122,7 +123,7 @@ public class MemberFragment extends Fragment {
         });
         adapter.setListener(new MemberAdapter.OnItemSelected() {
             @Override
-            public void onFollow(final ResponsListMemberCompany.Data data) {
+            public void onFollow(final ResponseListMemberCompany.Data data) {
                 if (data.getIs_following() == false) {
                     follow(data);
                 } else {
@@ -132,13 +133,13 @@ public class MemberFragment extends Fragment {
         });
     }
 
-    private void unFollow(ResponsListMemberCompany.Data data) {
+    private void unFollow(ResponseListMemberCompany.Data data) {
         setLoading(true, false);
         Map<String, String> dataUnFollow = new HashMap<>();
         dataUnFollow.put("followed_id", String.valueOf(data.getId()));
-        ConnectionApi.apiService(context).unfollow(dataUnFollow).enqueue(new Callback<ResponsUnFollow>() {
+        ConnectionApi.apiService(context).unfollow(dataUnFollow).enqueue(new Callback<ResponseUnFollow>() {
             @Override
-            public void onResponse(Call<ResponsUnFollow> call, Response<ResponsUnFollow> response) {
+            public void onResponse(Call<ResponseUnFollow> call, Response<ResponseUnFollow> response) {
                 setLoading(false, false);
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()){
@@ -149,7 +150,7 @@ public class MemberFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponsUnFollow> call, Throwable t) {
+            public void onFailure(Call<ResponseUnFollow> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -157,13 +158,13 @@ public class MemberFragment extends Fragment {
         });
     }
 
-    private void follow(ResponsListMemberCompany.Data data) {
+    private void follow(ResponseListMemberCompany.Data data) {
         setLoading(true, false);
         Map<String, String> dataFollow = new HashMap<>();
         dataFollow.put("followed_id", String.valueOf(data.getId()));
-        ConnectionApi.apiService(context).follow(dataFollow).enqueue(new Callback<ResponsFollow>() {
+        ConnectionApi.apiService(context).follow(dataFollow).enqueue(new Callback<ResponseFollow>() {
             @Override
-            public void onResponse(Call<ResponsFollow> call, Response<ResponsFollow> response) {
+            public void onResponse(Call<ResponseFollow> call, Response<ResponseFollow> response) {
                 setLoading(false, false);
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
@@ -174,7 +175,7 @@ public class MemberFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponsFollow> call, Throwable t) {
+            public void onFailure(Call<ResponseFollow> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                 }

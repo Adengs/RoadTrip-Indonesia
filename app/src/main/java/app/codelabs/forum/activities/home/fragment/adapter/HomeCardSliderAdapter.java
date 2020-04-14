@@ -1,8 +1,6 @@
 package app.codelabs.forum.activities.home.fragment.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,27 +8,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
-
 import com.smarteist.autoimageslider.SliderViewAdapter;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.models.ResponsHighlight;
-import app.codelabs.forum.models.ResponsListMemberCompany;
-import app.codelabs.forum.models.SliderItem;
+import app.codelabs.forum.models.ResponseHighlight;
 
 
 public class HomeCardSliderAdapter extends
         SliderViewAdapter<HomeCardSliderAdapter.SliderAdapterVH> {
 
     private Context context;
-    private List<ResponsHighlight.DataEntity> data = new ArrayList<>();
+    private List<ResponseHighlight.DataEntity> data = new ArrayList<>();
 
 
     //private List<SliderItem> items = new ArrayList<>();
@@ -55,7 +47,7 @@ public class HomeCardSliderAdapter extends
 
 
 //        SliderItem sliderItem = items.get(position);
-        ResponsHighlight.DataEntity datas = data.get(position);
+        ResponseHighlight.DataEntity datas = data.get(position);
 
         viewHolder.textViewDescription.setText(datas.getModule_title());
         viewHolder.textViewDescription.setTextSize(16);
@@ -72,7 +64,7 @@ public class HomeCardSliderAdapter extends
         //slider view count could be dynamic size
         return data.size();
     }
-    public void setItems(List<ResponsHighlight.DataEntity> datas) {
+    public void setItems(List<ResponseHighlight.DataEntity> datas) {
         this.data = datas;
         notifyDataSetChanged();
     }

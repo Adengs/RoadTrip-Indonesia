@@ -2,7 +2,7 @@ package app.codelabs.forum.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ResponMyProfile {
+public class ResponseMyProfile {
 
     @SerializedName("data")
     private DataEntity data;

@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.community.event;
+package app.codelabs.forum.activities.community.event.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,33 +16,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
-import app.codelabs.forum.models.ResponsListEventCommunity;
+import app.codelabs.forum.models.ResponseListEventCommunity;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder> {
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
     private Context context;
-    private List<ResponsListEventCommunity.DataEntity> items;
+    private List<ResponseListEventCommunity.DataEntity> items;
     public OnItemSelection listener;
+    public Fragment fragment;
 
-    public EventAdapter() {
+    public EventAdapter(Fragment fragment) {
+        this.fragment = fragment;
         items = new ArrayList<>();
     }
 
 
     @NonNull
     @Override
-    public EventHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EventVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_event_club, parent, false);
-        return new EventHolder(view);
+        return new EventVH(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EventHolder holder, int position) {
-        final ResponsListEventCommunity.DataEntity item = items.get(position);
+    public void onBindViewHolder(@NonNull EventVH holder, int position) {
+        final ResponseListEventCommunity.DataEntity item = items.get(position);
         holder.tvTitle.setText(item.getTitle());
         holder.tvStartEvent.setText(item.getEvent_start());
         holder.tvEndEvent.setText(item.getEvent_end());
@@ -72,12 +75,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
         return items.size();
     }
 
-    public void setItems(List<ResponsListEventCommunity.DataEntity> items) {
+    public void setItemByIndex(ResponseListEventCommunity.DataEntity item, int index) {
+        this.items.set(index, item);
+        notifyDataSetChanged();
+    }
+
+    public void setItems(List<ResponseListEventCommunity.DataEntity> items) {
         this.items = items;
         notifyDataSetChanged();
     }
 
-    public void addItems(List<ResponsListEventCommunity.DataEntity> items) {
+    public void addItems(List<ResponseListEventCommunity.DataEntity> items) {
         this.items.addAll(items);
         notifyDataSetChanged();
     }
@@ -87,12 +95,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
     }
 
 
-    public class EventHolder extends RecyclerView.ViewHolder {
+    public class EventVH extends RecyclerView.ViewHolder {
         private TextView tvJoin, tvTitle, tvStartEvent, tvEndEvent, tvDoJoin;
         private ImageView ivEvent;
 
 
-        public EventHolder(@NonNull View view) {
+        public EventVH(@NonNull View view) {
             super(view);
             setView(view);
             setEvent();
@@ -102,17 +110,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ResponsListEventCommunity.DataEntity item = items.get(getAdapterPosition());
+                    ResponseListEventCommunity.DataEntity item = items.get(getAdapterPosition());
                     Intent intent = new Intent(context, EventActivity.class);
                     intent.putExtra("data", new Gson().toJson(item));
-                    context.startActivity(intent);
+                    intent.putExtra("index", getAdapterPosition());
+                    fragment.startActivityForResult(intent, EventActivity.REQ_REFRESH_EVENT);
                 }
             });
             tvJoin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ResponsListEventCommunity.DataEntity data = items.get(getAdapterPosition());
-                    listener.onBtnJoin(data);
+                    ResponseListEventCommunity.DataEntity data = items.get(getAdapterPosition());
+                    listener.onBtnJoin(data, getAdapterPosition());
                 }
             });
         }
@@ -129,6 +138,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
     }
 
     public interface OnItemSelection {
-        void onBtnJoin(ResponsListEventCommunity.DataEntity item);
+        void onBtnJoin(ResponseListEventCommunity.DataEntity item, int index);
     }
 }

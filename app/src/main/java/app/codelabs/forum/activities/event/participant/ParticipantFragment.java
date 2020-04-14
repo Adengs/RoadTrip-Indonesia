@@ -19,10 +19,8 @@ import com.google.gson.Gson;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponsListEventCommunity;
-import app.codelabs.forum.models.ResponsParticipantEvent;
-import app.codelabs.forum.models.ResponseListArticle;
+import app.codelabs.forum.models.ResponseListEventCommunity;
+import app.codelabs.forum.models.ResponseParticipantEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +33,7 @@ public class ParticipantFragment extends Fragment {
     private AdapterParticipant adapter;
     private Context context;
     private String strData;
-    private ResponsListEventCommunity.DataEntity data ;
+    private ResponseListEventCommunity.DataEntity data ;
 
 
 
@@ -70,14 +68,14 @@ public class ParticipantFragment extends Fragment {
     private void getData() {
         Bundle bundle = this.getArguments();
         strData = bundle.getString("data");
-        data = new Gson().fromJson(strData, ResponsListEventCommunity.DataEntity.class);
+        data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
     }
 
     private void loadData() {
-        ConnectionApi.apiService(context).eventParticipant(data.getId()).enqueue(new Callback<ResponsParticipantEvent>() {
+        ConnectionApi.apiService(context).eventParticipant(data.getId()).enqueue(new Callback<ResponseParticipantEvent>() {
 
             @Override
-            public void onResponse(Call<ResponsParticipantEvent> call, Response<ResponsParticipantEvent> response) {
+            public void onResponse(Call<ResponseParticipantEvent> call, Response<ResponseParticipantEvent> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         adapter.setItems(response.body().getData());
@@ -87,7 +85,7 @@ public class ParticipantFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponsParticipantEvent> call, Throwable t) {
+            public void onFailure(Call<ResponseParticipantEvent> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }

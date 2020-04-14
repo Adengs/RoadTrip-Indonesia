@@ -18,7 +18,6 @@ import app.codelabs.forum.activities.community.about.AboutFragment;
 import app.codelabs.forum.activities.community.event.EventFragment;
 import app.codelabs.forum.activities.gallery.fragment.GalleryFragment;
 import app.codelabs.forum.activities.community.member.MemberFragment;
-import app.codelabs.forum.activities.community.post.PostFragment;
 import app.codelabs.forum.activities.home.fragment.ArticleFragment;
 
 public class ClubFragment extends Fragment {
@@ -45,8 +44,7 @@ public class ClubFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setView(view);
-        adapter = new PagerAdapter(getFragmentManager());
-        adapter.addFragment(new PostFragment(), "Post");
+        adapter = new PagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         setViewPager();
 

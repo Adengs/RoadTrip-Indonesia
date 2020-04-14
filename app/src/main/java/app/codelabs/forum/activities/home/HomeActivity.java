@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.community.ClubFragment;
 import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
-import app.codelabs.forum.activities.event.fragment.MyEventFragment;
+import app.codelabs.forum.activities.event.fragment.EventFragment;
 import app.codelabs.forum.activities.home.fragment.HomeFragment;
 import app.codelabs.forum.activities.profile.fragment.ProfileFragment;
 
@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
         imgEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new MyEventFragment());
+                setFragment(new EventFragment());
                 imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active));
                 imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event_klik));
                 imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community));

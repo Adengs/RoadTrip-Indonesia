@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponsListArticelbyCategory;
+import app.codelabs.forum.models.ResponseListArticelbyCategory;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,7 +29,7 @@ public class PostFragment extends Fragment {
     private PostAdapter adapter;
     private Context context;
     private Integer id ;
-    private ResponsListArticelbyCategory.DataEntity data = new ResponsListArticelbyCategory.DataEntity();
+    private ResponseListArticelbyCategory.DataEntity data = new ResponseListArticelbyCategory.DataEntity();
 
     public PostFragment() {
         // Required empty public constructor
@@ -58,9 +58,9 @@ public class PostFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService(context).listArticle(id).enqueue(new Callback<ResponsListArticelbyCategory>() {
+        ConnectionApi.apiService(context).listArticle(id).enqueue(new Callback<ResponseListArticelbyCategory>() {
             @Override
-            public void onResponse(Call<ResponsListArticelbyCategory> call, Response<ResponsListArticelbyCategory> response) {
+            public void onResponse(Call<ResponseListArticelbyCategory> call, Response<ResponseListArticelbyCategory> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         adapter.setItems(response.body().getData());
@@ -69,7 +69,7 @@ public class PostFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponsListArticelbyCategory> call, Throwable t) {
+            public void onFailure(Call<ResponseListArticelbyCategory> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }

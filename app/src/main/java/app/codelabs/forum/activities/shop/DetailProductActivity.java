@@ -7,13 +7,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.Adapter.AdapterShop;
 import app.codelabs.forum.activities.shop.Fragment.FragmentRincian;
-import app.codelabs.forum.models.ResponsListArticelbyCategory;
-import app.codelabs.forum.models.ResponsListShopByCategories;
-import app.codelabs.forum.models.ResponseListArticle;
+import app.codelabs.forum.models.ResponseListShopByCategories;
 
 import android.Manifest;
 import android.content.Context;
@@ -26,7 +24,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -36,7 +33,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     private Context context;
     private Toolbar toolbar;
     private TextView tvHubungi, tvWa;
-    private ResponsListShopByCategories.DataEntity data;
+    private ResponseListShopByCategories.DataEntity data;
 
     AdapterShop adapter;
 
@@ -53,7 +50,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         setToolBar();
 
         String strData =getIntent().getStringExtra("data");
-        data = new Gson().fromJson(strData, ResponsListShopByCategories.DataEntity.class);
+        data = new Gson().fromJson(strData, ResponseListShopByCategories.DataEntity.class);
         Bundle ags = new Bundle();
         ags.putString("data", new Gson().toJson(data));
         FragmentRincian fragmentRincian = new FragmentRincian();

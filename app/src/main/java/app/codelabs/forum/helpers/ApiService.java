@@ -3,27 +3,25 @@ package app.codelabs.forum.helpers;
 import java.util.List;
 import java.util.Map;
 
-import app.codelabs.forum.models.ResponArticlePopular;
-import app.codelabs.forum.models.ResponMyProfile;
-import app.codelabs.forum.models.ResponWalkThrough;
-import app.codelabs.forum.models.ResponsAbout;
-import app.codelabs.forum.models.ResponsListShopByCategories;
-import app.codelabs.forum.models.ResponsShopCategory;
-import app.codelabs.forum.models.ResponsUnjoinEvent;
+import app.codelabs.forum.models.ResponseMyProfile;
+import app.codelabs.forum.models.ResponseWalkThrough;
+import app.codelabs.forum.models.ResponseAbout;
+import app.codelabs.forum.models.ResponseListShopByCategories;
+import app.codelabs.forum.models.ResponseShopCategory;
+import app.codelabs.forum.models.ResponseUnjoinEvent;
 import app.codelabs.forum.models.ResponseArticleCategory;
 import app.codelabs.forum.models.ResponseGallery;
 import app.codelabs.forum.models.ResponseListArticle;
-import app.codelabs.forum.models.ResponsDetailList;
-import app.codelabs.forum.models.ResponsFollow;
-import app.codelabs.forum.models.ResponsHighlight;
-import app.codelabs.forum.models.ResponsJoinEvent;
-import app.codelabs.forum.models.ResponsListArticelbyCategory;
-import app.codelabs.forum.models.ResponsListEventCommunity;
-import app.codelabs.forum.models.ResponsListMemberCompany;
-import app.codelabs.forum.models.ResponsLogin;
-import app.codelabs.forum.models.ResponsMyEvent;
-import app.codelabs.forum.models.ResponsParticipantEvent;
-import app.codelabs.forum.models.ResponsUnFollow;
+import app.codelabs.forum.models.ResponseDetailList;
+import app.codelabs.forum.models.ResponseFollow;
+import app.codelabs.forum.models.ResponseHighlight;
+import app.codelabs.forum.models.ResponseJoinEvent;
+import app.codelabs.forum.models.ResponseListArticelbyCategory;
+import app.codelabs.forum.models.ResponseListEventCommunity;
+import app.codelabs.forum.models.ResponseListMemberCompany;
+import app.codelabs.forum.models.ResponseLogin;
+import app.codelabs.forum.models.ResponseParticipantEvent;
+import app.codelabs.forum.models.ResponseUnFollow;
 import app.codelabs.forum.models.ResponseApi;
 import app.codelabs.forum.models.ResponseArticleDetail;
 import app.codelabs.forum.models.ResponseFinishPassword;
@@ -50,19 +48,19 @@ public interface ApiService {
     Call<ResponseApi> getAppToken(@Body Map<String, String> body);
 
     @POST("auth/signin")
-    Call<ResponsLogin> login(@Body Map<String, String> body);
+    Call<ResponseLogin> login(@Body Map<String, String> body);
 
     @POST("auth/register")
     Call<ResponseRegister> register(@Body Map<String, String> body);
 
     @GET("api/walk_through")
-    Call<ResponWalkThrough> getWalkTrough();
+    Call<ResponseWalkThrough> getWalkTrough();
 
     @GET("api/member")
-    Call<ResponsListMemberCompany> listMember( @Query("search") String search);
+    Call<ResponseListMemberCompany> listMember(@Query("search") String search);
 
     @GET("api/profile")
-    Call<ResponMyProfile> getProfile();
+    Call<ResponseMyProfile> getProfile();
 
     @GET("api/article/list")
     Call<ResponseListArticle> getLatestArticle();
@@ -71,10 +69,10 @@ public interface ApiService {
     Call<ResponseListArticle> getPopularArticle();
 
     @POST("api/follow")
-    Call<ResponsFollow> follow(@Body Map<String, String> body);
+    Call<ResponseFollow> follow(@Body Map<String, String> body);
 
     @POST("api/unfollow")
-    Call<ResponsUnFollow> unfollow(@Body Map<String, String> body);
+    Call<ResponseUnFollow> unfollow(@Body Map<String, String> body);
 
     @POST("recovery")
     Call<ResponseForgotPassword> requestResetPassword(@Body Map<String, String> body);
@@ -89,34 +87,34 @@ public interface ApiService {
     Call<ResponseArticleDetail> articledetail(@Header("Authorization") String token, @Header("app-token") String AppToken, @Query("article_id") int article_id);
 
     @GET("api/article/list")
-    Call<ResponsListArticelbyCategory> listarticelbycategory(@Query("tag") List<String> tag, @Header("Authorization") String token, @Header("app-token") String AppToken);
+    Call<ResponseListArticelbyCategory> listarticelbycategory(@Query("tag") List<String> tag, @Header("Authorization") String token, @Header("app-token") String AppToken);
 
     @GET("api/article/list")
-    Call<ResponsDetailList> detailArticel(@Query("acticel_id") int id);
+    Call<ResponseDetailList> detailArticel(@Query("acticel_id") int id);
 
     @GET("api/event/list")
-    Call<ResponsListEventCommunity> listEvent();
+    Call<ResponseListEventCommunity> getListEvent();
 
     @POST("api/event/join")
-    Call<ResponsJoinEvent> joinEvent(@Body Map<String, String> body);
+    Call<ResponseJoinEvent> joinEvent(@Body Map<String, String> body);
 
     @POST("api/event/unjoin")
-    Call<ResponsUnjoinEvent> unJoin(@Body Map<String, String> body);
+    Call<ResponseUnjoinEvent> unJoin(@Body Map<String, String> body);
 
     @GET("api/event/my_event")
-    Call<ResponsMyEvent> myEvent();
+    Call<ResponseListEventCommunity> getListMyEvent();
 
     @GET("api/article/list")
-    Call<ResponsListArticelbyCategory> listArticle(@Query("category_id") Integer article_id);
+    Call<ResponseListArticelbyCategory> listArticle(@Query("category_id") Integer article_id);
 
     @GET("api/event/participant")
-    Call<ResponsParticipantEvent> eventParticipant(@Query("event_id") Integer id);
+    Call<ResponseParticipantEvent> eventParticipant(@Query("event_id") Integer id);
 
     @GET("api/highlight")
-    Call<ResponsHighlight> getHighlight();
+    Call<ResponseHighlight> getHighlight();
 
     @GET("api/about")
-    Call<ResponsAbout> getAboutCompany();
+    Call<ResponseAbout> getAboutCompany();
 
     @GET("api/article_category/list")
     Call<ResponseArticleCategory> getArticleCategories();
@@ -132,10 +130,10 @@ public interface ApiService {
     Call<ResponseUpdateProfile> updateProfile(@PartMap Map<String, RequestBody> data, @Part MultipartBody.Part fileImagePart);
 
     @GET("api/shop/category")
-    Call<ResponsShopCategory> getShopCategories();
+    Call<ResponseShopCategory> getShopCategories();
 
     @GET("api/shop/list")
-    Call<ResponsListShopByCategories> getShopByCategories(@Query("category_id") int referenceId);
+    Call<ResponseListShopByCategories> getShopByCategories(@Query("category_id") int referenceId);
 
     @GET("api/vote")
     Call<ResponseVote> getVote();

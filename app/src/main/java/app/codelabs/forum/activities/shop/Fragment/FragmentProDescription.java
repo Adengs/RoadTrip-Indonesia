@@ -16,16 +16,14 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.fragment.ArticleFragment;
-import app.codelabs.forum.models.ResponsListShopByCategories;
-import app.codelabs.forum.models.ResponseListArticle;
+import app.codelabs.forum.models.ResponseListShopByCategories;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentProDescription extends Fragment {
     private Context context;
-    private ResponsListShopByCategories.DataEntity data;
+    private ResponseListShopByCategories.DataEntity data;
     private TextView tvDeskrip;
     public final static int DESKRIP = 0;
     public final static int PRODUCT_INFO = 1;
@@ -59,7 +57,7 @@ public class FragmentProDescription extends Fragment {
         if (getArguments() != null) {
             int type = getArguments().getInt("type", 0);
             String strData = this.getArguments().getString("data");
-            data =new Gson().fromJson(strData, ResponsListShopByCategories.DataEntity.class);
+            data =new Gson().fromJson(strData, ResponseListShopByCategories.DataEntity.class);
             if (type == DESKRIP) {
                 tvDeskrip.setText(Html.fromHtml(data.getDescription()));
             } else if (type == PRODUCT_INFO) {

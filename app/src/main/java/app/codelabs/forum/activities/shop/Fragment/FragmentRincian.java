@@ -21,11 +21,8 @@ import com.squareup.picasso.Picasso;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
 
-import app.codelabs.forum.activities.home.fragment.ArticleFragment;
-import app.codelabs.forum.activities.home.fragment.adapter.TabLayoutAdapter;
 import app.codelabs.forum.activities.shop.Adapter.AdapterShop;
-import app.codelabs.forum.activities.shop.Adapter.AdapterTabLayoutShop;
-import app.codelabs.forum.models.ResponsListShopByCategories;
+import app.codelabs.forum.models.ResponseListShopByCategories;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +32,7 @@ public class FragmentRincian extends Fragment {
     private TextView tvProductName, tvLocation, tvPrice,tvCategories;
     private ImageView ivImage;
     private TabLayout tabLayout;
-    private ResponsListShopByCategories.DataEntity data;
+    private ResponseListShopByCategories.DataEntity data;
     private  ViewPager viewPagerShop;
 
 
@@ -76,7 +73,7 @@ public class FragmentRincian extends Fragment {
     private void getData() {
         if (this.getArguments().getString("data") !=null){
             String strData = this.getArguments().getString("data");
-            data = new Gson().fromJson(strData, ResponsListShopByCategories.DataEntity.class);
+            data = new Gson().fromJson(strData, ResponseListShopByCategories.DataEntity.class);
         }
 
     }

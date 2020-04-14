@@ -52,7 +52,6 @@ public class DetailArticleActivity extends AppCompatActivity {
                 .fit().centerCrop().into(ivImage);
 
         tvTime.setText(DateTimeHelper.instance(article.getCreated_at()).getReadableTime());
-
     }
 
     private void getData() {

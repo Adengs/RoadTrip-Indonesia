@@ -20,12 +20,12 @@ import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
-import app.codelabs.forum.models.ResponsMyEvent;
+import app.codelabs.forum.models.ResponseMyEvent;
 
 public class AdapterMyEvent extends RecyclerView.Adapter<AdapterMyEvent.MyEventHolder> {
     private Context context;
     private Boolean is_join;
-    private List<ResponsMyEvent.DataEntity> item;
+    private List<ResponseMyEvent.DataEntity> item;
 
     public AdapterMyEvent(){
         item = new ArrayList<>();
@@ -41,7 +41,7 @@ public class AdapterMyEvent extends RecyclerView.Adapter<AdapterMyEvent.MyEventH
 
     @Override
     public void onBindViewHolder(@NonNull MyEventHolder holder, int position) {
-        final ResponsMyEvent.DataEntity items = item.get(position);
+        final ResponseMyEvent.DataEntity items = item.get(position);
 
         holder.tvtitle.setText(items.getTitle());
         holder.tvStartEvent.setText(items.getEvent_start());
@@ -57,17 +57,16 @@ public class AdapterMyEvent extends RecyclerView.Adapter<AdapterMyEvent.MyEventH
     public int getItemCount() {
         return item.size();
     }
-    public void setItems(List<ResponsMyEvent.DataEntity> datas) {
+    public void setItems(List<ResponseMyEvent.DataEntity> datas) {
         this.item = datas;
         notifyDataSetChanged();
     }
-    public void addItems(List<ResponsMyEvent.DataEntity> datas) {
+    public void addItems(List<ResponseMyEvent.DataEntity> datas) {
         this.item.addAll(datas);
         notifyDataSetChanged();
     }
 
     public class MyEventHolder extends RecyclerView.ViewHolder {
-        private CardView cardView;
         private ImageView ivImage;
         private TextView tvtitle,tvStartEvent,tvEndEvent;
 
@@ -81,7 +80,7 @@ public class AdapterMyEvent extends RecyclerView.Adapter<AdapterMyEvent.MyEventH
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ResponsMyEvent.DataEntity items = item.get(getAdapterPosition());
+                    ResponseMyEvent.DataEntity items = item.get(getAdapterPosition());
                     Intent intent = new Intent(context, EventActivity.class);
                     intent.putExtra("data", new Gson().toJson(items));
                     intent.putExtra("is_join",true);
@@ -92,11 +91,10 @@ public class AdapterMyEvent extends RecyclerView.Adapter<AdapterMyEvent.MyEventH
         }
 
         private void setView(View view) {
-            cardView = view.findViewById(R.id.cardviewevent);
             ivImage = view.findViewById(R.id.ivImage);
-            tvtitle = view.findViewById(R.id.tv_Title);
-            tvStartEvent = view.findViewById(R.id.tv_Start_Event);
-            tvEndEvent = view.findViewById(R.id.tv_End_Event);
+            tvtitle = view.findViewById(R.id.tv_title);
+            tvStartEvent = view.findViewById(R.id.tv_start_event);
+            tvEndEvent = view.findViewById(R.id.tv_end_event);
         }
     }
 }

@@ -2,6 +2,7 @@ package app.codelabs.forum.activities.event.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,33 +16,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.List;
+import com.google.gson.Gson;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.adapter.AdapterMyEvent;
+import app.codelabs.forum.activities.event.EventActivity;
+import app.codelabs.forum.activities.event.adapter.EventAdapter;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponsMyEvent;
+import app.codelabs.forum.models.ResponseListEventCommunity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class MyEventFragment extends Fragment {
+import static android.app.Activity.RESULT_OK;
+
+public class EventFragment extends Fragment {
     private RecyclerView recyclerView;
-    private AdapterMyEvent adapter;
+    private EventAdapter adapter;
     private Context context;
 
-    public MyEventFragment() {
-        // Required empty public constructor
+    public EventFragment() {
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_event, container, false);
     }
 
@@ -50,6 +49,7 @@ public class MyEventFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         context = getContext();
+        adapter = new EventAdapter(this);
 
         setView(view);
         setRecycleView();
@@ -57,10 +57,10 @@ public class MyEventFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService(context).myEvent().enqueue(new Callback<ResponsMyEvent>(){
+        ConnectionApi.apiService(context).getListMyEvent().enqueue(new Callback<ResponseListEventCommunity>(){
 
             @Override
-            public void onResponse(Call<ResponsMyEvent> call, Response<ResponsMyEvent> response) {
+            public void onResponse(Call<ResponseListEventCommunity> call, Response<ResponseListEventCommunity> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         adapter.setItems(response.body().getData());
@@ -70,7 +70,7 @@ public class MyEventFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponsMyEvent> call, Throwable t) {
+            public void onFailure(Call<ResponseListEventCommunity> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -79,7 +79,6 @@ public class MyEventFragment extends Fragment {
     }
 
     private void setView(View view) {
-        adapter = new AdapterMyEvent();
         recyclerView = view.findViewById(R.id.recyclerView);
     }
 
@@ -89,5 +88,16 @@ public class MyEventFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_OK && requestCode == EventActivity.REQ_REFRESH_EVENT) {
+            int index = data.getIntExtra("index", -1);
+            ResponseListEventCommunity.DataEntity resultData = new Gson().fromJson(data.getStringExtra("data"), ResponseListEventCommunity.DataEntity.class);
+            if (index != -1) {
+                if(!resultData.getIs_join()){
+                    adapter.removeItemByIndex(index);
+                }
+            }
+        }
+    }
 }

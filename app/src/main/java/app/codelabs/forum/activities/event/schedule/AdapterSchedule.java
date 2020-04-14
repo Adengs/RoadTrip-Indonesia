@@ -60,7 +60,7 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
         private void setView(View view) {
             tvMaps = view.findViewById(R.id.tv_Maps);
             tvNumber = view.findViewById(R.id.tv_Number);
-            tvTitle = view.findViewById(R.id.tv_Title);
+            tvTitle = view.findViewById(R.id.tv_title);
             tvdeskription = view.findViewById(R.id.tv_Deskription);
     }
 }

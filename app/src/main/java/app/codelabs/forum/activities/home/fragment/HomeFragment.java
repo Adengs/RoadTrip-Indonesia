@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +39,7 @@ import app.codelabs.forum.activities.vote.VoteActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.HomeMenuItem;
-import app.codelabs.forum.models.ResponsHighlight;
+import app.codelabs.forum.models.ResponseHighlight;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -93,10 +92,10 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadHighlight() {
-        ConnectionApi.apiService(context).getHighlight().enqueue(new Callback<ResponsHighlight>() {
+        ConnectionApi.apiService(context).getHighlight().enqueue(new Callback<ResponseHighlight>() {
 
             @Override
-            public void onResponse(Call<ResponsHighlight> call, Response<ResponsHighlight> response) {
+            public void onResponse(Call<ResponseHighlight> call, Response<ResponseHighlight> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         cardSliderAdapter.setItems(response.body().getData());
@@ -105,7 +104,7 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponsHighlight> call, Throwable t) {
+            public void onFailure(Call<ResponseHighlight> call, Throwable t) {
                 if(t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
                 }

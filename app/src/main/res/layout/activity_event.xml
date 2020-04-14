@@ -8,8 +8,6 @@
     android:background="@color/colorCircle"
     tools:context=".activities.event.EventActivity">
 
-
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

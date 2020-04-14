@@ -17,7 +17,7 @@ import android.widget.Toast;
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponsAbout;
+import app.codelabs.forum.models.ResponseAbout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -55,9 +55,9 @@ public class AboutFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService(context).getAboutCompany().enqueue(new Callback<ResponsAbout>() {
+        ConnectionApi.apiService(context).getAboutCompany().enqueue(new Callback<ResponseAbout>() {
             @Override
-            public void onResponse(Call<ResponsAbout> call, Response<ResponsAbout> response) {
+            public void onResponse(Call<ResponseAbout> call, Response<ResponseAbout> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()){
                         setAbout(response.body().getData());
@@ -65,7 +65,7 @@ public class AboutFragment extends Fragment {
                 }
             }
             @Override
-            public void onFailure(Call<ResponsAbout> call, Throwable t) {
+            public void onFailure(Call<ResponseAbout> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -73,7 +73,7 @@ public class AboutFragment extends Fragment {
         });
     }
 
-    private void setAbout(ResponsAbout.DataEntity data) {
+    private void setAbout(ResponseAbout.DataEntity data) {
         tvHistory.setText(data.getHistory());
         tvSecretarian.setText(data.getSecretariat());
     }

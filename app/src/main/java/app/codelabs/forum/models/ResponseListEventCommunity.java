@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponsListEventCommunity {
+public class ResponseListEventCommunity {
 
 
     @SerializedName("data")
@@ -40,7 +40,7 @@ public class ResponsListEventCommunity {
 
     public static class DataEntity {
         @SerializedName("is_join")
-        private boolean is_join;
+        private boolean is_join = true;
         @SerializedName("longitude")
         private String longitude;
         @SerializedName("latitude")

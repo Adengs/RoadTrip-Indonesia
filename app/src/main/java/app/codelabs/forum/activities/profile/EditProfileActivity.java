@@ -40,7 +40,7 @@ import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.RealPath;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.helpers.Validator;
-import app.codelabs.forum.models.ResponsLogin;
+import app.codelabs.forum.models.ResponseLogin;
 import app.codelabs.forum.models.ResponseUpdateProfile;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -76,7 +76,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void setData() {
-        ResponsLogin.Data user = Session.init(context).getUser();
+        ResponseLogin.Data user = Session.init(context).getUser();
         etName.setText(user.getName());
         etEmail.setText(user.getEmail());
         etDob.setText(user.getDate_birth());
@@ -171,7 +171,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void setProfile(ResponseUpdateProfile.User data) {
-        ResponsLogin.Data user = session.getUser();
+        ResponseLogin.Data user = session.getUser();
         user.setName(data.getName());
         user.setUsername(data.getUsername());
         user.setCity(data.getCity());

@@ -17,13 +17,9 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.fragment.ArticleFragment;
-import app.codelabs.forum.activities.home.fragment.adapter.ArticleAdapter;
 import app.codelabs.forum.activities.shop.Adapter.AdapterListShop;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponsListShopByCategories;
-import app.codelabs.forum.models.ResponsShopCategory;
-import app.codelabs.forum.models.ResponseListArticle;
+import app.codelabs.forum.models.ResponseListShopByCategories;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -72,9 +68,9 @@ public class ListShopFragment extends Fragment {
     private void getShopByCategory() {
         if (getArguments() != null) {
             int referenceId = getArguments().getInt("reference_id", 0);
-            ConnectionApi.apiService(context).getShopByCategories(referenceId).enqueue(new Callback<ResponsListShopByCategories>() {
+            ConnectionApi.apiService(context).getShopByCategories(referenceId).enqueue(new Callback<ResponseListShopByCategories>() {
                 @Override
-                public void onResponse(Call<ResponsListShopByCategories> call, Response<ResponsListShopByCategories> response) {
+                public void onResponse(Call<ResponseListShopByCategories> call, Response<ResponseListShopByCategories> response) {
                     if (response.body() != null) {
                         if (response.isSuccessful() & response.body().getSuccess()) {
                             setListShop(response.body().getData());
@@ -83,7 +79,7 @@ public class ListShopFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<ResponsListShopByCategories> call, Throwable t) {
+                public void onFailure(Call<ResponseListShopByCategories> call, Throwable t) {
                     if (t.getMessage() != null) {
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -92,7 +88,7 @@ public class ListShopFragment extends Fragment {
         }
     }
 
-    private void setListShop(List<ResponsListShopByCategories.DataEntity> data) {
+    private void setListShop(List<ResponseListShopByCategories.DataEntity> data) {
         adapter.setItems(data);
     }
 
