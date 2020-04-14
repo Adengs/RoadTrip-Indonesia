@@ -1,7 +1,6 @@
 package app.codelabs.forum.activities.event.participant;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.models.ResponsListEventCommunity;
-import app.codelabs.forum.models.ResponsListMemberCompany;
 import app.codelabs.forum.models.ResponsParticipantEvent;
 import de.hdodenhof.circleimageview.CircleImageView;
 

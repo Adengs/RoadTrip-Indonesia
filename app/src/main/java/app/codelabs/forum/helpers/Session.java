@@ -10,8 +10,8 @@ import com.google.gson.reflect.TypeToken;
 import java.util.List;
 
 import app.codelabs.forum.activities.login.LoginActivity;
-import app.codelabs.forum.models.ResponWalkThrough;
-import app.codelabs.forum.models.ResponsLogin;
+import app.codelabs.forum.models.ResponseWalkThrough;
+import app.codelabs.forum.models.ResponseLogin;
 
 public class Session {
     private static String KEY_TOKEN = "token";
@@ -51,15 +51,15 @@ public class Session {
         return sharedPreferences.getBoolean(KEY_IS_LOGIN, false);
     }
 
-    public void setLogin(ResponsLogin.Data user, String token) {
+    public void setLogin(ResponseLogin.Data user, String token) {
         editor.putBoolean(KEY_IS_LOGIN, true);
         editor.putString(KEY_TOKEN, token);
         editor.commit();
         setUser(user);
     }
 
-    public ResponsLogin.Data getUser() {
-        return new Gson().fromJson(sharedPreferences.getString(KEY_USER, "{}"), ResponsLogin.Data.class);
+    public ResponseLogin.Data getUser() {
+        return new Gson().fromJson(sharedPreferences.getString(KEY_USER, "{}"), ResponseLogin.Data.class);
     }
 
     public void setLogout() {
@@ -72,19 +72,19 @@ public class Session {
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
-    public void setWalkTrough(List<ResponWalkThrough.DataEntity> data) {
+    public void setWalkTrough(List<ResponseWalkThrough.DataEntity> data) {
         editor.putString(KEY_WALK_TROUGH, new Gson().toJson(data));
         editor.commit();
     }
 
-    public List<ResponWalkThrough.DataEntity> getWalkTrough() {
-        List<ResponWalkThrough.DataEntity> items = new Gson().fromJson(sharedPreferences.getString(KEY_WALK_TROUGH, "[]"),
-                new TypeToken<List<ResponWalkThrough.DataEntity>>() {
+    public List<ResponseWalkThrough.DataEntity> getWalkTrough() {
+        List<ResponseWalkThrough.DataEntity> items = new Gson().fromJson(sharedPreferences.getString(KEY_WALK_TROUGH, "[]"),
+                new TypeToken<List<ResponseWalkThrough.DataEntity>>() {
                 }.getType());
         return items;
     }
 
-    public void setUser(ResponsLogin.Data user) {
+    public void setUser(ResponseLogin.Data user) {
         editor.putString(KEY_USER, new Gson().toJson(user));
         editor.commit();
     }

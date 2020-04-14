@@ -1,8 +1,6 @@
 package app.codelabs.forum.activities.home.fragment.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
-
 import com.smarteist.autoimageslider.SliderViewAdapter;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -22,8 +16,6 @@ import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.models.ResponsHighlight;
-import app.codelabs.forum.models.ResponsListMemberCompany;
-import app.codelabs.forum.models.SliderItem;
 
 
 public class HomeCardSliderAdapter extends

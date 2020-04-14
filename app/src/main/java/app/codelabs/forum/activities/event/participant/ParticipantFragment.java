@@ -19,10 +19,8 @@ import com.google.gson.Gson;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponsListEventCommunity;
+import app.codelabs.forum.models.ResponseListEventCommunity;
 import app.codelabs.forum.models.ResponsParticipantEvent;
-import app.codelabs.forum.models.ResponseListArticle;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +33,7 @@ public class ParticipantFragment extends Fragment {
     private AdapterParticipant adapter;
     private Context context;
     private String strData;
-    private ResponsListEventCommunity.DataEntity data ;
+    private ResponseListEventCommunity.DataEntity data ;
 
 
 
@@ -70,7 +68,7 @@ public class ParticipantFragment extends Fragment {
     private void getData() {
         Bundle bundle = this.getArguments();
         strData = bundle.getString("data");
-        data = new Gson().fromJson(strData, ResponsListEventCommunity.DataEntity.class);
+        data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
     }
 
     private void loadData() {

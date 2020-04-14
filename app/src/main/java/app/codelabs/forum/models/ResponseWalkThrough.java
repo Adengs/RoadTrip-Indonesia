@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponWalkThrough {
+public class ResponseWalkThrough {
 
     @SerializedName("data")
     private List<DataEntity> data;

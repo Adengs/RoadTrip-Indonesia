@@ -2,10 +2,8 @@ package app.codelabs.forum.activities.about_home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponMyProfile;
 import app.codelabs.forum.models.ResponsAbout;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -13,10 +11,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 

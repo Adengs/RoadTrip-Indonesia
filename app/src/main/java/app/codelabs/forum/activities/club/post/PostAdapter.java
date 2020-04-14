@@ -16,11 +16,11 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.models.ResponsListArticelbyCategory;
+import app.codelabs.forum.models.ResponseListArticelbyCategory;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
     private Context context;
-    private List<ResponsListArticelbyCategory.DataEntity> data;
+    private List<ResponseListArticelbyCategory.DataEntity> data;
 
     public PostAdapter() {
         data = new ArrayList<>();
@@ -36,7 +36,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        final ResponsListArticelbyCategory.DataEntity datas = data.get(position);
+        final ResponseListArticelbyCategory.DataEntity datas = data.get(position);
         holder.tvtitle.setText(Html.fromHtml(datas.getTitle()));
         holder.tvContent.setText(Html.fromHtml(datas.getContent()));
         holder.tvupdate.setText(datas.getUpdated_at());
@@ -50,12 +50,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyHolder> {
         return data.size();
     }
 
-    public void setItems(List<ResponsListArticelbyCategory.DataEntity> datas) {
+    public void setItems(List<ResponseListArticelbyCategory.DataEntity> datas) {
         this.data = datas;
         notifyDataSetChanged();
     }
 
-    public void addItems(List<ResponsListArticelbyCategory.DataEntity> datas) {
+    public void addItems(List<ResponseListArticelbyCategory.DataEntity> datas) {
         this.data.addAll(datas);
         notifyDataSetChanged();
     }

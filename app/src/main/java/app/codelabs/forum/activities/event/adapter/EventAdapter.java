@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -20,80 +21,89 @@ import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
-import app.codelabs.forum.models.ResponsMyEvent;
+import app.codelabs.forum.models.ResponseListEventCommunity;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
+    private final Fragment fragment;
     private Context context;
-    private Boolean is_join;
-    private List<ResponsMyEvent.DataEntity>data;
+    private List<ResponseListEventCommunity.DataEntity> items;
 
-    public EventAdapter(){
-        data = new ArrayList<>();
+    public EventAdapter(Fragment fragment) {
+        items = new ArrayList<>();
+        this.fragment = fragment;
     }
 
     @NonNull
     @Override
     public EventVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context=parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.item_event,parent,false);
+        context = parent.getContext();
+        View view = LayoutInflater.from(context).inflate(R.layout.item_event, parent, false);
         return new EventVH(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull EventVH holder, int position) {
-        final ResponsMyEvent.DataEntity datas = data.get(position);
-        holder.txttitle.setText(datas.getTitle());
-        holder.txttglmulai.setText(datas.getEvent_start());
-        holder.txttglberakhir.setText(datas.getEvent_end());
-        Picasso.with(context).load(datas.getImage()).centerCrop().fit().into(holder.imgEventCars);
+        final ResponseListEventCommunity.DataEntity data = items.get(position);
+        holder.tvTitle.setText(data.getTitle());
+        holder.tvStartEvent.setText(data.getEvent_start());
+        holder.tvEndEvent.setText(data.getEvent_end());
+
+        Picasso.with(context).load(data.getImage())
+                .placeholder(R.drawable.default_image)
+                .error(R.drawable.default_no_image)
+                .fit().centerCrop().into(holder.ivEvent);
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return items.size();
     }
-    public void setItems(List<ResponsMyEvent.DataEntity> datas) {
-        this.data = datas;
+
+    public void setItems(List<ResponseListEventCommunity.DataEntity> data) {
+        this.items = data;
         notifyDataSetChanged();
     }
-    public void addItems(List<ResponsMyEvent.DataEntity> datas) {
-        this.data.addAll(datas);
+
+    public void addItems(List<ResponseListEventCommunity.DataEntity> data) {
+        this.items.addAll(data);
+        notifyDataSetChanged();
+    }
+
+    public void setItemByIndex(ResponseListEventCommunity.DataEntity item, int index) {
+        this.items.set(index, item);
         notifyDataSetChanged();
     }
 
     public class EventVH extends RecyclerView.ViewHolder {
-        CardView cardView;
-        ImageView imgEventCars;
-        TextView txttitle,txttglmulai,txttglberakhir;
+        private TextView tvTitle, tvStartEvent, tvEndEvent;
+        private ImageView ivEvent;
 
         public EventVH(@NonNull View view) {
             super(view);
 
             setView(view);
             setEvent();
-
         }
 
         private void setEvent() {
-              itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                           public void onClick(View v) {
-                                ResponsMyEvent.DataEntity item = data.get(getAdapterPosition());
-                                Intent intent = new Intent(context, EventActivity.class);
-                                intent.putExtra("data", new Gson().toJson(item));
-                                intent.putExtra("is_join",true);
-                               context.startActivity(intent);
-                           }
-                       });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ResponseListEventCommunity.DataEntity item = items.get(getAdapterPosition());
+                    Intent intent = new Intent(context, EventActivity.class);
+                    intent.putExtra("data", new Gson().toJson(item));
+                    intent.putExtra("index", getAdapterPosition());
+                    fragment.startActivityForResult(intent, EventActivity.REQ_REFRESH_EVENT);
+                }
+            });
 
         }
 
         private void setView(View view) {
-            cardView = view.findViewById(R.id.cardviewevent);
-            imgEventCars = view.findViewById(R.id.imgListEvent);
-            txttitle = view.findViewById(R.id.txttitleEvent);
-            txttglmulai = view.findViewById(R.id.txt_tgl_Myevent_mulai);
-            txttglberakhir = view.findViewById(R.id.txt_tgl_Myevent_akhir);
+            tvTitle = view.findViewById(R.id.tv_title);
+            tvStartEvent = view.findViewById(R.id.tv_start_event);
+            tvEndEvent = view.findViewById(R.id.tv_end_event);
+            ivEvent = view.findViewById(R.id.img_event);
         }
     }
 }

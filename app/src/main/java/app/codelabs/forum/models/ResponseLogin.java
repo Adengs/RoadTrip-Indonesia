@@ -2,7 +2,7 @@ package app.codelabs.forum.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public  class ResponsLogin {
+public  class ResponseLogin {
 
     @SerializedName("token")
     private String token;

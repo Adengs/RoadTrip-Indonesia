@@ -27,11 +27,13 @@ import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponsJoinEvent;
-import app.codelabs.forum.models.ResponsListEventCommunity;
+import app.codelabs.forum.models.ResponseListEventCommunity;
 import app.codelabs.forum.models.ResponsUnjoinEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 public class EventFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -58,6 +60,7 @@ public class EventFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         context = getContext();
+        adapter = new EventAdapter(this);
 
         setView(view);
         setEvent();
@@ -68,29 +71,29 @@ public class EventFragment extends Fragment {
     private void setEvent() {
         bottomSheetJoinEvent.setListener(new BottomSheetJoinEvent.Listener() {
             @Override
-            public void onJoinClick(BottomSheetJoinEvent dialog, ResponsListEventCommunity.DataEntity data,int index) {
-                joinEvent(dialog,data,index);
+            public void onJoinClick(BottomSheetJoinEvent dialog, ResponseListEventCommunity.DataEntity data, int index) {
+                joinEvent(dialog, data, index);
             }
         });
         adapter.setListener(new EventAdapter.OnItemSelection() {
             @Override
-            public void onBtnJoin(ResponsListEventCommunity.DataEntity data,int selectionIndex) {
+            public void onBtnJoin(ResponseListEventCommunity.DataEntity data, int selectionIndex) {
                 if (data.getIs_join() == false) {
-                    joinEventDialog(data,selectionIndex);
+                    joinEventDialog(data, selectionIndex);
                 } else {
-                    unJoinEvent(data,selectionIndex);
+                    unJoinEvent(data, selectionIndex);
                 }
 
             }
         });
     }
 
-    private void joinEventDialog(ResponsListEventCommunity.DataEntity data, int selectionIndex) {
-        bottomSheetJoinEvent.setData(data,selectionIndex);
+    private void joinEventDialog(ResponseListEventCommunity.DataEntity data, int selectionIndex) {
+        bottomSheetJoinEvent.setData(data, selectionIndex);
         bottomSheetJoinEvent.show(getChildFragmentManager(), "join_event");
     }
 
-    private void joinEvent(final BottomSheetJoinEvent dialog, final ResponsListEventCommunity.DataEntity data, final int selectionIndex) {
+    private void joinEvent(final BottomSheetJoinEvent dialog, final ResponseListEventCommunity.DataEntity data, final int selectionIndex) {
         progresDialogFragment.show(getChildFragmentManager(), "progress");
         Map<String, String> dataJoin = new HashMap<>();
         dataJoin.put("event_id", String.valueOf(data.getId()));
@@ -101,11 +104,12 @@ public class EventFragment extends Fragment {
                 progresDialogFragment.dismiss();
                 if (response.isSuccessful() && response.body().getSuccess()) {
                     data.setIs_join(true);
-                    adapter.setItemByIndex(data,selectionIndex);
+                    adapter.setItemByIndex(data, selectionIndex);
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, EventActivity.class);
                     intent.putExtra("data", new Gson().toJson(data));
-                    startActivity(intent);
+                    intent.putExtra("index", selectionIndex);
+                    startActivityForResult(intent, EventActivity.REQ_REFRESH_EVENT);
                 } else {
                     Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -118,7 +122,8 @@ public class EventFragment extends Fragment {
             }
         });
     }
-    private void unJoinEvent(final ResponsListEventCommunity.DataEntity data, final int selectionIndex) {
+
+    private void unJoinEvent(final ResponseListEventCommunity.DataEntity data, final int selectionIndex) {
         Map<String, String> dataUnJoin = new HashMap<>();
         dataUnJoin.put("event_id", String.valueOf(data.getId()));
         progresDialogFragment.show(getChildFragmentManager(), "progress");
@@ -129,7 +134,7 @@ public class EventFragment extends Fragment {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         data.setIs_join(false);
-                        adapter.setItemByIndex(data,selectionIndex);
+                        adapter.setItemByIndex(data, selectionIndex);
                         Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
@@ -147,9 +152,9 @@ public class EventFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService(context).listEvent().enqueue(new Callback<ResponsListEventCommunity>() {
+        ConnectionApi.apiService(context).getListEvent().enqueue(new Callback<ResponseListEventCommunity>() {
             @Override
-            public void onResponse(Call<ResponsListEventCommunity> call, Response<ResponsListEventCommunity> response) {
+            public void onResponse(Call<ResponseListEventCommunity> call, Response<ResponseListEventCommunity> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         adapter.setItems(response.body().getData());
@@ -159,7 +164,7 @@ public class EventFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponsListEventCommunity> call, Throwable t) {
+            public void onFailure(Call<ResponseListEventCommunity> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -174,7 +179,18 @@ public class EventFragment extends Fragment {
     }
 
     private void setView(View view) {
-        adapter = new EventAdapter();
         recyclerView = view.findViewById(R.id.rv_event);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_OK && requestCode == EventActivity.REQ_REFRESH_EVENT) {
+            int index = data.getIntExtra("index", -1);
+            ResponseListEventCommunity.DataEntity resultData = new Gson().fromJson(data.getStringExtra("data"), ResponseListEventCommunity.DataEntity.class);
+
+            if (index != -1) {
+                adapter.setItemByIndex(resultData, index);
+            }
+        }
     }
 }

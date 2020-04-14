@@ -17,12 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponsListMemberCompany;
+import app.codelabs.forum.models.ResponseListMemberCompany;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> {
     private Context context;
-    private List<ResponsListMemberCompany.Data> items;
+    private List<ResponseListMemberCompany.Data> items;
     private OnItemSelected listener;
 
     public MemberAdapter() {
@@ -39,7 +39,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        ResponsListMemberCompany.Data data = items.get(position);
+        ResponseListMemberCompany.Data data = items.get(position);
         holder.txtNama.setText(data.getName());
         holder.txtfollowers.setText(String.valueOf(data.getFollowers()));
         Picasso.with(context).load(data.getPhoto())
@@ -68,12 +68,12 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
         return items.size();
     }
 
-    public void setItems(List<ResponsListMemberCompany.Data> data) {
+    public void setItems(List<ResponseListMemberCompany.Data> data) {
         this.items = data;
         notifyDataSetChanged();
     }
 
-    public void addItems(List<ResponsListMemberCompany.Data> data) {
+    public void addItems(List<ResponseListMemberCompany.Data> data) {
         this.items.addAll(data);
         notifyDataSetChanged();
     }
@@ -99,7 +99,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
             txtfollow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ResponsListMemberCompany.Data data = items.get(getAdapterPosition());
+                    ResponseListMemberCompany.Data data = items.get(getAdapterPosition());
                     listener.onFollow(data);
                 }
             });
@@ -115,7 +115,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
     }
 
     public interface OnItemSelected {
-        void onFollow(ResponsListMemberCompany.Data data);
+        void onFollow(ResponseListMemberCompany.Data data);
     }
 
 

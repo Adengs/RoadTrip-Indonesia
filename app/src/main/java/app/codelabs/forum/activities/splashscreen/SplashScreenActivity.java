@@ -15,7 +15,7 @@ import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.walktrough.WalkThroughActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponWalkThrough;
+import app.codelabs.forum.models.ResponseWalkThrough;
 import app.codelabs.forum.models.ResponseApi;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,9 +37,9 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void loadWalkTrough() {
-        ConnectionApi.apiService(context).getWalkTrough().enqueue(new Callback<ResponWalkThrough>() {
+        ConnectionApi.apiService(context).getWalkTrough().enqueue(new Callback<ResponseWalkThrough>() {
             @Override
-            public void onResponse(Call<ResponWalkThrough> call, Response<ResponWalkThrough> response) {
+            public void onResponse(Call<ResponseWalkThrough> call, Response<ResponseWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                    if (session.isLogin()) {
@@ -58,7 +58,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponWalkThrough> call, Throwable t) {
+            public void onFailure(Call<ResponseWalkThrough> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }

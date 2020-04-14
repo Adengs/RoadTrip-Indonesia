@@ -7,13 +7,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.Adapter.AdapterShop;
 import app.codelabs.forum.activities.shop.Fragment.FragmentRincian;
-import app.codelabs.forum.models.ResponsListArticelbyCategory;
 import app.codelabs.forum.models.ResponsListShopByCategories;
-import app.codelabs.forum.models.ResponseListArticle;
 
 import android.Manifest;
 import android.content.Context;
@@ -26,7 +24,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;

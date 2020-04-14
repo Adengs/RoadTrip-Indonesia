@@ -16,18 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
-import app.codelabs.forum.models.ResponsListEventCommunity;
+import app.codelabs.forum.models.ResponseListEventCommunity;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
     private Context context;
-    private List<ResponsListEventCommunity.DataEntity> items;
+    private List<ResponseListEventCommunity.DataEntity> items;
     public OnItemSelection listener;
+    public Fragment fragment;
 
-    public EventAdapter() {
+    public EventAdapter(Fragment fragment) {
+        this.fragment = fragment;
         items = new ArrayList<>();
     }
 
@@ -42,7 +45,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
 
     @Override
     public void onBindViewHolder(@NonNull EventVH holder, int position) {
-        final ResponsListEventCommunity.DataEntity item = items.get(position);
+        final ResponseListEventCommunity.DataEntity item = items.get(position);
         holder.tvTitle.setText(item.getTitle());
         holder.tvStartEvent.setText(item.getEvent_start());
         holder.tvEndEvent.setText(item.getEvent_end());
@@ -71,16 +74,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
     public int getItemCount() {
         return items.size();
     }
-    public void setItemByIndex(ResponsListEventCommunity.DataEntity item,int index){
-        this.items.set(index,item);
+
+    public void setItemByIndex(ResponseListEventCommunity.DataEntity item, int index) {
+        this.items.set(index, item);
         notifyDataSetChanged();
     }
-    public void setItems(List<ResponsListEventCommunity.DataEntity> items) {
+
+    public void setItems(List<ResponseListEventCommunity.DataEntity> items) {
         this.items = items;
         notifyDataSetChanged();
     }
 
-    public void addItems(List<ResponsListEventCommunity.DataEntity> items) {
+    public void addItems(List<ResponseListEventCommunity.DataEntity> items) {
         this.items.addAll(items);
         notifyDataSetChanged();
     }
@@ -105,17 +110,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ResponsListEventCommunity.DataEntity item = items.get(getAdapterPosition());
+                    ResponseListEventCommunity.DataEntity item = items.get(getAdapterPosition());
                     Intent intent = new Intent(context, EventActivity.class);
                     intent.putExtra("data", new Gson().toJson(item));
-                    context.startActivity(intent);
+                    intent.putExtra("index", getAdapterPosition());
+                    fragment.startActivityForResult(intent, EventActivity.REQ_REFRESH_EVENT);
                 }
             });
             tvJoin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ResponsListEventCommunity.DataEntity data = items.get(getAdapterPosition());
-                    listener.onBtnJoin(data,getAdapterPosition());
+                    ResponseListEventCommunity.DataEntity data = items.get(getAdapterPosition());
+                    listener.onBtnJoin(data, getAdapterPosition());
                 }
             });
         }
@@ -132,6 +138,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
     }
 
     public interface OnItemSelection {
-        void onBtnJoin(ResponsListEventCommunity.DataEntity item,int index);
+        void onBtnJoin(ResponseListEventCommunity.DataEntity item, int index);
     }
 }

@@ -21,7 +21,7 @@ import app.codelabs.forum.activities.register.RegisterActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.helpers.Validator;
-import app.codelabs.forum.models.ResponsLogin;
+import app.codelabs.forum.models.ResponseLogin;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,9 +68,9 @@ public class LoginActivity extends AppCompatActivity {
                 dataLogin.put("email", etEmail.getText().toString());
                 dataLogin.put("password", etPassword.getText().toString());
                 progresDialogFragment.show(getSupportFragmentManager(), "proggress");
-                ConnectionApi.apiService(context).login(dataLogin).enqueue(new Callback<ResponsLogin>() {
+                ConnectionApi.apiService(context).login(dataLogin).enqueue(new Callback<ResponseLogin>() {
                     @Override
-                    public void onResponse(Call<ResponsLogin> call, Response<ResponsLogin> response) {
+                    public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                         progresDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
 
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<ResponsLogin> call, Throwable t) {
+                    public void onFailure(Call<ResponseLogin> call, Throwable t) {
                         progresDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }

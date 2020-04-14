@@ -22,8 +22,8 @@ import app.codelabs.forum.activities.profile.EditProfileActivity;
 import app.codelabs.forum.activities.profile.SettingActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.models.ResponMyProfile;
-import app.codelabs.forum.models.ResponsLogin;
+import app.codelabs.forum.models.ResponseMyProfile;
+import app.codelabs.forum.models.ResponseLogin;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -59,9 +59,9 @@ public class ProfileFragment extends Fragment {
     }
 
     private void getProfile() {
-        ConnectionApi.apiService(context).getProfile().enqueue(new Callback<ResponMyProfile>() {
+        ConnectionApi.apiService(context).getProfile().enqueue(new Callback<ResponseMyProfile>() {
             @Override
-            public void onResponse(Call<ResponMyProfile> call, Response<ResponMyProfile> response) {
+            public void onResponse(Call<ResponseMyProfile> call, Response<ResponseMyProfile> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         setProfile(response.body().getData());
@@ -72,7 +72,7 @@ public class ProfileFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponMyProfile> call, Throwable t) {
+            public void onFailure(Call<ResponseMyProfile> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -80,8 +80,8 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void setProfile(ResponMyProfile.DataEntity data) {
-        ResponsLogin.Data user = session.getUser();
+    private void setProfile(ResponseMyProfile.DataEntity data) {
+        ResponseLogin.Data user = session.getUser();
         user.setName(data.getName());
         user.setUsername(data.getUsername());
         user.setCity(data.getCity());
@@ -97,7 +97,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setProfileToView() {
-        ResponsLogin.Data user = session.getUser();
+        ResponseLogin.Data user = session.getUser();
         tvHeaderName.setText(user.getName());
         tvName.setText(user.getName());
         tvEmail.setText(user.getEmail());

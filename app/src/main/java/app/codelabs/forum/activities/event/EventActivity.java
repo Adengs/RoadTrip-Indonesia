@@ -6,11 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
@@ -22,17 +19,15 @@ import app.codelabs.forum.activities.event.description.DescriptionFragment;
 import app.codelabs.forum.activities.event.participant.ParticipantFragment;
 import app.codelabs.forum.activities.event.schedule.ScheduleFragment;
 import app.codelabs.forum.activities.event.walkietalkie.WalkieTalkieFragment;
-import app.codelabs.forum.activities.home.HomeActivity;
-import app.codelabs.forum.models.ResponsListEventCommunity;
-import app.codelabs.forum.models.ResponseListArticle;
+import app.codelabs.forum.models.ResponseListEventCommunity;
 
 public class EventActivity extends AppCompatActivity {
+    public static final int REQ_REFRESH_EVENT = 1001;
     private Context context;
     private TabLayout tabLayoutEvent;
     private ViewPager viewPagerEvent;
-    private Boolean isJoin;
     private String strData;
-    private ResponsListEventCommunity.DataEntity data;
+    private ResponseListEventCommunity.DataEntity data;
     private Toolbar toolbar;
 
 
@@ -44,7 +39,6 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
 
         context = getApplicationContext();
-        isJoin = getIntent().getBooleanExtra("is_join",false);
 
         setView();
         getData();
@@ -56,7 +50,7 @@ public class EventActivity extends AppCompatActivity {
     private void getData() {
         if (getIntent().getStringExtra("data") != null) {
             strData = getIntent().getStringExtra("data");
-            data = new Gson().fromJson(strData, ResponsListEventCommunity.DataEntity.class);
+            data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
         }
     }
 
@@ -69,26 +63,25 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void setViewPager() {
-         adapter=new AdapterEventActivity2(getSupportFragmentManager());
+        adapter = new AdapterEventActivity2(getSupportFragmentManager());
 
-         Bundle ags = new Bundle();
-         ags.putString("data",new Gson().toJson(data));
-         ags.putBoolean("is_join",false);
+        Bundle ags = new Bundle();
+        ags.putString("data", new Gson().toJson(data));
 
-         DescriptionFragment descriptionFragment = new DescriptionFragment();
-         descriptionFragment.setArguments(ags);
-         adapter.addFragment(descriptionFragment,"Description");
+        DescriptionFragment descriptionFragment = new DescriptionFragment();
+        descriptionFragment.setArguments(ags);
+        adapter.addFragment(descriptionFragment, "Description");
 
-         ParticipantFragment participantFragment = new ParticipantFragment();
-         participantFragment.setArguments(ags);
-         adapter.addFragment(participantFragment,"Participant");
+        ParticipantFragment participantFragment = new ParticipantFragment();
+        participantFragment.setArguments(ags);
+        adapter.addFragment(participantFragment, "Participant");
 
-         adapter.addFragment(new ScheduleFragment(),"Schedule");
-         adapter.addFragment(new WalkieTalkieFragment(),"Walkie Talkie");
-         adapter.addFragment(new ChatFragment(),"Chat");
-         viewPagerEvent.setAdapter(adapter);
+        adapter.addFragment(new ScheduleFragment(), "Schedule");
+        adapter.addFragment(new WalkieTalkieFragment(), "Walkie Talkie");
+        adapter.addFragment(new ChatFragment(), "Chat");
+        viewPagerEvent.setAdapter(adapter);
 
-         tabLayoutEvent.setupWithViewPager(viewPagerEvent);
+        tabLayoutEvent.setupWithViewPager(viewPagerEvent);
 
     }
 
@@ -98,6 +91,7 @@ public class EventActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
 
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -106,5 +100,4 @@ public class EventActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

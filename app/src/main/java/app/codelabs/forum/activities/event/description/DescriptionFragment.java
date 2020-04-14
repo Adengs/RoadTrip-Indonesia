@@ -1,7 +1,9 @@
 package app.codelabs.forum.activities.event.description;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -14,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,35 +29,31 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponsListEventCommunity;
+import app.codelabs.forum.models.ResponsJoinEvent;
+import app.codelabs.forum.models.ResponseListEventCommunity;
 import app.codelabs.forum.models.ResponsUnjoinEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DescriptionFragment extends Fragment {
-    private LinearLayout line_join;
-    private String strData;
-    private ResponsListEventCommunity.DataEntity data;
-    private Boolean isjoind = false;
-    private TextView tvTitle, tvStartEvent, tvEndEvent, tvLocation, tvDeskrip,tvDojoin,tvjoined;
+    private ResponseListEventCommunity.DataEntity data;
+    private TextView tvTitle, tvStartEvent, tvEndEvent, tvLocation, tvDescription, tvDoJoin, tvJoined;
     private ImageView ivImage;
     private BottomSheetJoinEvent bottomSheetJoinEvent = new BottomSheetJoinEvent();
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     private Context context;
+    private int selectionIndex = -1;
 
 
     public DescriptionFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_description, container, false);
-
     }
 
     @Override
@@ -67,111 +64,139 @@ public class DescriptionFragment extends Fragment {
 
         setView(view);
         getData();
-        SetData();
+        setData();
         setEvent();
 
     }
 
-    private void SetData() {
+    private void setData() {
         tvTitle.setText(Html.fromHtml(data.getTitle()));
         tvStartEvent.setText(data.getEvent_start());
         tvEndEvent.setText(data.getEvent_end());
         tvLocation.setText(data.getLocation());
-        tvDeskrip.setText(Html.fromHtml(data.getDescription()));
+        tvDescription.setText(Html.fromHtml(data.getDescription()));
         Picasso.with(context).load(data.getImage())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)
                 .fit().centerCrop().into(ivImage);
 
-        if(data.getIs_join() == true){
-            tvDojoin.setText("You are join this event");
-            tvjoined.setText("Joined");
-            tvjoined.setTextColor(Color.parseColor("#FFFFFF"));
-            tvjoined.setBackgroundResource(R.drawable.shape_button_follow);
-        }
-        else {
-            tvDojoin.setText("Do you want to join?");
-            tvjoined.setText("Join");
-            tvjoined.setTextColor(Color.parseColor("#F62C4C"));
-            tvjoined.setBackgroundResource(R.drawable.shape_car_club);
-        }
-
-        if(isjoind == true){
-            line_join.setVisibility(View.GONE);
-        }else {
-            line_join.setVisibility(View.VISIBLE);
+        if (data.getIs_join() == true) {
+            tvDoJoin.setText("Congratulation!");
+            tvJoined.setText("Joined");
+            tvJoined.setTextColor(Color.parseColor("#FFFFFF"));
+            tvJoined.setBackgroundResource(R.drawable.shape_button_follow);
+        } else {
+            tvDoJoin.setText("Do you want to join?");
+            tvJoined.setText("Join");
+            tvJoined.setTextColor(Color.parseColor("#F62C4C"));
+            tvJoined.setBackgroundResource(R.drawable.shape_car_club);
         }
     }
 
     private void setEvent() {
-        tvjoined.setOnClickListener(new View.OnClickListener() {
+        bottomSheetJoinEvent.setListener(new BottomSheetJoinEvent.Listener() {
+            @Override
+            public void onJoinClick(BottomSheetJoinEvent dialog, ResponseListEventCommunity.DataEntity data, int index) {
+                joinEvent(dialog,data,index);
+            }
+        });
+        tvJoined.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (data.getIs_join() == false) {
-                    Fragment fragment = bottomSheetJoinEvent;
-                    Bundle ags = new Bundle();
-                    ags.putString("data", (new Gson().toJson(data)));
-                    fragment.setArguments(ags);
-                    bottomSheetJoinEvent.show(getFragmentManager(), "pick");
-
-                }else {
-                    Map<String, String> dataUnJoin = new HashMap<>();
-                    dataUnJoin.put("event_id", String.valueOf(data.getId()));
-                    progresDialogFragment.show(getFragmentManager(), "proggress");
-                    ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponsUnjoinEvent>() {
-                        @Override
-                        public void onResponse(Call<ResponsUnjoinEvent> call, Response<ResponsUnjoinEvent> response) {
-                            progresDialogFragment.dismiss();
-                            if (response.body() != null) {
-                                if (response.isSuccessful() && response.body().getSuccess()) {
-
-                                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
-                                    tvDojoin.setText("Do you want to join?");
-                                    tvjoined.setText("Join");
-                                    tvjoined.setTextColor(Color.parseColor("#F62C4C"));
-                                    tvjoined.setBackgroundResource(R.drawable.shape_car_club);
-
-                                }
-                            }
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponsUnjoinEvent> call, Throwable t) {
-                            progresDialogFragment.dismiss();
-                            if (t.getMessage() != null) {
-                                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                    joinEventDialog(data);
+                } else {
+                    unJoinEvent(data);
                 }
-
             }
         });
 
-        }
+    }
 
+    private void joinEventDialog(ResponseListEventCommunity.DataEntity data){
+        bottomSheetJoinEvent.setData(data,selectionIndex);
+        bottomSheetJoinEvent.show(getChildFragmentManager(), "join_event");
+    }
 
     private void getData() {
         Bundle bundle = this.getArguments();
-        isjoind = bundle.getBoolean("is_join",false);
-        strData = bundle.getString("data");
-        data = new Gson().fromJson(strData, ResponsListEventCommunity.DataEntity.class);
+        String strData = bundle.getString("data");
+        this.selectionIndex = bundle.getInt("index");
+        data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
 
     }
 
     private void setView(View view) {
-        tvDojoin = view.findViewById(R.id.tvDojoin);
-        tvjoined = view.findViewById(R.id.tvJoined);
-        line_join = view.findViewById(R.id.container_join);
+        tvDoJoin = view.findViewById(R.id.tvDojoin);
+        tvJoined = view.findViewById(R.id.tvJoined);
         tvTitle = view.findViewById(R.id.tv_title);
         tvStartEvent = view.findViewById(R.id.tv_start_event);
         tvEndEvent = view.findViewById(R.id.tv_end_event);
         tvLocation = view.findViewById(R.id.tvlocation);
-        tvDeskrip = view.findViewById(R.id.tvDeskrip);
+        tvDescription = view.findViewById(R.id.tvDeskrip);
         ivImage = view.findViewById(R.id.ivImage);
-
     }
 
-        }
+    private void unJoinEvent(final ResponseListEventCommunity.DataEntity data) {
+        Map<String, String> dataUnJoin = new HashMap<>();
+        dataUnJoin.put("event_id", String.valueOf(data.getId()));
+        progresDialogFragment.show(getChildFragmentManager(), "progress");
+        ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponsUnjoinEvent>() {
+            @Override
+            public void onResponse(Call<ResponsUnjoinEvent> call, Response<ResponsUnjoinEvent> response) {
+                progresDialogFragment.dismiss();
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        data.setIs_join(false);
+                        DescriptionFragment.this.data = data;
+                        setData();
+                        Intent intent = new Intent();
+                        intent.putExtra("data",new Gson().toJson(data));
+                        intent.putExtra("index",selectionIndex);
+                        getActivity().setResult(Activity.RESULT_OK,intent);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsUnjoinEvent> call, Throwable t) {
+                progresDialogFragment.dismiss();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void joinEvent(final BottomSheetJoinEvent dialog, final ResponseListEventCommunity.DataEntity data, final int selectionIndex) {
+        progresDialogFragment.show(getChildFragmentManager(), "progress");
+        Map<String, String> dataJoin = new HashMap<>();
+        dataJoin.put("event_id", String.valueOf(data.getId()));
+        ConnectionApi.apiService(context).joinEvent(dataJoin).enqueue(new Callback<ResponsJoinEvent>() {
+            @Override
+            public void onResponse(Call<ResponsJoinEvent> call, Response<ResponsJoinEvent> response) {
+                dialog.dismiss();
+                progresDialogFragment.dismiss();
+                if (response.isSuccessful() && response.body().getSuccess()) {
+                    data.setIs_join(true);
+                    DescriptionFragment.this.data = data;
+                    setData();
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.putExtra("data",new Gson().toJson(data));
+                    intent.putExtra("index",selectionIndex);
+                    getActivity().setResult(Activity.RESULT_OK,intent);
+                } else {
+                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsJoinEvent> call, Throwable t) {
+                progresDialogFragment.dismiss();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
