@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -21,29 +20,27 @@ import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
-import app.codelabs.forum.models.ResponsListEventCommunity;
-import app.codelabs.forum.models.ResponsListMemberCompany;
 import app.codelabs.forum.models.ResponsMyEvent;
 
-public class AdapterEventCardView extends RecyclerView.Adapter<AdapterEventCardView.MyHolder> {
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
     private Context context;
     private Boolean is_join;
     private List<ResponsMyEvent.DataEntity>data;
 
-    public AdapterEventCardView(){
+    public EventAdapter(){
         data = new ArrayList<>();
     }
 
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EventVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context=parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_event,parent,false);
-        return new MyHolder(view);
+        return new EventVH(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EventVH holder, int position) {
         final ResponsMyEvent.DataEntity datas = data.get(position);
         holder.txttitle.setText(datas.getTitle());
         holder.txttglmulai.setText(datas.getEvent_start());
@@ -64,12 +61,12 @@ public class AdapterEventCardView extends RecyclerView.Adapter<AdapterEventCardV
         notifyDataSetChanged();
     }
 
-    public class MyHolder extends RecyclerView.ViewHolder {
+    public class EventVH extends RecyclerView.ViewHolder {
         CardView cardView;
         ImageView imgEventCars;
         TextView txttitle,txttglmulai,txttglberakhir;
 
-        public MyHolder(@NonNull View view) {
+        public EventVH(@NonNull View view) {
             super(view);
 
             setView(view);

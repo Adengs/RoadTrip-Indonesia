@@ -79,7 +79,7 @@
         <LinearLayout
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:id="@+id/liner_join"
+            android:id="@+id/container_join"
             android:background="@color/putih"
             android:orientation="horizontal"
             android:padding="20dp"

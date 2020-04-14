@@ -26,7 +26,7 @@ import java.util.Map;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
-import app.codelabs.forum.activities.menu_event.JoinPickFragment;
+import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponsListEventCommunity;
 import app.codelabs.forum.models.ResponsUnjoinEvent;
@@ -34,9 +34,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class DescriptionFragment extends Fragment {
     private LinearLayout line_join;
     private String strData;
@@ -44,7 +41,7 @@ public class DescriptionFragment extends Fragment {
     private Boolean isjoind = false;
     private TextView tvTitle, tvStartEvent, tvEndEvent, tvLocation, tvDeskrip,tvDojoin,tvjoined;
     private ImageView ivImage;
-    private JoinPickFragment joinPickFragment = new JoinPickFragment();
+    private BottomSheetJoinEvent bottomSheetJoinEvent = new BottomSheetJoinEvent();
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     private Context context;
 
@@ -111,11 +108,11 @@ public class DescriptionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (data.getIs_join() == false) {
-                    Fragment fragment = joinPickFragment;
+                    Fragment fragment = bottomSheetJoinEvent;
                     Bundle ags = new Bundle();
                     ags.putString("data", (new Gson().toJson(data)));
                     fragment.setArguments(ags);
-                    joinPickFragment.show(getFragmentManager(), "pick");
+                    bottomSheetJoinEvent.show(getFragmentManager(), "pick");
 
                 }else {
                     Map<String, String> dataUnJoin = new HashMap<>();
@@ -167,7 +164,7 @@ public class DescriptionFragment extends Fragment {
     private void setView(View view) {
         tvDojoin = view.findViewById(R.id.tvDojoin);
         tvjoined = view.findViewById(R.id.tvJoined);
-        line_join = view.findViewById(R.id.liner_join);
+        line_join = view.findViewById(R.id.container_join);
         tvTitle = view.findViewById(R.id.tv_title);
         tvStartEvent = view.findViewById(R.id.tv_start_event);
         tvEndEvent = view.findViewById(R.id.tv_end_event);

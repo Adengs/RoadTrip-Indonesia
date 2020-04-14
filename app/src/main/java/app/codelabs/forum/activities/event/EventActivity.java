@@ -43,12 +43,8 @@ public class EventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
-
         context = getApplicationContext();
         isJoin = getIntent().getBooleanExtra("is_join",false);
-
-
-
 
         setView();
         getData();

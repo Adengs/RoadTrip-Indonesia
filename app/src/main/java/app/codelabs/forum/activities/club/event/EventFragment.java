@@ -2,6 +2,7 @@ package app.codelabs.forum.activities.club.event;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +21,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.club.event.adapter.EventAdapter;
+import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
-import app.codelabs.forum.activities.menu_event.JoinPickFragment;
+import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.models.ResponsJoinEvent;
 import app.codelabs.forum.models.ResponsListEventCommunity;
 import app.codelabs.forum.models.ResponsUnjoinEvent;
 import retrofit2.Call;
@@ -32,7 +36,7 @@ import retrofit2.Response;
 public class EventFragment extends Fragment {
     private RecyclerView recyclerView;
     private EventAdapter adapter;
-    private JoinPickFragment joinPickFragment = new JoinPickFragment();
+    private BottomSheetJoinEvent bottomSheetJoinEvent = new BottomSheetJoinEvent();
     private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
     private Context context;
 
@@ -62,24 +66,59 @@ public class EventFragment extends Fragment {
     }
 
     private void setEvent() {
+        bottomSheetJoinEvent.setListener(new BottomSheetJoinEvent.Listener() {
+            @Override
+            public void onJoinClick(BottomSheetJoinEvent dialog, ResponsListEventCommunity.DataEntity data,int index) {
+                joinEvent(dialog,data,index);
+            }
+        });
         adapter.setListener(new EventAdapter.OnItemSelection() {
             @Override
-            public void onBtnJoin(ResponsListEventCommunity.DataEntity data) {
+            public void onBtnJoin(ResponsListEventCommunity.DataEntity data,int selectionIndex) {
                 if (data.getIs_join() == false) {
-                    Fragment fragment = joinPickFragment;
-                    Bundle ags = new Bundle();
-                    ags.putString("data", (new Gson().toJson(data)));
-                    fragment.setArguments(ags);
-                    joinPickFragment.show(getChildFragmentManager(), "pick");
+                    joinEventDialog(data,selectionIndex);
                 } else {
-                    unJoin(data);
+                    unJoinEvent(data,selectionIndex);
                 }
 
             }
         });
     }
 
-    private void unJoin(ResponsListEventCommunity.DataEntity data) {
+    private void joinEventDialog(ResponsListEventCommunity.DataEntity data, int selectionIndex) {
+        bottomSheetJoinEvent.setData(data,selectionIndex);
+        bottomSheetJoinEvent.show(getChildFragmentManager(), "join_event");
+    }
+
+    private void joinEvent(final BottomSheetJoinEvent dialog, final ResponsListEventCommunity.DataEntity data, final int selectionIndex) {
+        progresDialogFragment.show(getChildFragmentManager(), "progress");
+        Map<String, String> dataJoin = new HashMap<>();
+        dataJoin.put("event_id", String.valueOf(data.getId()));
+        ConnectionApi.apiService(context).joinEvent(dataJoin).enqueue(new Callback<ResponsJoinEvent>() {
+            @Override
+            public void onResponse(Call<ResponsJoinEvent> call, Response<ResponsJoinEvent> response) {
+                dialog.dismiss();
+                progresDialogFragment.dismiss();
+                if (response.isSuccessful() && response.body().getSuccess()) {
+                    data.setIs_join(true);
+                    adapter.setItemByIndex(data,selectionIndex);
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, EventActivity.class);
+                    intent.putExtra("data", new Gson().toJson(data));
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsJoinEvent> call, Throwable t) {
+                progresDialogFragment.dismiss();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void unJoinEvent(final ResponsListEventCommunity.DataEntity data, final int selectionIndex) {
         Map<String, String> dataUnJoin = new HashMap<>();
         dataUnJoin.put("event_id", String.valueOf(data.getId()));
         progresDialogFragment.show(getChildFragmentManager(), "progress");
@@ -89,8 +128,10 @@ public class EventFragment extends Fragment {
                 progresDialogFragment.dismiss();
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
+                        data.setIs_join(false);
+                        adapter.setItemByIndex(data,selectionIndex);
                         Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        loadData();
+
                     }
                 }
             }

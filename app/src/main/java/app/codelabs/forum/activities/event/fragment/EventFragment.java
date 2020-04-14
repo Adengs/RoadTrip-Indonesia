@@ -16,30 +16,25 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.adapter.AdapterEventCardView;
+import app.codelabs.forum.activities.event.adapter.EventAdapter;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponsMyEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class EventFragment extends Fragment {
-    RecyclerView recyclerView;
-    private AdapterEventCardView adapter;
-    Context context;
+    private RecyclerView recyclerView;
+    private EventAdapter adapter;
+    private Context context;
 
     public EventFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_event, container, false);
     }
 
@@ -76,7 +71,7 @@ public class EventFragment extends Fragment {
     }
 
     private void setView(View view) {
-        adapter = new AdapterEventCardView();
+        adapter = new EventAdapter();
         recyclerView = view.findViewById(R.id.recyclerviewevent);
     }
 

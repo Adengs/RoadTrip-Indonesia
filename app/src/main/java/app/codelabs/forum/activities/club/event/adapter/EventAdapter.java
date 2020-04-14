@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.event;
+package app.codelabs.forum.activities.club.event.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,7 +22,7 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.models.ResponsListEventCommunity;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder> {
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
     private Context context;
     private List<ResponsListEventCommunity.DataEntity> items;
     public OnItemSelection listener;
@@ -34,14 +34,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
 
     @NonNull
     @Override
-    public EventHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EventVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_event_club, parent, false);
-        return new EventHolder(view);
+        return new EventVH(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EventHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EventVH holder, int position) {
         final ResponsListEventCommunity.DataEntity item = items.get(position);
         holder.tvTitle.setText(item.getTitle());
         holder.tvStartEvent.setText(item.getEvent_start());
@@ -71,7 +71,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
     public int getItemCount() {
         return items.size();
     }
-
+    public void setItemByIndex(ResponsListEventCommunity.DataEntity item,int index){
+        this.items.set(index,item);
+        notifyDataSetChanged();
+    }
     public void setItems(List<ResponsListEventCommunity.DataEntity> items) {
         this.items = items;
         notifyDataSetChanged();
@@ -87,12 +90,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
     }
 
 
-    public class EventHolder extends RecyclerView.ViewHolder {
+    public class EventVH extends RecyclerView.ViewHolder {
         private TextView tvJoin, tvTitle, tvStartEvent, tvEndEvent, tvDoJoin;
         private ImageView ivEvent;
 
 
-        public EventHolder(@NonNull View view) {
+        public EventVH(@NonNull View view) {
             super(view);
             setView(view);
             setEvent();
@@ -112,7 +115,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
                 @Override
                 public void onClick(View v) {
                     ResponsListEventCommunity.DataEntity data = items.get(getAdapterPosition());
-                    listener.onBtnJoin(data);
+                    listener.onBtnJoin(data,getAdapterPosition());
                 }
             });
         }
@@ -129,6 +132,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
     }
 
     public interface OnItemSelection {
-        void onBtnJoin(ResponsListEventCommunity.DataEntity item);
+        void onBtnJoin(ResponsListEventCommunity.DataEntity item,int index);
     }
 }
