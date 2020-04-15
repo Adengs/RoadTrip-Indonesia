@@ -88,6 +88,7 @@
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/tv_Maps"
                             android:layout_gravity="center"
                             android:text="Maps"
                             android:textColor="@color/putih"

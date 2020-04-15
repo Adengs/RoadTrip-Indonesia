@@ -11,12 +11,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import com.squareup.picasso.Picasso;
-
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
 import app.codelabs.forum.helpers.Session;

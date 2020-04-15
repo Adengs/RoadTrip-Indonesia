@@ -2,11 +2,6 @@ package app.codelabs.forum.activities.shop.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +13,14 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
-
 import app.codelabs.forum.activities.shop.Adapter.AdapterShop;
 import app.codelabs.forum.models.ResponseListShopByCategories;
 
@@ -65,7 +65,9 @@ public class FragmentRincian extends Fragment {
     private void setData() {
         tvProductName.setText(Html.fromHtml(data.getName()));
         tvLocation.setText(Html.fromHtml(data.getLocation()));
-        tvPrice.setText(Html.fromHtml(String.valueOf(data.getPrice())));
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        tvPrice.setText(formatRupiah.format((double)data.getPrice()));
         tvCategories.setText(Html.fromHtml((data.getCategory())));
         Picasso.with(context).load(data.getPhoto()).fit().centerCrop().into(ivImage);
     }

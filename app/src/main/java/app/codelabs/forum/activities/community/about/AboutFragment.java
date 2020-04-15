@@ -2,18 +2,18 @@ package app.codelabs.forum.activities.community.about;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
@@ -26,7 +26,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class AboutFragment extends Fragment {
-    private TextView tvHistory, tvSecretarian;
+    private TextView tvHistory, tvSecretarian, tvMpas;
     private Session session;
     private Context context;
 
@@ -73,13 +73,30 @@ public class AboutFragment extends Fragment {
         });
     }
 
-    private void setAbout(ResponseAbout.DataEntity data) {
+    private void setAbout(final ResponseAbout.DataEntity data) {
         tvHistory.setText(data.getHistory());
         tvSecretarian.setText(data.getSecretariat());
+        tvMpas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setMaps(data);
+            }
+        });
+    }
+
+    private void setMaps(ResponseAbout.DataEntity data) {
+        String urlmap = "http://maps.google.com/maps?q=loc:";
+        float zoomLevel = 16.0f; //This goes up to 21
+        Uri gmmIntentUri = Uri.parse( urlmap +data.getLangitude()+","+data.getLongitude()+zoomLevel);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 
     private void setView(View view) {
         tvHistory = view.findViewById(R.id.tv_History);
         tvSecretarian = view.findViewById(R.id.tv_Secretariat);
+        tvMpas = view.findViewById(R.id.tv_Maps);
+
     }
 }

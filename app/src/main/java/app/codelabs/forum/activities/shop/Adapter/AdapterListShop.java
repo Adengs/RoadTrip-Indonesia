@@ -12,8 +12,10 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -43,7 +45,9 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
         ResponseListShopByCategories.DataEntity items = item.get(position);
         holder.tvProductName.setText(Html.fromHtml(items.getName()));
         holder.tvLocation.setText(Html.fromHtml(items.getLocation()));
-        holder.tvPrice.setText(Html.fromHtml(String.valueOf(items.getPrice())));
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        holder.tvPrice.setText((formatRupiah.format((double)items.getPrice())));
         holder.tvCategory.setText(Html.fromHtml(items.getCategory()));
         Picasso.with(context).load(items.getPhoto())
                 .placeholder(R.drawable.default_image)

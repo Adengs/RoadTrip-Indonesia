@@ -19,12 +19,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.community.event.adapter.EventAdapter;
+import app.codelabs.forum.activities.community.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
-import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponseJoinEvent;
 import app.codelabs.forum.models.ResponseListEventCommunity;
