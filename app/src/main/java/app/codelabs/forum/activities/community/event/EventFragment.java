@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.community.event.adapter.EventAdapter;
 import app.codelabs.forum.activities.event.EventActivity;
-import app.codelabs.forum.activities.event.adapter.EventAdapter;
 import app.codelabs.forum.activities.login.ProgresDialogFragment;
 import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
@@ -73,6 +73,17 @@ public class EventFragment extends Fragment {
             @Override
             public void onJoinClick(BottomSheetJoinEvent dialog, ResponseListEventCommunity.DataEntity data, int index) {
                 joinEvent(dialog, data, index);
+            }
+        });
+        adapter.setListener(new EventAdapter.OnItemSelection() {
+            @Override
+            public void onBtnJoin(ResponseListEventCommunity.DataEntity data, int selectionIndex) {
+                if (data.getIs_join() == false) {
+                    joinEventDialog(data, selectionIndex);
+                } else {
+                    unJoinEvent(data, selectionIndex);
+                }
+
             }
         });
     }

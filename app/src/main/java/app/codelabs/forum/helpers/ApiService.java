@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.codelabs.forum.models.ResponseMyProfile;
+import app.codelabs.forum.models.ResponseVoting;
 import app.codelabs.forum.models.ResponseWalkThrough;
 import app.codelabs.forum.models.ResponseAbout;
 import app.codelabs.forum.models.ResponseListShopByCategories;
@@ -34,6 +35,8 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
@@ -138,5 +141,8 @@ public interface ApiService {
     @GET("api/vote")
     Call<ResponseVote> getVote();
 
+    @FormUrlEncoded
+    @POST("api/vote/select")
+    Call<ResponseVoting> doVote(@Field("vote_id") int id, @Field("candidate_id") int user_id);
 }
 

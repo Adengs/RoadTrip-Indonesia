@@ -18,46 +18,34 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponseListEventCommunity;
 import app.codelabs.forum.models.ResponseParticipantEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class ParticipantFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterParticipant adapter;
     private Context context;
-    private String strData;
-    private ResponseListEventCommunity.DataEntity data ;
-
-
 
     public ParticipantFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_participant, container, false);
-
-
     }
 
 
     @Override
     public void onViewCreated(@NonNull View view , @Nullable Bundle savedInstanceState){
         super.onViewCreated(view , savedInstanceState);
-
         context = getContext();
-
 
         setView(view);
         setRecycleView();
@@ -66,14 +54,11 @@ public class ParticipantFragment extends Fragment {
     }
 
     private void getData() {
-        Bundle bundle = this.getArguments();
-        strData = bundle.getString("data");
-        data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
+
     }
 
     private void loadData() {
-        ConnectionApi.apiService(context).eventParticipant(data.getId()).enqueue(new Callback<ResponseParticipantEvent>() {
-
+        ConnectionApi.apiService(context).eventParticipant(((EventActivity) getActivity()).data.getId()).enqueue(new Callback<ResponseParticipantEvent>() {
             @Override
             public void onResponse(Call<ResponseParticipantEvent> call, Response<ResponseParticipantEvent> response) {
                 if (response.body() != null) {

@@ -35,7 +35,7 @@
         android:layout_height="match_parent">
         <Button
             android:id="@+id/btn_done_Vote"
-            android:background="@drawable/shape_buttonlogin"
+            android:background="@drawable/shape_button_login"
             android:text="Done"
             android:textAllCaps="false"
             android:textColor="@color/putih"

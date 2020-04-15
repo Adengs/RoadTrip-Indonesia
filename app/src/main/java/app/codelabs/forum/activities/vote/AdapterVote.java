@@ -1,105 +1,102 @@
 package app.codelabs.forum.activities.vote;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.models.Vote;
+import app.codelabs.forum.models.ResponseVote;
 
-public class AdapterVote extends RecyclerView.Adapter<AdapterVote.MyHolder> {
-    List<Vote> items = new ArrayList<>();
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-    }
+public class AdapterVote extends RecyclerView.Adapter<AdapterVote.AdapterVH> {
+    private List<ResponseVote.CandidateEntity> items = new ArrayList<>();
+    private Context context;
+    private ResponseVote.CandidateEntity selectedCandidate = null;
+    private boolean isAlreadyVote = false;
 
-    private static Context context;
-
-    public void setItems(List<Vote> items) {
-
+    public void setItems(List<ResponseVote.CandidateEntity> items, boolean isAlreadyVote) {
         this.items = items;
+        this.isAlreadyVote = isAlreadyVote;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_vote, parent, false);
-        return new MyHolder(view);
+        return new AdapterVH(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        /*if (items.get(position).getRbVote()){
-            holder.rbVote.setChecked(true);
-        }else {
-            holder.rbVote.setChecked(false);
-        }*/
+    public void onBindViewHolder(@NonNull AdapterVH holder, int position) {
+        ResponseVote.CandidateEntity item = items.get(position);
+        Picasso.with(context).load(item.getUser_photo())
+                .placeholder(R.drawable.default_photo)
+                .fit().centerCrop()
+                .into(holder.ivPhoto);
+        holder.tvName.setText(item.getUser_name());
 
+        if (isAlreadyVote) {
+            holder.ivSelection.setVisibility(View.GONE);
+        }
 
+        if (item.isSelect()) {
+            holder.ivSelection.setImageResource(R.drawable.ic_check_circle);
+        } else {
+            holder.ivSelection.setImageResource(R.drawable.ic_circle_outline);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return items.size();
     }
 
-    public class MyHolder extends RecyclerView.ViewHolder {
-        ImageView txtImage;
-        TextView txtName;
-        RadioButton rbVote;
-        RadioGroup rgVote;
+    public class AdapterVH extends RecyclerView.ViewHolder {
+        ImageView ivPhoto, ivSelection;
+        TextView tvName;
 
-        public MyHolder(@NonNull View view) {
+        public AdapterVH(@NonNull View view) {
             super(view);
             setView(view);
             setEvent();
         }
 
         private void setEvent() {
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (Vote item : items) {
-                    item.setRbVote(false);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!isAlreadyVote) {
+                        for (ResponseVote.CandidateEntity item : items) {
+                            item.setSelect(false);
+                        }
+                        items.get(getAdapterPosition()).setSelect(true);
+                        selectedCandidate = items.get(getAdapterPosition());
+                        notifyDataSetChanged();
+                    }
                 }
-                if (items.get(getAdapterPosition()).getRbVote()) {
-                    items.get(getAdapterPosition()).setRbVote(false);
-
-                }else {
-                    items.get(getAdapterPosition()).setRbVote(true);
-                }
-
-                notifyDataSetChanged();
-
-            }
-        });
-
+            });
         }
 
         private void setView(View view) {
-            rbVote = view.findViewById(R.id.rb_selectVote);
-            rgVote =view.findViewById(R.id.rgroup_vote);
-            txtImage = view.findViewById(R.id.txtImageVote);
-            txtName = view.findViewById(R.id.txtnamevote);
-
+            tvName = view.findViewById(R.id.tv_name);
+            ivPhoto = view.findViewById(R.id.iv_photo);
+            ivSelection = view.findViewById(R.id.iv_selection);
         }
+    }
+
+    public ResponseVote.CandidateEntity getSelectedCandidate() {
+        return selectedCandidate;
     }
 }

@@ -18,10 +18,10 @@
 
         <ImageView
             android:id="@+id/logo_login"
-            android:layout_width="126.5dp"
-            android:layout_height="126.5dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/logologinbaru" />
+            android:layout_marginVertical="56dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_logo_login" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
-            android:background="@drawable/shape_buttonlogin"
+            android:background="@drawable/shape_button_login"
             android:text="Login"
             android:textAlignment="center"
             android:textAllCaps="false"
