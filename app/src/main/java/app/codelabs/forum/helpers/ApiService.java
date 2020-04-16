@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.codelabs.forum.models.ResponseBookmarkArticle;
+import app.codelabs.forum.models.ResponseBookmarkEvent;
 import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseMyProfile;
 import app.codelabs.forum.models.ResponseShareArticle;
@@ -157,5 +158,8 @@ public interface ApiService {
 
     @GET("api/article/share")
     Call<ResponseShareArticle> doShareArticle(@Query("article_id") int id);
+
+    @GET("api/bookmark/event")
+    Call<ResponseBookmarkEvent> getBookmarkEvent();
 }
 

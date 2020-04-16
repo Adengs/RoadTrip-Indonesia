@@ -95,7 +95,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
             case android.R.id.home:
                 onBackPressed();
                 break;
-            case R.id.menu_article_detail_bookmark:
+            case R.id.menu_bookmark:
                 break;
         }
             return super.onOptionsItemSelected(item);
@@ -105,7 +105,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_shop_detail, menu);
+        inflater.inflate(R.menu.menu_bookmark, menu);
         return true;
     }
 

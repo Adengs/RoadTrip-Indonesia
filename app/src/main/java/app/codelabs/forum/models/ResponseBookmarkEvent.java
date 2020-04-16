@@ -4,8 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponseListEventCommunity {
-
+/**
+ * Created by edinofri
+ * tukangbasic@gmail.com
+ * 16 Apr 2020, 12:36
+ */
+public class ResponseBookmarkEvent {
 
     @SerializedName("data")
     private List<DataEntity> data;
@@ -39,8 +43,10 @@ public class ResponseListEventCommunity {
     }
 
     public static class DataEntity {
-        @SerializedName("is_join")
-        private boolean is_join = true;
+        @SerializedName("updated_at")
+        private String updated_at;
+        @SerializedName("created_at")
+        private String created_at;
         @SerializedName("longitude")
         private String longitude;
         @SerializedName("latitude")
@@ -62,26 +68,20 @@ public class ResponseListEventCommunity {
         @SerializedName("id")
         private int id;
 
-        private boolean bookmark = false;
-
-        public boolean isIs_join() {
-            return is_join;
+        public String getUpdated_at() {
+            return updated_at;
         }
 
-        public boolean isBookmark() {
-            return bookmark;
+        public void setUpdated_at(String updated_at) {
+            this.updated_at = updated_at;
         }
 
-        public void setBookmark(boolean bookmark) {
-            this.bookmark = bookmark;
+        public String getCreated_at() {
+            return created_at;
         }
 
-        public boolean getIs_join() {
-            return is_join;
-        }
-
-        public void setIs_join(boolean is_join) {
-            this.is_join = is_join;
+        public void setCreated_at(String created_at) {
+            this.created_at = created_at;
         }
 
         public String getLongitude() {

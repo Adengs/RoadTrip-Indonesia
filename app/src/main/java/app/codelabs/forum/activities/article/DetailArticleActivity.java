@@ -26,7 +26,6 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.DateTimeHelper;
-import app.codelabs.forum.models.ResponseApi;
 import app.codelabs.forum.models.ResponseBookmarkArticle;
 import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseListArticle;
@@ -117,7 +116,7 @@ public class DetailArticleActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 break;
-            case R.id.menu_article_detail_bookmark:
+            case R.id.menu_bookmark:
                 bookmarkArticle();
                 break;
             case R.id.menu_article_detail_share:

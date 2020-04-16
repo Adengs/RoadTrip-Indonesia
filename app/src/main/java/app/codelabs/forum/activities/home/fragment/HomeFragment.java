@@ -116,8 +116,11 @@ public class HomeFragment extends Fragment {
     private void setSliderView() {
         cardSlider.setSliderAdapter(cardSliderAdapter);
         cardSlider.startAutoCycle();
-        cardSlider.setIndicatorAnimation(IndicatorAnimations.WORM);
-        cardSlider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        cardSlider.setIndicatorAnimationDuration(600);
+        cardSlider.setSliderAnimationDuration(600);
+        cardSlider.setScrollTimeInSec(4);
+        cardSlider.setIndicatorAnimation(IndicatorAnimations.FILL);
+        cardSlider.setSliderTransformAnimation(SliderAnimations.FADETRANSFORMATION);
     }
 
     private void setViewPager() {

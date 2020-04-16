@@ -22,19 +22,11 @@ public class HomeCardSliderAdapter extends
         SliderViewAdapter<HomeCardSliderAdapter.SliderAdapterVH> {
 
     private Context context;
-    private List<ResponsHighlight.DataEntity> data = new ArrayList<>();
-
-
-    //private List<SliderItem> items = new ArrayList<>();
+    private List<ResponsHighlight.DataEntity> items = new ArrayList<>();
 
     public HomeCardSliderAdapter(Context context) {
         this.context = context;
     }
-
-    //public void addItem(SliderItem sliderItem) {
-       // this.items.add(sliderItem);
-        //notifyDataSetChanged();
-    //}
 
     @Override
     public SliderAdapterVH onCreateViewHolder(ViewGroup parent) {
@@ -45,14 +37,14 @@ public class HomeCardSliderAdapter extends
     @Override
     public void onBindViewHolder(final SliderAdapterVH viewHolder, final int position) {
 
+        ResponsHighlight.DataEntity item = items.get(position);
 
-//        SliderItem sliderItem = items.get(position);
-        ResponsHighlight.DataEntity datas = data.get(position);
-
-        viewHolder.textViewDescription.setText(datas.getModule_title());
+        viewHolder.textViewDescription.setText(item.getModule_title());
         viewHolder.textViewDescription.setTextSize(16);
         Picasso.with(context)
-                .load(datas.getModule_image())
+                .load(item.getModule_image())
+                .placeholder(R.drawable.default_image)
+                .error(R.drawable.default_no_image)
                 .centerCrop()
                 .fit()
                 .into(viewHolder.imageViewBackground);
@@ -62,10 +54,10 @@ public class HomeCardSliderAdapter extends
     @Override
     public int getCount() {
         //slider view count could be dynamic size
-        return data.size();
+        return items.size();
     }
-    public void setItems(List<ResponsHighlight.DataEntity> datas) {
-        this.data = datas;
+    public void setItems(List<ResponsHighlight.DataEntity> data) {
+        this.items = data;
         notifyDataSetChanged();
     }
 
