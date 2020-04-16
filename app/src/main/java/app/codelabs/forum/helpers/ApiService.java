@@ -3,7 +3,10 @@ package app.codelabs.forum.helpers;
 import java.util.List;
 import java.util.Map;
 
+import app.codelabs.forum.models.ResponseBookmarkArticle;
+import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseMyProfile;
+import app.codelabs.forum.models.ResponseShareArticle;
 import app.codelabs.forum.models.ResponseVoting;
 import app.codelabs.forum.models.ResponseWalkThrough;
 import app.codelabs.forum.models.ResponsAbout;
@@ -144,5 +147,15 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("api/vote/select")
     Call<ResponseVoting> doVote(@Field("vote_id") int id, @Field("candidate_id") int user_id);
+
+    @FormUrlEncoded
+    @POST("api/bookmark/saved")
+    Call<ResponseDoBookmark> doBookmark(@Field("module_id") int id, @Field("module_name") String moduleName);
+
+    @GET("api/bookmark/article")
+    Call<ResponseBookmarkArticle> getBookmarkArticle();
+
+    @GET("api/article/share")
+    Call<ResponseShareArticle> doShareArticle(@Query("article_id") int id);
 }
 
