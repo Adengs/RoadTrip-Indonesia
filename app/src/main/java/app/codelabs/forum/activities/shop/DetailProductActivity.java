@@ -66,6 +66,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         setToolBar();
         setFragment(new FragmentRincian());
         setViewPager();
+        getBookmark();
     }
 
     private void getData() {
