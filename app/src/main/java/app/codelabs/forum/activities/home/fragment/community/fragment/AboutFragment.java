@@ -96,7 +96,7 @@ public class AboutFragment extends Fragment {
     private void setView(View view) {
         tvHistory = view.findViewById(R.id.tv_History);
         tvSecretarian = view.findViewById(R.id.tv_Secretariat);
-        tvMpas = view.findViewById(R.id.tv_Maps);
+        tvMpas = view.findViewById(R.id.tv_map);
 
     }
 }

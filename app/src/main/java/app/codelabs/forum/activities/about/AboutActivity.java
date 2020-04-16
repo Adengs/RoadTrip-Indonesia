@@ -88,9 +88,9 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private void setMaps(ResponseAbout.DataEntity data) {
-        String urlmap = "http://maps.google.com/maps?q=loc:";
+        String url_map = "http://maps.google.com/maps?q=loc:";
         float zoomLevel = 16.0f; //This goes up to 21
-        Uri gmmIntentUri = Uri.parse( urlmap +data.getLangitude()+","+data.getLongitude()+zoomLevel);
+        Uri gmmIntentUri = Uri.parse( url_map +data.getLangitude()+","+data.getLongitude()+zoomLevel);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
@@ -109,7 +109,7 @@ public class AboutActivity extends AppCompatActivity {
         tvhistory = findViewById(R.id.tv_History);
         tvSecretariat = findViewById(R.id.tv_Secretariat);
         toolbar = findViewById(R.id.toolbar);
-        tvMaps = findViewById(R.id.tv_Maps);
+        tvMaps = findViewById(R.id.tv_map);
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

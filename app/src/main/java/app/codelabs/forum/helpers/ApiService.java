@@ -8,6 +8,7 @@ import app.codelabs.forum.models.ResponseBookmarkEvent;
 import app.codelabs.forum.models.ResponseBookmarkShop;
 import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseMyProfile;
+import app.codelabs.forum.models.ResponseSchedule;
 import app.codelabs.forum.models.ResponseShareArticle;
 import app.codelabs.forum.models.ResponseVoting;
 import app.codelabs.forum.models.ResponseWalkThrough;
@@ -165,5 +166,8 @@ public interface ApiService {
 
     @GET("api/bookmark/wishlist")
     Call<ResponseBookmarkShop> getBookmarkShop();
+
+    @GET("api/event/schedule")
+    Call<ResponseSchedule> getSchedule(@Query("event_id") int id);
 }
 

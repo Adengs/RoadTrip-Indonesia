@@ -50,7 +50,7 @@ public class FragmentProDescription extends Fragment {
     }
 
     private void setView(View view) {
-        tvDeskrip = view.findViewById(R.id.tv_Deskription);
+        tvDeskrip = view.findViewById(R.id.tv_desc);
     }
 
     private void loadData() {
