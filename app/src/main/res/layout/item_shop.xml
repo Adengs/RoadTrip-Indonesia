@@ -17,7 +17,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/ivimage"
+                android:id="@+id/iv_Image"
                 android:background="@drawable/ic_backgroundshop"
                 android:src="@drawable/carwing"
                 android:layout_width="119dp"
@@ -32,7 +32,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tvproductName"
+                    android:id="@+id/tv_Product_Name"
                     android:text="Bayerische Motoren Werke AG, translated in English."
                     android:textSize="14dp"
                     android:textStyle="bold"
@@ -44,7 +44,7 @@
 
 
                     <TextView
-                        android:id="@+id/tvlocation"
+                        android:id="@+id/tv_Location"
                         android:drawableLeft="@drawable/ic_iclokasi"
                         android:textSize="12dp"
                         android:drawablePadding="10dp"
@@ -58,7 +58,7 @@
 
 
                 <TextView
-                    android:id="@+id/tvPrice"
+                    android:id="@+id/tv_Price"
                     android:layout_marginTop="5dp"
                     android:text="Rp 5.000.000"
                     android:textSize="14dp"
@@ -70,7 +70,7 @@
                 </TextView>
 
                 <TextView
-                    android:id="@+id/tvCategory"
+                    android:id="@+id/tv_Category"
                     android:layout_marginTop="5dp"
                     android:textColor="#F62C4C"
                     android:padding="5dp"

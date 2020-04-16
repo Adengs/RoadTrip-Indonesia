@@ -15,70 +15,60 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.models.ResponsParticipantEvent;
+import app.codelabs.forum.models.ResponseParticipantEvent;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AdapterParticipant extends RecyclerView.Adapter<AdapterParticipant.MyHolder> {
+public class AdapterParticipant extends RecyclerView.Adapter<AdapterParticipant.ParticipantHolder> {
     private  Context context;
-    private List<ResponsParticipantEvent.DataEntity> data;
+    private List<ResponseParticipantEvent.DataEntity> item;
 
     public AdapterParticipant(){
-        data = new ArrayList<>();
+        item = new ArrayList<>();
     }
 
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ParticipantHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
        context = parent.getContext();
        View view= LayoutInflater.from(context).inflate(R.layout.item_participant,parent,false);
-       return new MyHolder(view);
+       return new ParticipantHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterParticipant.MyHolder holder, int position) {
-        ResponsParticipantEvent.DataEntity datas = data.get(position);
-        holder.txtname.setText(datas.getUsername());
-        holder.txtfollowes.setText(String.valueOf(datas.getFollowers()));
-        Picasso.with(context).load(datas.getPhoto()).fit().into(holder.imgparticipant);
-
-
+    public void onBindViewHolder(@NonNull ParticipantHolder holder, int position) {
+        ResponseParticipantEvent.DataEntity items= item.get(position);
+        holder.tvName.setText(items.getUsername());
+        holder.tvfollowes.setText(String.valueOf(items.getFollowers()));
+        Picasso.with(context).load(items.getPhoto()).fit().into(holder.ivParticipant);
     }
 
     @Override
     public int getItemCount() {
-        return data.size() ;
+        return item.size() ;
     }
-    public void setItems(List<ResponsParticipantEvent.DataEntity> datas) {
-        this.data = datas;
+    public void setItems(List<ResponseParticipantEvent.DataEntity> items) {
+        this.item = items;
         notifyDataSetChanged();
     }
-    public void addItems(List<ResponsParticipantEvent.DataEntity> datas) {
-        this.data.addAll(datas);
+    public void addItems(List<ResponseParticipantEvent.DataEntity> items) {
+        this.item.addAll(items);
         notifyDataSetChanged();
     }
 
-    public static class MyHolder extends RecyclerView.ViewHolder {
-        private TextView txtname,txtfollowes;
-        CircleImageView imgparticipant;
-        public MyHolder(@NonNull View view) {
+    public class ParticipantHolder extends RecyclerView.ViewHolder {
+        private TextView tvName,tvfollowes;
+        CircleImageView ivParticipant;
+
+        public ParticipantHolder(@NonNull View view) {
             super(view);
 
-
             setView(view);
-            setEvent();
 
         }
-
-        private void setEvent() {
-
-        }
-
         private void setView(View view) {
-            txtname = view.findViewById(R.id.txtname);
-            txtfollowes = view.findViewById(R.id.txt_follow_participant);
-            imgparticipant = view.findViewById(R.id.img_participan);
+            tvName = view.findViewById(R.id.tv_Name);
+            tvfollowes = view.findViewById(R.id.tv_Followers);
+            ivParticipant = view.findViewById(R.id.iv_Image);
         }
     }
-
-
 }

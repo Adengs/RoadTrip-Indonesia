@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.member;
+package app.codelabs.forum.activities.community.member;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -40,26 +40,26 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         ResponseListMemberCompany.Data data = items.get(position);
-        holder.txtNama.setText(data.getName());
-        holder.txtfollowers.setText(String.valueOf(data.getFollowers()));
+        holder.tvNama.setText(data.getName());
+        holder.tvfollowers.setText(String.valueOf(data.getFollowers()));
         Picasso.with(context).load(data.getPhoto())
                 .placeholder(R.drawable.default_photo)
-                .centerCrop().fit().into(holder.imgMember);
+                .centerCrop().fit().into(holder.ivMember);
 
         if (data.getId() == Session.init(context).getUser().getId()) {
-            holder.txtfollow.setVisibility(View.INVISIBLE);
+            holder.tvfollow.setVisibility(View.INVISIBLE);
         }else{
-            holder.txtfollow.setVisibility(View.VISIBLE);
+            holder.tvfollow.setVisibility(View.VISIBLE);
         }
 
         if (data.getIs_following() == true) {
-            holder.txtfollow.setText("Following");
-            holder.txtfollow.setTextColor(Color.parseColor("#FFFFFF"));
-            holder.txtfollow.setBackgroundResource(R.drawable.shape_button_follow);
+            holder.tvfollow.setText("Following");
+            holder.tvfollow.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.tvfollow.setBackgroundResource(R.drawable.shape_button_follow);
         } else {
-            holder.txtfollow.setText("+ Follow");
-            holder.txtfollow.setTextColor(Color.parseColor("#F62C4C"));
-            holder.txtfollow.setBackgroundResource(R.drawable.shape_car_club);
+            holder.tvfollow.setText("+ Follow");
+            holder.tvfollow.setTextColor(Color.parseColor("#F62C4C"));
+            holder.tvfollow.setBackgroundResource(R.drawable.shape_car_club);
         }
     }
 
@@ -83,8 +83,8 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        TextView txtNama, txtfollowers, txtfollow;
-        CircleImageView imgMember;
+        TextView tvNama, tvfollowers, tvfollow;
+        CircleImageView ivMember;
 
         public MyHolder(@NonNull View view) {
             super(view);
@@ -96,7 +96,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
 
         private void setEvent() {
 
-            txtfollow.setOnClickListener(new View.OnClickListener() {
+            tvfollow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ResponseListMemberCompany.Data data = items.get(getAdapterPosition());
@@ -107,10 +107,10 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
         }
 
         private void setView(View view) {
-            txtNama = view.findViewById(R.id.txtMember);
-            txtfollowers = view.findViewById(R.id.txt_follow_member);
-            imgMember = view.findViewById(R.id.img_member);
-            txtfollow = view.findViewById(R.id.txtfollow);
+            tvNama = view.findViewById(R.id.tv_Member);
+            tvfollowers = view.findViewById(R.id.tv_followers);
+            ivMember = view.findViewById(R.id.iv_Member);
+            tvfollow = view.findViewById(R.id.tv_follow);
         }
     }
 

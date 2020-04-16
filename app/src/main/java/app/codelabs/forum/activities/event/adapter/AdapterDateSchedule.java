@@ -14,6 +14,7 @@ public class AdapterDateSchedule extends RecyclerView.Adapter<AdapterDateSchedul
 
     private Context context;
     public AdapterSchedule adapterSchedule;
+
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

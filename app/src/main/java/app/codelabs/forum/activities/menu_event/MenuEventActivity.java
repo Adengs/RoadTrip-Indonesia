@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.club.event.EventFragment;
+import app.codelabs.forum.activities.community.event.EventFragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;

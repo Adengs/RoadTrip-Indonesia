@@ -71,14 +71,15 @@ public class EventFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseListEventCommunity> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     private void setView(View view) {
-        recyclerView = view.findViewById(R.id.recyclerviewevent);
+        recyclerView = view.findViewById(R.id.recyclerView);
     }
 
     private void setRecycleView() {

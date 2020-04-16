@@ -6,11 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,14 +20,22 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.community.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.activities.event.EventActivity;
+<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/event/fragment/DescriptionFragment.java
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
+=======
+import app.codelabs.forum.activities.login.ProgresDialogFragment;
+>>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/event/description/DescriptionFragment.java
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponsJoinEvent;
+import app.codelabs.forum.models.ResponseJoinEvent;
 import app.codelabs.forum.models.ResponseListEventCommunity;
-import app.codelabs.forum.models.ResponsUnjoinEvent;
+import app.codelabs.forum.models.ResponseUnjoinEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -134,11 +137,19 @@ public class DescriptionFragment extends Fragment {
     private void unJoinEvent(final ResponseListEventCommunity.DataEntity data) {
         Map<String, String> dataUnJoin = new HashMap<>();
         dataUnJoin.put("event_id", String.valueOf(data.getId()));
+<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/event/fragment/DescriptionFragment.java
         progressDialogFragment.show(getChildFragmentManager(), "progress");
         ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponsUnjoinEvent>() {
             @Override
             public void onResponse(Call<ResponsUnjoinEvent> call, Response<ResponsUnjoinEvent> response) {
                 progressDialogFragment.dismiss();
+=======
+        progresDialogFragment.show(getChildFragmentManager(), "progress");
+        ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponseUnjoinEvent>() {
+            @Override
+            public void onResponse(Call<ResponseUnjoinEvent> call, Response<ResponseUnjoinEvent> response) {
+                progresDialogFragment.dismiss();
+>>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/event/description/DescriptionFragment.java
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -154,8 +165,13 @@ public class DescriptionFragment extends Fragment {
             }
 
             @Override
+<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/event/fragment/DescriptionFragment.java
             public void onFailure(Call<ResponsUnjoinEvent> call, Throwable t) {
                 progressDialogFragment.dismiss();
+=======
+            public void onFailure(Call<ResponseUnjoinEvent> call, Throwable t) {
+                progresDialogFragment.dismiss();
+>>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/event/description/DescriptionFragment.java
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -167,9 +183,9 @@ public class DescriptionFragment extends Fragment {
         progressDialogFragment.show(getChildFragmentManager(), "progress");
         Map<String, String> dataJoin = new HashMap<>();
         dataJoin.put("event_id", String.valueOf(data.getId()));
-        ConnectionApi.apiService(context).joinEvent(dataJoin).enqueue(new Callback<ResponsJoinEvent>() {
+        ConnectionApi.apiService(context).joinEvent(dataJoin).enqueue(new Callback<ResponseJoinEvent>() {
             @Override
-            public void onResponse(Call<ResponsJoinEvent> call, Response<ResponsJoinEvent> response) {
+            public void onResponse(Call<ResponseJoinEvent> call, Response<ResponseJoinEvent> response) {
                 dialog.dismiss();
                 progressDialogFragment.dismiss();
                 if (response.isSuccessful() && response.body().getSuccess()) {
@@ -187,8 +203,13 @@ public class DescriptionFragment extends Fragment {
             }
 
             @Override
+<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/event/fragment/DescriptionFragment.java
             public void onFailure(Call<ResponsJoinEvent> call, Throwable t) {
                 progressDialogFragment.dismiss();
+=======
+            public void onFailure(Call<ResponseJoinEvent> call, Throwable t) {
+                progresDialogFragment.dismiss();
+>>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/event/description/DescriptionFragment.java
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

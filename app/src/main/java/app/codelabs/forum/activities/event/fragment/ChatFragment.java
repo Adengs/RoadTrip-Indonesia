@@ -30,12 +30,12 @@ import app.codelabs.forum.models.Chat;
  */
 public class ChatFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    EditText etInputMessage;
-    ImageView sendChat;
-    Context context;
+    private RecyclerView recyclerView;
+    private EditText etInputMessage;
+    private ImageView ivImageSend;
+    private Context context;
 
-    AdapterChat adapter;
+    private AdapterChat adapter;
 
     List<Chat> items = new ArrayList<>();
 
@@ -72,7 +72,7 @@ public class ChatFragment extends Fragment {
     }
 
     private void setEvent() {
-        sendChat.setOnClickListener(new View.OnClickListener() {
+        ivImageSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 items.add(new Chat(
@@ -99,9 +99,9 @@ public class ChatFragment extends Fragment {
     }
 
     private void setView(View view) {
-        recyclerView =view.findViewById(R.id.recyclerviewpesan);
-        etInputMessage =view.findViewById(R.id.et_sendChat);
-        sendChat =view.findViewById(R.id.imgSendChat);
+        recyclerView =view.findViewById(R.id.recyclerView);
+        etInputMessage =view.findViewById(R.id.et_send_Chat);
+        ivImageSend =view.findViewById(R.id.img_Send_Chat);
     }
 
     private void setSampleData() {

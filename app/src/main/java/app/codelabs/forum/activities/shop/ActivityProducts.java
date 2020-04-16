@@ -8,7 +8,7 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.adapter.AdapterTabLayoutShop;
 import app.codelabs.forum.activities.shop.fragment.ListShopFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponsShopCategory;
+import app.codelabs.forum.models.ResponseShopCategory;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,9 +51,9 @@ public class ActivityProducts extends AppCompatActivity {
     }
 
     private void getCategories() {
-        ConnectionApi.apiService(context).getShopCategories().enqueue(new Callback<ResponsShopCategory>() {
+        ConnectionApi.apiService(context).getShopCategories().enqueue(new Callback<ResponseShopCategory>() {
             @Override
-            public void onResponse(Call<ResponsShopCategory> call, Response<ResponsShopCategory> response) {
+            public void onResponse(Call<ResponseShopCategory> call, Response<ResponseShopCategory> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         setTabLayout(response.body().getData());
@@ -62,7 +62,7 @@ public class ActivityProducts extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponsShopCategory> call, Throwable t) {
+            public void onFailure(Call<ResponseShopCategory> call, Throwable t) {
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -70,14 +70,14 @@ public class ActivityProducts extends AppCompatActivity {
         });
     }
 
-    private void setTabLayout(List<ResponsShopCategory.DataEntity> data) {
+    private void setTabLayout(List<ResponseShopCategory.DataEntity> data) {
         tabLayout.setVisibility(View.VISIBLE);
         viewPagerProducts.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
 
         AdapterTabLayoutShop adapterTabLayoutShop = new AdapterTabLayoutShop(getSupportFragmentManager());
 
-        for (ResponsShopCategory.DataEntity item : data){
+        for (ResponseShopCategory.DataEntity item : data){
             adapterTabLayoutShop.addFragment(new ListShopFragment().setTypeAndReferenceId(ListShopFragment.CATEGORIES,
                     item.getId()),item.getCategory());
         }
@@ -101,7 +101,7 @@ public class ActivityProducts extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         viewPagerProducts = findViewById(R.id.viewpager);
         toolbar = findViewById(R.id.toolbar);
-        etSearch = findViewById(R.id.etSreach);
+        etSearch = findViewById(R.id.et_Search);
         progressBar = findViewById(R.id.progressbar);
 
     }

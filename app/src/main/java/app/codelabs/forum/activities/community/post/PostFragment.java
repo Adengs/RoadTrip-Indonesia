@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.post;
+package app.codelabs.forum.activities.community.post;
 
 
 import android.content.Context;
@@ -25,11 +25,11 @@ import retrofit2.Response;
  */
 public class PostFragment extends Fragment {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private PostAdapter adapter;
-    Context context;
+    private Context context;
     private Integer id ;
-    ResponseListArticelbyCategory.DataEntity data = new ResponseListArticelbyCategory.DataEntity();
+    private ResponseListArticelbyCategory.DataEntity data = new ResponseListArticelbyCategory.DataEntity();
 
     public PostFragment() {
         // Required empty public constructor
@@ -61,19 +61,18 @@ public class PostFragment extends Fragment {
         ConnectionApi.apiService(context).listArticle(id).enqueue(new Callback<ResponseListArticelbyCategory>() {
             @Override
             public void onResponse(Call<ResponseListArticelbyCategory> call, Response<ResponseListArticelbyCategory> response) {
-                if (response.isSuccessful() && response.body().getSuccess()){
-
-                    adapter.setItems(response.body().getData());
-                }
-                else {
-
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if (response.body() != null) {
+                    if (response.isSuccessful() && response.body().getSuccess()) {
+                        adapter.setItems(response.body().getData());
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseListArticelbyCategory> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (t.getMessage() != null) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

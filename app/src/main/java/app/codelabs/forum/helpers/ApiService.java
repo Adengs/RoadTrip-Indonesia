@@ -10,22 +10,22 @@ import app.codelabs.forum.models.ResponseMyProfile;
 import app.codelabs.forum.models.ResponseShareArticle;
 import app.codelabs.forum.models.ResponseVoting;
 import app.codelabs.forum.models.ResponseWalkThrough;
-import app.codelabs.forum.models.ResponsAbout;
-import app.codelabs.forum.models.ResponsListShopByCategories;
-import app.codelabs.forum.models.ResponsShopCategory;
-import app.codelabs.forum.models.ResponsUnjoinEvent;
+import app.codelabs.forum.models.ResponseAbout;
+import app.codelabs.forum.models.ResponseListShopByCategories;
+import app.codelabs.forum.models.ResponseShopCategory;
+import app.codelabs.forum.models.ResponseUnjoinEvent;
 import app.codelabs.forum.models.ResponseArticleCategory;
 import app.codelabs.forum.models.ResponseGallery;
 import app.codelabs.forum.models.ResponseListArticle;
 import app.codelabs.forum.models.ResponseDetailList;
 import app.codelabs.forum.models.ResponseFollow;
-import app.codelabs.forum.models.ResponsHighlight;
-import app.codelabs.forum.models.ResponsJoinEvent;
+import app.codelabs.forum.models.ResponseHighlight;
+import app.codelabs.forum.models.ResponseJoinEvent;
 import app.codelabs.forum.models.ResponseListArticelbyCategory;
 import app.codelabs.forum.models.ResponseListEventCommunity;
 import app.codelabs.forum.models.ResponseListMemberCompany;
 import app.codelabs.forum.models.ResponseLogin;
-import app.codelabs.forum.models.ResponsParticipantEvent;
+import app.codelabs.forum.models.ResponseParticipantEvent;
 import app.codelabs.forum.models.ResponseUnFollow;
 import app.codelabs.forum.models.ResponseApi;
 import app.codelabs.forum.models.ResponseArticleDetail;
@@ -103,10 +103,10 @@ public interface ApiService {
     Call<ResponseListEventCommunity> getListEvent();
 
     @POST("api/event/join")
-    Call<ResponsJoinEvent> joinEvent(@Body Map<String, String> body);
+    Call<ResponseJoinEvent> joinEvent(@Body Map<String, String> body);
 
     @POST("api/event/unjoin")
-    Call<ResponsUnjoinEvent> unJoin(@Body Map<String, String> body);
+    Call<ResponseUnjoinEvent> unJoin(@Body Map<String, String> body);
 
     @GET("api/event/my_event")
     Call<ResponseListEventCommunity> getListMyEvent();
@@ -115,13 +115,13 @@ public interface ApiService {
     Call<ResponseListArticelbyCategory> listArticle(@Query("category_id") Integer article_id);
 
     @GET("api/event/participant")
-    Call<ResponsParticipantEvent> eventParticipant(@Query("event_id") Integer id);
+    Call<ResponseParticipantEvent> eventParticipant(@Query("event_id") Integer id);
 
     @GET("api/highlight")
-    Call<ResponsHighlight> getHighlight();
+    Call<ResponseHighlight> getHighlight();
 
     @GET("api/about")
-    Call<ResponsAbout> getAboutCompany();
+    Call<ResponseAbout> getAboutCompany();
 
     @GET("api/article_category/list")
     Call<ResponseArticleCategory> getArticleCategories();
@@ -137,10 +137,10 @@ public interface ApiService {
     Call<ResponseUpdateProfile> updateProfile(@PartMap Map<String, RequestBody> data, @Part MultipartBody.Part fileImagePart);
 
     @GET("api/shop/category")
-    Call<ResponsShopCategory> getShopCategories();
+    Call<ResponseShopCategory> getShopCategories();
 
     @GET("api/shop/list")
-    Call<ResponsListShopByCategories> getShopByCategories(@Query("category_id") int referenceId);
+    Call<ResponseListShopByCategories> getShopByCategories(@Query("category_id") int referenceId);
 
     @GET("api/vote")
     Call<ResponseVote> getVote();

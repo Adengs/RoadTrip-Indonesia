@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/displayScreen"
-    tools:context=".activities.club.about.AboutFragment">
+    tools:context=".activities.community.about.AboutFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/tvHistoryAbout"
+                    android:id="@+id/tv_History"
                     android:layout_marginTop="10dp"
                     android:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a do. Read more"
                     android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/tvSecretariatAbout"
+                        android:id="@+id/tv_Secretariat"
                         android:layout_marginTop="10dp"
                         android:text="Pabuaran, Karawaci Sub-District, Tangerang City, Banten 15114"
                         android:layout_width="223dp"
@@ -88,6 +88,7 @@
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/tv_Maps"
                             android:layout_gravity="center"
                             android:text="Maps"
                             android:textColor="@color/putih"

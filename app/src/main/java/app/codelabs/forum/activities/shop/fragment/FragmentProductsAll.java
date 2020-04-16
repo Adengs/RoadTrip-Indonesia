@@ -58,7 +58,7 @@ public class FragmentProductsAll extends Fragment {
     private void setView(View view) {
         adapter = new AdapterListShop();
         cardviewpro = view.findViewById(R.id.cardShopPro);
-        recyclerView = view.findViewById(R.id.recyclerviewShop);
+        recyclerView = view.findViewById(R.id.recyclerview);
     }
     private void setRecycleView() {
         recyclerView.setHasFixedSize(true);

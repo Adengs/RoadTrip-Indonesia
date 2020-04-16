@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponsShopCategory {
+public class ResponseShopCategory {
 
     @SerializedName("data")
     private List<DataEntity> data;

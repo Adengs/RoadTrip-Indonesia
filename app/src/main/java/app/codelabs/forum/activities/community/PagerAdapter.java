@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club;
+package app.codelabs.forum.activities.community;
 
 import java.util.ArrayList;
 import java.util.List;

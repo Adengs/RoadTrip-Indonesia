@@ -15,14 +15,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.models.ResponsHighlight;
+import app.codelabs.forum.models.ResponseHighlight;
 
 
 public class HomeCardSliderAdapter extends
         SliderViewAdapter<HomeCardSliderAdapter.SliderAdapterVH> {
 
     private Context context;
+<<<<<<< HEAD
     private List<ResponsHighlight.DataEntity> items = new ArrayList<>();
+=======
+    private List<ResponseHighlight.DataEntity> data = new ArrayList<>();
+
+
+    //private List<SliderItem> items = new ArrayList<>();
+>>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc
 
     public HomeCardSliderAdapter(Context context) {
         this.context = context;
@@ -39,7 +46,14 @@ public class HomeCardSliderAdapter extends
 
         ResponsHighlight.DataEntity item = items.get(position);
 
+<<<<<<< HEAD
         viewHolder.textViewDescription.setText(item.getModule_title());
+=======
+//        SliderItem sliderItem = items.get(position);
+        ResponseHighlight.DataEntity datas = data.get(position);
+
+        viewHolder.textViewDescription.setText(datas.getModule_title());
+>>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc
         viewHolder.textViewDescription.setTextSize(16);
         Picasso.with(context)
                 .load(item.getModule_image())
@@ -56,8 +70,13 @@ public class HomeCardSliderAdapter extends
         //slider view count could be dynamic size
         return items.size();
     }
+<<<<<<< HEAD
     public void setItems(List<ResponsHighlight.DataEntity> data) {
         this.items = data;
+=======
+    public void setItems(List<ResponseHighlight.DataEntity> datas) {
+        this.data = datas;
+>>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc
         notifyDataSetChanged();
     }
 

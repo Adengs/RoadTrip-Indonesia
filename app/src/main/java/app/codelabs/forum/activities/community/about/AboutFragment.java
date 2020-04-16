@@ -1,59 +1,60 @@
-package app.codelabs.forum.activities.about_home;
+package app.codelabs.forum.activities.community.about;
+
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import app.codelabs.forum.R;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseAbout;
-import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AboutHome extends AppCompatActivity {
-    private CircleImageView ivLogo;
-    private TextView tvBackAbout,tvCompany_name,tvhistory,tvSecretariat, tvMaps;
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class AboutFragment extends Fragment {
+    private TextView tvHistory, tvSecretarian, tvMpas;
     private Session session;
-    private Toolbar toolbar;
     private Context context;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_home);
 
-        context = getApplicationContext();
+    public AboutFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_about, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        context = getContext();
         session = Session.init(context);
 
-        setView();
-        setEvent();
-        setToolbar();
+        setView(view);
         loadData();
     }
 
-    private void setToolbar() {
-        setSupportActionBar(toolbar);
-        setTitle("About");
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
     private void loadData() {
-
         ConnectionApi.apiService(context).getAboutCompany().enqueue(new Callback<ResponseAbout>() {
             @Override
             public void onResponse(Call<ResponseAbout> call, Response<ResponseAbout> response) {
@@ -63,7 +64,6 @@ public class AboutHome extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseAbout> call, Throwable t) {
                 if (t.getMessage() != null) {
@@ -74,17 +74,14 @@ public class AboutHome extends AppCompatActivity {
     }
 
     private void setAbout(final ResponseAbout.DataEntity data) {
-        Picasso.with(context).load(data.getLogo()).fit().centerCrop().into(ivLogo);
-        tvCompany_name.setText(data.getCompany_name());
-        tvhistory.setText(data.getHistory());
-        tvSecretariat.setText(data.getSecretariat());
-        tvMaps.setOnClickListener(new View.OnClickListener() {
+        tvHistory.setText(data.getHistory());
+        tvSecretarian.setText(data.getSecretariat());
+        tvMpas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setMaps(data);
             }
         });
-
     }
 
     private void setMaps(ResponseAbout.DataEntity data) {
@@ -93,30 +90,13 @@ public class AboutHome extends AppCompatActivity {
         Uri gmmIntentUri = Uri.parse( urlmap +data.getLangitude()+","+data.getLongitude()+zoomLevel);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-        }
-
+        startActivity(mapIntent);
     }
 
-    private void setEvent() {
+    private void setView(View view) {
+        tvHistory = view.findViewById(R.id.tv_History);
+        tvSecretarian = view.findViewById(R.id.tv_Secretariat);
+        tvMpas = view.findViewById(R.id.tv_Maps);
 
-    }
-
-    private void setView() {
-        ivLogo = findViewById(R.id.iv_logo);
-        tvCompany_name = findViewById(R.id.tv_company_name);
-        tvhistory = findViewById(R.id.tv_History);
-        tvSecretariat = findViewById(R.id.tv_Secretariat);
-        toolbar = findViewById(R.id.toolbar);
-        tvMaps = findViewById(R.id.tv_Maps);
-    }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

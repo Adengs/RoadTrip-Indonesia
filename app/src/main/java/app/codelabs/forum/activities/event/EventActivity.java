@@ -95,8 +95,8 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void setView() {
-        tabLayoutEvent = findViewById(R.id.tab_layoutevent);
-        viewPagerEvent = findViewById(R.id.viewpagerevent);
+        tabLayoutEvent = findViewById(R.id.tab_layout);
+        viewPagerEvent = findViewById(R.id.viewPager);
         toolbar = findViewById(R.id.toolbar);
 
     }

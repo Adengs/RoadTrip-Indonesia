@@ -35,7 +35,8 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        TextView txtMaps;
+        private TextView tvMaps,tvNumber,tvTitle,tvdeskription;
+
         public MyHolder(@NonNull View view) {
             super(view);
 
@@ -44,18 +45,21 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHold
         }
 
         private void setEvent() {
-            txtMaps.setOnClickListener(new View.OnClickListener() {
+            tvMaps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    txtMaps.setText("Maps");
-                    txtMaps.setTextColor(Color.rgb(255,255,255));
-                    txtMaps.setBackgroundColor(ContextCompat.getColor(context,R.color.pink));
+                    tvMaps.setText("Maps");
+                    tvMaps.setTextColor(Color.rgb(255,255,255));
+                    tvMaps.setBackgroundColor(ContextCompat.getColor(context,R.color.pink));
                 }
             });
         }
 
         private void setView(View view) {
-            txtMaps=view.findViewById(R.id.txtMapsShcedule);
+            tvMaps = view.findViewById(R.id.tv_Maps);
+            tvNumber = view.findViewById(R.id.tv_Number);
+            tvTitle = view.findViewById(R.id.tv_title);
+            tvdeskription = view.findViewById(R.id.tv_Deskription);
     }
 }
 }

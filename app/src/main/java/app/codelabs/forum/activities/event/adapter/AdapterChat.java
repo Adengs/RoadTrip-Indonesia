@@ -35,9 +35,11 @@ public class AdapterChat  extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         context = parent.getContext();
 
         if (viewType == VIEW_TYPE_LEFT_CHAT) {
-            return new LeftSideChatViewHolder(LayoutInflater.from(context).inflate(R.layout.item_chat_kiri, parent, false));
+            return new LeftSideChatViewHolder(LayoutInflater.from(context).
+                    inflate(R.layout.item_chat_kiri, parent, false));
         } else if (viewType == VIEW_TYPE_RIGHT_CHAT) {
-            return new RightSideChatViewHolder(LayoutInflater.from(context).inflate(R.layout.item_chat_kanan, parent, false));
+            return new RightSideChatViewHolder(LayoutInflater.from(context).
+                    inflate(R.layout.item_chat_kanan, parent, false));
 
         }
         return null;
@@ -101,7 +103,7 @@ public class AdapterChat  extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         public RightSideChatViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_message = itemView.findViewById(R.id.txtIsiPesan_kanan);
+            tv_message = itemView.findViewById(R.id.tv_message_right_side);
 
         }
     }

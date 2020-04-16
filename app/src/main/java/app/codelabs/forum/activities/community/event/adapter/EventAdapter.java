@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.club.event.adapter;
+package app.codelabs.forum.activities.community.event.adapter;
 
 import android.content.Context;
 import android.content.Intent;

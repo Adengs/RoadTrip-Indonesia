@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/displayScreen"
-    tools:context=".activities.club.event.EventFragment">
+    tools:context=".activities.community.event.EventFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
