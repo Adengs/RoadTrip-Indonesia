@@ -20,8 +20,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+
 import app.codelabs.forum.R;
 
+import app.codelabs.forum.activities.shop.DetailProductActivity;
 import app.codelabs.forum.activities.shop.adapter.AdapterShop;
 import app.codelabs.forum.models.ResponseListShopByCategories;
 
@@ -30,12 +32,11 @@ import app.codelabs.forum.models.ResponseListShopByCategories;
  */
 public class FragmentRincian extends Fragment {
     Context context;
-    private TextView tvProductName, tvLocation, tvPrice,tvCategories;
+    private TextView tvProductName, tvLocation, tvPrice, tvCategories;
     private ImageView ivImage;
     private TabLayout tabLayout;
     private ResponseListShopByCategories.DataEntity data;
-    private  ViewPager viewPagerShop;
-
+    private ViewPager viewPagerShop;
 
 
     public FragmentRincian() {
@@ -68,17 +69,13 @@ public class FragmentRincian extends Fragment {
         tvLocation.setText(Html.fromHtml(data.getLocation()));
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-        tvPrice.setText(formatRupiah.format((double)data.getPrice()));
+        tvPrice.setText(formatRupiah.format((double) data.getPrice()));
         tvCategories.setText(Html.fromHtml((data.getCategory())));
         Picasso.with(context).load(data.getPhoto()).fit().centerCrop().into(ivImage);
     }
 
     private void getData() {
-        if (this.getArguments().getString("data") !=null){
-            String strData = this.getArguments().getString("data");
-            data = new Gson().fromJson(strData, ResponseListShopByCategories.DataEntity.class);
-        }
-
+        data = ((DetailProductActivity) getActivity()).data;
     }
 
 
@@ -92,12 +89,12 @@ public class FragmentRincian extends Fragment {
         tabLayout = view.findViewById(R.id.tab_layout);
     }
 
-    private void setViewPager(){
+    private void setViewPager() {
         AdapterShop adapterShop = new AdapterShop(getChildFragmentManager());
         adapterShop.addFragment(new FragmentProDescription().
                 setTypeAndData(FragmentProDescription.DESKRIP, new Gson().toJson(data)), "Description");
         adapterShop.addFragment(new FragmentProDescription().
-                setTypeAndData(FragmentProDescription.PRODUCT_INFO,new Gson().toJson(data)), "Product Info");
+                setTypeAndData(FragmentProDescription.PRODUCT_INFO, new Gson().toJson(data)), "Product Info");
 
         viewPagerShop.setAdapter(adapterShop);
 

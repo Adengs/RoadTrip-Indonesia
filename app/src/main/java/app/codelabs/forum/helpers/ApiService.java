@@ -5,6 +5,7 @@ import java.util.Map;
 
 import app.codelabs.forum.models.ResponseBookmarkArticle;
 import app.codelabs.forum.models.ResponseBookmarkEvent;
+import app.codelabs.forum.models.ResponseBookmarkShop;
 import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseMyProfile;
 import app.codelabs.forum.models.ResponseShareArticle;
@@ -153,13 +154,16 @@ public interface ApiService {
     @POST("api/bookmark/saved")
     Call<ResponseDoBookmark> doBookmark(@Field("module_id") int id, @Field("module_name") String moduleName);
 
-    @GET("api/bookmark/article")
-    Call<ResponseBookmarkArticle> getBookmarkArticle();
-
     @GET("api/article/share")
     Call<ResponseShareArticle> doShareArticle(@Query("article_id") int id);
 
+    @GET("api/bookmark/article")
+    Call<ResponseBookmarkArticle> getBookmarkArticle();
+
     @GET("api/bookmark/event")
     Call<ResponseBookmarkEvent> getBookmarkEvent();
+
+    @GET("api/bookmark/wishlist")
+    Call<ResponseBookmarkShop> getBookmarkShop();
 }
 
