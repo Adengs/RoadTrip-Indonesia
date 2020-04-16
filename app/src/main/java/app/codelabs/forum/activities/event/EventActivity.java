@@ -14,11 +14,11 @@ import com.google.gson.Gson;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.adapter.EventPagerAdapter;
-import app.codelabs.forum.activities.event.chat.ChatFragment;
-import app.codelabs.forum.activities.event.description.DescriptionFragment;
-import app.codelabs.forum.activities.event.participant.ParticipantFragment;
-import app.codelabs.forum.activities.event.schedule.ScheduleFragment;
-import app.codelabs.forum.activities.event.walkietalkie.WalkieTalkieFragment;
+import app.codelabs.forum.activities.event.fragment.ChatFragment;
+import app.codelabs.forum.activities.event.fragment.DescriptionFragment;
+import app.codelabs.forum.activities.event.fragment.ParticipantFragment;
+import app.codelabs.forum.activities.event.fragment.ScheduleFragment;
+import app.codelabs.forum.activities.event.fragment.WalkieTalkieFragment;
 import app.codelabs.forum.models.ResponseListEventCommunity;
 
 public class EventActivity extends AppCompatActivity {

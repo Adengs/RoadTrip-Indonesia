@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.event.schedule;
+package app.codelabs.forum.activities.event.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,11 +12,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.participant.AdapterParticipant;
 
 public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.MyHolder> {
     private Context context;
-
 
     @NonNull
     @Override

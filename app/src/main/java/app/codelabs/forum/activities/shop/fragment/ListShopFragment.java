@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.shop.Fragment;
+package app.codelabs.forum.activities.shop.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,13 +17,9 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.fragment.ArticleFragment;
-import app.codelabs.forum.activities.home.fragment.adapter.ArticleAdapter;
-import app.codelabs.forum.activities.shop.Adapter.AdapterListShop;
+import app.codelabs.forum.activities.shop.adapter.AdapterListShop;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponsListShopByCategories;
-import app.codelabs.forum.models.ResponsShopCategory;
-import app.codelabs.forum.models.ResponseListArticle;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

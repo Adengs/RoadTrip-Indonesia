@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.shop.Adapter;
+package app.codelabs.forum.activities.shop.adapter;
 
 import java.util.ArrayList;
 import java.util.List;

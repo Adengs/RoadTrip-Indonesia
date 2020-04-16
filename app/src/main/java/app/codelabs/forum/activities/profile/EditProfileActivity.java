@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.login.ProgresDialogFragment;
+import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.activities.profile.bottom_sheet.BottomSheetImagePicker;
 import app.codelabs.forum.helpers.CompressImage;
 import app.codelabs.forum.helpers.ConnectionApi;
@@ -59,7 +59,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private BottomSheetImagePicker bottomSheetPickImage = new BottomSheetImagePicker();
     private Bitmap bitmap;
     private ByteArrayOutputStream byteArrayStream;
-    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
+    private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
     private Session session;
     private Calendar calendar = Calendar.getInstance();
 
@@ -142,14 +142,14 @@ public class EditProfileActivity extends AppCompatActivity {
         data.put("city", RequestBody.create(MediaType.parse("text/plain"), etCity.getText().toString()));
         data.put("date_birth", RequestBody.create(MediaType.parse("text/plain"), etDob.getText().toString()));
 
-        if (!progresDialogFragment.isAdded()) {
-            progresDialogFragment.show(getSupportFragmentManager(), "loading");
+        if (!progressDialogFragment.isAdded()) {
+            progressDialogFragment.show(getSupportFragmentManager(), "loading");
         }
 
         ConnectionApi.apiService(context).updateProfile(data, fileImagePart).enqueue(new Callback<ResponseUpdateProfile>() {
             @Override
             public void onResponse(Call<ResponseUpdateProfile> call, Response<ResponseUpdateProfile> response) {
-                progresDialogFragment.dismiss();
+                progressDialogFragment.dismiss();
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         setProfile(response.body().getData());
@@ -161,7 +161,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseUpdateProfile> call, Throwable t) {
-                progresDialogFragment.dismiss();
+                progressDialogFragment.dismiss();
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -226,15 +226,15 @@ public class EditProfileActivity extends AppCompatActivity {
                 tempBitmap = RealPath.with(context).adjustBitmap(RealPath.with(context).resizeBitmap(uri), uri);
                 bitmap = tempBitmap;
 
-                if (!progresDialogFragment.isAdded()) {
-                    progresDialogFragment.show(getSupportFragmentManager(), "loading");
+                if (!progressDialogFragment.isAdded()) {
+                    progressDialogFragment.show(getSupportFragmentManager(), "loading");
                 }
                 new CompressImage(bitmap, new CompressImage.OnImageCompressed() {
                     @Override
                     public void onCompressed(ByteArrayOutputStream byteArrayOutputStream, Bitmap bitmap) {
                         byteArrayStream = byteArrayOutputStream;
                         ivPhoto.setImageBitmap(bitmap);
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                     }
                 }).execute();
             } else if (requestCode == BottomSheetImagePicker.REQ_GALLERY) {
@@ -247,15 +247,15 @@ public class EditProfileActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                if (!progresDialogFragment.isAdded()) {
-                    progresDialogFragment.show(getSupportFragmentManager(), "loading");
+                if (!progressDialogFragment.isAdded()) {
+                    progressDialogFragment.show(getSupportFragmentManager(), "loading");
                 }
                 new CompressImage(bitmap, new CompressImage.OnImageCompressed() {
                     @Override
                     public void onCompressed(ByteArrayOutputStream byteArrayOutputStream, Bitmap bitmap) {
                         byteArrayStream = byteArrayOutputStream;
                         ivPhoto.setImageBitmap(bitmap);
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                     }
                 }).execute();
             }

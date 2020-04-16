@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/putih"
-    tools:context=".activities.shop.Fragment.FragmentProductsAll">
+    tools:context=".activities.shop.fragment.FragmentProductsAll">
 
     <LinearLayout
         android:layout_width="match_parent"

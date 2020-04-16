@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.shop.Adapter;
+package app.codelabs.forum.activities.shop.adapter;
 
 import android.content.Context;
 import android.content.Intent;

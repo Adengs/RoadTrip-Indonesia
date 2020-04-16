@@ -1,5 +1,5 @@
 
-package app.codelabs.forum.activities.event.chat;
+package app.codelabs.forum.activities.event.fragment;
 
 
 import android.content.Context;
@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -23,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.event.adapter.AdapterChat;
 import app.codelabs.forum.models.Chat;
 
 /**

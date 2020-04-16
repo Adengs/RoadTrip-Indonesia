@@ -18,7 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.login.ProgresDialogFragment;
+import app.codelabs.forum.activities.custom.ProgressDialogFragment;
+import app.codelabs.forum.activities.vote.adapter.AdapterVote;
+import app.codelabs.forum.activities.vote.bottom_sheet.BottomSheetVote;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.DateTimeHelper;
 import app.codelabs.forum.models.ResponseVote;
@@ -38,7 +40,7 @@ public class VoteActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private LinearLayout container;
     private ResponseVote.DataEntity data;
-    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
+    private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
 
 
     @Override
@@ -124,11 +126,11 @@ public class VoteActivity extends AppCompatActivity {
             Toast.makeText(context, "Harus memilih salah satu kandidat.", Toast.LENGTH_SHORT).show();
             return;
         }
-        progresDialogFragment.show(getSupportFragmentManager(), "do-voting");
+        progressDialogFragment.show(getSupportFragmentManager(), "do-voting");
         ConnectionApi.apiService(context).doVote(data.getId(), adapter.getSelectedCandidate().getUser_id()).enqueue(new Callback<ResponseVoting>() {
             @Override
             public void onResponse(Call<ResponseVoting> call, Response<ResponseVoting> response) {
-                progresDialogFragment.dismiss();
+                progressDialogFragment.dismiss();
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         BottomSheetVote bottomSheetVote = new BottomSheetVote();
@@ -142,7 +144,7 @@ public class VoteActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseVoting> call, Throwable t) {
-                progresDialogFragment.dismiss();
+                progressDialogFragment.dismiss();
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }

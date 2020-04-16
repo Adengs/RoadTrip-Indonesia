@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.event.description;
+package app.codelabs.forum.activities.event.fragment;
 
 
 import android.app.Activity;
@@ -27,7 +27,7 @@ import java.util.Map;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
-import app.codelabs.forum.activities.login.ProgresDialogFragment;
+import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponsJoinEvent;
@@ -41,7 +41,7 @@ public class DescriptionFragment extends Fragment {
     private TextView tvTitle, tvStartEvent, tvEndEvent, tvLocation, tvDescription, tvDoJoin, tvJoined;
     private ImageView ivImage;
     private BottomSheetJoinEvent bottomSheetJoinEvent = new BottomSheetJoinEvent();
-    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
+    private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
     private Context context;
 
 
@@ -134,11 +134,11 @@ public class DescriptionFragment extends Fragment {
     private void unJoinEvent(final ResponseListEventCommunity.DataEntity data) {
         Map<String, String> dataUnJoin = new HashMap<>();
         dataUnJoin.put("event_id", String.valueOf(data.getId()));
-        progresDialogFragment.show(getChildFragmentManager(), "progress");
+        progressDialogFragment.show(getChildFragmentManager(), "progress");
         ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponsUnjoinEvent>() {
             @Override
             public void onResponse(Call<ResponsUnjoinEvent> call, Response<ResponsUnjoinEvent> response) {
-                progresDialogFragment.dismiss();
+                progressDialogFragment.dismiss();
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -155,7 +155,7 @@ public class DescriptionFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponsUnjoinEvent> call, Throwable t) {
-                progresDialogFragment.dismiss();
+                progressDialogFragment.dismiss();
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -164,14 +164,14 @@ public class DescriptionFragment extends Fragment {
     }
 
     private void joinEvent(final BottomSheetJoinEvent dialog, final ResponseListEventCommunity.DataEntity data, final int selectionIndex) {
-        progresDialogFragment.show(getChildFragmentManager(), "progress");
+        progressDialogFragment.show(getChildFragmentManager(), "progress");
         Map<String, String> dataJoin = new HashMap<>();
         dataJoin.put("event_id", String.valueOf(data.getId()));
         ConnectionApi.apiService(context).joinEvent(dataJoin).enqueue(new Callback<ResponsJoinEvent>() {
             @Override
             public void onResponse(Call<ResponsJoinEvent> call, Response<ResponsJoinEvent> response) {
                 dialog.dismiss();
-                progresDialogFragment.dismiss();
+                progressDialogFragment.dismiss();
                 if (response.isSuccessful() && response.body().getSuccess()) {
                     data.setIs_join(true);
                     ((EventActivity) getActivity()).data = data;
@@ -188,7 +188,7 @@ public class DescriptionFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponsJoinEvent> call, Throwable t) {
-                progresDialogFragment.dismiss();
+                progressDialogFragment.dismiss();
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

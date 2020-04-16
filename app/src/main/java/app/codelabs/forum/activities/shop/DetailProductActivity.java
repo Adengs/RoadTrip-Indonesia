@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.shop.Adapter.AdapterShop;
-import app.codelabs.forum.activities.shop.Fragment.FragmentRincian;
+import app.codelabs.forum.activities.shop.adapter.AdapterShop;
+import app.codelabs.forum.activities.shop.fragment.FragmentRincian;
 import app.codelabs.forum.models.ResponsListShopByCategories;
 
 import android.Manifest;

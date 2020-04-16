@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.event.schedule;
+package app.codelabs.forum.activities.event.fragment;
 
 
 import android.content.Context;
@@ -15,10 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.event.adapter.AdapterDateSchedule;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ScheduleFragment extends Fragment {
 private RecyclerView recycleView;
 private AdapterDateSchedule adapter;
@@ -54,7 +52,6 @@ private Context context;
     private void setView(View view) {
         adapter= new AdapterDateSchedule();
         recycleView=view.findViewById(R.id.rv_date_schedule);
-
     }
 
 }

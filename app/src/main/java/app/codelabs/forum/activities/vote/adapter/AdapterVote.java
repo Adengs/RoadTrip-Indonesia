@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.vote;
+package app.codelabs.forum.activities.vote.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

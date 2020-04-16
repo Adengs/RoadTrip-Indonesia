@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.shop.Adapter;
+package app.codelabs.forum.activities.shop.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-public class AdapterTabLayoutShop extends FragmentPagerAdapter {
+public class AdapterShop extends FragmentPagerAdapter {
 
-    List<Fragment> items = new ArrayList<>();
-    List<String> titles = new ArrayList<>();
-    public AdapterTabLayoutShop(FragmentManager fm) {
+
+    List<Fragment> items;
+    List<String> titles;
+
+    public AdapterShop(FragmentManager fm) {
         super(fm);
+        items = new ArrayList<>();
+        titles = new ArrayList<>();
     }
 
     @Override

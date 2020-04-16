@@ -23,7 +23,7 @@
     <color name="displayScreen">#F0F3F5</color>
 
     <!-- toolbar display -->
-    <color name="backgroudToolbar">#FFFFFF</color>
+    <color name="backgroundToolbar">#FFFFFF</color>
     <color name="titleToolbar">#000000</color>
 
     <!-- display edit -->

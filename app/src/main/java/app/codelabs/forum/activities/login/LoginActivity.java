@@ -15,6 +15,7 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.activities.forgot_password.ForgotPasswordActivity;
 import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.register.RegisterActivity;
@@ -31,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvForgotPassword, tvGotoRegister;
     private EditText etEmail;
     private EditText etPassword;
-    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
+    private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
     private Context context;
     private Session session;
 
@@ -67,11 +68,11 @@ public class LoginActivity extends AppCompatActivity {
                 Map<String, String> dataLogin = new HashMap<>();
                 dataLogin.put("email", etEmail.getText().toString());
                 dataLogin.put("password", etPassword.getText().toString());
-                progresDialogFragment.show(getSupportFragmentManager(), "proggress");
+                progressDialogFragment.show(getSupportFragmentManager(), "proggress");
                 ConnectionApi.apiService(context).login(dataLogin).enqueue(new Callback<ResponseLogin>() {
                     @Override
                     public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
 
                             session.setLogin(response.body().getData(), response.body().getToken());
@@ -79,8 +80,6 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
-
-                            Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                         } else {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -90,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

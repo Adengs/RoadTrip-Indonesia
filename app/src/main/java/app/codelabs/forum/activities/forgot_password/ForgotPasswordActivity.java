@@ -15,7 +15,7 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.login.ProgresDialogFragment;
+import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.helpers.Validator;
@@ -30,7 +30,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private EditText etEmail;
     private Session session;
     private Context context;
-    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
+    private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
 
 
     @Override
@@ -63,11 +63,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
                 Map<String, String> data = new HashMap<>();
                 data.put("email", etEmail.getText().toString());
-                progresDialogFragment.show(getSupportFragmentManager(), "progress");
+                progressDialogFragment.show(getSupportFragmentManager(), "progress");
                 ConnectionApi.apiService(context).requestResetPassword(data).enqueue(new Callback<ResponseForgotPassword>() {
                     @Override
                     public void onResponse(Call<ResponseForgotPassword> call, Response<ResponseForgotPassword> response) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(ForgotPasswordActivity.this, SubmitPasswordActivity.class));
@@ -80,7 +80,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseForgotPassword> call, Throwable t) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }

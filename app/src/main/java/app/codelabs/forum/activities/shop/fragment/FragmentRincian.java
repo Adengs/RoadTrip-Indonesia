@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.shop.Fragment;
+package app.codelabs.forum.activities.shop.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,10 +21,7 @@ import com.squareup.picasso.Picasso;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
 
-import app.codelabs.forum.activities.home.fragment.ArticleFragment;
-import app.codelabs.forum.activities.home.fragment.adapter.TabLayoutAdapter;
-import app.codelabs.forum.activities.shop.Adapter.AdapterShop;
-import app.codelabs.forum.activities.shop.Adapter.AdapterTabLayoutShop;
+import app.codelabs.forum.activities.shop.adapter.AdapterShop;
 import app.codelabs.forum.models.ResponsListShopByCategories;
 
 /**

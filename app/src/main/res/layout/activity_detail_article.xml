@@ -7,18 +7,21 @@
     android:orientation="vertical"
     tools:context=".activities.article.DetailArticleActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/putih" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/putih" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -130,4 +133,4 @@
         </LinearLayout>
     </ScrollView>
 
-    </LinearLayout>
+</LinearLayout>

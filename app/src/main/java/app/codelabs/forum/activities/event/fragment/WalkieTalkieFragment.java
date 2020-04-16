@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.event.walkietalkie;
+package app.codelabs.forum.activities.event.fragment;
 
 
 import android.os.Bundle;

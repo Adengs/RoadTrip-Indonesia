@@ -2,6 +2,7 @@ package app.codelabs.forum.helpers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -35,6 +36,7 @@ public class ConnectionApi {
                 if (response.code() == 401) {
                     Session.init(context).setLogout();
                     Intent intent = new Intent(context, LoginActivity.class);
+                    Toast.makeText(context, "Session expired", Toast.LENGTH_LONG).show();
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
 

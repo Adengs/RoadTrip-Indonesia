@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.event.participant;
+package app.codelabs.forum.activities.event.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

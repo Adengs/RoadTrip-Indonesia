@@ -41,10 +41,9 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseWalkThrough> call, Response<ResponseWalkThrough> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                   if (session.isLogin()) {
-                      Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-                       startActivity(intent);
+                    if (session.isLogin()) {
+                        Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                        startActivity(intent);
                         finish();
                     } else {
                         Intent intent = new Intent(SplashScreenActivity.this, WalkThroughActivity.class);
@@ -74,7 +73,6 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseApi> call, Response<ResponseApi> response) {
                 if (response.isSuccessful() && response.body().getSuccess()) {
-                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     session.setAppToken(response.body().getData());
                     loadWalkTrough();
 

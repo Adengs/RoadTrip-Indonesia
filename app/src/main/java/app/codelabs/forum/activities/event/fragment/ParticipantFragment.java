@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.event.participant;
+package app.codelabs.forum.activities.event.fragment;
 
 
 import android.content.Context;
@@ -15,12 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.EventActivity;
+import app.codelabs.forum.activities.event.adapter.AdapterParticipant;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponseListEventCommunity;
 import app.codelabs.forum.models.ResponsParticipantEvent;
 import retrofit2.Call;
 import retrofit2.Callback;

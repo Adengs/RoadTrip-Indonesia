@@ -54,4 +54,11 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'net.danlew:android.joda:2.10.3'
     testImplementation "joda-time:joda-time:2.9.4"
+
+
+    implementation 'io.supercharge:shimmerlayout:2.1.0'
+
+    implementation('com.github.mike14u:shimmer-recyclerview-x:1.0.1') {
+        exclude group: 'androidx.recyclerview', module: 'recyclerview'
+    }
 }

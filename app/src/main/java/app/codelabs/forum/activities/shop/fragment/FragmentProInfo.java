@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.shop.Fragment;
+package app.codelabs.forum.activities.shop.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.shop.Adapter.AdapterShop;
+import app.codelabs.forum.activities.shop.adapter.AdapterShop;
 
 /**
  * A simple {@link Fragment} subclass.

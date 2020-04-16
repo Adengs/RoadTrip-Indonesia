@@ -1,6 +1,5 @@
-package app.codelabs.forum.activities.vote;
+package app.codelabs.forum.activities.vote.bottom_sheet;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.HomeActivity;
 
 public class BottomSheetVote extends BottomSheetDialogFragment {
     private Button btnDoneVote;

@@ -1,4 +1,4 @@
-package app.codelabs.forum.activities.shop.Fragment;
+package app.codelabs.forum.activities.shop.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,9 +16,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.fragment.ArticleFragment;
 import app.codelabs.forum.models.ResponsListShopByCategories;
-import app.codelabs.forum.models.ResponseListArticle;
 
 /**
  * A simple {@link Fragment} subclass.

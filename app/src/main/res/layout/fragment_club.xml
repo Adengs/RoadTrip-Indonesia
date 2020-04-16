@@ -18,7 +18,7 @@
         app:tabIndicatorColor="@color/merah"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="2dp"
-        app:tabMode="fixed"
+        app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/hitam"
         app:tabTextAppearance="@style/Tablayout"
         app:tabTextColor="@color/texttablayout" />
@@ -26,16 +26,12 @@
     <include layout="@layout/layout_sticky_header_club" />
 
 
-        <androidx.viewpager.widget.ViewPager
-
-            android:id="@+id/viewPagerClub"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="?actionBarSize"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-        </androidx.viewpager.widget.ViewPager>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerClub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

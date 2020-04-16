@@ -3,42 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
+    android:orientation="vertical"
     tools:context=".activities.event.EventActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroudToolbar"
+        android:background="@color/backgroundToolbar"
         android:minHeight="?attr/actionBarSize"
-        app:theme="@style/Register">
-    </androidx.appcompat.widget.Toolbar>
-
+        app:theme="@style/Register" />
 
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_marginTop="2dp"
         android:id="@+id/tab_layoutevent"
-        android:background="@color/putih"
-        app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="@color/hitam"
         android:layout_width="match_parent"
-        app:tabTextAppearance ="@style/Tablayout"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/putih"
         app:tabIndicatorColor="@color/merah"
-        app:tabIndicatorHeight="2dp"
         app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable"
-        android:layout_height="wrap_content">
-    </com.google.android.material.tabs.TabLayout>
+        app:tabSelectedTextColor="@color/hitam"
+        app:tabTextAppearance="@style/Tablayout"
+        app:tabTextColor="@color/black" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpagerevent"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 
 
 </LinearLayout>

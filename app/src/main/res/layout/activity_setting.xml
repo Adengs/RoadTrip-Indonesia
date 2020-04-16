@@ -11,7 +11,7 @@
         android:id="@+id/toolbar_setting_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroudToolbar"
+        android:background="@color/backgroundToolbar"
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/Register">
 
