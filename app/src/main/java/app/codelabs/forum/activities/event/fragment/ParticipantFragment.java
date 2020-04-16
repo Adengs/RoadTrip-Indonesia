@@ -16,14 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.EventActivity;
+import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.activities.event.adapter.AdapterParticipant;
 import app.codelabs.forum.helpers.ConnectionApi;
-<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/event/fragment/ParticipantFragment.java
-import app.codelabs.forum.models.ResponsParticipantEvent;
-=======
 import app.codelabs.forum.models.ResponseParticipantEvent;
->>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/event/participant/ParticipantFragment.java
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -61,7 +57,7 @@ public class ParticipantFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService(context).eventParticipant(((EventActivity) getActivity()).data.getId()).enqueue(new Callback<ResponseParticipantEvent>() {
+        ConnectionApi.apiService(context).eventParticipant(((DetailEventActivity) getActivity()).data.getId()).enqueue(new Callback<ResponseParticipantEvent>() {
             @Override
             public void onResponse(Call<ResponseParticipantEvent> call, Response<ResponseParticipantEvent> response) {
                 if (response.body() != null) {

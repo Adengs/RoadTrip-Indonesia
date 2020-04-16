@@ -17,15 +17,9 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
-<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/shop/fragment/ListShopFragment.java
 import app.codelabs.forum.activities.shop.adapter.AdapterListShop;
 import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponsListShopByCategories;
-=======
-import app.codelabs.forum.activities.shop.Adapter.AdapterListShop;
-import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponseListShopByCategories;
->>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/shop/Fragment/ListShopFragment.java
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

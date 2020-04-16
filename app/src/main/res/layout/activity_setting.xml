@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
-    tools:context=".activities.profile.SettingActivity">
+    tools:context=".activities.setting.SettingActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_setting_profile"

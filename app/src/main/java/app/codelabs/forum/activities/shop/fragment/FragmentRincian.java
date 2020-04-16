@@ -21,14 +21,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
-<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/shop/fragment/FragmentRincian.java
 
 import app.codelabs.forum.activities.shop.adapter.AdapterShop;
-import app.codelabs.forum.models.ResponsListShopByCategories;
-=======
-import app.codelabs.forum.activities.shop.Adapter.AdapterShop;
 import app.codelabs.forum.models.ResponseListShopByCategories;
->>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/shop/Fragment/FragmentRincian.java
 
 /**
  * A simple {@link Fragment} subclass.

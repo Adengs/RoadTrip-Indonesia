@@ -16,11 +16,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import app.codelabs.forum.R;
-<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/shop/fragment/FragmentProDescription.java
-import app.codelabs.forum.models.ResponsListShopByCategories;
-=======
 import app.codelabs.forum.models.ResponseListShopByCategories;
->>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/shop/Fragment/FragmentProDescription.java
 
 /**
  * A simple {@link Fragment} subclass.

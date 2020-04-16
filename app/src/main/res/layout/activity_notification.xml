@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.notification.NotificationActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@drawable/shape_walk_through"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_panahkiri"
+            android:src="@drawable/ic_iconfinder_arrow_right_2561331"
+            android:layout_width="18dp"
+            android:layout_marginTop="21.26dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginBottom="20.26dp"
+            android:layout_height="13.47dp"/>
+        <TextView
+            android:id="@+id/txtnotif"
+            android:text="Notification"
+            android:textSize="14dp"
+            android:textColor="@color/colorText"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="19dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewnotif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_notifivation_home" />
+</LinearLayout>

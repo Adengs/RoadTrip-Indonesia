@@ -12,14 +12,13 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.EventActivity;
+import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.models.ResponseMyEvent;
 
 public class AdapterMyEvent extends RecyclerView.Adapter<AdapterMyEvent.MyEventHolder> {
@@ -81,7 +80,7 @@ public class AdapterMyEvent extends RecyclerView.Adapter<AdapterMyEvent.MyEventH
                 @Override
                 public void onClick(View v) {
                     ResponseMyEvent.DataEntity items = item.get(getAdapterPosition());
-                    Intent intent = new Intent(context, EventActivity.class);
+                    Intent intent = new Intent(context, DetailEventActivity.class);
                     intent.putExtra("data", new Gson().toJson(items));
                     intent.putExtra("is_join",true);
                     context.startActivity(intent);

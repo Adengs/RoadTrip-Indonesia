@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
     android:orientation="vertical"
-    tools:context=".activities.event.EventActivity">
+    tools:context=".activities.event.DetailEventActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,15 +18,7 @@
 
 
     <com.google.android.material.tabs.TabLayout
-<<<<<<< HEAD
-        android:id="@+id/tab_layoutevent"
-=======
-        android:layout_marginTop="2dp"
         android:id="@+id/tab_layout"
-        android:background="@color/putih"
-        app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="@color/hitam"
->>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"

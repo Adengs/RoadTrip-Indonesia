@@ -24,14 +24,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.community.event.bottom_sheet.BottomSheetJoinEvent;
-import app.codelabs.forum.activities.event.EventActivity;
-<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/event/fragment/DescriptionFragment.java
+import app.codelabs.forum.activities.home.bottom_sheet.BottomSheetJoinEvent;
+import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
-import app.codelabs.forum.activities.club.event.bottom_sheet.BottomSheetJoinEvent;
-=======
-import app.codelabs.forum.activities.login.ProgresDialogFragment;
->>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/event/description/DescriptionFragment.java
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponseJoinEvent;
 import app.codelabs.forum.models.ResponseListEventCommunity;
@@ -72,17 +67,17 @@ public class DescriptionFragment extends Fragment {
     }
 
     private void setData() {
-        tvTitle.setText(Html.fromHtml(((EventActivity) getActivity()).data.getTitle()));
-        tvStartEvent.setText(((EventActivity) getActivity()).data.getEvent_start());
-        tvEndEvent.setText(((EventActivity) getActivity()).data.getEvent_end());
-        tvLocation.setText(((EventActivity) getActivity()).data.getLocation());
-        tvDescription.setText(Html.fromHtml(((EventActivity) getActivity()).data.getDescription()));
-        Picasso.with(context).load(((EventActivity) getActivity()).data.getImage())
+        tvTitle.setText(Html.fromHtml(((DetailEventActivity) getActivity()).data.getTitle()));
+        tvStartEvent.setText(((DetailEventActivity) getActivity()).data.getEvent_start());
+        tvEndEvent.setText(((DetailEventActivity) getActivity()).data.getEvent_end());
+        tvLocation.setText(((DetailEventActivity) getActivity()).data.getLocation());
+        tvDescription.setText(Html.fromHtml(((DetailEventActivity) getActivity()).data.getDescription()));
+        Picasso.with(context).load(((DetailEventActivity) getActivity()).data.getImage())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)
                 .fit().centerCrop().into(ivImage);
 
-        if (((EventActivity) getActivity()).data.getIs_join() == true) {
+        if (((DetailEventActivity) getActivity()).data.getIs_join() == true) {
             tvDoJoin.setText("Congratulation!");
             tvJoined.setText("Joined");
             tvJoined.setTextColor(Color.parseColor("#FFFFFF"));
@@ -105,10 +100,10 @@ public class DescriptionFragment extends Fragment {
         tvJoined.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((EventActivity) getActivity()).data.getIs_join() == false) {
-                    joinEventDialog(((EventActivity) getActivity()).data);
+                if (((DetailEventActivity) getActivity()).data.getIs_join() == false) {
+                    joinEventDialog(((DetailEventActivity) getActivity()).data);
                 } else {
-                    unJoinEvent(((EventActivity) getActivity()).data);
+                    unJoinEvent(((DetailEventActivity) getActivity()).data);
                 }
             }
         });
@@ -116,7 +111,7 @@ public class DescriptionFragment extends Fragment {
     }
 
     private void joinEventDialog(ResponseListEventCommunity.DataEntity data) {
-        bottomSheetJoinEvent.setData(data, ((EventActivity) getActivity()).selectedIndex);
+        bottomSheetJoinEvent.setData(data, ((DetailEventActivity) getActivity()).selectedIndex);
         bottomSheetJoinEvent.show(getChildFragmentManager(), "join_event");
     }
 
@@ -137,41 +132,28 @@ public class DescriptionFragment extends Fragment {
     private void unJoinEvent(final ResponseListEventCommunity.DataEntity data) {
         Map<String, String> dataUnJoin = new HashMap<>();
         dataUnJoin.put("event_id", String.valueOf(data.getId()));
-<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/event/fragment/DescriptionFragment.java
         progressDialogFragment.show(getChildFragmentManager(), "progress");
-        ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponsUnjoinEvent>() {
-            @Override
-            public void onResponse(Call<ResponsUnjoinEvent> call, Response<ResponsUnjoinEvent> response) {
-                progressDialogFragment.dismiss();
-=======
-        progresDialogFragment.show(getChildFragmentManager(), "progress");
         ConnectionApi.apiService(context).unJoin(dataUnJoin).enqueue(new Callback<ResponseUnjoinEvent>() {
             @Override
             public void onResponse(Call<ResponseUnjoinEvent> call, Response<ResponseUnjoinEvent> response) {
-                progresDialogFragment.dismiss();
->>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/event/description/DescriptionFragment.java
+                progressDialogFragment.dismiss();
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         data.setIs_join(false);
-                        ((EventActivity) getActivity()).data = data;
+                        ((DetailEventActivity) getActivity()).data = data;
                         setData();
                         Intent intent = new Intent();
                         intent.putExtra("data", new Gson().toJson(data));
-                        intent.putExtra("index", ((EventActivity) getActivity()).selectedIndex);
+                        intent.putExtra("index", ((DetailEventActivity) getActivity()).selectedIndex);
                         getActivity().setResult(Activity.RESULT_OK, intent);
                     }
                 }
             }
 
             @Override
-<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/event/fragment/DescriptionFragment.java
-            public void onFailure(Call<ResponsUnjoinEvent> call, Throwable t) {
-                progressDialogFragment.dismiss();
-=======
             public void onFailure(Call<ResponseUnjoinEvent> call, Throwable t) {
-                progresDialogFragment.dismiss();
->>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/event/description/DescriptionFragment.java
+                progressDialogFragment.dismiss();
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -190,7 +172,7 @@ public class DescriptionFragment extends Fragment {
                 progressDialogFragment.dismiss();
                 if (response.isSuccessful() && response.body().getSuccess()) {
                     data.setIs_join(true);
-                    ((EventActivity) getActivity()).data = data;
+                    ((DetailEventActivity) getActivity()).data = data;
                     setData();
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
@@ -203,13 +185,8 @@ public class DescriptionFragment extends Fragment {
             }
 
             @Override
-<<<<<<< HEAD:app/src/main/java/app/codelabs/forum/activities/event/fragment/DescriptionFragment.java
-            public void onFailure(Call<ResponsJoinEvent> call, Throwable t) {
-                progressDialogFragment.dismiss();
-=======
             public void onFailure(Call<ResponseJoinEvent> call, Throwable t) {
-                progresDialogFragment.dismiss();
->>>>>>> ca3b14d1cd9f4e8a67cc5df78a81f3d2823de0bc:app/src/main/java/app/codelabs/forum/activities/event/description/DescriptionFragment.java
+                progressDialogFragment.dismiss();
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
