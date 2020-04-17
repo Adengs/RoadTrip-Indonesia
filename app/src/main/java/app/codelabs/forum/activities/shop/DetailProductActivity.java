@@ -1,26 +1,5 @@
 package app.codelabs.forum.activities.shop;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import app.codelabs.forum.R;
-import app.codelabs.forum.activities.custom.ProgressDialogFragment;
-import app.codelabs.forum.activities.shop.adapter.AdapterShop;
-import app.codelabs.forum.activities.shop.fragment.FragmentRincian;
-import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.models.ResponseBookmarkShop;
-import app.codelabs.forum.models.ResponseDoBookmark;
-import app.codelabs.forum.models.ResponseListShopByCategories;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -40,14 +19,34 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import app.codelabs.forum.R;
+import app.codelabs.forum.activities.custom.ProgressDialogFragment;
+import app.codelabs.forum.activities.shop.adapter.AdapterShopDeskription;
+import app.codelabs.forum.activities.shop.fragment.FragmentDetailShop;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.models.ResponseBookmarkShop;
+import app.codelabs.forum.models.ResponseDetailShopItem;
+import app.codelabs.forum.models.ResponseDoBookmark;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class DetailProductActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int REQUEST_CODE_PHONE = 101;
     private Context context;
     private Toolbar toolbar;
     private TextView tvHubungi, tvWa;
-    public ResponseListShopByCategories.DataEntity data;
+    public ResponseDetailShopItem.DataEntity data;
 
-    AdapterShop adapter;
+    AdapterShopDeskription adapter;
 
 
     private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
@@ -64,14 +63,19 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         setView();
         setEvent();
         setToolBar();
-        setFragment(new FragmentRincian());
+        setFragment(new FragmentDetailShop());
         setViewPager();
         getBookmark();
+        loadData();
+    }
+
+    private void loadData() {
+
     }
 
     private void getData() {
         String strData = getIntent().getStringExtra("data");
-        data = new Gson().fromJson(strData, ResponseListShopByCategories.DataEntity.class);
+        data = new Gson().fromJson(strData, ResponseDetailShopItem.DataEntity.class);
     }
 
     private void setToolBar() {
@@ -101,7 +105,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     }
 
     private void setViewPager() {
-        adapter = new AdapterShop(getSupportFragmentManager());
+        adapter = new AdapterShopDeskription(getSupportFragmentManager());
     }
 
     @Override
@@ -139,7 +143,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     }
 
     private void WhatApp() {
-        String url = "https://api.whatsapp.com/send?phone=" + "+62" + data.getContact();
+        String url = data.getContact();
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
@@ -147,19 +151,21 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
 
     private void phone() {
         if (Build.VERSION.SDK_INT > 22) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(DetailProductActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CODE_PHONE);
                 return;
             }
             Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setData(Uri.parse("tel:" + data.getContact()));
+            intent.setData(Uri.parse("tel:" + data.getPhone()));
             startActivity(intent);
         } else {
             Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setData(Uri.parse("tel:" + data.getContact()));
+            intent.setData(Uri.parse("tel:" + data.getPhone()));
             startActivity(intent);
         }
+
     }
+
 
 
     private void bookmarkShop() {

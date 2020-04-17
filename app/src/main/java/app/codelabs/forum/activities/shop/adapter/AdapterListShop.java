@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -22,7 +23,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.DetailProductActivity;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.models.ResponseDetailShopItem;
 import app.codelabs.forum.models.ResponseListShopByCategories;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHolder> {
     private  Context context;
@@ -85,9 +91,28 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
                 @Override
                 public void onClick(View v) {
                     ResponseListShopByCategories.DataEntity items = item.get(getAdapterPosition());
-                    Intent intent = new Intent(context, DetailProductActivity.class);
-                    intent.putExtra("data", new Gson().toJson(items));
-                    context.startActivity(intent);
+                    ConnectionApi.apiService(context).getShopDetailItem(items.getId()).enqueue(new Callback<ResponseDetailShopItem>() {
+                        @Override
+                        public void onResponse(Call<ResponseDetailShopItem> call, Response<ResponseDetailShopItem> response) {
+                            if (response.body() != null) {
+                                if (response.isSuccessful() && response.body().getSuccess()) {
+                                    Intent intent = new Intent(context, DetailProductActivity.class);
+                                    intent.putExtra("data", new Gson().toJson(response.body().getData()));
+                                    context.startActivity(intent);
+                                }
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseDetailShopItem> call, Throwable t) {
+                            if (t.getMessage() != null) {
+                                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
+
                 }
             });
 

@@ -1,6 +1,8 @@
 package app.codelabs.forum.activities.shop.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -20,26 +22,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
 import app.codelabs.forum.R;
-
 import app.codelabs.forum.activities.shop.DetailProductActivity;
-import app.codelabs.forum.activities.shop.adapter.AdapterShop;
-import app.codelabs.forum.models.ResponseListShopByCategories;
+import app.codelabs.forum.activities.shop.adapter.AdapterShopDeskription;
+import app.codelabs.forum.models.ResponseDetailShopItem;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentRincian extends Fragment {
+public class FragmentDetailShop extends Fragment {
     Context context;
-    private TextView tvProductName, tvLocation, tvPrice, tvCategories;
-    private ImageView ivImage;
+    private TextView tvProductName, tvLocation, tvPrice, tvCategories, tvMaps,tvStore;
+    private ImageView ivImage,ivLogo;
     private TabLayout tabLayout;
-    private ResponseListShopByCategories.DataEntity data;
+    private ResponseDetailShopItem.DataEntity data;
     private ViewPager viewPagerShop;
 
 
-    public FragmentRincian() {
+    public FragmentDetailShop() {
         // Required empty public constructor
     }
 
@@ -60,8 +60,27 @@ public class FragmentRincian extends Fragment {
         getData();
         setView(view);
         setData();
+        setEvent();
         setViewPager();
 
+    }
+
+    private void setEvent() {
+        tvMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setMaps();
+            }
+        });
+    }
+
+    private void setMaps() {
+        String url_map = "https://www.google.com/maps/search/?api=1&query=";
+        float zoomLevel = 16.0f; //This goes up to 21
+        Uri gmmIntentUri = Uri.parse(url_map+ data.getLatitude()+","+data.getLongitude());
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        //mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 
     private void setData() {
@@ -71,6 +90,8 @@ public class FragmentRincian extends Fragment {
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
         tvPrice.setText(formatRupiah.format((double) data.getPrice()));
         tvCategories.setText(Html.fromHtml((data.getCategory())));
+        tvStore.setText(Html.fromHtml(data.getStore_name()));
+        Picasso.with(context).load(data.getStore_logo()).fit().centerCrop().into(ivLogo);
         Picasso.with(context).load(data.getPhoto()).fit().centerCrop().into(ivImage);
     }
 
@@ -87,10 +108,13 @@ public class FragmentRincian extends Fragment {
         ivImage = view.findViewById(R.id.iv_Image);
         viewPagerShop = view.findViewById(R.id.viewPager);
         tabLayout = view.findViewById(R.id.tab_layout);
+        tvMaps = view.findViewById(R.id.tv_map);
+        ivLogo = view.findViewById(R.id.iv_logo);
+        tvStore = view.findViewById(R.id.tv_store);
     }
 
     private void setViewPager() {
-        AdapterShop adapterShop = new AdapterShop(getChildFragmentManager());
+        AdapterShopDeskription adapterShop = new AdapterShopDeskription(getChildFragmentManager());
         adapterShop.addFragment(new FragmentProDescription().
                 setTypeAndData(FragmentProDescription.DESKRIP, new Gson().toJson(data)), "Description");
         adapterShop.addFragment(new FragmentProDescription().

@@ -2,7 +2,8 @@ package app.codelabs.forum.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public  class ResponseAbout {
+public class ResponseAbout {
+
 
     @SerializedName("data")
     private DataEntity data;
@@ -42,8 +43,8 @@ public  class ResponseAbout {
         private String company_name;
         @SerializedName("longitude")
         private String longitude;
-        @SerializedName("langitude")
-        private String langitude;
+        @SerializedName("latitude")
+        private String latitude;
         @SerializedName("secretariat")
         private String secretariat;
         @SerializedName("history")
@@ -79,12 +80,12 @@ public  class ResponseAbout {
             this.longitude = longitude;
         }
 
-        public String getLangitude() {
-            return langitude;
+        public String getLatitude() {
+            return latitude;
         }
 
-        public void setLangitude(String langitude) {
-            this.langitude = langitude;
+        public void setLatitude(String latitude) {
+            this.latitude = latitude;
         }
 
         public String getSecretariat() {

@@ -134,14 +134,14 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/iv_ikon"
+                    android:id="@+id/iv_logo"
                     android:src="@drawable/lambor"
                     android:layout_width="24dp"
                     android:layout_height="24dp">
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/tv_Community"
+                    android:id="@+id/tv_store"
                     android:layout_marginLeft="20dp"
                     android:text="Mobil 321"
                     android:textSize="14dp"

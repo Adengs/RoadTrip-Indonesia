@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -76,8 +77,8 @@ public class AboutActivity extends AppCompatActivity {
     private void setAbout(final ResponseAbout.DataEntity data) {
         Picasso.with(context).load(data.getLogo()).fit().centerCrop().into(ivLogo);
         tvCompany_name.setText(data.getCompany_name());
-        tvhistory.setText(data.getHistory());
-        tvSecretariat.setText(data.getSecretariat());
+        tvhistory.setText(Html.fromHtml(data.getHistory()));
+        tvSecretariat.setText(Html.fromHtml(data.getSecretariat()));
         tvMaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,14 +89,12 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private void setMaps(ResponseAbout.DataEntity data) {
-        String url_map = "http://maps.google.com/maps?q=loc:";
-        float zoomLevel = 16.0f; //This goes up to 21
-        Uri gmmIntentUri = Uri.parse( url_map +data.getLangitude()+","+data.getLongitude()+zoomLevel);
+        float zoomLevel = 16.0f;
+        String url_map = "https://www.google.com/maps/search/?api=1&query=";
+        Uri gmmIntentUri = Uri.parse( url_map +data.getLatitude()+","+data.getLongitude());
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-        }
+       // mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
 
     }
 
