@@ -13,12 +13,12 @@
         android:layout_height="45dp">
 
         <TextView
-            android:id="@+id/tv_date_schedule"
+            android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            android:text="20 Februari 2020"
+            tools:text="20 Februari 2020"
             android:textColor="@color/hitam"
             android:textSize="12dp" />
     </LinearLayout>
@@ -28,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:nestedScrollingEnabled="false"
         android:background="@color/putih"
         tools:listitem="@layout/item_schedule">
 

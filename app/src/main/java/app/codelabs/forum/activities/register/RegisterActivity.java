@@ -1,9 +1,7 @@
 package app.codelabs.forum.activities.register;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +15,7 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.login.LoginActivity;
-import app.codelabs.forum.activities.login.ProgresDialogFragment;
+import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.helpers.Validator;
@@ -33,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ImageView ivBack;
     private Button btnRegister;
     private Session session;
-    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
+    private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
     private Context context;
 
     @Override
@@ -75,11 +72,11 @@ public class RegisterActivity extends AppCompatActivity {
                 data.put("name", etName.getText().toString());
                 data.put("email", etEmail.getText().toString());
 
-                progresDialogFragment.show(getSupportFragmentManager(), "progress");
+                progressDialogFragment.show(getSupportFragmentManager(), "progress");
                 ConnectionApi.apiService(context).register(data).enqueue(new Callback<ResponseRegister>() {
                     @Override
                     public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, "Success Register", Toast.LENGTH_SHORT).show();
                             onBackPressed();
@@ -90,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseRegister> call, Throwable t) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -17,8 +17,8 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.List;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.fragment.ArticleFragment;
-import app.codelabs.forum.activities.home.fragment.adapter.TabLayoutAdapter;
+import app.codelabs.forum.activities.article.fragment.ArticleFragment;
+import app.codelabs.forum.activities.home.adapter.TabLayoutAdapter;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponseArticleCategory;
 import retrofit2.Call;

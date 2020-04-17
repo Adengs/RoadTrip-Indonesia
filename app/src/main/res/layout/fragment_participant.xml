@@ -6,7 +6,7 @@
     android:background="@color/displayScreen"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".activities.event.participant.ParticipantFragment">
+    tools:context=".activities.event.fragment.ParticipantFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout

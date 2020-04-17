@@ -3,87 +3,51 @@ package app.codelabs.forum.activities.event;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
+import app.codelabs.forum.R;
+import app.codelabs.forum.activities.home.fragment.community.fragment.EventFragment;
+
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.google.android.material.tabs.TabLayout;
-import com.google.gson.Gson;
-
-import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.adapter.EventPagerAdapter;
-import app.codelabs.forum.activities.event.chat.ChatFragment;
-import app.codelabs.forum.activities.event.description.DescriptionFragment;
-import app.codelabs.forum.activities.event.participant.ParticipantFragment;
-import app.codelabs.forum.activities.event.schedule.ScheduleFragment;
-import app.codelabs.forum.activities.event.walkietalkie.WalkieTalkieFragment;
-import app.codelabs.forum.models.ResponseListEventCommunity;
-
 public class EventActivity extends AppCompatActivity {
-    public static final int REQ_REFRESH_EVENT = 1001;
-    private Context context;
-    private TabLayout tabLayoutEvent;
-    private ViewPager viewPagerEvent;
-    private String strData;
-    public ResponseListEventCommunity.DataEntity data;
-    private Toolbar toolbar;
-    public int selectedIndex = -1;
 
-    private EventPagerAdapter adapter;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
-
-        context = getApplicationContext();
+        setContentView(R.layout.activity_menu_event);
 
         setView();
-        getData();
-        setViewPager();
         setToolbar();
 
-    }
+        setFragment(new EventFragment());
 
-    private void getData() {
-        if (getIntent().getStringExtra("data") != null) {
-            strData = getIntent().getStringExtra("data");
-            selectedIndex = getIntent().getIntExtra("index",-1);
-            data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
-        }
     }
 
     private void setToolbar() {
         setSupportActionBar(toolbar);
-        setTitle("");
+        setTitle("Event");
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
-    private void setViewPager() {
-        adapter = new EventPagerAdapter(getSupportFragmentManager());
-
-        adapter.addFragment(new DescriptionFragment(), "Description");
-        adapter.addFragment( new ParticipantFragment(), "Participant");
-        adapter.addFragment(new ScheduleFragment(), "Schedule");
-        adapter.addFragment(new WalkieTalkieFragment(), "Walkie Talkie");
-        adapter.addFragment(new ChatFragment(), "Chat");
-        viewPagerEvent.setAdapter(adapter);
-
-        tabLayoutEvent.setupWithViewPager(viewPagerEvent);
-
-    }
 
     private void setView() {
-        tabLayoutEvent = findViewById(R.id.tab_layout);
-        viewPagerEvent = findViewById(R.id.viewPager);
         toolbar = findViewById(R.id.toolbar);
-
     }
 
+    private void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentcontaineHomeEvent, fragment);
+        fragmentTransaction.commit();
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -92,4 +56,5 @@ public class EventActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

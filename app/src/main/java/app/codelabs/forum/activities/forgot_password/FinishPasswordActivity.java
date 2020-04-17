@@ -16,10 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.login.LoginActivity;
-import app.codelabs.forum.activities.login.ProgresDialogFragment;
+import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
-import app.codelabs.forum.helpers.Validator;
 import app.codelabs.forum.models.ResponseFinishPassword;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +30,7 @@ public class FinishPasswordActivity extends AppCompatActivity {
     private Button btnFinish;
     private EditText etPassword, etConfirmPassword;
     private Session session;
-    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
+    private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
     private Context context;
     private String xResetToken;
 
@@ -76,11 +75,11 @@ public class FinishPasswordActivity extends AppCompatActivity {
                 Map<String, String> data = new HashMap<>();
                 data.put("password", etPassword.getText().toString());
                 data.put("password-confirm", etConfirmPassword.getText().toString());
-                progresDialogFragment.show(getSupportFragmentManager(), "progress");
+                progressDialogFragment.show(getSupportFragmentManager(), "progress");
                 ConnectionApi.apiService(context).resetPassword(data, xResetToken).enqueue(new Callback<ResponseFinishPassword>() {
                     @Override
                     public void onResponse(Call<ResponseFinishPassword> call, Response<ResponseFinishPassword> response) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(FinishPasswordActivity.this, LoginActivity.class).setFlags(
@@ -95,7 +94,7 @@ public class FinishPasswordActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseFinishPassword> call, Throwable t) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }

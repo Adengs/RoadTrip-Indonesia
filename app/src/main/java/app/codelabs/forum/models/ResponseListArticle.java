@@ -70,6 +70,16 @@ public class ResponseListArticle {
         @SerializedName("id")
         private int id;
 
+        public boolean isBookmark() {
+            return bookmark;
+        }
+
+        public void setBookmark(boolean bookmark) {
+            this.bookmark = bookmark;
+        }
+
+        private boolean bookmark = false;
+
         public CategoryEntity getCategory() {
             return category;
         }
@@ -149,6 +159,7 @@ public class ResponseListArticle {
         public void setId(int id) {
             this.id = id;
         }
+
     }
 
     public static class CategoryEntity {

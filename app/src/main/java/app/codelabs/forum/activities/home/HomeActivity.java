@@ -8,12 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.community.ClubFragment;
-import app.codelabs.forum.activities.conversation.fragment.CoversationFragment;
-import app.codelabs.forum.activities.event.fragment.EventFragment;
-import app.codelabs.forum.activities.home.fragment.HomeFragment;
-import app.codelabs.forum.activities.profile.fragment.ProfileFragment;
+import app.codelabs.forum.activities.home.fragment.community.CommunityFragment;
+import app.codelabs.forum.activities.home.fragment.chat.ConversationFragment;
+import app.codelabs.forum.activities.home.fragment.myevent.EventFragment;
+import app.codelabs.forum.activities.home.fragment.home.HomeFragment;
+import app.codelabs.forum.activities.home.fragment.profile.ProfileFragment;
 
 public class HomeActivity extends AppCompatActivity {
     private ImageView imgHomes, imgClubs, imgChats, imgEvents, imgProfile;
@@ -56,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         imgClubs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new ClubFragment());
+                setFragment(new CommunityFragment());
                 imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active));
                 imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event));
                 imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community_active));
@@ -67,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
         imgChats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new CoversationFragment());
+                setFragment(new ConversationFragment());
                 imgHomes.setImageDrawable(getResources().getDrawable(R.drawable.ic_home_active));
                 imgEvents.setImageDrawable(getResources().getDrawable(R.drawable.ic_event));
                 imgClubs.setImageDrawable(getResources().getDrawable(R.drawable.ic_community));

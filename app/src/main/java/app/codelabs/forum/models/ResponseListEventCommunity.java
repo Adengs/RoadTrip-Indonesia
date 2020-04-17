@@ -62,6 +62,20 @@ public class ResponseListEventCommunity {
         @SerializedName("id")
         private int id;
 
+        private boolean bookmark = false;
+
+        public boolean isIs_join() {
+            return is_join;
+        }
+
+        public boolean isBookmark() {
+            return bookmark;
+        }
+
+        public void setBookmark(boolean bookmark) {
+            this.bookmark = bookmark;
+        }
+
         public boolean getIs_join() {
             return is_join;
         }

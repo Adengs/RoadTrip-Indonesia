@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:background="@color/displayScreen"
     android:layout_height="match_parent"
-    tools:context=".activities.menu_event.MenuEventActivity">
+    tools:context=".activities.event.EventActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroudToolbar"
+        android:background="@color/backgroundToolbar"
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/Register">
     </androidx.appcompat.widget.Toolbar>

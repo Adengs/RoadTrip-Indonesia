@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.gallery.fragment.GalleryFragment;
+import app.codelabs.forum.activities.home.fragment.community.fragment.GalleryFragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;

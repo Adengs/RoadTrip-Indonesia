@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.event.EventActivity;
+import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.models.ResponseListEventCommunity;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
@@ -95,10 +94,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
                 @Override
                 public void onClick(View v) {
                     ResponseListEventCommunity.DataEntity item = items.get(getAdapterPosition());
-                    Intent intent = new Intent(context, EventActivity.class);
+                    Intent intent = new Intent(context, DetailEventActivity.class);
                     intent.putExtra("data", new Gson().toJson(item));
                     intent.putExtra("index", getAdapterPosition());
-                    fragment.startActivityForResult(intent, EventActivity.REQ_REFRESH_EVENT);
+                    fragment.startActivityForResult(intent, DetailEventActivity.REQ_REFRESH_EVENT);
                 }
             });
 

@@ -5,7 +5,7 @@
     </style>
     <!-- toolbar display -->
     <style name="Register" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/backgroudToolbar</item>
+        <item name="colorPrimary">@color/backgroundToolbar</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>

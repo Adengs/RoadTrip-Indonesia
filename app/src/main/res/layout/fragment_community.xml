@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/displayScreen"
+    tools:context=".activities.home.fragment.community.CommunityFragment">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_gravity="bottom"
+        android:background="@color/putih"
+        app:layout_anchor="@id/appBar"
+        app:layout_anchorGravity="bottom"
+        app:tabIndicatorColor="@color/merah"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/hitam"
+        app:tabTextAppearance="@style/Tablayout"
+        app:tabTextColor="@color/texttablayout" />
+
+    <include layout="@layout/layout_sticky_header_club" />
+
+
+    <androidx.viewpager.widget.ViewPager
+
+        android:id="@+id/view_pager_club"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -15,7 +15,7 @@ import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
 
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.login.ProgresDialogFragment;
+import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseSubmitPassword;
@@ -29,7 +29,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
     private EditText etCode1, etCode2, etCode3, etCode4;
     private Session session;
     private Context context;
-    private ProgresDialogFragment progresDialogFragment = new ProgresDialogFragment();
+    private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
 
 
     @Override
@@ -66,11 +66,11 @@ public class SubmitPasswordActivity extends AppCompatActivity {
                 Map<String, String> data = new HashMap<>();
                 data.put("code", code);
 
-                progresDialogFragment.show(getSupportFragmentManager(), "progress");
+                progressDialogFragment.show(getSupportFragmentManager(), "progress");
                 ConnectionApi.apiService(context).verifyCodeResetPassword(data).enqueue(new Callback<ResponseSubmitPassword>() {
                     @Override
                     public void onResponse(Call<ResponseSubmitPassword> call, Response<ResponseSubmitPassword> response) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SubmitPasswordActivity.this, FinishPasswordActivity.class);
@@ -86,7 +86,7 @@ public class SubmitPasswordActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseSubmitPassword> call, Throwable t) {
-                        progresDialogFragment.dismiss();
+                        progressDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
 
 

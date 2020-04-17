@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
-    tools:context=".activities.profile.SettingActivity">
+    tools:context=".activities.setting.SettingActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_setting_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroudToolbar"
+        android:background="@color/backgroundToolbar"
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/Register">
 

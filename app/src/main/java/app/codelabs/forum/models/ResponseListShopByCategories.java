@@ -56,6 +56,15 @@ public  class ResponseListShopByCategories {
         private int category_id;
         @SerializedName("id")
         private int id;
+        private boolean bookmark = false;
+
+        public boolean isBookmark() {
+            return bookmark;
+        }
+
+        public void setBookmark(boolean bookmark) {
+            this.bookmark = bookmark;
+        }
 
         public String getLocation() {
             return location;
