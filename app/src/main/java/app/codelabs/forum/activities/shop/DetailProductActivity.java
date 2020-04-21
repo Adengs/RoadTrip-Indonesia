@@ -143,7 +143,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     }
 
     private void WhatApp() {
-        String url = data.getContact();
+        String url = data.getWhatsapp();
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
@@ -156,11 +156,11 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
                 return;
             }
             Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setData(Uri.parse("tel:" + data.getPhone()));
+            intent.setData(Uri.parse("tel:" + data.getStore().getPhone()));
             startActivity(intent);
         } else {
             Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setData(Uri.parse("tel:" + data.getPhone()));
+            intent.setData(Uri.parse("tel:" + data.getStore().getPhone()));
             startActivity(intent);
         }
 
@@ -173,6 +173,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         ConnectionApi.apiService(context).doBookmark(data.getId(), "shop").enqueue(new Callback<ResponseDoBookmark>() {
             @Override
             public void onResponse(Call<ResponseDoBookmark> call, Response<ResponseDoBookmark> response) {
+
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         getBookmark();

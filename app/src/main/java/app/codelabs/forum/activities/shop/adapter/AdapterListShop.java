@@ -50,11 +50,11 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
     public void onBindViewHolder(@NonNull AdapterListShop.MyHolder holder, int position) {
         ResponseListShopByCategories.DataEntity items = item.get(position);
         holder.tvProductName.setText(Html.fromHtml(items.getName()));
-        holder.tvLocation.setText(Html.fromHtml(items.getLocation()));
+        holder.tvLocation.setText(Html.fromHtml(items.getStore().getLocation()));
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
         holder.tvPrice.setText((formatRupiah.format((double)items.getPrice())));
-        holder.tvCategory.setText(Html.fromHtml(items.getCategory()));
+        holder.tvCategory.setText(Html.fromHtml((items.getCategory().getCategory())));
         Picasso.with(context).load(items.getPhoto())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)

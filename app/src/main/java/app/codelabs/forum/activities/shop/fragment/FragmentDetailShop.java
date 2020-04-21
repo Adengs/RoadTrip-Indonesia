@@ -77,7 +77,7 @@ public class FragmentDetailShop extends Fragment {
     private void setMaps() {
         String url_map = "https://www.google.com/maps/search/?api=1&query=";
         float zoomLevel = 16.0f; //This goes up to 21
-        Uri gmmIntentUri = Uri.parse(url_map+ data.getLatitude()+","+data.getLongitude());
+        Uri gmmIntentUri = Uri.parse(url_map+ data.getStore().getLatitude()+","+data.getStore().getLongitude());
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         //mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
@@ -85,13 +85,13 @@ public class FragmentDetailShop extends Fragment {
 
     private void setData() {
         tvProductName.setText(Html.fromHtml(data.getName()));
-        tvLocation.setText(Html.fromHtml(data.getLocation()));
+        tvLocation.setText(Html.fromHtml(data.getStore().getLocation()));
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
         tvPrice.setText(formatRupiah.format((double) data.getPrice()));
-        tvCategories.setText(Html.fromHtml((data.getCategory())));
-        tvStore.setText(Html.fromHtml(data.getStore_name()));
-        Picasso.with(context).load(data.getStore_logo()).fit().centerCrop().into(ivLogo);
+        tvCategories.setText(Html.fromHtml((data.getCategory().getCategory())));
+        tvStore.setText(Html.fromHtml(data.getStore().getName()));
+        Picasso.with(context).load(data.getStore().getLogo()).fit().centerCrop().into(ivLogo);
         Picasso.with(context).load(data.getPhoto()).fit().centerCrop().into(ivImage);
     }
 
