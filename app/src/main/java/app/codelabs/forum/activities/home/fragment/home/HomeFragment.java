@@ -28,7 +28,7 @@ import java.util.List;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.about.AboutActivity;
 import app.codelabs.forum.activities.article.ArticleActivity;
-import app.codelabs.forum.activities.home.adapter.HomeCardSliderAdapter;
+import app.codelabs.forum.activities.home.adapter.HomeImageSliderAdapter;
 import app.codelabs.forum.activities.home.adapter.MenuAdapter;
 import app.codelabs.forum.activities.home.adapter.TabLayoutAdapter;
 import app.codelabs.forum.activities.article.fragment.ArticleFragment;
@@ -48,7 +48,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
     private SliderView cardSlider;
     private ViewPager viewPager;
-    private HomeCardSliderAdapter cardSliderAdapter;
+    private HomeImageSliderAdapter homeImageSliderAdapter;
     private MenuAdapter menuAdapter;
     private Session session;
     private Context context;
@@ -72,7 +72,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        cardSliderAdapter = new HomeCardSliderAdapter(getContext());
+        homeImageSliderAdapter = new HomeImageSliderAdapter(getContext());
 
         menuAdapter = new MenuAdapter();
 
@@ -99,7 +99,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<ResponseHighlight> call, Response<ResponseHighlight> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
-                        cardSliderAdapter.setItems(response.body().getData());
+                        homeImageSliderAdapter.setItems(response.body().getData());
                     }
                 }
             }
@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setSliderView() {
-        cardSlider.setSliderAdapter(cardSliderAdapter);
+        cardSlider.setSliderAdapter(homeImageSliderAdapter);
         cardSlider.startAutoCycle();
         cardSlider.setIndicatorAnimationDuration(600);
         cardSlider.setSliderAnimationDuration(600);

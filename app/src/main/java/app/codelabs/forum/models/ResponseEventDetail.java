@@ -4,20 +4,20 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponseArticleDetail {
+/**
+ * Created by edinofri
+ * tukangbasic@gmail.com
+ * 22 Apr 2020, 12:01
+ */
+public class ResponseEventDetail {
     @SerializedName("data")
-    private ResponseListArticle.Article data;
-    @SerializedName("success")
-    private boolean success;
-    @SerializedName("message")
-    private String message;
+    private ResponseListEventCommunity.DataEntity data;
 
-
-    public ResponseListArticle.Article getData() {
+    public ResponseListEventCommunity.DataEntity getData() {
         return data;
     }
 
-    public void setData(ResponseListArticle.Article data) {
+    public void setData(ResponseListEventCommunity.DataEntity data) {
         this.data = data;
     }
 
@@ -36,4 +36,9 @@ public class ResponseArticleDetail {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    @SerializedName("success")
+    private boolean success;
+    @SerializedName("message")
+    private String message;
 }

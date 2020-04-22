@@ -40,7 +40,7 @@ public class ResponseListEventCommunity {
 
     public static class DataEntity {
         @SerializedName("is_join")
-        private boolean is_join = true;
+        private boolean is_join = false;
         @SerializedName("longitude")
         private String longitude;
         @SerializedName("latitude")
@@ -61,6 +61,16 @@ public class ResponseListEventCommunity {
         private int company_id;
         @SerializedName("id")
         private int id;
+        @SerializedName("photos")
+        private List<String> photos;
+
+        public List<String> getPhotos() {
+            return photos;
+        }
+
+        public void setPhotos(List<String> photos) {
+            this.photos = photos;
+        }
 
         private boolean bookmark = false;
 

@@ -30,6 +30,7 @@ import app.codelabs.forum.activities.event.fragment.WalkieTalkieFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponseBookmarkEvent;
 import app.codelabs.forum.models.ResponseDoBookmark;
+import app.codelabs.forum.models.ResponseEventDetail;
 import app.codelabs.forum.models.ResponseListEventCommunity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,13 +56,15 @@ public class DetailEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
 
         context = getApplicationContext();
-        progressDialogFragment.show(getSupportFragmentManager(), "detail-event");
-
         setView();
         getData();
-        setViewPager();
         setToolbar();
-        getBookmark();
+
+        if (getIntent().getStringExtra("data") != null) {
+            progressDialogFragment.show(getSupportFragmentManager(), "detail-event");
+            setViewPager();
+            getBookmark();
+        }
     }
 
     private void getData() {
@@ -69,6 +72,33 @@ public class DetailEventActivity extends AppCompatActivity {
             strData = getIntent().getStringExtra("data");
             selectedIndex = getIntent().getIntExtra("index", -1);
             data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
+        } else {
+            progressDialogFragment.show(getSupportFragmentManager(), "detail-event");
+
+            int eventId = getIntent().getIntExtra("event_id", 0);
+            ConnectionApi.apiService(context).getEvent(eventId).enqueue(new Callback<ResponseEventDetail>() {
+                @Override
+                public void onResponse(Call<ResponseEventDetail> call, Response<ResponseEventDetail> response) {
+                    if (response.body() != null) {
+                        if (response.isSuccessful() && response.body().isSuccess()) {
+                            data = response.body().getData();
+                            setViewPager();
+                            getBookmark();
+                        } else {
+                            progressDialogFragment.dismiss();
+                            Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseEventDetail> call, Throwable t) {
+                    progressDialogFragment.dismiss();
+                    if (t.getMessage() != null) {
+                        Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
 
@@ -122,7 +152,7 @@ public class DetailEventActivity extends AppCompatActivity {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         getBookmark();
                     }
-                }else{
+                } else {
                     progressDialogFragment.dismiss();
                 }
 

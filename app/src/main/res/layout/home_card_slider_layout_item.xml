@@ -27,7 +27,7 @@
             android:textColor="@color/putih"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
-            android:text="Lorem Ipsum dolor shit amet" />
+            tools:text="Lorem Ipsum dolor shit amet" />
     </LinearLayout>
 
 </FrameLayout>

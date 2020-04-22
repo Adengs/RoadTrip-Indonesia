@@ -10,23 +10,26 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.gson.Gson;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import app.codelabs.forum.R;
-import app.codelabs.forum.activities.home.bottom_sheet.BottomSheetJoinEvent;
-import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
+import app.codelabs.forum.activities.event.DetailEventActivity;
+import app.codelabs.forum.activities.event.adapter.ImageSliderAdapter;
+import app.codelabs.forum.activities.home.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponseJoinEvent;
 import app.codelabs.forum.models.ResponseListEventCommunity;
@@ -37,11 +40,11 @@ import retrofit2.Response;
 
 public class DescriptionFragment extends Fragment {
     private TextView tvTitle, tvStartEvent, tvEndEvent, tvLocation, tvDescription, tvDoJoin, tvJoined;
-    private ImageView ivImage;
     private BottomSheetJoinEvent bottomSheetJoinEvent = new BottomSheetJoinEvent();
     private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();
     private Context context;
-
+    private ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter();
+    private SliderView cardSlider;
 
     public DescriptionFragment() {
     }
@@ -63,6 +66,7 @@ public class DescriptionFragment extends Fragment {
         getData();
         setData();
         setEvent();
+        setSliderView();
 
     }
 
@@ -72,10 +76,6 @@ public class DescriptionFragment extends Fragment {
         tvEndEvent.setText(((DetailEventActivity) getActivity()).data.getEvent_end());
         tvLocation.setText(((DetailEventActivity) getActivity()).data.getLocation());
         tvDescription.setText(Html.fromHtml(((DetailEventActivity) getActivity()).data.getDescription()));
-        Picasso.with(context).load(((DetailEventActivity) getActivity()).data.getImage())
-                .placeholder(R.drawable.default_image)
-                .error(R.drawable.default_no_image)
-                .fit().centerCrop().into(ivImage);
 
         if (((DetailEventActivity) getActivity()).data.getIs_join() == true) {
             tvDoJoin.setText("Congratulation!");
@@ -116,9 +116,23 @@ public class DescriptionFragment extends Fragment {
     }
 
     private void getData() {
+        imageSliderAdapter.setItems(((DetailEventActivity) getActivity()).data.getPhotos());
+    }
+
+    private void setSliderView() {
+        cardSlider.setSliderAdapter(imageSliderAdapter);
+        if (imageSliderAdapter.getCount() > 1) {
+            cardSlider.startAutoCycle();
+            cardSlider.setIndicatorAnimationDuration(600);
+            cardSlider.setSliderAnimationDuration(600);
+            cardSlider.setScrollTimeInSec(4);
+        }
+        cardSlider.setIndicatorAnimation(IndicatorAnimations.FILL);
+        cardSlider.setSliderTransformAnimation(SliderAnimations.FADETRANSFORMATION);
     }
 
     private void setView(View view) {
+        cardSlider = view.findViewById(R.id.imageSlider);
         tvDoJoin = view.findViewById(R.id.tvDojoin);
         tvJoined = view.findViewById(R.id.tvJoined);
         tvTitle = view.findViewById(R.id.tv_title);
@@ -126,7 +140,6 @@ public class DescriptionFragment extends Fragment {
         tvEndEvent = view.findViewById(R.id.tv_end_event);
         tvLocation = view.findViewById(R.id.tvlocation);
         tvDescription = view.findViewById(R.id.tvDeskrip);
-        ivImage = view.findViewById(R.id.ivImage);
     }
 
     private void unJoinEvent(final ResponseListEventCommunity.DataEntity data) {

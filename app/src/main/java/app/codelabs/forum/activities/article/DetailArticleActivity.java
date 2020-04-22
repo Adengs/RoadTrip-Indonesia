@@ -26,6 +26,7 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.DateTimeHelper;
+import app.codelabs.forum.models.ResponseArticleDetail;
 import app.codelabs.forum.models.ResponseBookmarkArticle;
 import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseListArticle;
@@ -51,15 +52,15 @@ public class DetailArticleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_article);
 
         context = getApplicationContext();
-        progressDialogFragment.show(getSupportFragmentManager(), "detail-article");
-
-        getData();
         setView();
-        setEvent();
-        loadData();
+        getData();
         setToolbar();
-        setData();
-        getBookmark();
+
+        if (getIntent().getStringExtra("data") != null) {
+            progressDialogFragment.show(getSupportFragmentManager(), "detail-article");
+            setData();
+            getBookmark();
+        }
     }
 
     private void setData() {
@@ -78,6 +79,30 @@ public class DetailArticleActivity extends AppCompatActivity {
         if (getIntent().getStringExtra("data") != null) {
             String strData = getIntent().getStringExtra("data");
             article = new Gson().fromJson(strData, ResponseListArticle.Article.class);
+        } else {
+            progressDialogFragment.show(getSupportFragmentManager(), "detail-article");
+
+            int articleId = getIntent().getIntExtra("article_id",0);
+            ConnectionApi.apiService(context).getArticle(articleId).enqueue(new Callback<ResponseArticleDetail>() {
+                @Override
+                public void onResponse(Call<ResponseArticleDetail> call, Response<ResponseArticleDetail> response) {
+                    if (response.body() != null) {
+                        if (response.isSuccessful() && response.body().isSuccess()) {
+                            article = response.body().getData();
+                            setData();
+                            getBookmark();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseArticleDetail> call, Throwable t) {
+                    progressDialogFragment.dismiss();
+                    if (t.getMessage() != null) {
+                        Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
 
@@ -89,13 +114,6 @@ public class DetailArticleActivity extends AppCompatActivity {
         setTitle("");
     }
 
-    private void setEvent() {
-
-    }
-
-    private void loadData() {
-
-    }
 
     private void setView() {
         toolbar = findViewById(R.id.toolbar);
@@ -164,7 +182,7 @@ public class DetailArticleActivity extends AppCompatActivity {
                         setResult(RESULT_OK);
                         getBookmark();
                     }
-                }else{
+                } else {
                     progressDialogFragment.dismiss();
                 }
 

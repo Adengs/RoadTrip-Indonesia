@@ -8,6 +8,7 @@ import app.codelabs.forum.models.ResponseBookmarkEvent;
 import app.codelabs.forum.models.ResponseBookmarkShop;
 import app.codelabs.forum.models.ResponseDetailShopItem;
 import app.codelabs.forum.models.ResponseDoBookmark;
+import app.codelabs.forum.models.ResponseEventDetail;
 import app.codelabs.forum.models.ResponseMyProfile;
 import app.codelabs.forum.models.ResponseSchedule;
 import app.codelabs.forum.models.ResponseShareArticle;
@@ -94,13 +95,7 @@ public interface ApiService {
     Call<ResponseFinishPassword> resetPassword(@Body Map<String, String> body, @Header("X-Reset-Token") String xReset);
 
     @GET("api/article/detail")
-    Call<ResponseArticleDetail> articledetail(@Header("Authorization") String token, @Header("app-token") String AppToken, @Query("article_id") int article_id);
-
-    @GET("api/article/list")
-    Call<ResponseListArticelbyCategory> listarticelbycategory(@Query("tag") List<String> tag, @Header("Authorization") String token, @Header("app-token") String AppToken);
-
-    @GET("api/article/list")
-    Call<ResponseDetailList> detailArticel(@Query("acticel_id") int id);
+    Call<ResponseArticleDetail> getArticle(@Query("article_id") int id);
 
     @GET("api/event/list")
     Call<ResponseListEventCommunity> getListEvent();
@@ -114,8 +109,8 @@ public interface ApiService {
     @GET("api/event/my_event")
     Call<ResponseListEventCommunity> getListMyEvent();
 
-    @GET("api/article/list")
-    Call<ResponseListArticelbyCategory> listArticle(@Query("category_id") Integer article_id);
+    @GET("api/event/detail")
+    Call<ResponseEventDetail> getEvent(@Query("event_id") int id);
 
     @GET("api/event/participant")
     Call<ResponseParticipantEvent> eventParticipant(@Query("event_id") Integer id);
@@ -146,7 +141,7 @@ public interface ApiService {
     Call<ResponseListShopByCategories> getShopByCategories(@Query("category_id") int referenceId);
 
     @GET("api/shop/detail")
-    Call<ResponseDetailShopItem>getShopDetailItem(@Query("item_id")int itemId);
+    Call<ResponseDetailShopItem> getShopDetailItem(@Query("item_id") int itemId);
 
     @GET("api/vote")
     Call<ResponseVote> getVote();
