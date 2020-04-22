@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
@@ -22,6 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.DetailProductActivity;
 import app.codelabs.forum.activities.shop.adapter.AdapterShopDeskription;
@@ -32,8 +34,8 @@ import app.codelabs.forum.models.ResponseDetailShopItem;
  */
 public class FragmentDetailShop extends Fragment {
     Context context;
-    private TextView tvProductName, tvLocation, tvPrice, tvCategories, tvMaps,tvStore;
-    private ImageView ivImage,ivLogo;
+    private TextView tvProductName, tvLocation, tvPrice, tvCategories, tvMaps, tvStore;
+    private ImageView ivImage, ivLogo;
     private TabLayout tabLayout;
     private ResponseDetailShopItem.DataEntity data;
     private ViewPager viewPagerShop;
@@ -77,9 +79,8 @@ public class FragmentDetailShop extends Fragment {
     private void setMaps() {
         String url_map = "https://www.google.com/maps/search/?api=1&query=";
         float zoomLevel = 16.0f; //This goes up to 21
-        Uri gmmIntentUri = Uri.parse(url_map+ data.getStore().getLatitude()+","+data.getStore().getLongitude());
+        Uri gmmIntentUri = Uri.parse(url_map + data.getStore().getLatitude() + "," + data.getStore().getLongitude());
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        //mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
     }
 

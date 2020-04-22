@@ -27,6 +27,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.activities.shop.adapter.AdapterShopDeskription;
@@ -35,6 +36,7 @@ import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.models.ResponseBookmarkShop;
 import app.codelabs.forum.models.ResponseDetailShopItem;
 import app.codelabs.forum.models.ResponseDoBookmark;
+import app.codelabs.forum.models.ResponseListShopByCategories;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,7 +60,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_detail_shop);
 
         context = getApplicationContext();
-        progressDialogFragment.show(getSupportFragmentManager(), "detail-article");
+        progressDialogFragment.show(getSupportFragmentManager(), "detail-shop");
         getData();
         setView();
         setEvent();
@@ -127,6 +129,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_bookmark, menu);
         this.menu = menu;
+        refreshToolbar();
         return true;
     }
 
@@ -137,12 +140,12 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
                 phone();
                 break;
             case R.id.tvWA:
-                WhatApp();
+                openWhatApp();
                 break;
         }
     }
 
-    private void WhatApp() {
+    private void openWhatApp() {
         String url = data.getWhatsapp();
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
@@ -167,18 +170,18 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     }
 
 
-
     private void bookmarkShop() {
         progressDialogFragment.show(getSupportFragmentManager(), "detail-shop");
-        ConnectionApi.apiService(context).doBookmark(data.getId(), "shop").enqueue(new Callback<ResponseDoBookmark>() {
+        ConnectionApi.apiService(context).doBookmarkShop(data.getId(), "shop").enqueue(new Callback<ResponseDoBookmark>() {
             @Override
             public void onResponse(Call<ResponseDoBookmark> call, Response<ResponseDoBookmark> response) {
 
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
+                        setResult(RESULT_OK);
                         getBookmark();
                     }
-                }else{
+                } else {
                     progressDialogFragment.dismiss();
                 }
 
@@ -221,9 +224,9 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         });
     }
 
-    private void checkBookmark(List<ResponseBookmarkShop.DataEntity> items) {
+    private void checkBookmark(List<ResponseListShopByCategories.DataEntity> items) {
         data.setBookmark(false);
-        for (ResponseBookmarkShop.DataEntity item : items) {
+        for (ResponseListShopByCategories.DataEntity item : items) {
             if (item.getId() == data.getId()) {
                 data.setBookmark(true);
                 break;

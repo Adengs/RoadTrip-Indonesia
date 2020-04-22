@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponseListShopByCategories {
+public  class ResponseListShopByCategories {
 
     @SerializedName("data")
     private List<DataEntity> data;
@@ -38,56 +38,41 @@ public class ResponseListShopByCategories {
     }
 
     public static class DataEntity {
-        @SerializedName("location")
-        private String location;
-        @SerializedName("contact")
-        private String contact;
-        @SerializedName("price")
-        private int price;
+        @SerializedName("store")
+        private StoreEntity store;
+        @SerializedName("category")
+        private CategoryEntity category;
         @SerializedName("description")
         private String description;
-        @SerializedName("name")
-        private String name;
+        @SerializedName("price")
+        private int price;
         @SerializedName("photo")
         private String photo;
-        @SerializedName("category")
-        private Category category;
+        @SerializedName("name")
+        private String name;
         @SerializedName("category_id")
         private int category_id;
+        @SerializedName("store_id")
+        private int store_id;
+        @SerializedName("company_id")
+        private int company_id;
         @SerializedName("id")
         private int id;
-        private boolean bookmark = false;
 
-        public boolean isBookmark() {
-            return bookmark;
+        public StoreEntity getStore() {
+            return store;
         }
 
-        public void setBookmark(boolean bookmark) {
-            this.bookmark = bookmark;
+        public void setStore(StoreEntity store) {
+            this.store = store;
         }
 
-        public String getLocation() {
-            return location;
+        public CategoryEntity getCategory() {
+            return category;
         }
 
-        public void setLocation(String location) {
-            this.location = location;
-        }
-
-        public String getContact() {
-            return contact;
-        }
-
-        public void setContact(String contact) {
-            this.contact = contact;
-        }
-
-        public int getPrice() {
-            return price;
-        }
-
-        public void setPrice(int price) {
-            this.price = price;
+        public void setCategory(CategoryEntity category) {
+            this.category = category;
         }
 
         public String getDescription() {
@@ -98,12 +83,12 @@ public class ResponseListShopByCategories {
             this.description = description;
         }
 
-        public String getName() {
-            return name;
+        public int getPrice() {
+            return price;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setPrice(int price) {
+            this.price = price;
         }
 
         public String getPhoto() {
@@ -114,12 +99,12 @@ public class ResponseListShopByCategories {
             this.photo = photo;
         }
 
-        public Category getCategory() {
-            return category;
+        public String getName() {
+            return name;
         }
 
-        public void setCategory(Category category) {
-            this.category = category;
+        public void setName(String name) {
+            this.name = name;
         }
 
         public int getCategory_id() {
@@ -128,6 +113,22 @@ public class ResponseListShopByCategories {
 
         public void setCategory_id(int category_id) {
             this.category_id = category_id;
+        }
+
+        public int getStore_id() {
+            return store_id;
+        }
+
+        public void setStore_id(int store_id) {
+            this.store_id = store_id;
+        }
+
+        public int getCompany_id() {
+            return company_id;
+        }
+
+        public void setCompany_id(int company_id) {
+            this.company_id = company_id;
         }
 
         public int getId() {
@@ -139,7 +140,90 @@ public class ResponseListShopByCategories {
         }
     }
 
-    public class Category {
+    public static class StoreEntity {
+        @SerializedName("longitude")
+        private String longitude;
+        @SerializedName("latitude")
+        private String latitude;
+        @SerializedName("location")
+        private String location;
+        @SerializedName("phone")
+        private String phone;
+        @SerializedName("name")
+        private String name;
+        @SerializedName("logo")
+        private String logo;
+        @SerializedName("company_id")
+        private int company_id;
+        @SerializedName("id")
+        private int id;
+
+        public String getLongitude() {
+            return longitude;
+        }
+
+        public void setLongitude(String longitude) {
+            this.longitude = longitude;
+        }
+
+        public String getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(String latitude) {
+            this.latitude = latitude;
+        }
+
+        public String getLocation() {
+            return location;
+        }
+
+        public void setLocation(String location) {
+            this.location = location;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getLogo() {
+            return logo;
+        }
+
+        public void setLogo(String logo) {
+            this.logo = logo;
+        }
+
+        public int getCompany_id() {
+            return company_id;
+        }
+
+        public void setCompany_id(int company_id) {
+            this.company_id = company_id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
+
+    public static class CategoryEntity {
         @SerializedName("category")
         private String category;
         @SerializedName("id")
