@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.adapter.AdapterTabLayoutShop;
 import app.codelabs.forum.activities.shop.fragment.ListShopFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.StringUtil;
 import app.codelabs.forum.models.ResponseShopCategory;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,7 +36,6 @@ public class ActivityProducts extends AppCompatActivity {
     private ViewPager viewPagerProducts;
     private Toolbar toolbar;
     private AdapterTabLayoutShop adapterTabLayoutShop;
-
 
 
     @Override
@@ -77,9 +78,11 @@ public class ActivityProducts extends AppCompatActivity {
 
         AdapterTabLayoutShop adapterTabLayoutShop = new AdapterTabLayoutShop(getSupportFragmentManager());
 
-        for (ResponseShopCategory.DataEntity item : data){
-            adapterTabLayoutShop.addFragment(new ListShopFragment().setTypeAndReferenceId(ListShopFragment.CATEGORIES,
-                    item.getId()),item.getCategory());
+        for (ResponseShopCategory.DataEntity item : data) {
+            adapterTabLayoutShop.addFragment(
+                    new ListShopFragment()
+                            .setTypeAndReferenceId(ListShopFragment.CATEGORIES,
+                                    item.getId()), StringUtil.toCapitalize(item.getCategory()));
         }
         viewPagerProducts.setAdapter(adapterTabLayoutShop);
         tabLayout.setupWithViewPager(viewPagerProducts);
@@ -94,7 +97,6 @@ public class ActivityProducts extends AppCompatActivity {
         }
         setTitle("Product");
     }
-
 
 
     private void setView() {
@@ -112,10 +114,8 @@ public class ActivityProducts extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }

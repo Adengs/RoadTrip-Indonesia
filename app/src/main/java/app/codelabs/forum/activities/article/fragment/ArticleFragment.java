@@ -148,7 +148,7 @@ public class ArticleFragment extends Fragment {
 
     private void setView(View view) {
         recyclerView = view.findViewById(R.id.viewtablayout);
-        adapter = new ArticleAdapter();
+        adapter = new ArticleAdapter(this);
 
     }
 

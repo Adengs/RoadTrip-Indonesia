@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -33,6 +35,9 @@ public class EventFragment extends Fragment {
     private RecyclerView recyclerView;
     private EventAdapter adapter;
     private Context context;
+
+    private ProgressBar progressBar;
+    private TextView tvNoData;
 
     public EventFragment() {
     }
@@ -57,20 +62,28 @@ public class EventFragment extends Fragment {
     }
 
     private void loadData() {
-        ConnectionApi.apiService(context).getListMyEvent().enqueue(new Callback<ResponseListEventCommunity>(){
-
+        progressBar.setVisibility(View.VISIBLE);
+        tvNoData.setVisibility(View.GONE);
+        ConnectionApi.apiService(context).getListMyEvent().enqueue(new Callback<ResponseListEventCommunity>() {
             @Override
             public void onResponse(Call<ResponseListEventCommunity> call, Response<ResponseListEventCommunity> response) {
+                progressBar.setVisibility(View.GONE);
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         adapter.setItems(response.body().getData());
                     }
 
                 }
+                if (adapter.getItemCount() == 0) {
+                    tvNoData.setVisibility(View.VISIBLE);
+                } else {
+                    tvNoData.setVisibility(View.GONE);
+                }
             }
 
             @Override
             public void onFailure(Call<ResponseListEventCommunity> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
                 if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -80,6 +93,8 @@ public class EventFragment extends Fragment {
 
     private void setView(View view) {
         recyclerView = view.findViewById(R.id.recyclerView);
+        progressBar = view.findViewById(R.id.progressbar);
+        tvNoData = view.findViewById(R.id.tv_no_data);
     }
 
     private void setRecycleView() {
@@ -94,9 +109,14 @@ public class EventFragment extends Fragment {
             int index = data.getIntExtra("index", -1);
             ResponseListEventCommunity.DataEntity resultData = new Gson().fromJson(data.getStringExtra("data"), ResponseListEventCommunity.DataEntity.class);
             if (index != -1) {
-                if(!resultData.getIs_join()){
+                if (!resultData.getIs_join()) {
                     adapter.removeItemByIndex(index);
                 }
+            }
+            if (adapter.getItemCount() == 0) {
+                tvNoData.setVisibility(View.VISIBLE);
+            } else {
+                tvNoData.setVisibility(View.GONE);
             }
         }
     }

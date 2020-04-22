@@ -6,6 +6,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,16 +20,22 @@ import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.DetailProductActivity;
 import app.codelabs.forum.models.ResponseListShopByCategories;
 
 public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHolder> {
-    private  Context context;
-    private List<ResponseListShopByCategories.DataEntity> item ;
+    public static final int REQ_REFRESH_PRODUCT_LIST = 2001;
 
-    public AdapterListShop() {
+    private Context context;
+    private List<ResponseListShopByCategories.DataEntity> item;
+    private Fragment fragment;
+
+    public AdapterListShop(Fragment fragment) {
+        this.fragment = fragment;
         this.item = new ArrayList<>();
     }
 
@@ -36,19 +43,19 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
     @Override
     public AdapterListShop.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View view= LayoutInflater.from(context).inflate(R.layout.item_shop,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_shop, parent, false);
         return new MyHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterListShop.MyHolder holder, int position) {
         ResponseListShopByCategories.DataEntity items = item.get(position);
-        holder.tvProductName.setText(Html.fromHtml(items.getName()));
-        holder.tvLocation.setText(Html.fromHtml(items.getLocation()));
+        holder.tvProductName.setText(items.getName());
+        holder.tvLocation.setText(items.getLocation());
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-        holder.tvPrice.setText((formatRupiah.format((double)items.getPrice())));
-        holder.tvCategory.setText(Html.fromHtml(items.getCategory()));
+        holder.tvPrice.setText((formatRupiah.format((double) items.getPrice())));
+        holder.tvCategory.setText(items.getCategory().getCategory());
         Picasso.with(context).load(items.getPhoto())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)
@@ -62,14 +69,15 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
     }
 
     public void setItems(List<ResponseListShopByCategories.DataEntity> items) {
-        this.item= items;
+        this.item = items;
         notifyDataSetChanged();
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        private TextView tvProductName, tvLocation, tvPrice , tvCategory;
+        private TextView tvProductName, tvLocation, tvPrice, tvCategory;
         private ImageView ivImage;
         private CardView cardViewPro;
+
         public MyHolder(@NonNull View view) {
 
             super(view);
@@ -87,7 +95,7 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
                     ResponseListShopByCategories.DataEntity items = item.get(getAdapterPosition());
                     Intent intent = new Intent(context, DetailProductActivity.class);
                     intent.putExtra("data", new Gson().toJson(items));
-                    context.startActivity(intent);
+                    fragment.startActivityForResult(intent, REQ_REFRESH_PRODUCT_LIST);
                 }
             });
 

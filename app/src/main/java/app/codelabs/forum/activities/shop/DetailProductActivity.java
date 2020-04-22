@@ -59,14 +59,14 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_detail_shop);
 
         context = getApplicationContext();
-        progressDialogFragment.show(getSupportFragmentManager(), "detail-article");
+        progressDialogFragment.show(getSupportFragmentManager(), "progress");
         getData();
         setView();
+        getBookmark();
         setEvent();
         setToolBar();
         setFragment(new FragmentRincian());
         setViewPager();
-        getBookmark();
     }
 
     private void getData() {
@@ -123,6 +123,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_bookmark, menu);
         this.menu = menu;
+        refreshToolbar();
         return true;
     }
 
@@ -163,15 +164,14 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
 
 
     private void bookmarkShop() {
-        progressDialogFragment.show(getSupportFragmentManager(), "detail-shop");
-        ConnectionApi.apiService(context).doBookmark(data.getId(), "shop").enqueue(new Callback<ResponseDoBookmark>() {
+        progressDialogFragment.show(getSupportFragmentManager(), "progress");
+        ConnectionApi.apiService(context).doBookmarkShop(data.getId(), "shop").enqueue(new Callback<ResponseDoBookmark>() {
             @Override
             public void onResponse(Call<ResponseDoBookmark> call, Response<ResponseDoBookmark> response) {
-                if (response.body() != null) {
-                    if (response.isSuccessful() && response.body().getSuccess()) {
-                        getBookmark();
-                    }
-                }else{
+                if (response.isSuccessful() && response.body().getSuccess()) {
+                    setResult(RESULT_OK);
+                    getBookmark();
+                } else {
                     progressDialogFragment.dismiss();
                 }
 
@@ -214,9 +214,9 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         });
     }
 
-    private void checkBookmark(List<ResponseBookmarkShop.DataEntity> items) {
+    private void checkBookmark(List<ResponseListShopByCategories.DataEntity> items) {
         data.setBookmark(false);
-        for (ResponseBookmarkShop.DataEntity item : items) {
+        for (ResponseListShopByCategories.DataEntity item : items) {
             if (item.getId() == data.getId()) {
                 data.setBookmark(true);
                 break;

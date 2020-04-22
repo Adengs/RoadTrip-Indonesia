@@ -31,7 +31,7 @@ import app.codelabs.forum.models.ResponseListShopByCategories;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentRincian extends Fragment {
-    Context context;
+    private Context context;
     private TextView tvProductName, tvLocation, tvPrice, tvCategories;
     private ImageView ivImage;
     private TabLayout tabLayout;
@@ -65,12 +65,12 @@ public class FragmentRincian extends Fragment {
     }
 
     private void setData() {
-        tvProductName.setText(Html.fromHtml(data.getName()));
-        tvLocation.setText(Html.fromHtml(data.getLocation()));
+        tvProductName.setText(data.getName());
+        tvLocation.setText(data.getLocation());
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
         tvPrice.setText(formatRupiah.format((double) data.getPrice()));
-        tvCategories.setText(Html.fromHtml((data.getCategory())));
+        tvCategories.setText((data.getCategory().getCategory()));
         Picasso.with(context).load(data.getPhoto()).fit().centerCrop().into(ivImage);
     }
 

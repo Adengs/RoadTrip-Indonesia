@@ -61,4 +61,5 @@ dependencies {
     implementation('com.github.mike14u:shimmer-recyclerview-x:1.0.1') {
         exclude group: 'androidx.recyclerview', module: 'recyclerview'
     }
+    implementation 'org.greenrobot:eventbus:3.2.0'
 }

@@ -19,16 +19,16 @@ public class ResponseBookmarkShop {
         return success;
     }
 
-    public List<DataEntity> getData() {
+    public List<ResponseListShopByCategories.DataEntity> getData() {
         return data;
     }
 
-    public void setData(List<DataEntity> data) {
+    public void setData(List<ResponseListShopByCategories.DataEntity> data) {
         this.data = data;
     }
 
     @SerializedName("data")
-    private List<DataEntity> data;
+    private List<ResponseListShopByCategories.DataEntity> data;
 
     public boolean getSuccess() {
         return success;
@@ -46,18 +46,5 @@ public class ResponseBookmarkShop {
         this.message = message;
     }
 
-    public static class DataEntity {
-
-        @SerializedName("id")
-        private int id;
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-    }
 
 }

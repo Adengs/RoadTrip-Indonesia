@@ -165,9 +165,9 @@ public class DetailEventActivity extends AppCompatActivity {
         });
     }
 
-    private void checkBookmark(List<ResponseBookmarkEvent.DataEntity> items) {
+    private void checkBookmark(List<ResponseListEventCommunity.DataEntity> items) {
         data.setBookmark(false);
-        for (ResponseBookmarkEvent.DataEntity item : items) {
+        for (ResponseListEventCommunity.DataEntity item : items) {
             if (item.getId() == data.getId()) {
                 data.setBookmark(true);
                 break;

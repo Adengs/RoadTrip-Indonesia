@@ -1,36 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/displayScreen"
-    tools:context=".activities.home.fragment.profile.ProfileFragment">
+    android:orientation="vertical"
+    tools:context=".activities.home.fragment.profile.fragment.BookmarkFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_gravity="bottom"
         android:background="@color/putih"
-        app:layout_anchor="@id/appbar_profile"
-        app:layout_anchorGravity="bottom"
-        app:tabIndicatorColor="@color/merah"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="2dp"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/hitam"
         app:tabTextAppearance="@style/Tablayout"
-        app:tabTextColor="@color/texttablayout" />
-
-    <include layout="@layout/layout_sticky_header_profile" />
+        app:tabTextColor="@color/black" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

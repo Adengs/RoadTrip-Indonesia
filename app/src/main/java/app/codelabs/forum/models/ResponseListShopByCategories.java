@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public  class ResponseListShopByCategories {
+public class ResponseListShopByCategories {
 
     @SerializedName("data")
     private List<DataEntity> data;
@@ -51,7 +51,7 @@ public  class ResponseListShopByCategories {
         @SerializedName("photo")
         private String photo;
         @SerializedName("category")
-        private String category;
+        private Category category;
         @SerializedName("category_id")
         private int category_id;
         @SerializedName("id")
@@ -114,11 +114,11 @@ public  class ResponseListShopByCategories {
             this.photo = photo;
         }
 
-        public String getCategory() {
+        public Category getCategory() {
             return category;
         }
 
-        public void setCategory(String category) {
+        public void setCategory(Category category) {
             this.category = category;
         }
 
@@ -128,6 +128,29 @@ public  class ResponseListShopByCategories {
 
         public void setCategory_id(int category_id) {
             this.category_id = category_id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
+
+    public class Category {
+        @SerializedName("category")
+        private String category;
+        @SerializedName("id")
+        private int id;
+
+        public String getCategory() {
+            return category;
+        }
+
+        public void setCategory(String category) {
+            this.category = category;
         }
 
         public int getId() {

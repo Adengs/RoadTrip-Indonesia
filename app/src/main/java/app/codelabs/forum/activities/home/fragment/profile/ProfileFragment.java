@@ -11,17 +11,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import org.greenrobot.eventbus.EventBus;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.home.adapter.TabLayoutAdapter;
+import app.codelabs.forum.activities.home.fragment.profile.fragment.BookmarkFragment;
+import app.codelabs.forum.activities.home.fragment.profile.fragment.ProfileUserFragment;
 import app.codelabs.forum.activities.profile.EditProfileActivity;
 import app.codelabs.forum.activities.setting.SettingActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.models.EventBusClass;
 import app.codelabs.forum.models.ResponseMyProfile;
 import app.codelabs.forum.models.ResponseLogin;
 import retrofit2.Call;
@@ -33,7 +41,10 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileFragment extends Fragment {
     private static final int REQ_EDIT_PROFILE = 1001;
     private ImageView ivSettingApp, ivPhoto;
-    private TextView tvEditProfile, tvCountFollowing, tvCountFollower, tvHeaderName, tvName, tvEmail, tvDob, tvCity, tvCountPost;
+    private TextView tvEditProfile, tvCountFollowing, tvCountFollower, tvHeaderName, tvCountPost;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private TabLayoutAdapter tabLayoutAdapter;
     private Session session;
     private Context context;
 
@@ -54,8 +65,17 @@ public class ProfileFragment extends Fragment {
         session = Session.init(context);
         setView(view);
         setEvent();
+        setTabAndPager();
         setProfileToView();
         getProfile();
+    }
+
+    private void setTabAndPager() {
+        tabLayoutAdapter = new TabLayoutAdapter(getChildFragmentManager());
+        tabLayoutAdapter.addFragment(new ProfileUserFragment(), "My Profile");
+        tabLayoutAdapter.addFragment(new BookmarkFragment(), "Saved");
+        viewPager.setAdapter(tabLayoutAdapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     private void getProfile() {
@@ -94,19 +114,16 @@ public class ProfileFragment extends Fragment {
         tvCountFollower.setText(String.valueOf(data.getFollowers()));
         tvCountFollowing.setText(String.valueOf(data.getFollowing()));
         setProfileToView();
+        EventBus.getDefault().post(new EventBusClass.Profile());
     }
 
     private void setProfileToView() {
         ResponseLogin.Data user = session.getUser();
         tvHeaderName.setText(user.getName());
-        tvName.setText(user.getName());
-        tvEmail.setText(user.getEmail());
+
         Picasso.with(context).load(user.getPhoto())
                 .placeholder(R.drawable.default_photo)
                 .fit().centerCrop().into(ivPhoto);
-        tvCity.setText(user.getCity());
-        tvDob.setText(user.getDate_birth());
-
     }
 
 
@@ -133,13 +150,13 @@ public class ProfileFragment extends Fragment {
         ivSettingApp = view.findViewById(R.id.iv_setting_app);
         ivPhoto = view.findViewById(R.id.iv_photo);
         tvHeaderName = view.findViewById(R.id.tv_header_name);
-        tvName = view.findViewById(R.id.tv_name);
-        tvEmail = view.findViewById(R.id.tv_email);
-        tvDob = view.findViewById(R.id.tv_dob);
-        tvCity = view.findViewById(R.id.tv_city);
+
         tvCountFollower = view.findViewById(R.id.tv_count_follower);
         tvCountFollowing = view.findViewById(R.id.tv_count_following);
         tvCountPost = view.findViewById(R.id.tv_count_post);
+
+        tabLayout = view.findViewById(R.id.tab_layout);
+        viewPager = view.findViewById(R.id.viewpager);
     }
 
     @Override

@@ -164,10 +164,14 @@ public interface ApiService {
     @GET("api/bookmark/event")
     Call<ResponseBookmarkEvent> getBookmarkEvent();
 
-    @GET("api/bookmark/wishlist")
+    @GET("api/bookmark/shop")
     Call<ResponseBookmarkShop> getBookmarkShop();
 
     @GET("api/event/schedule")
     Call<ResponseSchedule> getSchedule(@Query("event_id") int id);
+
+    @FormUrlEncoded
+    @POST("api/bookmark/wishlist")
+    Call<ResponseDoBookmark> doBookmarkShop(@Field("module_id") int id, @Field("module_name") String moduleName);
 }
 

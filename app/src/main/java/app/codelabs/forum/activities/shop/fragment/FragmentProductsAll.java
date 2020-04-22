@@ -56,7 +56,7 @@ public class FragmentProductsAll extends Fragment {
     }
 
     private void setView(View view) {
-        adapter = new AdapterListShop();
+        adapter = new AdapterListShop(this);
         cardviewpro = view.findViewById(R.id.cardShopPro);
         recyclerView = view.findViewById(R.id.recyclerview);
     }

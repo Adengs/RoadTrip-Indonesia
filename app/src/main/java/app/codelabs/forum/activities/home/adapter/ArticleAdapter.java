@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
@@ -24,10 +25,13 @@ import app.codelabs.forum.helpers.DateTimeHelper;
 import app.codelabs.forum.models.ResponseListArticle;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleVH> {
+    public static final int REQ_REFRESH_ARTICLE_LIST = 2001;
     private List<ResponseListArticle.Article> items;
     private Context context;
+    private Fragment fragment;
 
-    public ArticleAdapter() {
+    public ArticleAdapter(Fragment fragment) {
+        this.fragment = fragment;
         this.items = new ArrayList<>();
     }
 
@@ -80,7 +84,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                     ResponseListArticle.Article item = items.get(getAdapterPosition());
                     Intent intent = new Intent(context, DetailArticleActivity.class);
                     intent.putExtra("data", new Gson().toJson(item));
-                    context.startActivity(intent);
+                    fragment.startActivityForResult(intent, REQ_REFRESH_ARTICLE_LIST);
                 }
             });
 

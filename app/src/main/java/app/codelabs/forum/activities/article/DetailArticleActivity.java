@@ -161,6 +161,7 @@ public class DetailArticleActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseDoBookmark> call, Response<ResponseDoBookmark> response) {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
+                        setResult(RESULT_OK);
                         getBookmark();
                     }
                 }else{
@@ -206,9 +207,9 @@ public class DetailArticleActivity extends AppCompatActivity {
         });
     }
 
-    private void checkBookmark(List<ResponseBookmarkArticle.DataEntity> items) {
+    private void checkBookmark(List<ResponseListArticle.Article> items) {
         article.setBookmark(false);
-        for (ResponseBookmarkArticle.DataEntity item : items) {
+        for (ResponseListArticle.Article item : items) {
             if (item.getId() == article.getId()) {
                 article.setBookmark(true);
                 break;
