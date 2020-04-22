@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,8 +75,8 @@ public class AboutFragment extends Fragment {
     }
 
     private void setAbout(final ResponseAbout.DataEntity data) {
-        tvHistory.setText(data.getHistory());
-        tvSecretarian.setText(data.getSecretariat());
+        tvHistory.setText(Html.fromHtml(data.getHistory()));
+        tvSecretarian.setText(Html.fromHtml(data.getSecretariat()));
         tvMpas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,11 +86,11 @@ public class AboutFragment extends Fragment {
     }
 
     private void setMaps(ResponseAbout.DataEntity data) {
-        String urlmap = "http://maps.google.com/maps?q=loc:";
+        String url_map = "https://www.google.com/maps/search/?api=1&query=";
         float zoomLevel = 16.0f; //This goes up to 21
-        Uri gmmIntentUri = Uri.parse( urlmap +data.getLangitude()+","+data.getLongitude()+zoomLevel);
+        Uri gmmIntentUri = Uri.parse( url_map +data.getLatitude()+","+data.getLongitude());
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
+        //mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
     }
 

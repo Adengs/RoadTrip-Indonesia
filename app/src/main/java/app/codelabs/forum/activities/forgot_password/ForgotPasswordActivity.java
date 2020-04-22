@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
@@ -61,8 +60,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     return;
                 }
 
-                Map<String, String> data = new HashMap<>();
-                data.put("email", etEmail.getText().toString());
+                final Map<String, String> data = new HashMap<>();
+                final String email = etEmail.getText().toString();
+                data.put("email", email);
                 progressDialogFragment.show(getSupportFragmentManager(), "progress");
                 ConnectionApi.apiService(context).requestResetPassword(data).enqueue(new Callback<ResponseForgotPassword>() {
                     @Override
@@ -70,7 +70,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         progressDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(ForgotPasswordActivity.this, SubmitPasswordActivity.class));
+                            Intent intent = new Intent(ForgotPasswordActivity.this, SubmitPasswordActivity.class);
+                            intent.putExtra("email",email);
+                            startActivity(intent);
 
                         } else {
                             Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();

@@ -6,6 +6,7 @@ import java.util.Map;
 import app.codelabs.forum.models.ResponseBookmarkArticle;
 import app.codelabs.forum.models.ResponseBookmarkEvent;
 import app.codelabs.forum.models.ResponseBookmarkShop;
+import app.codelabs.forum.models.ResponseDetailShopItem;
 import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseMyProfile;
 import app.codelabs.forum.models.ResponseSchedule;
@@ -143,6 +144,9 @@ public interface ApiService {
 
     @GET("api/shop/list")
     Call<ResponseListShopByCategories> getShopByCategories(@Query("category_id") int referenceId);
+
+    @GET("api/shop/detail")
+    Call<ResponseDetailShopItem>getShopDetailItem(@Query("item_id")int itemId);
 
     @GET("api/vote")
     Call<ResponseVote> getVote();
