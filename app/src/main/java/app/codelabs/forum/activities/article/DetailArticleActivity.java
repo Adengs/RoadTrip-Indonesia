@@ -252,6 +252,7 @@ public class DetailArticleActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_article_detail, menu);
         this.menu = menu;
+        refreshToolbar();
         return true;
 
     }

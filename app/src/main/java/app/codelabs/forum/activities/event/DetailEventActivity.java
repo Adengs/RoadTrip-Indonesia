@@ -224,7 +224,7 @@ public class DetailEventActivity extends AppCompatActivity {
 
         inflater.inflate(R.menu.menu_bookmark, menu);
         this.menu = menu;
-
+        refreshToolbar();
         return true;
     }
 }
