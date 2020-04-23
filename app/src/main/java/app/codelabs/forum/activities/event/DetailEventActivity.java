@@ -1,11 +1,5 @@
 package app.codelabs.forum.activities.event;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,6 +13,11 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.activities.event.adapter.EventPagerAdapter;
@@ -224,7 +223,6 @@ public class DetailEventActivity extends AppCompatActivity {
 
         inflater.inflate(R.menu.menu_bookmark, menu);
         this.menu = menu;
-        refreshToolbar();
         return true;
     }
 }

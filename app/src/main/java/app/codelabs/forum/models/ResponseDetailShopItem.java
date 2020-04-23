@@ -2,7 +2,9 @@ package app.codelabs.forum.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public  class ResponseDetailShopItem {
+import java.util.List;
+
+public class ResponseDetailShopItem {
 
     @SerializedName("data")
     private DataEntity data;
@@ -42,6 +44,8 @@ public  class ResponseDetailShopItem {
         private StoreEntity store;
         @SerializedName("category")
         private CategoryEntity category;
+        @SerializedName("photos")
+        private List<String> photos;
         @SerializedName("description")
         private String description;
         @SerializedName("price")
@@ -91,6 +95,14 @@ public  class ResponseDetailShopItem {
 
         public void setCategory(CategoryEntity category) {
             this.category = category;
+        }
+
+        public List<String> getPhotos() {
+            return photos;
+        }
+
+        public void setPhotos(List<String> photos) {
+            this.photos = photos;
         }
 
         public String getDescription() {
@@ -171,8 +183,6 @@ public  class ResponseDetailShopItem {
         private String name;
         @SerializedName("logo")
         private String logo;
-        @SerializedName("company_id")
-        private int company_id;
         @SerializedName("id")
         private int id;
 
@@ -222,14 +232,6 @@ public  class ResponseDetailShopItem {
 
         public void setLogo(String logo) {
             this.logo = logo;
-        }
-
-        public int getCompany_id() {
-            return company_id;
-        }
-
-        public void setCompany_id(int company_id) {
-            this.company_id = company_id;
         }
 
         public int getId() {

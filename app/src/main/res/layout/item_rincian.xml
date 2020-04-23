@@ -16,59 +16,22 @@
             android:background="@color/displayScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <FrameLayout
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/iv_Image"
-                    android:background="@drawable/ic_backgroundshop"
-                    android:src="@drawable/carwing"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/pagerinfo"
-                        android:layout_width="7dp"
-                        android:layout_height="7dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@drawable/ic_circle_red"
-                        android:baselineAligned="false" />
-
-                    <ImageView
-                        android:id="@+id/pagersatu"
-                        android:layout_width="7dp"
-                        android:layout_height="7dp"
-                        android:layout_marginLeft="4dp"
-                        android:background="@drawable/ic_circleputih" />
-
-                    <ImageView
-                        android:id="@+id/pagerdua"
-                        android:layout_width="7dp"
-                        android:layout_height="7dp"
-                        android:layout_marginLeft="4dp"
-                        android:background="@drawable/ic_circleputih" />
-
-                    <ImageView
-                        android:id="@+id/pagertiga"
-                        android:layout_width="7dp"
-                        android:layout_height="7dp"
-                        android:layout_marginLeft="4dp"
-                        android:background="@drawable/ic_circleputih" />
-
-                    <ImageView
-                        android:id="@+id/pagerempat"
-                        android:layout_width="7dp"
-                        android:layout_height="7dp"
-                        android:layout_marginLeft="4dp"
-                        android:background="@drawable/ic_circleputih" />
-                </LinearLayout>
-            </FrameLayout>
+                android:layout_height="220dp"
+                app:sliderAutoCycleDirection="right"
+                app:sliderAutoCycleEnabled="false"
+                app:sliderIndicatorGravity="bottom|left"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="@color/pink"
+                app:sliderIndicatorUnselectedColor="#FFF"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="true" />
             <TextView
                 android:id="@+id/tv_Product_Name"
                 android:background="@color/putih"

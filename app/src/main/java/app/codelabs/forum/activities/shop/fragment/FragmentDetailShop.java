@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
@@ -23,8 +25,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.event.adapter.ImageSliderAdapter;
 import app.codelabs.forum.activities.shop.DetailProductActivity;
 import app.codelabs.forum.activities.shop.adapter.AdapterShopDeskription;
 import app.codelabs.forum.models.ResponseDetailShopItem;
@@ -38,6 +40,8 @@ public class FragmentDetailShop extends Fragment {
     private ImageView ivImage, ivLogo;
     private TabLayout tabLayout;
     private ResponseDetailShopItem.DataEntity data;
+    private ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter();
+    private SliderView cardSlider;
     private ViewPager viewPagerShop;
 
 
@@ -64,7 +68,20 @@ public class FragmentDetailShop extends Fragment {
         setData();
         setEvent();
         setViewPager();
+        setSliderView();
 
+    }
+
+    private void setSliderView() {
+        cardSlider.setSliderAdapter(imageSliderAdapter);
+        if (imageSliderAdapter.getCount() > 1) {
+            cardSlider.startAutoCycle();
+            cardSlider.setIndicatorAnimationDuration(600);
+            cardSlider.setSliderAnimationDuration(600);
+            cardSlider.setScrollTimeInSec(4);
+        }
+        cardSlider.setIndicatorAnimation(IndicatorAnimations.FILL);
+        cardSlider.setSliderTransformAnimation(SliderAnimations.FADETRANSFORMATION);
     }
 
     private void setEvent() {
@@ -93,11 +110,12 @@ public class FragmentDetailShop extends Fragment {
         tvCategories.setText(Html.fromHtml((data.getCategory().getCategory())));
         tvStore.setText(Html.fromHtml(data.getStore().getName()));
         Picasso.with(context).load(data.getStore().getLogo()).fit().centerCrop().into(ivLogo);
-        Picasso.with(context).load(data.getPhoto()).fit().centerCrop().into(ivImage);
+
     }
 
     private void getData() {
         data = ((DetailProductActivity) getActivity()).data;
+        imageSliderAdapter.setItems(data.getPhotos());
     }
 
 
@@ -106,7 +124,7 @@ public class FragmentDetailShop extends Fragment {
         tvPrice = view.findViewById(R.id.tv_Price);
         tvCategories = view.findViewById(R.id.tv_Category);
         tvProductName = view.findViewById(R.id.tv_Product_Name);
-        ivImage = view.findViewById(R.id.iv_Image);
+        cardSlider = view.findViewById(R.id.imageSlider);
         viewPagerShop = view.findViewById(R.id.viewPager);
         tabLayout = view.findViewById(R.id.tab_layout);
         tvMaps = view.findViewById(R.id.tv_map);

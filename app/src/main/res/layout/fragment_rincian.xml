@@ -25,18 +25,18 @@
             app:tabTextAppearance="@style/Tablayout"
             app:tabTextColor="@color/colorText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="48dp">
         </com.google.android.material.tabs.TabLayout>
 
 
     <include layout="@layout/item_rincian"></include>
 
     <androidx.viewpager.widget.ViewPager
-        android:layout_marginTop="?actionBarSize"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
