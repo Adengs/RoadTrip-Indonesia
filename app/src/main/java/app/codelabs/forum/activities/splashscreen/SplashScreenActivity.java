@@ -14,6 +14,7 @@ import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.activities.walktrough.WalkThroughActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.Constant;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseWalkThrough;
 import app.codelabs.forum.models.ResponseApi;
@@ -67,8 +68,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private void loadAppToken() {
         Map<String, String> body = new HashMap<>();
-        body.put("company_name", "fevci");
-        body.put("comp_key", "fevci123");
+        body.put("company_name", Constant.COMPANY_NAME);
+        body.put("comp_key", Constant.COMPANY_KEY);
         ConnectionApi.apiService(context).getAppToken(body).enqueue(new Callback<ResponseApi>() {
             @Override
             public void onResponse(Call<ResponseApi> call, Response<ResponseApi> response) {

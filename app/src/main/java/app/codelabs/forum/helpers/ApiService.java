@@ -6,10 +6,13 @@ import java.util.Map;
 import app.codelabs.forum.models.ResponseBookmarkArticle;
 import app.codelabs.forum.models.ResponseBookmarkEvent;
 import app.codelabs.forum.models.ResponseBookmarkShop;
+import app.codelabs.forum.models.ResponseChatRoomList;
 import app.codelabs.forum.models.ResponseDetailShopItem;
 import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseEventDetail;
+import app.codelabs.forum.models.ResponseListChatInRoom;
 import app.codelabs.forum.models.ResponseMyProfile;
+import app.codelabs.forum.models.ResponseRoomChatDetail;
 import app.codelabs.forum.models.ResponseSchedule;
 import app.codelabs.forum.models.ResponseShareArticle;
 import app.codelabs.forum.models.ResponseVoting;
@@ -51,6 +54,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -83,7 +87,7 @@ public interface ApiService {
     Call<ResponseFollow> follow(@Body Map<String, String> body);
 
     @POST("api/unfollow")
-    Call<ResponseUnFollow> unfollow(@Body Map<String, String> body);
+    Call<ResponseUnFollow> unFollow(@Body Map<String, String> body);
 
     @POST("recovery")
     Call<ResponseForgotPassword> requestResetPassword(@Body Map<String, String> body);
@@ -172,5 +176,17 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("api/bookmark/wishlist")
     Call<ResponseDoBookmark> doBookmarkShop(@Field("module_id") int id, @Field("module_name") String moduleName);
+
+    // Chat room
+
+    @GET("api/chat/room_list_member/{user_id}")
+    Call<ResponseChatRoomList> getRoomList(@Path("user_id") int userId);
+
+    @GET("api/chat/room_detail/{room_id}")
+    Call<ResponseRoomChatDetail> getRoomDetail(@Path("room_id") int roomId);
+
+    @GET("api/chat/chat_in_room/{room_id}")
+    Call<ResponseListChatInRoom> getListChatInRoom(@Path("room_id") int roomId, @Query("limit") int limit, @Query("offset") int offset);
+
 }
 

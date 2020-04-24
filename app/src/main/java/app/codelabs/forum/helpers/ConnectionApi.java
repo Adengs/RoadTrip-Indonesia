@@ -48,7 +48,7 @@ public class ConnectionApi {
 
         httpClient.addInterceptor(logging);
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://104.248.149.236/qwerty/forum/service/gateway/public/")
+                .baseUrl(Constant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();

@@ -1,5 +1,6 @@
 package app.codelabs.forum.activities.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,11 +20,14 @@ import app.codelabs.forum.activities.home.fragment.profile.ProfileFragment;
 public class HomeActivity extends AppCompatActivity {
     private ImageView imgHomes, imgClubs, imgChats, imgEvents, imgProfile;
     private HomeFragment homeFragment = new HomeFragment();
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        context = getApplicationContext();
+
 
         setView();
         setEvent();
