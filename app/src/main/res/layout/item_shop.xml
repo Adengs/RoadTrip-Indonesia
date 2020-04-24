@@ -47,15 +47,13 @@
                         android:id="@+id/tv_Location"
                         android:drawableLeft="@drawable/ic_iclokasi"
                         android:textSize="12dp"
+                        android:layout_marginTop="5dp"
                         android:drawablePadding="10dp"
                         android:text="Ubud, Bali"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                     </TextView>
-
-
-
 
                 <TextView
                     android:id="@+id/tv_Price"
