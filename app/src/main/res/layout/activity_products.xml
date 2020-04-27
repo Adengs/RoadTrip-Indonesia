@@ -19,7 +19,7 @@
                 android:background="@null"
                 android:inputType="text"
                 android:layout_marginRight="21dp"
-                android:layout_width="180dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content" />
     </androidx.appcompat.widget.Toolbar>
 

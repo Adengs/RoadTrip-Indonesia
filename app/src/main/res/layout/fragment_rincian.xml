@@ -33,6 +33,7 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
+        app:layout_scrollFlags="scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
