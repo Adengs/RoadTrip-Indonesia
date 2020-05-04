@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -17,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.adapter.AdapterListShop;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.models.EventBusClass;
 import app.codelabs.forum.models.ResponseListShopByCategories;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +34,8 @@ public class ListShopFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterListShop adapter;
     private Context context;
+    private String search;
+    private EventBusClass.Search eBusClassSearch = new EventBusClass.Search();
     public final static int CATEGORIES = 0;
 
     public ListShopFragment() {
@@ -70,7 +77,7 @@ public class ListShopFragment extends Fragment {
     private void getShopByCategory() {
         if (getArguments() != null) {
             int referenceId = getArguments().getInt("reference_id", 0);
-            ConnectionApi.apiService(context).getShopByCategories(referenceId).enqueue(new Callback<ResponseListShopByCategories>() {
+            ConnectionApi.apiService(context).getShopByCategories(referenceId,search).enqueue(new Callback<ResponseListShopByCategories>() {
                 @Override
                 public void onResponse(Call<ResponseListShopByCategories> call, Response<ResponseListShopByCategories> response) {
                     if (response.body() != null) {
@@ -112,5 +119,22 @@ public class ListShopFragment extends Fragment {
         args.putInt("reference_id", referenceId);
         setArguments(args);
         return this;
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSearch(EventBusClass.Search eventBusSearch){
+        search = eventBusSearch.getSeach();
+        getShopByCategory();
     }
 }

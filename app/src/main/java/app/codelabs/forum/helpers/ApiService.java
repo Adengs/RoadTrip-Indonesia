@@ -135,7 +135,7 @@ public interface ApiService {
     Call<ResponseShopCategory> getShopCategories();
 
     @GET("api/shop/list")
-    Call<ResponseListShopByCategories> getShopByCategories(@Query("category_id") int referenceId);
+    Call<ResponseListShopByCategories> getShopByCategories(@Query("category_id") int referenceId,@Query("search") String search);
 
     @GET("api/shop/detail")
     Call<ResponseDetailShopItem> getShopDetailItem(@Query("item_id") int itemId);

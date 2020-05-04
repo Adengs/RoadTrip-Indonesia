@@ -47,8 +47,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     private Toolbar toolbar;
     private TextView tvHubungi, tvWa;
     public ResponseDetailShopItem.DataEntity data;
-
-    AdapterShopDeskription adapter;
+    private AdapterShopDeskription adapter;
 
 
     private ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment();

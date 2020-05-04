@@ -1,32 +1,35 @@
 package app.codelabs.forum.activities.shop;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
-
-import app.codelabs.forum.R;
-import app.codelabs.forum.activities.shop.adapter.AdapterTabLayoutShop;
-import app.codelabs.forum.activities.shop.fragment.ListShopFragment;
-import app.codelabs.forum.helpers.ConnectionApi;
-import app.codelabs.forum.helpers.StringUtil;
-import app.codelabs.forum.models.ResponseShopCategory;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
 import com.google.android.material.tabs.TabLayout;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+import app.codelabs.forum.R;
+import app.codelabs.forum.activities.shop.adapter.AdapterTabLayoutShop;
+import app.codelabs.forum.activities.shop.fragment.ListShopFragment;
+import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.StringUtil;
+import app.codelabs.forum.models.EventBusClass;
+import app.codelabs.forum.models.ResponseShopCategory;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ActivityProducts extends AppCompatActivity {
     private Context context;
@@ -35,7 +38,9 @@ public class ActivityProducts extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPagerProducts;
     private Toolbar toolbar;
+    private EventBusClass.Search eventBusClassSearch = new EventBusClass.Search();
     private AdapterTabLayoutShop adapterTabLayoutShop;
+
 
 
     @Override
@@ -109,6 +114,23 @@ public class ActivityProducts extends AppCompatActivity {
     }
 
     private void setEvent() {
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                eventBusClassSearch.setSeach(String.valueOf(s));
+                EventBus.getDefault().post(eventBusClassSearch);
+            }
+        });
     }
 
 
