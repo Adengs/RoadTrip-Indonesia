@@ -17,11 +17,31 @@ public class SocketChatSendMessageToRoom extends SocketModel {
     private int room_id;
     @SerializedName("content")
     private String content;
+    @SerializedName("author_name")
+    private String author_name;
     @SerializedName("type")
     private int type = 1;
+    @SerializedName("time")
+    private long time;
+
+    public String getAuthor_name() {
+        return author_name;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public void setAuthor_name(String author_name) {
+        this.author_name = author_name;
+    }
 
     public static SocketChatSendMessageToRoom get(String json) {
-        return new Gson().fromJson(json,SocketChatSendMessageToRoom.class);
+        return new Gson().fromJson(json, SocketChatSendMessageToRoom.class);
     }
 
     public int getAuthor_id() {
@@ -63,4 +83,5 @@ public class SocketChatSendMessageToRoom extends SocketModel {
     public void setType(int type) {
         this.type = type;
     }
+
 }

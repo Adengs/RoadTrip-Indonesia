@@ -64,6 +64,16 @@ public class ResponseListChatInRoom {
         private int author_id;
         @SerializedName("id")
         private int id;
+        @SerializedName("is_socket")
+        private boolean is_socket = false;
+
+        public boolean isSocket() {
+            return is_socket;
+        }
+
+        public void setIsSocket(boolean is_socket) {
+            this.is_socket = is_socket;
+        }
 
         public String getTime() {
             return time;

@@ -9,7 +9,6 @@ public class EventBusClass {
 
     public static class Profile {
     }
-
     public static class Search {
         private String search;
 
@@ -20,8 +19,7 @@ public class EventBusClass {
         public void setSearch(String search) {
             this.search = search;
         }
-
-        public static class EventJoin {
-        }
+    }
+    public static class EventJoin {
     }
 }
