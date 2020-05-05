@@ -19,6 +19,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.conversation.adapter.ChatAdapter;
 import app.codelabs.forum.helpers.ConnectionApi;
@@ -174,8 +176,10 @@ public class ChatRoomActivity extends AppCompatActivity {
                 }
                 SocketChatSendMessageToRoom socketChatSendMessageToRoom = new SocketChatSendMessageToRoom();
                 socketChatSendMessageToRoom.setAuthor_id(Session.init(context).getUser().getId());
+                socketChatSendMessageToRoom.setAuthor_name(Session.init(context).getUser().getName());
                 socketChatSendMessageToRoom.setRoom_id(room.getRoom().getId());
                 socketChatSendMessageToRoom.setContent(etInputMessage.getText().toString());
+                socketChatSendMessageToRoom.setTime(new Date().getTime());
                 try {
                     JSONObject jsonData = new JSONObject(socketChatSendMessageToRoom.toJson());
                     SocketSingleton.getInstance().getSocket().emit(SocketSingleton.CHAT_SEND_MESSAGE,

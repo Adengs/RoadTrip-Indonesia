@@ -25,10 +25,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.conversation.adapter.ChatAdapter;
 import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.DateTimeHelper;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.helpers.SocketSingleton;
 import app.codelabs.forum.models.ResponseListChatInRoom;
@@ -107,6 +110,8 @@ public class ChatFragment extends Fragment {
                 socketChatSendMessageToRoom.setAuthor_id(Session.init(context).getUser().getId());
                 socketChatSendMessageToRoom.setRoom_id(activity.data.getRoomId());
                 socketChatSendMessageToRoom.setContent(etInputMessage.getText().toString());
+                socketChatSendMessageToRoom.setAuthor_name(Session.init(context).getUser().getName());
+                socketChatSendMessageToRoom.setTime(new Date().getTime());
                 try {
                     JSONObject jsonData = new JSONObject(socketChatSendMessageToRoom.toJson());
                     SocketSingleton.getInstance().getSocket().emit(SocketSingleton.CHAT_SEND_MESSAGE,

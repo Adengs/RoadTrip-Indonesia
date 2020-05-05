@@ -7,15 +7,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.joda.time.DateTime;
+
 import app.codelabs.forum.R;
+import app.codelabs.forum.helpers.DateTimeHelper;
 import app.codelabs.forum.models.ResponseListChatInRoom;
 import app.codelabs.forum.models.ResponseRoomChatDetail;
 import app.codelabs.forum.models.SocketChatSendMessageToRoom;
+
+import static app.codelabs.forum.helpers.DateTimeHelper.PATTERN_DEFAULT;
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int VIEW_TYPE_LEFT_CHAT = 0;
@@ -72,7 +78,12 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         RightSideChatViewHolder rightSide = (RightSideChatViewHolder) holder;
         ResponseListChatInRoom.ChatEntity item = items.get(position);
         rightSide.tvMessage.setText(item.getContent());
-        rightSide.tvTime.setText(item.getTime());
+        if (item.isSocket()) {
+            rightSide.tvTime.setText(DateTimeHelper.instance(item.getTime()).get("HH:mm"));
+        } else {
+            rightSide.tvTime.setText(item.getTime());
+        }
+
     }
 
     private void onBindViewLeftHolder(RecyclerView.ViewHolder holder, int position) {
@@ -80,8 +91,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ResponseListChatInRoom.ChatEntity item = items.get(position);
 
         leftSide.tvMessage.setText(item.getContent());
-        leftSide.tvTime.setText(item.getTime());
-        leftSide.tvUser.setText("{username}");
+        if (item.isSocket()) {
+            leftSide.tvTime.setText(DateTimeHelper.instance(item.getTime()).get("HH:mm"));
+        } else {
+            leftSide.tvTime.setText(item.getTime());
+        }
         if (members.size() > 0) {
             for (ResponseRoomChatDetail.MembersEntity member : members) {
                 if (member.getMember_id() == item.getAuthor_id()) {
@@ -114,14 +128,41 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void addItem(SocketChatSendMessageToRoom data) {
         ResponseListChatInRoom.ChatEntity chat = new ResponseListChatInRoom.ChatEntity();
 
+        ResponseRoomChatDetail.MembersEntity member = getMember(data);
+        addMember(member);
+
         chat.setAuthor_id(data.getAuthor_id());
         chat.setRoom_id(data.getRoom_id());
         chat.setType(data.getType());
         chat.setContent(data.getContent());
-        chat.setTime("Baru aja");
-
+        chat.setTime(DateTimeHelper.instance(new Date(data.getTime())).get(PATTERN_DEFAULT));
+        chat.setIsSocket(true);
         this.items.add(0, chat);
         notifyDataSetChanged();
+    }
+
+    private ResponseRoomChatDetail.MembersEntity getMember(SocketChatSendMessageToRoom data) {
+        ResponseRoomChatDetail.MembersEntity member = new ResponseRoomChatDetail.MembersEntity();
+        new ResponseRoomChatDetail.MembersEntity();
+        member.setMember_id(data.getAuthor_id());
+        ResponseRoomChatDetail.MetadataEntity memberMetaData = new ResponseRoomChatDetail.MetadataEntity();
+        memberMetaData.setMeta_member(new ResponseRoomChatDetail.Meta_memberEntity(data.getAuthor_name()));
+        member.setMetadata(memberMetaData);
+        return member;
+    }
+
+    public void addMember(ResponseRoomChatDetail.MembersEntity member) {
+        boolean isExist = false;
+        for (ResponseRoomChatDetail.MembersEntity item : members) {
+            if (item.getMember_id() == member.getMember_id()) {
+                isExist = true;
+                break;
+            }
+        }
+        if (!isExist) {
+            members.add(member);
+            notifyDataSetChanged();
+        }
     }
 
     public void setRoomMember(List<ResponseRoomChatDetail.MembersEntity> members) {

@@ -246,6 +246,10 @@ public class ResponseRoomChatDetail {
         @SerializedName("name")
         private String name;
 
+        public Meta_memberEntity(String name) {
+            this.name = name;
+        }
+
         public String getImage() {
             return image;
         }
