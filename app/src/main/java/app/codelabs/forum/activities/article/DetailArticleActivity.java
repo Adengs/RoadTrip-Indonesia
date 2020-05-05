@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
@@ -60,6 +62,22 @@ public class DetailArticleActivity extends AppCompatActivity {
             setData();
             getBookmark();
         }
+        callArticle();
+    }
+
+    private void callArticle() {
+        ConnectionApi.apiService(context).getArticle(article.getId()).enqueue(new Callback<ResponseArticleDetail>() {
+            @Override
+            public void onResponse(Call<ResponseArticleDetail> call, Response<ResponseArticleDetail> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseArticleDetail> call, Throwable t) {
+
+            }
+        });
+
     }
 
     private void setData() {
@@ -81,7 +99,7 @@ public class DetailArticleActivity extends AppCompatActivity {
         } else {
             progressDialogFragment.show(getSupportFragmentManager(), "detail-article");
 
-            int articleId = getIntent().getIntExtra("article_id",0);
+            int articleId = getIntent().getIntExtra("article_id", 0);
             ConnectionApi.apiService(context).getArticle(articleId).enqueue(new Callback<ResponseArticleDetail>() {
                 @Override
                 public void onResponse(Call<ResponseArticleDetail> call, Response<ResponseArticleDetail> response) {

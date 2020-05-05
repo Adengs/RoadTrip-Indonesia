@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.helpers.DateTimeHelper;
 import app.codelabs.forum.models.ResponseSchedule;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MyHolder> {
@@ -31,7 +32,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.MyHold
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        holder.tvDate.setText(items.get(position).getDate());
+        holder.tvDate.setText(DateTimeHelper.instance(items.get(position).getDate(),"yyyy-MM-dd").get("dd MMM yyyy"));
         ItemScheduleAdapter adapterSchedule = new ItemScheduleAdapter();
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
         holder.recyclerView.setAdapter(adapterSchedule);

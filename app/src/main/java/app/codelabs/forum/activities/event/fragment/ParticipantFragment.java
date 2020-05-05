@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import app.codelabs.forum.R;
@@ -27,8 +28,10 @@ import retrofit2.Response;
 
 public class ParticipantFragment extends Fragment {
     private RecyclerView recyclerView;
+    private TextView tvMessage;
     private AdapterParticipant adapter;
     private Context context;
+    private DetailEventActivity activity;
 
     public ParticipantFragment() {
     }
@@ -42,22 +45,29 @@ public class ParticipantFragment extends Fragment {
 
 
     @Override
-    public void onViewCreated(@NonNull View view , @Nullable Bundle savedInstanceState){
-        super.onViewCreated(view , savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         context = getContext();
+        activity = (DetailEventActivity) getActivity();
 
         setView(view);
         setRecycleView();
-        getData();
-        loadData();
+        setIsJoin();
     }
 
-    private void getData() {
-
+    private void setIsJoin() {
+        if (!activity.data.isIs_join()) {
+            tvMessage.setText("Anda belum bergabung di event ini.");
+            tvMessage.setVisibility(View.VISIBLE);
+        } else {
+            tvMessage.setVisibility(View.GONE);
+            loadData();
+        }
     }
+
 
     private void loadData() {
-        ConnectionApi.apiService(context).eventParticipant(((DetailEventActivity) getActivity()).data.getId()).enqueue(new Callback<ResponseParticipantEvent>() {
+        ConnectionApi.apiService(context).eventParticipant(activity.data.getId()).enqueue(new Callback<ResponseParticipantEvent>() {
             @Override
             public void onResponse(Call<ResponseParticipantEvent> call, Response<ResponseParticipantEvent> response) {
                 if (response.body() != null) {
@@ -75,20 +85,17 @@ public class ParticipantFragment extends Fragment {
                 }
             }
         });
-
     }
 
     private void setRecycleView() {
+        adapter = new AdapterParticipant();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
     }
 
     private void setView(View view) {
-        adapter = new AdapterParticipant();
         recyclerView = view.findViewById(R.id.recyclerView);
+        tvMessage = view.findViewById(R.id.tv_message);
     }
-
-
-
 }

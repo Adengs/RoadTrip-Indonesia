@@ -2,6 +2,7 @@ package app.codelabs.forum.helpers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Looper;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -42,6 +43,7 @@ public class ConnectionApi {
 
                     return response;
                 }
+
                 return response;
             }
         });

@@ -67,6 +67,7 @@ public class ConversationFragment extends Fragment {
         adapter.setListener(new ConversationAdapter.Listener() {
             @Override
             public void onRoomClick(ResponseChatRoomList.DataEntity item) {
+                socketChatJoinRoom(item);
                 Intent intent = new Intent(context, ChatRoomActivity.class);
                 intent.putExtra("data", item.toJson());
                 startActivity(intent);
@@ -80,21 +81,6 @@ public class ConversationFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-    private void startSocket() {
-        SocketSingleton.getInstance().getSocket().connect();
-        SocketChatConnect socketChatConnect = new SocketChatConnect();
-        socketChatConnect.setId(Session.init(context).getUser().getId());
-        try {
-            JSONObject jsonData = new JSONObject(socketChatConnect.toJson());
-            SocketSingleton.getInstance().getSocket().emit(SocketSingleton.CHAT_START_CONNECTION,
-                    jsonData
-            );
-        } catch (JSONException ignored) {
-        }
-
-    }
-
-
     private void getChatRoomList() {
         ConnectionApi.apiService(context).getRoomList(Session.init(context).getUser().getId()).enqueue(new Callback<ResponseChatRoomList>() {
             @Override
@@ -102,7 +88,6 @@ public class ConversationFragment extends Fragment {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getStatus() == 200) {
                         adapter.setItems(response.body().getData());
-                        socketChatJoinRoom(response.body().getData());
                     }
                 }
             }
@@ -116,30 +101,26 @@ public class ConversationFragment extends Fragment {
         });
     }
 
-    private void socketChatJoinRoom(List<ResponseChatRoomList.DataEntity> items) {
-        for (ResponseChatRoomList.DataEntity item : items) {
-            SocketChatJoinRoom socketChatJoinRoom = new SocketChatJoinRoom();
-            socketChatJoinRoom.setAuthor_id(Session.init(context).getUser().getId());
-            socketChatJoinRoom.setRoom_id(item.getRoom().getId());
-            try {
-                JSONObject jsonData = new JSONObject(socketChatJoinRoom.toJson());
-                SocketSingleton.getInstance().getSocket().emit(SocketSingleton.CHAT_JOIN_ROOM,
-                        jsonData
-                );
-            } catch (JSONException ignored) {
-            }
+    private void socketChatJoinRoom(ResponseChatRoomList.DataEntity item) {
+        SocketChatJoinRoom socketChatJoinRoom = new SocketChatJoinRoom();
+        socketChatJoinRoom.setAuthor_id(Session.init(context).getUser().getId());
+        socketChatJoinRoom.setRoom_id(item.getRoom().getId());
+        try {
+            JSONObject jsonData = new JSONObject(socketChatJoinRoom.toJson());
+            SocketSingleton.getInstance().getSocket().emit(SocketSingleton.CHAT_JOIN_ROOM,
+                    jsonData
+            );
+        } catch (JSONException ignored) {
         }
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        startSocket();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-//        SocketSingleton.getInstance().getSocket().disconnect();
     }
 }

@@ -10,12 +10,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.fragment.community.CommunityFragment;
 import app.codelabs.forum.activities.home.fragment.chat.ConversationFragment;
 import app.codelabs.forum.activities.home.fragment.myevent.EventFragment;
 import app.codelabs.forum.activities.home.fragment.home.HomeFragment;
 import app.codelabs.forum.activities.home.fragment.profile.ProfileFragment;
+import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.helpers.SocketSingleton;
+import app.codelabs.forum.models.SocketChatConnect;
 
 public class HomeActivity extends AppCompatActivity {
     private ImageView imgHomes, imgClubs, imgChats, imgEvents, imgProfile;
@@ -112,4 +118,23 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        startSocket();
+    }
+
+
+    private void startSocket() {
+        SocketSingleton.getInstance().getSocket().connect();
+        SocketChatConnect socketChatConnect = new SocketChatConnect();
+        socketChatConnect.setId(Session.init(context).getUser().getId());
+        try {
+            JSONObject jsonData = new JSONObject(socketChatConnect.toJson());
+            SocketSingleton.getInstance().getSocket().emit(SocketSingleton.CHAT_START_CONNECTION,
+                    jsonData
+            );
+        } catch (JSONException ignored) {
+        }
+    }
 }

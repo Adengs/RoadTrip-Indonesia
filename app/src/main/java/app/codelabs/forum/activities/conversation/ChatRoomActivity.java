@@ -1,18 +1,13 @@
 package app.codelabs.forum.activities.conversation;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,8 +21,6 @@ import org.json.JSONObject;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.conversation.adapter.ChatAdapter;
-import app.codelabs.forum.activities.conversation.models.Chat;
-import app.codelabs.forum.activities.home.HomeActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.helpers.SocketSingleton;
@@ -43,6 +36,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private EditText etInputMessage;
+    private TextView tvTitle;
     private ProgressBar progressBar;
     private ImageView btnBack;
     private FloatingActionButton btnSend;
@@ -68,20 +62,24 @@ public class ChatRoomActivity extends AppCompatActivity {
         getData();
         getChatRoomDetail();
         setSocketIncomingMessage();
+
     }
 
     private void setSocketIncomingMessage() {
+        SocketSingleton.getInstance().getSocket().off(SocketSingleton.ON_ROOM_INCOMING_MESSAGE);
         SocketSingleton.getInstance().getSocket().on(SocketSingleton.ON_ROOM_INCOMING_MESSAGE, new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
                 JSONObject json = (JSONObject) args[0];
                 final SocketChatSendMessageToRoom data = SocketChatSendMessageToRoom.get(json.toString());
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        pushMessage(data);
-                    }
-                });
+                if (data.getRoom_id() == room.getRoom().getId()) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            pushMessage(data);
+                        }
+                    });
+                }
             }
         });
     }
@@ -94,6 +92,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         String strJson = getIntent().getStringExtra("data");
         room = ResponseChatRoomList.DataEntity.get(strJson);
         adapter.setOwnerId(Session.init(context).getUser().getId());
+        tvTitle.setText(room.getRoom().getTitle());
     }
 
     private void getChatRoomDetail() {
@@ -151,7 +150,8 @@ public class ChatRoomActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview_message);
         etInputMessage = findViewById(R.id.et_input_message);
         btnSend = findViewById(R.id.btn_send);
-        btnBack = findViewById(R.id.btnpanah);
+        btnBack = findViewById(R.id.iv_back);
+        tvTitle = findViewById(R.id.tv_title);
         progressBar = findViewById(R.id.progressbar);
     }
 
@@ -172,8 +172,6 @@ public class ChatRoomActivity extends AppCompatActivity {
                 if (room == null) {
                     return;
                 }
-//                adapter.setItems(items);
-
                 SocketChatSendMessageToRoom socketChatSendMessageToRoom = new SocketChatSendMessageToRoom();
                 socketChatSendMessageToRoom.setAuthor_id(Session.init(context).getUser().getId());
                 socketChatSendMessageToRoom.setRoom_id(room.getRoom().getId());
