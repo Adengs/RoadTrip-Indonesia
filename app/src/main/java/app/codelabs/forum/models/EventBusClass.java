@@ -8,4 +8,7 @@ package app.codelabs.forum.models;
 public class EventBusClass {
     public static class Profile {
     }
+
+    public static class EventJoin {
+    }
 }

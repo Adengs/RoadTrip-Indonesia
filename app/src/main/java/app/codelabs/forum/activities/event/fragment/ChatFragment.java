@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,7 +31,6 @@ import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.helpers.SocketSingleton;
-import app.codelabs.forum.models.ResponseChatRoomList;
 import app.codelabs.forum.models.ResponseListChatInRoom;
 import app.codelabs.forum.models.ResponseRoomChatDetail;
 import app.codelabs.forum.models.SocketChatSendMessageToRoom;
@@ -45,6 +46,8 @@ public class ChatFragment extends Fragment {
     private EditText etInputMessage;
     private ProgressBar progressBar;
     private FloatingActionButton btnSend;
+    private LinearLayout inputLayout;
+    private TextView tvMessage;
 
     private ChatAdapter adapter;
 
@@ -75,10 +78,21 @@ public class ChatFragment extends Fragment {
     }
 
     private void setIfJoin() {
-        if(activity.data.isIs_join()) {
+        if (activity.data.isIs_join()) {
+            recyclerView.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
+            inputLayout.setVisibility(View.VISIBLE);
+            tvMessage.setText("");
+            tvMessage.setVisibility(View.GONE);
             getData();
             getChatRoomDetail();
             setSocketIncomingMessage();
+        } else {
+            recyclerView.setVisibility(View.GONE);
+            progressBar.setVisibility(View.GONE);
+            inputLayout.setVisibility(View.GONE);
+            tvMessage.setText("Anda belum bergabung di event ini.");
+            tvMessage.setVisibility(View.VISIBLE);
         }
     }
 
@@ -119,6 +133,8 @@ public class ChatFragment extends Fragment {
         etInputMessage = view.findViewById(R.id.et_input_message);
         btnSend = view.findViewById(R.id.btn_send);
         progressBar = view.findViewById(R.id.progressbar);
+        inputLayout = view.findViewById(R.id.input_container);
+        tvMessage = view.findViewById(R.id.tv_message);
     }
 
     private void getData() {

@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,6 +34,7 @@ import app.codelabs.forum.activities.event.fragment.WalkieTalkieFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.helpers.SocketSingleton;
+import app.codelabs.forum.models.EventBusClass;
 import app.codelabs.forum.models.ResponseBookmarkEvent;
 import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseEventDetail;
@@ -246,5 +248,9 @@ public class DetailEventActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_bookmark, menu);
         this.menu = menu;
         return true;
+    }
+
+    public void refreshJoin() {
+        EventBus.getDefault().post(new EventBusClass.EventJoin());
     }
 }

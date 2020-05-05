@@ -22,6 +22,8 @@ import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +33,7 @@ import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.activities.event.adapter.ImageSliderAdapter;
 import app.codelabs.forum.activities.home.bottom_sheet.BottomSheetJoinEvent;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.models.EventBusClass;
 import app.codelabs.forum.models.ResponseJoinEvent;
 import app.codelabs.forum.models.ResponseListEventCommunity;
 import app.codelabs.forum.models.ResponseUnjoinEvent;
@@ -45,6 +48,8 @@ public class DescriptionFragment extends Fragment {
     private Context context;
     private ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter();
     private SliderView cardSlider;
+
+    private DetailEventActivity activity;
 
     public DescriptionFragment() {
     }
@@ -61,6 +66,7 @@ public class DescriptionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         context = getContext();
+        activity = (DetailEventActivity) getActivity();
 
         setView(view);
         getData();
@@ -71,13 +77,13 @@ public class DescriptionFragment extends Fragment {
     }
 
     private void setData() {
-        tvTitle.setText(Html.fromHtml(((DetailEventActivity) getActivity()).data.getTitle()));
-        tvStartEvent.setText(((DetailEventActivity) getActivity()).data.getEvent_start());
-        tvEndEvent.setText(((DetailEventActivity) getActivity()).data.getEvent_end());
-        tvLocation.setText(((DetailEventActivity) getActivity()).data.getLocation());
-        tvDescription.setText(Html.fromHtml(((DetailEventActivity) getActivity()).data.getDescription()));
+        tvTitle.setText(Html.fromHtml(activity.data.getTitle()));
+        tvStartEvent.setText(activity.data.getEvent_start());
+        tvEndEvent.setText(activity.data.getEvent_end());
+        tvLocation.setText(activity.data.getLocation());
+        tvDescription.setText(Html.fromHtml(activity.data.getDescription()));
 
-        if (((DetailEventActivity) getActivity()).data.getIs_join() == true) {
+        if (activity.data.getIs_join() == true) {
             tvDoJoin.setText("Congratulation!");
             tvJoined.setText("Joined");
             tvJoined.setTextColor(Color.parseColor("#FFFFFF"));
@@ -100,10 +106,10 @@ public class DescriptionFragment extends Fragment {
         tvJoined.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((DetailEventActivity) getActivity()).data.getIs_join() == false) {
-                    joinEventDialog(((DetailEventActivity) getActivity()).data);
+                if (activity.data.getIs_join() == false) {
+                    joinEventDialog(activity.data);
                 } else {
-                    unJoinEvent(((DetailEventActivity) getActivity()).data);
+                    unJoinEvent(activity.data);
                 }
             }
         });
@@ -111,12 +117,12 @@ public class DescriptionFragment extends Fragment {
     }
 
     private void joinEventDialog(ResponseListEventCommunity.DataEntity data) {
-        bottomSheetJoinEvent.setData(data, ((DetailEventActivity) getActivity()).selectedIndex);
+        bottomSheetJoinEvent.setData(data, activity.selectedIndex);
         bottomSheetJoinEvent.show(getChildFragmentManager(), "join_event");
     }
 
     private void getData() {
-        imageSliderAdapter.setItems(((DetailEventActivity) getActivity()).data.getPhotos());
+        imageSliderAdapter.setItems(activity.data.getPhotos());
     }
 
     private void setSliderView() {
@@ -154,11 +160,12 @@ public class DescriptionFragment extends Fragment {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         data.setIs_join(false);
-                        ((DetailEventActivity) getActivity()).data = data;
+                        activity.data = data;
+                        activity.refreshJoin();
                         setData();
                         Intent intent = new Intent();
                         intent.putExtra("data", new Gson().toJson(data));
-                        intent.putExtra("index", ((DetailEventActivity) getActivity()).selectedIndex);
+                        intent.putExtra("index", activity.selectedIndex);
                         getActivity().setResult(Activity.RESULT_OK, intent);
                     }
                 }
@@ -185,7 +192,8 @@ public class DescriptionFragment extends Fragment {
                 progressDialogFragment.dismiss();
                 if (response.isSuccessful() && response.body().getSuccess()) {
                     data.setIs_join(true);
-                    ((DetailEventActivity) getActivity()).data = data;
+                    activity.data = data;
+                    activity.refreshJoin();
                     setData();
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
@@ -195,6 +203,7 @@ public class DescriptionFragment extends Fragment {
                 } else {
                     Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override

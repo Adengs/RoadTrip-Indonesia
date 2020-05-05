@@ -16,10 +16,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.activities.event.adapter.ScheduleAdapter;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.models.EventBusClass;
 import app.codelabs.forum.models.ResponseSchedule;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -96,4 +101,21 @@ public class ScheduleFragment extends Fragment {
         recycleView = view.findViewById(R.id.recyclerview);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onJoinChange(EventBusClass.EventJoin data) {
+        setIsJoin();
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
 }

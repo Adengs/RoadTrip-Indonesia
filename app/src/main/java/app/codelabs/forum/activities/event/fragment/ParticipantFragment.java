@@ -16,10 +16,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.activities.event.adapter.AdapterParticipant;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.models.EventBusClass;
 import app.codelabs.forum.models.ResponseParticipantEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,8 +64,10 @@ public class ParticipantFragment extends Fragment {
         if (!activity.data.isIs_join()) {
             tvMessage.setText("Anda belum bergabung di event ini.");
             tvMessage.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         } else {
             tvMessage.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
             loadData();
         }
     }
@@ -97,5 +104,23 @@ public class ParticipantFragment extends Fragment {
     private void setView(View view) {
         recyclerView = view.findViewById(R.id.recyclerView);
         tvMessage = view.findViewById(R.id.tv_message);
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onJoinChange(EventBusClass.EventJoin data){
+        setIsJoin();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 }
