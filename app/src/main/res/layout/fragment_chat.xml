@@ -7,45 +7,62 @@
     android:layout_height="match_parent"
     android:background="@color/displayScreen"
     tools:context=".activities.event.fragment.ChatFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:background="@color/putih"
-        android:id="@+id/recyclerView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        tools:listitem="@layout/item_chat_kiri"
-        android:layout_weight="1" />
-
-    <LinearLayout
-        android:background="@drawable/shape_sendchatmyevent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/et_send_Chat"
-            android:hint="Type reply here..."
-            android:textSize="14dp"
-            android:layout_width="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-        <ImageView
-            android:id="@+id/img_Send_Chat"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
+        android:layout_height="match_parent"
+        android:background="@color/user">
+        <TextView
+            android:id="@+id/tv_message"
             android:layout_gravity="center"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/ic_iconfinder_navigation_send">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="68dp"
+            tools:itemCount="8"
+            tools:listitem="@layout/item_chat_left" />
 
-        </ImageView>
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/input_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/user"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_input_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rounded_input_chat"
+                android:gravity="top"
+                android:hint="Ketik pesan"
+                android:maxLines="4"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="4dp"
+                android:src="@drawable/ic_send" />
 
 
+        </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
 </LinearLayout>

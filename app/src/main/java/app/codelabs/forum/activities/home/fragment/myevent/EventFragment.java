@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.List;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.event.DetailEventActivity;
 import app.codelabs.forum.activities.event.adapter.EventAdapter;
@@ -70,7 +72,12 @@ public class EventFragment extends Fragment {
                 progressBar.setVisibility(View.GONE);
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
-                        adapter.setItems(response.body().getData());
+
+                        List<ResponseListEventCommunity.DataEntity> items = response.body().getData();
+                        for(ResponseListEventCommunity.DataEntity item :items){
+                            item.setIs_join(true);
+                        }
+                        adapter.setItems(items);
                     }
 
                 }

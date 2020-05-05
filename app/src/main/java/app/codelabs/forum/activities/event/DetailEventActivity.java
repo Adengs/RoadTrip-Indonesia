@@ -18,6 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.activities.event.adapter.EventPagerAdapter;
@@ -27,10 +32,14 @@ import app.codelabs.forum.activities.event.fragment.ParticipantFragment;
 import app.codelabs.forum.activities.event.fragment.ScheduleFragment;
 import app.codelabs.forum.activities.event.fragment.WalkieTalkieFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
+import app.codelabs.forum.helpers.Session;
+import app.codelabs.forum.helpers.SocketSingleton;
+import app.codelabs.forum.models.EventBusClass;
 import app.codelabs.forum.models.ResponseBookmarkEvent;
 import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseEventDetail;
 import app.codelabs.forum.models.ResponseListEventCommunity;
+import app.codelabs.forum.models.SocketChatJoinRoom;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,7 +49,6 @@ public class DetailEventActivity extends AppCompatActivity {
     private Context context;
     private TabLayout tabLayoutEvent;
     private ViewPager viewPagerEvent;
-    private String strData;
     public ResponseListEventCommunity.DataEntity data;
     private Toolbar toolbar;
     public int selectedIndex = -1;
@@ -68,7 +76,7 @@ public class DetailEventActivity extends AppCompatActivity {
 
     private void getData() {
         if (getIntent().getStringExtra("data") != null) {
-            strData = getIntent().getStringExtra("data");
+            String strData = getIntent().getStringExtra("data");
             selectedIndex = getIntent().getIntExtra("index", -1);
             data = new Gson().fromJson(strData, ResponseListEventCommunity.DataEntity.class);
         } else {
@@ -121,6 +129,22 @@ public class DetailEventActivity extends AppCompatActivity {
 
         tabLayoutEvent.setupWithViewPager(viewPagerEvent);
 
+        joinRoom();
+    }
+
+    private void joinRoom() {
+        if (data.isIs_join()) {
+            SocketChatJoinRoom socketChatJoinRoom = new SocketChatJoinRoom();
+            socketChatJoinRoom.setAuthor_id(Session.init(context).getUser().getId());
+            socketChatJoinRoom.setRoom_id(data.getRoomId());
+            try {
+                JSONObject jsonData = new JSONObject(socketChatJoinRoom.toJson());
+                SocketSingleton.getInstance().getSocket().emit(SocketSingleton.CHAT_JOIN_ROOM,
+                        jsonData
+                );
+            } catch (JSONException ignored) {
+            }
+        }
     }
 
     private void setView() {
@@ -224,5 +248,9 @@ public class DetailEventActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_bookmark, menu);
         this.menu = menu;
         return true;
+    }
+
+    public void refreshJoin() {
+        EventBus.getDefault().post(new EventBusClass.EventJoin());
     }
 }

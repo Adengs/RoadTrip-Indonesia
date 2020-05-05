@@ -62,4 +62,5 @@ dependencies {
         exclude group: 'androidx.recyclerview', module: 'recyclerview'
     }
     implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation 'com.github.nkzawa:socket.io-client:0.6.0'
 }
