@@ -134,7 +134,7 @@ public class ListShopFragment extends Fragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onSearch(EventBusClass.Search eventBusSearch){
-        search = eventBusSearch.getSeach();
+        search = eventBusSearch.getSearch();
         getShopByCategory();
     }
 }

@@ -137,7 +137,7 @@ public class MemberFragment extends Fragment {
         setLoading(true, false);
         Map<String, String> dataUnFollow = new HashMap<>();
         dataUnFollow.put("followed_id", String.valueOf(data.getId()));
-        ConnectionApi.apiService(context).unfollow(dataUnFollow).enqueue(new Callback<ResponseUnFollow>() {
+        ConnectionApi.apiService(context).unFollow(dataUnFollow).enqueue(new Callback<ResponseUnFollow>() {
             @Override
             public void onResponse(Call<ResponseUnFollow> call, Response<ResponseUnFollow> response) {
                 setLoading(false, false);

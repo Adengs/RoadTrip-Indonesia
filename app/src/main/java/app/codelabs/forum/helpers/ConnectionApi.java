@@ -2,6 +2,7 @@ package app.codelabs.forum.helpers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Looper;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -42,13 +43,14 @@ public class ConnectionApi {
 
                     return response;
                 }
+
                 return response;
             }
         });
 
         httpClient.addInterceptor(logging);
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://104.248.149.236/qwerty/forum/service/gateway/public/")
+                .baseUrl(Constant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();

@@ -5,50 +5,42 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:paddingBottom="10dp"
-        android:paddingRight="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/shape_chat_abu"
         android:orientation="vertical"
-        android:layout_marginLeft="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
 
         <LinearLayout
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/shape_chat_abu"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:paddingLeft="10dp">
 
             <TextView
+                android:id="@+id/tv_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Vannessa Angel"
-                android:textStyle="bold"
                 android:textColor="@color/hijau"
                 android:textSize="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:textStyle="bold">
 
             </TextView>
 
-            <ImageView
-                android:src="@drawable/ic_circle"
-                android:layout_marginTop="20dp"
-                android:layout_width="2dp"
-                android:layout_height="2dp">
-
-            </ImageView>
-
             <TextView
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="3dp"
-                android:text="1 min"
-                android:textSize="12dp"
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="12dp"
+                android:textSize="12dp">
 
             </TextView>
 
@@ -56,14 +48,13 @@
         </LinearLayout>
 
         <TextView
-            android:paddingLeft="10dp"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/black"
             android:id="@+id/tv_message_left_side"
-            android:text="I wanna riding with you!"
-            android:textSize="12dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="12dp">
 
         </TextView>
 

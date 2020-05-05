@@ -12,12 +12,14 @@ public class EventBusClass {
     public static class Search{
         private String search;
 
-        public String getSeach() {
+        public String getSearch() {
             return search;
         }
 
-        public void setSeach(String search) {
+        public void setSearch(String search) {
             this.search = search;
         }
+
+    public static class EventJoin {
     }
 }

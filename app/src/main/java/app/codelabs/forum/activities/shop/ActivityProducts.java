@@ -127,7 +127,7 @@ public class ActivityProducts extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                eventBusClassSearch.setSeach(String.valueOf(s));
+                eventBusClassSearch.setSearch(String.valueOf(s));
                 EventBus.getDefault().post(eventBusClassSearch);
             }
         });
