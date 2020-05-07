@@ -2,8 +2,6 @@ package app.codelabs.forum.activities.home.fragment.community.fragment;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -15,7 +13,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.about.adapter.SecretariatAdapter;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseAbout;
@@ -30,6 +31,8 @@ public class AboutFragment extends Fragment {
     private TextView tvHistory, tvSecretarian, tvMpas;
     private Session session;
     private Context context;
+    private RecyclerView rvSecretariat;
+    private SecretariatAdapter adapter = new SecretariatAdapter();
 
 
     public AboutFragment() {
@@ -52,7 +55,14 @@ public class AboutFragment extends Fragment {
         session = Session.init(context);
 
         setView(view);
+        setRecyclerView();
         loadData();
+    }
+
+    private void setRecyclerView() {
+        rvSecretariat.setHasFixedSize(true);
+        rvSecretariat.setLayoutManager(new LinearLayoutManager(context));
+        rvSecretariat.setAdapter(adapter);
     }
 
     private void loadData() {
@@ -62,6 +72,7 @@ public class AboutFragment extends Fragment {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()){
                         setAbout(response.body().getData());
+                        adapter.setItems(response.body().getData().getSecretariat());
                     }
                 }
             }
@@ -76,28 +87,13 @@ public class AboutFragment extends Fragment {
 
     private void setAbout(final ResponseAbout.DataEntity data) {
         tvHistory.setText(Html.fromHtml(data.getHistory()));
-        tvSecretarian.setText(Html.fromHtml(data.getSecretariat()));
-        tvMpas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setMaps(data);
-            }
-        });
-    }
-
-    private void setMaps(ResponseAbout.DataEntity data) {
-        String url_map = "https://www.google.com/maps/search/?api=1&query=";
-        float zoomLevel = 16.0f; //This goes up to 21
-        Uri gmmIntentUri = Uri.parse( url_map +data.getLatitude()+","+data.getLongitude());
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        //mapIntent.setPackage("com.google.android.apps.maps");
-        startActivity(mapIntent);
     }
 
     private void setView(View view) {
         tvHistory = view.findViewById(R.id.tv_History);
         tvSecretarian = view.findViewById(R.id.tv_Secretariat);
         tvMpas = view.findViewById(R.id.tv_map);
+        rvSecretariat = view.findViewById(R.id.rv_secretariat);
 
     }
 }

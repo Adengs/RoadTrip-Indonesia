@@ -2,8 +2,9 @@ package app.codelabs.forum.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseAbout {
+import java.util.List;
 
+public class ResponseAbout {
 
     @SerializedName("data")
     private DataEntity data;
@@ -37,24 +38,44 @@ public class ResponseAbout {
     }
 
     public static class DataEntity {
-        @SerializedName("logo")
-        private String logo;
-        @SerializedName("company_name")
-        private String company_name;
-        @SerializedName("longitude")
-        private String longitude;
-        @SerializedName("latitude")
-        private String latitude;
         @SerializedName("secretariat")
-        private String secretariat;
+        private List<SecretariatEntity> secretariat;
         @SerializedName("history")
         private String history;
-        @SerializedName("image")
-        private String image;
-        @SerializedName("company_id")
-        private int company_id;
+        @SerializedName("background")
+        private String background;
+        @SerializedName("logo")
+        private String logo;
+        @SerializedName("full_name")
+        private String full_name;
+        @SerializedName("company_name")
+        private String company_name;
         @SerializedName("id")
         private int id;
+
+        public List<SecretariatEntity> getSecretariat() {
+            return secretariat;
+        }
+
+        public void setSecretariat(List<SecretariatEntity> secretariat) {
+            this.secretariat = secretariat;
+        }
+
+        public String getHistory() {
+            return history;
+        }
+
+        public void setHistory(String history) {
+            this.history = history;
+        }
+
+        public String getBackground() {
+            return background;
+        }
+
+        public void setBackground(String background) {
+            this.background = background;
+        }
 
         public String getLogo() {
             return logo;
@@ -64,6 +85,14 @@ public class ResponseAbout {
             this.logo = logo;
         }
 
+        public String getFull_name() {
+            return full_name;
+        }
+
+        public void setFull_name(String full_name) {
+            this.full_name = full_name;
+        }
+
         public String getCompany_name() {
             return company_name;
         }
@@ -71,6 +100,27 @@ public class ResponseAbout {
         public void setCompany_name(String company_name) {
             this.company_name = company_name;
         }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
+
+    public static class SecretariatEntity {
+        @SerializedName("longitude")
+        private String longitude;
+        @SerializedName("latitude")
+        private String latitude;
+        @SerializedName("address")
+        private String address;
+        @SerializedName("company_id")
+        private int company_id;
+        @SerializedName("id")
+        private int id;
 
         public String getLongitude() {
             return longitude;
@@ -88,28 +138,12 @@ public class ResponseAbout {
             this.latitude = latitude;
         }
 
-        public String getSecretariat() {
-            return secretariat;
+        public String getAddress() {
+            return address;
         }
 
-        public void setSecretariat(String secretariat) {
-            this.secretariat = secretariat;
-        }
-
-        public String getHistory() {
-            return history;
-        }
-
-        public void setHistory(String history) {
-            this.history = history;
-        }
-
-        public String getImage() {
-            return image;
-        }
-
-        public void setImage(String image) {
-            this.image = image;
+        public void setAddress(String address) {
+            this.address = address;
         }
 
         public int getCompany_id() {

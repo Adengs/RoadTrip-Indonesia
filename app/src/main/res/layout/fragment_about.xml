@@ -76,33 +76,13 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tv_Secretariat"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        tools:text="Pabuaran, Karawaci Sub-District, Tangerang City, Banten 15114" />
-
-                    <LinearLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_secretariat"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="right">
-
-                        <TextView
-                            android:id="@+id/tv_map"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/shape_button_login"
-                            android:gravity="center"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="4dp"
-                            android:paddingRight="10dp"
-                            android:paddingBottom="5dp"
-                            android:text="Maps"
-                            android:textColor="@color/putih" />
-                    </LinearLayout>
+                        tools:itemCount="5"
+                        tools:listitem="@layout/item_secretariat"
+                        android:layout_height="match_parent">
+                    </androidx.recyclerview.widget.RecyclerView>
 
                 </LinearLayout>
             </LinearLayout>

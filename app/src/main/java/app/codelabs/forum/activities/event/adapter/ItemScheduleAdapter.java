@@ -9,12 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
 import app.codelabs.forum.models.ResponseSchedule;
 
@@ -63,14 +62,11 @@ public class ItemScheduleAdapter extends RecyclerView.Adapter<ItemScheduleAdapte
                 @Override
                 public void onClick(View v) {
                     ResponseSchedule.SchedulesEntity item = items.get(getAdapterPosition());
-                    String url_map = "http://maps.google.com/maps?q=loc:";
-                    float zoomLevel = 16.0f; //This goes up to 21
-                    Uri gmmIntentUri = Uri.parse(url_map + item.getLatitude() + "," + item.getLongitude() + zoomLevel);
+                    String url_map = "https://www.google.com/maps/search/?api=1&query=";
+                    Uri gmmIntentUri = Uri.parse( url_map +item.getLatitude()+","+item.getLongitude());
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                     mapIntent.setPackage("com.google.android.apps.maps");
-                    if (mapIntent.resolveActivity(context.getPackageManager()) != null) {
-                        context.startActivity(mapIntent);
-                    }
+                    context.startActivity(mapIntent);
                 }
             });
         }

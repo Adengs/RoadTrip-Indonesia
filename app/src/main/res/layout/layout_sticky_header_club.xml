@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imgClub"
+                    android:id="@+id/iv_background"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
@@ -36,12 +36,14 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_logo"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/shape_bulat"
                         android:src="@drawable/logologinbaru" />
 
                     <TextView
+                        android:id="@+id/tv_company_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"

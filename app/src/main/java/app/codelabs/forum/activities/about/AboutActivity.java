@@ -1,12 +1,10 @@
 package app.codelabs.forum.activities.about;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +13,10 @@ import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.about.adapter.SecretariatAdapter;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseAbout;
@@ -26,8 +27,11 @@ import retrofit2.Response;
 
 public class AboutActivity extends AppCompatActivity {
     private CircleImageView ivLogo;
+    private ImageView ivBackGround;
     private TextView tvBackAbout,tvCompany_name,tvhistory,tvSecretariat, tvMaps;
+    private RecyclerView rvSecretariat;
     private Session session;
+    private SecretariatAdapter adapter = new SecretariatAdapter();
     private Toolbar toolbar;
     private Context context;
 
@@ -42,7 +46,14 @@ public class AboutActivity extends AppCompatActivity {
         setView();
         setEvent();
         setToolbar();
+        setRecyclerView();
         loadData();
+    }
+
+    private void setRecyclerView() {
+        rvSecretariat.setHasFixedSize(true);
+        rvSecretariat.setLayoutManager(new LinearLayoutManager(context));
+        rvSecretariat.setAdapter(adapter);
     }
 
     private void setToolbar() {
@@ -61,6 +72,7 @@ public class AboutActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()){
                         setAbout(response.body().getData());
+                        adapter.setItems(response.body().getData().getSecretariat());
                     }
                 }
             }
@@ -76,26 +88,9 @@ public class AboutActivity extends AppCompatActivity {
 
     private void setAbout(final ResponseAbout.DataEntity data) {
         Picasso.with(context).load(data.getLogo()).fit().centerCrop().into(ivLogo);
-        tvCompany_name.setText(data.getCompany_name());
+        tvCompany_name.setText(data.getFull_name());
         tvhistory.setText(Html.fromHtml(data.getHistory()));
-        tvSecretariat.setText(Html.fromHtml(data.getSecretariat()));
-        tvMaps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setMaps(data);
-            }
-        });
-
-    }
-
-    private void setMaps(ResponseAbout.DataEntity data) {
-        float zoomLevel = 16.0f;
-        String url_map = "https://www.google.com/maps/search/?api=1&query=";
-        Uri gmmIntentUri = Uri.parse( url_map +data.getLatitude()+","+data.getLongitude());
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-       // mapIntent.setPackage("com.google.android.apps.maps");
-        startActivity(mapIntent);
-
+        Picasso.with(context).load(data.getBackground()).fit().centerCrop().into(ivBackGround);
     }
 
     private void setEvent() {
@@ -106,9 +101,10 @@ public class AboutActivity extends AppCompatActivity {
         ivLogo = findViewById(R.id.iv_logo);
         tvCompany_name = findViewById(R.id.tv_company_name);
         tvhistory = findViewById(R.id.tv_History);
-        tvSecretariat = findViewById(R.id.tv_Secretariat);
         toolbar = findViewById(R.id.toolbar);
-        tvMaps = findViewById(R.id.tv_map);
+        ivBackGround = findViewById(R.id.iv_background);
+        rvSecretariat = findViewById(R.id.rv_secretariat);
+
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
