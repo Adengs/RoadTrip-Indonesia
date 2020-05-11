@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/putih">
+        android:background="@color/colorWhite">
     </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
@@ -42,7 +42,7 @@
                         android:padding="16dp"
                         android:text="Hubungi"
                         android:textStyle="bold"
-                        android:textColor="@color/hitam"
+                        android:textColor="@color/colorBlack"
                         android:textSize="14dp" />
 
                 <TextView

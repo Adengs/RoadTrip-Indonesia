@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,58 +22,46 @@ import app.codelabs.forum.activities.walktrough.WalkThroughActivity;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.models.ResponseWalkThrough;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class WalkTroughtSecondFragment extends Fragment {
+public class WalkTroughFragment extends Fragment {
     private TextView tvNext, tvTitle, tvDesc;
     private ImageView ivBackground;
     private Context context;
 
-    public WalkTroughtSecondFragment() {
-        // Required empty public constructor
+    private ResponseWalkThrough.DataEntity item;
+
+    public WalkTroughFragment() {
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_walk_trought_second, container, false);
+        return inflater.inflate(R.layout.fragment_walk_trough, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         context = getContext();
-
         setView(view);
-        setEvent();
         setData();
-
     }
+
     private void setData() {
-        ResponseWalkThrough.DataEntity item = Session.init(context).getWalkTrough().get(1);
         tvTitle.setText(item.getTitle());
-        tvDesc.setText(item.getDescription());
+        tvDesc.setText(Html.fromHtml(item.getDescription()));
         Picasso.with(context).load(item.getImage()).fit().centerCrop().into(ivBackground);
     }
 
     private void setView(View view) {
-
-        tvNext = view.findViewById(R.id.tv_next);
         tvTitle = view.findViewById(R.id.tv_title);
         tvDesc = view.findViewById(R.id.tv_desc);
         ivBackground = view.findViewById(R.id.iv_background);
     }
 
-    private void setEvent() {
-        tvNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((WalkThroughActivity) getActivity()).viewPager.setCurrentItem(2);
-            }
-        });
-    }
 
+    public WalkTroughFragment setData(ResponseWalkThrough.DataEntity item) {
+        this.item = item;
+        return this;
+    }
 }

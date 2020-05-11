@@ -48,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
                         android:text="Ford Everest Club Indonesia"
-                        android:textColor="@color/putih"
+                        android:textColor="@color/colorWhite"
                         android:textSize="14dp" />
 
                     <LinearLayout

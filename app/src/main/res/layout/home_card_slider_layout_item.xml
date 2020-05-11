@@ -24,7 +24,7 @@
             android:id="@+id/tv_auto_image_slider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/putih"
+            android:textColor="@color/colorWhite"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             tools:text="Lorem Ipsum dolor shit amet" />

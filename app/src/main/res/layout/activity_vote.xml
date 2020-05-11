@@ -13,7 +13,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroundToolbar"
+        android:background="@color/colorBackgroundToolbar"
         app:theme="@style/Register" />
 
     <View
@@ -31,7 +31,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/putih"
+            android:background="@color/colorWhite"
             android:orientation="vertical">
 
             <TextView
@@ -41,7 +41,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 tools:text="Pemilihan duta shampo lain periode 2020 - 2025" />
@@ -54,7 +54,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="25dp"
-                android:textColor="@color/abuai"
+                android:textColor="@color/colorGray"
                 tools:text="2 days left" />
 
         </LinearLayout>
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:background="@color/putih">
+                android:background="@color/colorWhite">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview"
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@color/putih"
+                android:background="@color/colorWhite"
                 android:paddingVertical="8dp">
 
                 <Button
@@ -95,7 +95,7 @@
                     android:background="@drawable/shape_button_login"
                     android:text="Voting"
                     android:textAllCaps="false"
-                    android:textColor="@color/putih" />
+                    android:textColor="@color/colorWhite" />
 
             </LinearLayout>
         </FrameLayout>

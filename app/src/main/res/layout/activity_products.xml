@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/putih">
+        android:background="@color/colorWhite">
             <EditText
                 android:layout_gravity="right"
                 android:id="@+id/et_Search"
@@ -36,15 +36,15 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/putih"
+                android:background="@color/colorWhite"
                 android:visibility="invisible"
-                app:tabIndicatorColor="@color/merah"
+                app:tabIndicatorColor="@color/colorRed"
                 app:tabIndicatorFullWidth="false"
                 app:tabIndicatorHeight="2dp"
                 app:tabMode="fixed"
-                app:tabSelectedTextColor="@color/hitam"
+                app:tabSelectedTextColor="@color/colorBlack"
                 app:tabTextAppearance="@style/Tablayout"
-                app:tabTextColor="@color/black" />
+                app:tabTextColor="@color/colorBlack" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager"

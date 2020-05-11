@@ -3,59 +3,45 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#F9FBE7</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorNext">#F62C4C</color>
-    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorNext">@color/colorRed</color>
+    <color name="colorText">@color/colorBlack</color>
+    <color name="colorBackground">@color/colorWhite</color>
+    <color name="colorTitleToolbar">@color/colorBlack</color>
+    <color name="colorBackgroundToolbar">@color/colorWhite</color>
+    <color name="colorButtonRegister">@color/colorRed</color>
     <color name="colorCircle">#F0F3F5</color>
     <color name="colorDesc">#818E97</color>
-    <color name="colorText">#000000</color>
-    <color name="abuai">#818E97</color>
 
+    <color name="colorGray">#818E97</color>
+    <color name="colorWhiteTransparent">#9FFFFFFF</color>
+    <color name="colorRed">#F62C4C</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlue">#2C91F6</color>
+    <color name="colorGreen">#32B94C</color>
 
     <!-- display log in-->
-    <color name="abuemaillogin">#818E97</color>
-    <color name="merah">#F62C4C</color>
     <color name="abukeputihan">#F5F5F5</color>
-    <color name="black">#000000</color>
     <color name="biruswiwi">#C7E3EB</color>
-
 
     <!-- toolbar display -->
     <color name="displayScreen">#F0F3F5</color>
 
-    <!-- toolbar display -->
-    <color name="backgroundToolbar">#FFFFFF</color>
-    <color name="titleToolbar">#000000</color>
-
     <!-- display edit -->
-    <color name="colorEye">#FFFFFF</color>
-    <color name="backgroudEdit">#FFFFFF</color>
-    <color name="colorButtonRegister">#F62C4C</color>
     <color name="titleButton">#FFFFFF</color>
 
     <!-- display forgot Password-->
     <color name="silver">#F0F3F5</color>
-    <color name="putih">#FFFFFF</color>
-    <color name="pink">#F62C4C</color>
     <color name="putihp">#F5F5F5</color>
     <color name="abu">#818E97</color>
     <color name="biru">#E4EAEF</color>
-    <color name="hitam">#000000</color>
     <color name="silver2">#818E9726</color>
-
     <color name="user">#F0F3F5</color>
-
-
-
-    <color name="birul">#2C91F6</color>
-    <color name="hijau">#32B94C</color>
-
 
     <!-- display Club-->
     <color name="colorborder">#F0F3F5</color>
     <color name="textClub">#F0F3F5</color>
     <color name="texttablayout">#818E97</color>
-    <color name="textcar">#F62C4C</color>
-
     <!-- display member-->
     <color name="member">#818E97</color>
 

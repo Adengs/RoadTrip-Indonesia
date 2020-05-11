@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/putih" />
+        android:background="@color/colorWhite" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="4dp"
                     android:text="Cars"
-                    android:textColor="@color/pink"
+                    android:textColor="@color/colorRed"
                     android:textSize="12dp" />
 
                 <View

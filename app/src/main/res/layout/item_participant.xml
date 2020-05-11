@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_marginBottom="1dp"
         android:layout_marginTop="2dp"
-        android:background="@color/putih"
+        android:background="@color/colorWhite"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="90dp">
@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="19dp"
                     android:text="You"
-                    android:textColor="@color/hitam"
+                    android:textColor="@color/colorBlack"
                     android:textSize="12dp"
                     android:textStyle="bold" />
                 <LinearLayout
@@ -46,7 +46,7 @@
                         android:layout_height="14dp"
                         android:layout_marginLeft="19dp"
                         android:text="Followers : "
-                        android:textColor="@color/abuai"
+                        android:textColor="@color/colorGray"
                         android:textSize="12dp"
                         android:textStyle="bold" />
                     <TextView
@@ -74,7 +74,7 @@
                     android:paddingRight="16dp"
                     android:paddingBottom="6dp"
                     android:text="Joined"
-                    android:textColor="@color/putih"
+                    android:textColor="@color/colorWhite"
                     android:textSize="12dp" />
             </LinearLayout>
 

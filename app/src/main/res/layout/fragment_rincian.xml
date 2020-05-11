@@ -17,7 +17,7 @@
             android:background="@drawable/shape_walk_through"
             app:layout_anchor="@id/apprincian"
             app:layout_anchorGravity="bottom"
-            app:tabIndicatorColor="@color/merah"
+            app:tabIndicatorColor="@color/colorRed"
             app:tabIndicatorHeight="2dp"
             app:tabIndicatorFullWidth="false"
             app:tabSelectedTextColor="@color/colorText"

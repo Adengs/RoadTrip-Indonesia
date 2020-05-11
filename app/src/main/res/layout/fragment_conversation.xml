@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/putih"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context=".activities.home.fragment.chat.ConversationFragment">
 
@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroundToolbar"
+        android:background="@color/colorBackgroundToolbar"
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/Register"
         tools:ignore="MissingConstraints">
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="20dp"
             android:text="Conservation"
-            android:textColor="@color/titleToolbar"
+            android:textColor="@color/colorTitleToolbar"
             android:textSize="14dp"
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>

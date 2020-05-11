@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:layout_gravity="bottom"
-        android:background="@color/putih"
+        android:background="@color/colorWhite"
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="bottom"
-        app:tabIndicatorColor="@color/merah"
+        app:tabIndicatorColor="@color/colorRed"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/hitam"
+        app:tabSelectedTextColor="@color/colorBlack"
         app:tabTextAppearance="@style/Tablayout"
         app:tabTextColor="@color/texttablayout" />
 

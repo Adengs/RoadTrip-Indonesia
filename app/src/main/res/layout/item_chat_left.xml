@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:layout_marginLeft="30dp"
+        android:layout_marginRight="56dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/shape_chat_abu"
         android:orientation="vertical"
@@ -28,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:textColor="@color/hijau"
+                android:textColor="@color/colorGreen"
                 android:textSize="12dp"
                 android:textStyle="bold">
 
@@ -53,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:paddingLeft="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="12dp">
 
         </TextView>

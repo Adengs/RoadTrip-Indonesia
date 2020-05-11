@@ -11,7 +11,7 @@
         android:id="@+id/toolbar_setting_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroundToolbar"
+        android:background="@color/colorBackgroundToolbar"
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/Register">
 
@@ -22,7 +22,7 @@
             android:drawableLeft="@drawable/ic_back_black"
             android:drawablePadding="20dp"
             android:text="Setting"
-            android:textColor="@color/titleToolbar"
+            android:textColor="@color/colorTitleToolbar"
             android:textSize="14dp" />
     </androidx.appcompat.widget.Toolbar>
 
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="55dp"
-            android:background="@color/putih"
+            android:background="@color/colorWhite"
             android:orientation="vertical">
 
             <TextView
@@ -49,7 +49,7 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
                 android:text="Push notifications"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorBlack" />
 
             <View
                 android:layout_width="match_parent"
@@ -69,7 +69,7 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
                 android:text="Rate the app"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorBlack" />
 
             <View
                 android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
                 android:text="Feedback"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorBlack" />
 
             <View
                 android:layout_width="match_parent"
@@ -107,7 +107,7 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
                 android:text="Language"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorBlack" />
 
             <View
                 android:layout_width="match_parent"
@@ -132,7 +132,7 @@
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
                     android:text="Dark mode"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/colorBlack" />
 
                 <Switch
                     android:id="@+id/switch_dark_mode"
@@ -162,10 +162,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/putih"
+            android:background="@color/colorWhite"
             android:text="Logout"
             android:textAllCaps="false"
-            android:textColor="@color/pink" />
+            android:textColor="@color/colorRed" />
     </FrameLayout>
 
 

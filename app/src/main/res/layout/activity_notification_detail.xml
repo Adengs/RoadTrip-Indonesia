@@ -112,7 +112,7 @@
                 android:id="@+id/btn_vot"
                 android:text="Let's vote"
                 android:background="@drawable/shape_home_latest"
-                android:textColor="@color/merah"
+                android:textColor="@color/colorRed"
                 android:layout_gravity="center"
                 android:textSize="16dp"
                 android:textAllCaps="false"

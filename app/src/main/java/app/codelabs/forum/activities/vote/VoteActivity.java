@@ -91,11 +91,11 @@ public class VoteActivity extends AppCompatActivity {
         if(data.getIsAlreadyVote()){
             btnVoting.setText("You Have Participated");
             btnVoting.setBackgroundResource(R.drawable.shape_button_disable);
-            btnVoting.setTextColor(ContextCompat.getColor(context,R.color.hitam));
+            btnVoting.setTextColor(ContextCompat.getColor(context,R.color.colorBlack));
         }else{
             btnVoting.setText("Voting");
             btnVoting.setBackgroundResource(R.drawable.shape_button_login);
-            btnVoting.setTextColor(ContextCompat.getColor(context,R.color.putih));
+            btnVoting.setTextColor(ContextCompat.getColor(context,R.color.colorWhite));
 
         }
     }

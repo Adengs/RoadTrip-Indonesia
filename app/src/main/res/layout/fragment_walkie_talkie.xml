@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="2dp"
-        android:background="@color/putih"
+        android:background="@color/colorWhite"
         android:orientation="vertical">
 
 
@@ -28,7 +28,7 @@
                 android:layout_marginLeft="20dp"
                 android:drawableLeft="@drawable/shape_walkiecircle"
                 android:text="  Online"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="14dp"
                 android:textStyle="bold" />
 
@@ -80,7 +80,7 @@
             android:layout_gravity="bottom"
             android:textSize="14dp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

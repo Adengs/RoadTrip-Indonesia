@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="2dp"
-    android:background="@color/putih"
+    android:background="@color/colorWhite"
     android:orientation="vertical">
 
     <LinearLayout
@@ -24,7 +24,7 @@
             android:paddingTop="5dp"
             android:paddingRight="9dp"
             android:paddingBottom="5dp"
-            android:textColor="@color/putih"
+            android:textColor="@color/colorWhite"
             tools:text="1" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="25dp"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textSize="14dp"
             android:textStyle="bold"
             tools:text="Meeting point at" />
@@ -56,7 +56,7 @@
                 android:paddingRight="19dp"
                 android:paddingBottom="6dp"
                 android:text="Maps"
-                android:textColor="@color/putih"
+                android:textColor="@color/colorWhite"
                 android:textSize="12dp" />
 
         </LinearLayout>

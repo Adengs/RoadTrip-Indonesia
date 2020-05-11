@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroundToolbar"
+        android:background="@color/colorBackgroundToolbar"
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/Register">
 
@@ -62,7 +62,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="20dp"
-                            android:textColor="@color/putih"
+                            android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             tools:text="Ford Everest Club Indonesia" />
                     </LinearLayout>
@@ -78,7 +78,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/putih"
+                    android:background="@color/colorWhite"
                     android:orientation="vertical"
                     android:padding="20dp">
 
@@ -86,7 +86,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="History"
-                        android:textColor="@color/hitam"
+                        android:textColor="@color/colorBlack"
                         android:textSize="14dp" />
 
                     <ImageView
@@ -109,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:background="@color/putih"
+                    android:background="@color/colorWhite"
                     android:orientation="vertical"
                     android:padding="20dp">
 
@@ -118,7 +118,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Secretariat"
-                        android:textColor="@color/hitam"
+                        android:textColor="@color/colorBlack"
                         android:textSize="14dp" />
 
                     <ImageView
@@ -147,14 +147,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="97dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/putih"
+                    android:background="@color/colorWhite"
                     android:orientation="vertical"
                     android:padding="20dp">
 
                     <TextView
                         android:id="@+id/tvOrganisasiStructural"
                         android:text="Organizational Structure"
-                        android:textColor="@color/hitam"
+                        android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14dp" />

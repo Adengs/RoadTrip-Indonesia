@@ -14,7 +14,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroundToolbar"
+        android:background="@color/colorBackgroundToolbar"
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/Register">
 
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"
-            android:textColor="@color/titleToolbar"
+            android:textColor="@color/colorTitleToolbar"
             android:textSize="14dp" />
     </androidx.appcompat.widget.Toolbar>
 
@@ -148,7 +148,7 @@
                         android:layout_height="wrap_content"
                         android:text="Have an account?"
                         android:textAlignment="center"
-                        android:textColor="@color/titleToolbar"
+                        android:textColor="@color/colorTitleToolbar"
                         android:textSize="14dp" />
 
                     <TextView

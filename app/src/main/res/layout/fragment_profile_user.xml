@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/putih"
+    android:background="@color/colorWhite"
     tools:context=".activities.home.fragment.profile.fragment.ProfileUserFragment">
 
     <LinearLayout
@@ -34,7 +34,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_weight="0.6"
                 android:gravity="right"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="14sp"
                 tools:text="Edinofri" />
 
@@ -61,7 +61,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_weight="0.6"
                 android:gravity="right"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="14sp"
                 tools:text="bakteri.kurang.baik@gmail.com" />
 
@@ -88,7 +88,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_weight="0.6"
                 android:gravity="right"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="14sp"
                 tools:text="10 Desember 1980" />
         </LinearLayout>
@@ -115,7 +115,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textSize="14sp"
                 tools:text="Jakarta Banjir" />
 

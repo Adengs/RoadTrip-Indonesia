@@ -20,7 +20,7 @@
     <TextView
         android:text="Thank you for your vote."
         android:textSize="14dp"
-        android:textColor="@color/abuai"
+        android:textColor="@color/colorGray"
         android:gravity="center"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:background="@drawable/shape_button_login"
             android:text="Done"
             android:textAllCaps="false"
-            android:textColor="@color/putih"
+            android:textColor="@color/colorWhite"
             android:layout_width="match_parent"
             android:layout_height="45dp"/>
 

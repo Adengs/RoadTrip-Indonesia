@@ -24,7 +24,7 @@
             app:layout_anchor="@id/appbar"
             app:layout_anchorGravity="bottom"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@color/merah"
+            app:tabIndicatorColor="@color/colorRed"
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorHeight="2dp"
             app:tabMode="fixed"
