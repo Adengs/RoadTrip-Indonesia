@@ -35,7 +35,7 @@ import app.codelabs.forum.activities.article.fragment.ArticleFragment;
 import app.codelabs.forum.activities.notification.NotificationActivity;
 import app.codelabs.forum.activities.event.EventActivity;
 import app.codelabs.forum.activities.gallery.GalleryActivity;
-import app.codelabs.forum.activities.shop.ActivityProducts;
+import app.codelabs.forum.activities.shop.ProductActivity;
 import app.codelabs.forum.activities.vote.VoteActivity;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseHighlight> call, Throwable t) {
-                if(t.getMessage() != null) {
+                if (t.getMessage() != null) {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
@@ -140,7 +140,7 @@ public class HomeFragment extends Fragment {
         List<HomeMenuItem> menus = new ArrayList<>();
         menus.add(new HomeMenuItem(R.drawable.ic_article, "Article", ArticleActivity.class)); // article
         menus.add(new HomeMenuItem(R.drawable.ic_events, "Events", EventActivity.class)); // events
-        menus.add(new HomeMenuItem(R.drawable.ic_shop, "Shop", ActivityProducts.class)); // shop
+        menus.add(new HomeMenuItem(R.drawable.ic_shop, "Shop", ProductActivity.class)); // shop
         menus.add(new HomeMenuItem(R.drawable.ic_gallery, "Gallery", GalleryActivity.class)); // gallery
         menus.add(new HomeMenuItem(R.drawable.ic_about, "About", AboutActivity.class)); // about
         menus.add(new HomeMenuItem(R.drawable.ic_vote, "Vote", VoteActivity.class)); // vote

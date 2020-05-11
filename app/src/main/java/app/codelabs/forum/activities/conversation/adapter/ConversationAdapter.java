@@ -33,7 +33,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
     public void onBindViewHolder(@NonNull ConversationAdapter.MyHolder holder, int position) {
         ResponseChatRoomList.DataEntity item = items.get(position);
         holder.tvTitle.setText(item.getRoom().getTitle());
-        if(item.getRoom().getLatest_chat() != null) {
+        if (item.getRoom().getLatest_chat() != null) {
             holder.tvLatestChat.setText(item.getRoom().getLatest_chat().getContent());
         }
     }

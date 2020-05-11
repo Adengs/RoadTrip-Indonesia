@@ -42,7 +42,6 @@ public class HomeImageSliderAdapter extends
         ResponseHighlight.DataEntity item = items.get(position);
 
         viewHolder.textViewDescription.setText(item.getModule_title());
-        viewHolder.textViewDescription.setTextSize(16);
         Picasso.with(context)
                 .load(item.getModule_image())
                 .placeholder(R.drawable.default_image)

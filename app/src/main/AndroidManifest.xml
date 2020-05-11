@@ -42,7 +42,7 @@
         <activity android:name=".activities.gallery.DetailGalleryActivity" />
         <activity android:name=".activities.article.ArticleActivity" />
         <activity android:name=".activities.event.EventActivity" />
-        <activity android:name=".activities.shop.ActivityProducts" />
+        <activity android:name=".activities.shop.ProductActivity" />
         <activity android:name=".activities.shop.DetailProductActivity" />
         <activity android:name=".activities.notification.NotificationDetailActivity" />
         <activity android:name=".activities.vote.VoteActivity" />

@@ -35,7 +35,6 @@ public class ListShopFragment extends Fragment {
     private AdapterListShop adapter;
     private Context context;
     private String search;
-    private EventBusClass.Search eBusClassSearch = new EventBusClass.Search();
     public final static int CATEGORIES = 0;
 
     public ListShopFragment() {
@@ -133,8 +132,8 @@ public class ListShopFragment extends Fragment {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onSearch(EventBusClass.Search eventBusSearch){
-        search = eventBusSearch.getSearch();
+    public void onSearch(EventBusClass.SearchShop eventBusSearch){
+        search = eventBusSearch.getQuery();
         getShopByCategory();
     }
 }

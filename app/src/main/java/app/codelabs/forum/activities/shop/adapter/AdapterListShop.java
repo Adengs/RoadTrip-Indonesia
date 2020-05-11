@@ -80,7 +80,6 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
     public class MyHolder extends RecyclerView.ViewHolder {
         private TextView tvProductName, tvLocation, tvPrice, tvCategory;
         private ImageView ivImage;
-        private CardView cardViewPro;
 
         public MyHolder(@NonNull View view) {
 
@@ -129,7 +128,6 @@ public class AdapterListShop extends RecyclerView.Adapter<AdapterListShop.MyHold
             tvLocation = view.findViewById(R.id.tv_Location);
             tvPrice = view.findViewById(R.id.tv_Price);
             tvCategory = view.findViewById(R.id.tv_Category);
-            cardViewPro = itemView.findViewById(R.id.cardShopPro);
             ivImage = view.findViewById(R.id.iv_Image);
 
         }

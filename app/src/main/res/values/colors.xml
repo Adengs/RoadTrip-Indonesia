@@ -11,6 +11,8 @@
     <color name="colorButtonRegister">@color/colorRed</color>
     <color name="colorCircle">#F0F3F5</color>
     <color name="colorDesc">#818E97</color>
+    <color name="colorSpace">#FAFAFA</color>
+
 
     <color name="colorGray">#818E97</color>
     <color name="colorWhiteTransparent">#9FFFFFFF</color>

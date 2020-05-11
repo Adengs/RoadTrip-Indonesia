@@ -9,15 +9,19 @@ public class EventBusClass {
 
     public static class Profile {
     }
-    public static class Search {
-        private String search;
+    public static class SearchShop {
+        private String query;
 
-        public String getSearch() {
-            return search;
+        public SearchShop(String query) {
+            this.query = query;
         }
 
-        public void setSearch(String search) {
-            this.search = search;
+        public String getQuery() {
+            return query;
+        }
+
+        public void setQuery(String query) {
+            this.query = query;
         }
     }
     public static class EventJoin {
