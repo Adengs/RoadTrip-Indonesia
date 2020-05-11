@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:background="@null"
             android:drawableRight="@drawable/ic_search"
-            android:hint="Product"
+            android:hint="Products"
             android:imeOptions="actionSearch"
             android:inputType="textPersonName"
             android:padding="16dp"
