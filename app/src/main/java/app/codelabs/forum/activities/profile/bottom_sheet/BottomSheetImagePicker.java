@@ -35,7 +35,8 @@ public class BottomSheetImagePicker extends BottomSheetDialogFragment {
     private TextView txtCamera, txtGallery;
     private Context context;
 
-    public BottomSheetImagePicker() {}
+    public BottomSheetImagePicker() {
+    }
 
 
     @Override
@@ -100,11 +101,13 @@ public class BottomSheetImagePicker extends BottomSheetDialogFragment {
     }
 
 
-
     private void loadImageByGallery() {
-        if (ActivityCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 2000);
+        if (ContextCompat.checkSelfPermission(context
+                , Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ||
+                ContextCompat.checkSelfPermission(context
+                        , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2000);
         } else {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             intent.setType("image/*");
