@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -21,11 +20,8 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
-
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.shop.adapter.AdapterTabLayoutShop;
 import app.codelabs.forum.activities.shop.fragment.ListShopFragment;
@@ -178,6 +174,5 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }

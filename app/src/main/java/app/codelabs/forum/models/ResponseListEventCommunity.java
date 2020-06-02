@@ -6,7 +6,6 @@ import java.util.List;
 
 public class ResponseListEventCommunity {
 
-
     @SerializedName("data")
     private List<DataEntity> data;
     @SerializedName("success")

@@ -1,8 +1,6 @@
 package app.codelabs.forum.activities.shop.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +17,11 @@ import app.codelabs.forum.models.ResponseDetailShopItem;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentProDescription extends Fragment {
-    private Context context;
+public class ProductInfoFragment extends Fragment {
+    private TextView tvBerat, tvKondisi, tvPemesananMin, tvKategori;
     private ResponseDetailShopItem.DataEntity data;
-    private TextView tvDeskrip;
-    //public final static int DESKRIP = 0;
-   // public final static int PRODUCT_INFO = 1;
 
-    public FragmentProDescription() {
+    public ProductInfoFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +30,7 @@ public class FragmentProDescription extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pro_description, container, false);
+        return inflater.inflate(R.layout.fragment_product_info, container, false);
     }
 
     @Override
@@ -45,11 +40,13 @@ public class FragmentProDescription extends Fragment {
         setView(view);
         getData();
         setData();
-
     }
 
     private void setData() {
-        tvDeskrip.setText(Html.fromHtml(data.getDescription()));
+        tvKondisi.setText(data.getKondisi());
+        tvBerat.setText(data.getBerat());
+        tvPemesananMin.setText(data.getMin_pesanan());
+        tvKategori.setText(data.getCategory().getCategory());
     }
 
     private void getData() {
@@ -59,9 +56,9 @@ public class FragmentProDescription extends Fragment {
     }
 
     private void setView(View view) {
-        tvDeskrip = view.findViewById(R.id.tv_desc);
+        tvBerat = view.findViewById(R.id.tv_berat);
+        tvKondisi = view.findViewById(R.id.tv_kondisi);
+        tvKategori = view.findViewById(R.id.tv_category);
+        tvPemesananMin = view.findViewById(R.id.tv_pemesenanmin);
     }
-
 }
-
-

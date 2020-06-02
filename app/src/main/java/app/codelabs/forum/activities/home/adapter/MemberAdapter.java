@@ -118,5 +118,4 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
         void onFollow(ResponseListMemberCompany.Data data);
     }
 
-
 }

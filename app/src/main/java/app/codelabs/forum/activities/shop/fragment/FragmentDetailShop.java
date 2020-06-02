@@ -116,6 +116,7 @@ public class FragmentDetailShop extends Fragment {
     private void getData() {
         data = ((DetailProductActivity) getActivity()).data;
         imageSliderAdapter.setItems(data.getPhotos());
+
     }
 
 
@@ -134,13 +135,15 @@ public class FragmentDetailShop extends Fragment {
 
     private void setViewPager() {
         AdapterShopDeskription adapterShop = new AdapterShopDeskription(getChildFragmentManager());
-        adapterShop.addFragment(new FragmentProDescription().
-                setTypeAndData(FragmentProDescription.DESKRIP, new Gson().toJson(data)), "Description");
-        adapterShop.addFragment(new FragmentProDescription().
-                setTypeAndData(FragmentProDescription.PRODUCT_INFO, new Gson().toJson(data)), "Product Info");
-
+        FragmentProDescription fragmentProDescription = new FragmentProDescription();
+        ProductInfoFragment productInfoFragment = new ProductInfoFragment();
+        Bundle args = new Bundle();
+        args.putString("data", new Gson().toJson(data));
+        fragmentProDescription.setArguments(args);
+        productInfoFragment.setArguments(args);
+        adapterShop.addFragment(fragmentProDescription,"Description");
+        adapterShop.addFragment(productInfoFragment, "Product Info");
         viewPagerShop.setAdapter(adapterShop);
-
         tabLayout.setupWithViewPager(viewPagerShop);
     }
 

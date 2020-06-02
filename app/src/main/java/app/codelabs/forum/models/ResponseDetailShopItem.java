@@ -4,7 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponseDetailShopItem {
+public  class ResponseDetailShopItem {
+
 
     @SerializedName("data")
     private DataEntity data;
@@ -46,6 +47,12 @@ public class ResponseDetailShopItem {
         private CategoryEntity category;
         @SerializedName("photos")
         private List<String> photos;
+        @SerializedName("min_pesanan")
+        private String min_pesanan;
+        @SerializedName("berat")
+        private String berat;
+        @SerializedName("kondisi")
+        private String kondisi;
         @SerializedName("description")
         private String description;
         @SerializedName("price")
@@ -103,6 +110,30 @@ public class ResponseDetailShopItem {
 
         public void setPhotos(List<String> photos) {
             this.photos = photos;
+        }
+
+        public String getMin_pesanan() {
+            return min_pesanan;
+        }
+
+        public void setMin_pesanan(String min_pesanan) {
+            this.min_pesanan = min_pesanan;
+        }
+
+        public String getBerat() {
+            return berat;
+        }
+
+        public void setBerat(String berat) {
+            this.berat = berat;
+        }
+
+        public String getKondisi() {
+            return kondisi;
+        }
+
+        public void setKondisi(String kondisi) {
+            this.kondisi = kondisi;
         }
 
         public String getDescription() {

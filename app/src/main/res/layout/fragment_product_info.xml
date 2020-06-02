@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".activities.shop.fragment.ProductInfoFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="1000dp">
+    <TextView
+        android:text="Berat"
+        android:textSize="14dp"
+        android:textColor="@color/abu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tv_berat"
+        android:textSize="14dp"
+        tools:text="400gr"
+        android:textColor="@color/colorBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="40dp"
+        android:text="Kondisi"
+        android:textSize="14dp"
+        android:textColor="@color/abu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tv_kondisi"
+        android:textSize="14dp"
+        tools:text="baru"
+        android:textColor="@color/colorBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="40dp"
+        android:text="Pemesanan Minim"
+        android:textSize="14dp"
+        android:textColor="@color/abu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tv_pemesenanmin"
+        android:textSize="14dp"
+        tools:text="1 buah"
+        android:textColor="@color/colorBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="40dp"
+        android:text="Kategory"
+        android:textSize="14dp"
+        android:textColor="@color/abu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tv_category"
+        android:textSize="14dp"
+        tools:text="acsessoris"
+        android:textColor="@color/colorBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

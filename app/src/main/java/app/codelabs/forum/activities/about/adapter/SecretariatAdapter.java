@@ -3,6 +3,7 @@ package app.codelabs.forum.activities.about.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class SecretariatAdapter extends RecyclerView.Adapter<SecretariatAdapter.
     @Override
     public void onBindViewHolder(@NonNull SecretariatHolder holder, int position) {
         final ResponseAbout.SecretariatEntity items = item.get(position);
-        holder.tvSecretariat.setText(items.getAddress());
+        holder.tvSecretariat.setText(Html.fromHtml(items.getAddress()));
         holder.tvMaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
