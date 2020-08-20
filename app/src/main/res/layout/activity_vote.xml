@@ -22,11 +22,11 @@
         android:background="@color/colorCircle" />
 
     <LinearLayout
-        android:visibility="gone"
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,10 +100,19 @@
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Tidak ada pemilihan saat ini."
+        android:visibility="gone" />
+
     <ProgressBar
         android:id="@+id/progressbar"
-        android:scaleX="0.15"
-        android:scaleY="0.15"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:scaleX="0.15"
+        android:scaleY="0.15" />
 </LinearLayout>

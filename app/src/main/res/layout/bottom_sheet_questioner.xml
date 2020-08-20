@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="430dp"
+    android:background="@drawable/shape_vote_putihgreat"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:src="@drawable/ic_img_questionaire_done" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="Great!"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Thank you for your answer."
+        android:textColor="@color/colorGray"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/btn_done_answer"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/shape_button_login"
+            android:text="Done"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="25dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="25dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/shape_rounded_vote"
+        android:gravity="center_vertical"
+        android:textSize="14dp"
+        android:drawableRight="@drawable/ic_check_circle"
+        tools:text="Vanessa Angel" />
+
+</LinearLayout>

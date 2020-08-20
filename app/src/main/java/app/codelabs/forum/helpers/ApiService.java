@@ -1,8 +1,10 @@
 package app.codelabs.forum.helpers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import app.codelabs.forum.models.ResponseAbout;
+import app.codelabs.forum.models.ResponseAnswerQuestioner;
 import app.codelabs.forum.models.ResponseApi;
 import app.codelabs.forum.models.ResponseArticleCategory;
 import app.codelabs.forum.models.ResponseArticleDetail;
@@ -27,7 +29,8 @@ import app.codelabs.forum.models.ResponseListShopByCategories;
 import app.codelabs.forum.models.ResponseLogin;
 import app.codelabs.forum.models.ResponseMyProfile;
 import app.codelabs.forum.models.ResponseParticipantEvent;
-import app.codelabs.forum.models.ResponseRegister;
+import app.codelabs.forum.models.ResponseDefault;
+import app.codelabs.forum.models.ResponseQuestion;
 import app.codelabs.forum.models.ResponseRoomChatDetail;
 import app.codelabs.forum.models.ResponseSchedule;
 import app.codelabs.forum.models.ResponseShareArticle;
@@ -63,7 +66,7 @@ public interface ApiService {
     Call<ResponseLogin> login(@Body Map<String, String> body);
 
     @POST("auth/register")
-    Call<ResponseRegister> register(@Body Map<String, String> body);
+    Call<ResponseDefault> register(@Body Map<String, String> body);
 
     @GET("api/walk_through")
     Call<ResponseWalkThrough> getWalkTrough();
@@ -182,5 +185,11 @@ public interface ApiService {
 
     @GET("api/chat/chat_in_room/{room_id}")
     Call<ResponseListChatInRoom> getListChatInRoom(@Path("room_id") int roomId, @Query("limit") int limit, @Query("offset") int offset);
+
+    @GET("api/questionnaire/question")
+    Call<ResponseQuestion> getQuestions(@Query("voteId")int voteId);
+
+    @POST("api/questionnaire/response")
+    Call<ResponseAnswerQuestioner> answerQuestioner(@Body HashMap<String,Integer> data);
 }
 

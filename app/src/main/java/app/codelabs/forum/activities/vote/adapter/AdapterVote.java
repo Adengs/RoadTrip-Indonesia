@@ -52,7 +52,7 @@ public class AdapterVote extends RecyclerView.Adapter<AdapterVote.AdapterVH> {
         }
 
         if (item.isSelect()) {
-            holder.ivSelection.setImageResource(R.drawable.ic_check_circle);
+            holder.ivSelection.setImageResource(R.drawable.ic_radio_button_checked);
         } else {
             holder.ivSelection.setImageResource(R.drawable.ic_circle_outline);
         }

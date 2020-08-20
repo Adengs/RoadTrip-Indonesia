@@ -7,9 +7,15 @@ android {
         applicationId "app.codelabs.forum"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 7
+        versionCode 10
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        def appName = "comuta"
+        def date = new Date()
+        def formattedDate = date.format('yyyyMMdd')
+        setProperty("archivesBaseName", appName + "_" + formattedDate + "_vc" + versionCode)
     }
     buildTypes {
         release {
@@ -28,6 +34,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     implementation 'com.google.android.material:material:1.0.0-rc01'
     implementation "androidx.core:core:1.0.2"

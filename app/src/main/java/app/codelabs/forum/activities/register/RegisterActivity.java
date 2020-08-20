@@ -19,7 +19,7 @@ import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.Session;
 import app.codelabs.forum.helpers.Validator;
-import app.codelabs.forum.models.ResponseRegister;
+import app.codelabs.forum.models.ResponseDefault;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -73,9 +73,9 @@ public class RegisterActivity extends AppCompatActivity {
                 data.put("email", etEmail.getText().toString());
 
                 progressDialogFragment.show(getSupportFragmentManager(), "progress");
-                ConnectionApi.apiService(context).register(data).enqueue(new Callback<ResponseRegister>() {
+                ConnectionApi.apiService(context).register(data).enqueue(new Callback<ResponseDefault>() {
                     @Override
-                    public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+                    public void onResponse(Call<ResponseDefault> call, Response<ResponseDefault> response) {
                         progressDialogFragment.dismiss();
                         if (response.isSuccessful() && response.body().getSuccess()) {
                             Toast.makeText(context, "Success Register", Toast.LENGTH_SHORT).show();
@@ -86,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseRegister> call, Throwable t) {
+                    public void onFailure(Call<ResponseDefault> call, Throwable t) {
                         progressDialogFragment.dismiss();
                         Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }

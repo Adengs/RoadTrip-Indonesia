@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".activities.questioner.QuestionActivity">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_question_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Question 1"
+                    android:textColor="@color/colorText"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_total_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="/5"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape_rounded_border_question"
+                android:textColor="@color/colorBlack"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                tools:text="Pemilihan duta shampo lain periode 2020 - 2025" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="56dp"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_question" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/shape_button_login"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+</FrameLayout>

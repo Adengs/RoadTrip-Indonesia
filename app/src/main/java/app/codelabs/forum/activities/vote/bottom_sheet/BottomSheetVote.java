@@ -1,5 +1,6 @@
 package app.codelabs.forum.activities.vote.bottom_sheet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,16 +13,17 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import app.codelabs.forum.R;
+import app.codelabs.forum.activities.questioner.QuestionActivity;
 
 public class BottomSheetVote extends BottomSheetDialogFragment {
     private Button btnDoneVote;
+    private int voteId;
+    private boolean hasQuestion;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bottom_sheet_vote, container, false);
-        return view;
-
-
+        return inflater.inflate(R.layout.bottom_sheet_vote, container, false);
     }
 
 
@@ -38,6 +40,11 @@ public class BottomSheetVote extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 dismiss();
+                if(hasQuestion) {
+                    Intent intent = new Intent(requireContext(), QuestionActivity.class);
+                    intent.putExtra("vote_id", voteId);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -45,7 +52,14 @@ public class BottomSheetVote extends BottomSheetDialogFragment {
 
 
     private void setView(View view) {
-        btnDoneVote = view.findViewById(R.id.btn_done_Vote);
+        btnDoneVote = view.findViewById(R.id.btn_done_vote);
     }
 
+    public void setVote(int id) {
+        this.voteId = id;
+    }
+
+    public void setHasQuestion(boolean question) {
+        this.hasQuestion = question;
+    }
 }

@@ -48,6 +48,16 @@ public class ResponseVoting {
         private String candidate_id;
         @SerializedName("vote_id")
         private String vote_id;
+        @SerializedName("question")
+        private boolean question;
+
+        public boolean isQuestion() {
+            return question;
+        }
+
+        public void setQuestion(boolean question) {
+            this.question = question;
+        }
 
         public String getCompany_id() {
             return company_id;

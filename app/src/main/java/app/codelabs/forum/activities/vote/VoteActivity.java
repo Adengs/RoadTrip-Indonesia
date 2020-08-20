@@ -17,12 +17,15 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.custom.ProgressDialogFragment;
 import app.codelabs.forum.activities.vote.adapter.AdapterVote;
 import app.codelabs.forum.activities.vote.bottom_sheet.BottomSheetVote;
 import app.codelabs.forum.helpers.ConnectionApi;
 import app.codelabs.forum.helpers.DateTimeHelper;
+import app.codelabs.forum.models.ResponseDefault;
 import app.codelabs.forum.models.ResponseVote;
 import app.codelabs.forum.models.ResponseVoting;
 import retrofit2.Call;
@@ -31,7 +34,7 @@ import retrofit2.Response;
 
 
 public class VoteActivity extends AppCompatActivity {
-    private TextView tvTitle, tvTimeLeft;
+    private TextView tvTitle, tvTimeLeft, tvNoData;
     private Button btnVoting;
     private Context context;
     private RecyclerView recyclerView;
@@ -64,10 +67,15 @@ public class VoteActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseVote> call, Response<ResponseVote> response) {
                 progressBar.setVisibility(View.GONE);
-                container.setVisibility(View.VISIBLE);
                 if (response.body() != null) {
                     if (response.isSuccessful()) {
                         setData(response.body().getData());
+                        container.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    ResponseDefault responseDefault = new Gson().fromJson(response.errorBody().charStream(), ResponseDefault.class);
+                    if (!responseDefault.getSuccess() && response.code() == 404) {
+                        tvNoData.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -87,15 +95,15 @@ public class VoteActivity extends AppCompatActivity {
         this.data = data;
         tvTitle.setText(data.getTitle());
         tvTimeLeft.setText(DateTimeHelper.instance(data.getEnd_vote()).getTimeLeft());
-        adapter.setItems(data.getCandidate(),data.getIsAlreadyVote());
-        if(data.getIsAlreadyVote()){
+        adapter.setItems(data.getCandidate(), data.getIsAlreadyVote());
+        if (data.getIsAlreadyVote()) {
             btnVoting.setText("You Have Participated");
             btnVoting.setBackgroundResource(R.drawable.shape_button_disable);
-            btnVoting.setTextColor(ContextCompat.getColor(context,R.color.colorBlack));
-        }else{
+            btnVoting.setTextColor(ContextCompat.getColor(context, R.color.colorBlack));
+        } else {
             btnVoting.setText("Voting");
             btnVoting.setBackgroundResource(R.drawable.shape_button_login);
-            btnVoting.setTextColor(ContextCompat.getColor(context,R.color.colorWhite));
+            btnVoting.setTextColor(ContextCompat.getColor(context, R.color.colorWhite));
 
         }
     }
@@ -111,7 +119,7 @@ public class VoteActivity extends AppCompatActivity {
         btnVoting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(data.getIsAlreadyVote()){
+                if (data.getIsAlreadyVote()) {
                     Toast.makeText(context, "You Have Participated.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -134,6 +142,8 @@ public class VoteActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         BottomSheetVote bottomSheetVote = new BottomSheetVote();
+                        bottomSheetVote.setVote(data.getId());
+                        bottomSheetVote.setHasQuestion(response.body().getData().isQuestion());
                         bottomSheetVote.show(getSupportFragmentManager(), "bottom_vote");
                         getVoteData();
                     } else {
@@ -169,6 +179,7 @@ public class VoteActivity extends AppCompatActivity {
         container = findViewById(R.id.container);
         progressBar = findViewById(R.id.progressbar);
         tvTimeLeft = findViewById(R.id.tv_time_left);
+        tvNoData = findViewById(R.id.tv_no_data);
         tvTitle = findViewById(R.id.tv_title);
     }
 
