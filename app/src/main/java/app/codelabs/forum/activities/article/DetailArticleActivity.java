@@ -62,22 +62,6 @@ public class DetailArticleActivity extends AppCompatActivity {
             setData();
             getBookmark();
         }
-        callArticle();
-    }
-
-    private void callArticle() {
-        ConnectionApi.apiService(context).getArticle(article.getId()).enqueue(new Callback<ResponseArticleDetail>() {
-            @Override
-            public void onResponse(Call<ResponseArticleDetail> call, Response<ResponseArticleDetail> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseArticleDetail> call, Throwable t) {
-
-            }
-        });
-
     }
 
     private void setData() {

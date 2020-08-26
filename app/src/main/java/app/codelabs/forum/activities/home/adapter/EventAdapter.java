@@ -50,7 +50,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventVH> {
         holder.tvStartEvent.setText(item.getEvent_start());
         holder.tvEndEvent.setText(item.getEvent_end());
         holder.tvStartEvent.setText(item.getEvent_start());
-        holder.tvEndEvent.setText(item.getEvent_end());
         Picasso.with(context).load(item.getImage())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_no_image)

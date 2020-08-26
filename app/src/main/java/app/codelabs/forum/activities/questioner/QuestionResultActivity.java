@@ -1,16 +1,18 @@
 package app.codelabs.forum.activities.questioner;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.gson.Gson;
+
+import java.util.List;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.HomeActivity;
@@ -40,7 +42,21 @@ public class QuestionResultActivity extends AppCompatActivity {
     private void getPreviousData() {
         if (getIntent() != null && getIntent().getStringExtra("data") != null) {
             data = new Gson().fromJson(getIntent().getStringExtra("data"), ResponseAnswerQuestioner.class);
-            adapter.setItems(data.getData().getDetails());
+            List<ResponseAnswerQuestioner.DetailsEntity> items = data.getData().getDetails();
+            int tmp = 0;
+            int higherIndex = -1;
+            int index = 0;
+            for (ResponseAnswerQuestioner.DetailsEntity item : items) {
+                if (tmp < item.getPercentageChoice()) {
+                    tmp = item.getPercentageChoice();
+                    higherIndex = index;
+                }
+                index++;
+            }
+            if(higherIndex != -1) {
+                items.get(higherIndex).setHigher(true);
+            }
+            adapter.setItems(items);
         }
     }
 

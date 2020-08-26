@@ -96,6 +96,16 @@ public class ResponseAnswerQuestioner {
         @SerializedName("percentage_choice")
         private int percentageChoice;
 
+        private boolean isHigher = false;
+
+        public boolean isHigher() {
+            return isHigher;
+        }
+
+        public void setHigher(boolean higher) {
+            isHigher = higher;
+        }
+
         public int getPercentageChoice() {
             return percentageChoice;
         }

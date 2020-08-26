@@ -37,7 +37,7 @@ public class QuestionResultAdapter extends RecyclerView.Adapter<QuestionResultAd
     @Override
     public void onBindViewHolder(@NonNull QuestionResultVH holder, int position) {
         ResponseAnswerQuestioner.DetailsEntity item = items.get(position);
-        if (item.isCorrect()) {
+        if (item.isHigher()) {
             holder.container.setBackgroundResource(R.drawable.shape_rounded_border_question_result_correct);
             holder.tvQuestion.setTextColor(ContextCompat.getColor(context, R.color.colorWhite));
             holder.tvAnswer.setTextColor(ContextCompat.getColor(context, R.color.colorWhite));
