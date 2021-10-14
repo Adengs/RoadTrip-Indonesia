@@ -17,6 +17,7 @@ import app.codelabs.forum.models.ResponseDoBookmark;
 import app.codelabs.forum.models.ResponseEventDetail;
 import app.codelabs.forum.models.ResponseFinishPassword;
 import app.codelabs.forum.models.ResponseFollow;
+import app.codelabs.forum.models.ResponseFollowsModel;
 import app.codelabs.forum.models.ResponseForgotPassword;
 import app.codelabs.forum.models.ResponseGallery;
 import app.codelabs.forum.models.ResponseHighlight;
@@ -136,7 +137,19 @@ public interface ApiService {
 
     @Multipart
     @POST("api/update_profile")
-    Call<ResponseUpdateProfile> updateProfile(@PartMap Map<String, RequestBody> data, @Part MultipartBody.Part fileImagePart);
+    Call<ResponseUpdateProfile> updateProfile(
+            @PartMap Map<String, RequestBody> data,
+            @Part MultipartBody.Part fileImagePart);
+
+    @Multipart
+    @POST("api/update_profile")
+    Call<ResponseUpdateProfile> updateProfileKtp(
+            @Part MultipartBody.Part fileImagePartKtp);
+
+    @Multipart
+    @POST("api/update_profile")
+    Call<ResponseUpdateProfile> updateProfileSim(
+            @Part MultipartBody.Part fileImagePartSim);
 
     @GET("api/shop/category")
     Call<ResponseShopCategory> getShopCategories();
@@ -191,5 +204,11 @@ public interface ApiService {
 
     @POST("api/questionnaire/response")
     Call<ResponseAnswerQuestioner> answerQuestioner(@Body HashMap<String,Integer> data);
+
+    @GET("api/followed")
+    Call<ResponseFollowsModel> getFollowed(@Query("search") String search);
+    @GET("api/follower")
+    Call<ResponseFollowsModel> getFollower(@Query("search") String search);
+
 }
 

@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import app.codelabs.forum.R;
 import app.codelabs.forum.activities.home.adapter.TabLayoutAdapter;
+import app.codelabs.forum.activities.home.fragment.profile.activity.FollowViewActivity;
 import app.codelabs.forum.activities.home.fragment.profile.fragment.BookmarkFragment;
 import app.codelabs.forum.activities.home.fragment.profile.fragment.ProfileUserFragment;
 import app.codelabs.forum.activities.profile.EditProfileActivity;
@@ -42,11 +45,14 @@ public class ProfileFragment extends Fragment {
     private static final int REQ_EDIT_PROFILE = 1001;
     private ImageView ivSettingApp, ivPhoto;
     private TextView tvEditProfile, tvCountFollowing, tvCountFollower, tvHeaderName, tvCountPost;
+    private LinearLayout viewfollowers,viewFollowing;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private TabLayoutAdapter tabLayoutAdapter;
     private Session session;
     private Context context;
+    private ResponseMyProfile.DataEntity dataProfile;
+    private  boolean refreshProfile = false;
 
     public ProfileFragment() {
     }
@@ -101,6 +107,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setProfile(ResponseMyProfile.DataEntity data) {
+        dataProfile = data;
         ResponseLogin.Data user = session.getUser();
         user.setName(data.getName());
         user.setUsername(data.getUsername());
@@ -139,8 +146,22 @@ public class ProfileFragment extends Fragment {
         tvEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), EditProfileActivity.class);
+                refreshProfile = true;
+                Intent intent = new Intent(getContext(), EditProfileActivity.class).putExtra("data",new Gson().toJson(dataProfile));
+                /*Intent intent = new Intent(getContext(), EditProfileActivity.class);*/
                 startActivityForResult(intent, REQ_EDIT_PROFILE);
+            }
+        });
+        viewfollowers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), FollowViewActivity.class).putExtra("type",1));
+            }
+        });
+        viewFollowing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), FollowViewActivity.class).putExtra("type",2));
             }
         });
     }
@@ -157,12 +178,22 @@ public class ProfileFragment extends Fragment {
 
         tabLayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.viewpager);
+        viewfollowers = view.findViewById(R.id.view_followers);
+        viewFollowing = view.findViewById(R.id.view_following);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == REQ_EDIT_PROFILE) {
             setProfileToView();
+            getProfile();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (refreshProfile){
             getProfile();
         }
     }

@@ -1,8 +1,14 @@
 <resources>
-    <string name="app_name">App Forum</string>
+    <string name="app_name">FEVCI</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="edittext_hint"><font size="14dp">Search here...</font></string>
+    <string name="nomor_registrasi_anggota_nra">Nomor Registrasi Anggota (NRA)</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="alamat">Alamat</string>
+    <string name="rt">RT</string>
+    <string name="desa_kelurahan">Desa/Kelurahan</string>
+    <string name="kecamatan">Kecamatan</string>
 </resources>

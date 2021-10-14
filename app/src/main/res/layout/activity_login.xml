@@ -8,6 +8,11 @@
     android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context=".activities.login.LoginActivity">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,9 +24,9 @@
         <ImageView
             android:id="@+id/logo_login"
             android:layout_marginVertical="56dp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_logo_login" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_fevci" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -32,7 +37,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email"
-                android:text="edi@mailinator.com"
+                android:text="codelabs1@mailinator.com"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="E-mail"
@@ -58,7 +63,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="password"
+                android:text="123456"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:paddingTop="21dp"
@@ -94,6 +99,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="56dp"
             android:gravity="bottom"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <TextView

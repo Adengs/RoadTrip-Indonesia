@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorWhite"
-                tools:listitem="@layout/item_member_club"></androidx.recyclerview.widget.RecyclerView>
+                tools:listitem="@layout/item_member_club"/>
 
 
     </LinearLayout>

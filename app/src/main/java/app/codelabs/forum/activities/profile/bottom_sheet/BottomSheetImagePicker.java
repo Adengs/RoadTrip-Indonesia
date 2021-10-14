@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -90,13 +91,37 @@ public class BottomSheetImagePicker extends BottomSheetDialogFragment {
                     2000);
         } else {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            ((EditProfileActivity) getActivity()).imageUri = FileProvider.getUriForFile(context,
-                    context.
-                            getApplicationContext().getPackageName() + ".app.codelabs.forum.provider",
-                    new File(Environment.getExternalStorageDirectory(), "fname_" +
-                            System.currentTimeMillis() + ".jpg"));
-            intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, ((EditProfileActivity) getActivity()).imageUri);
-            getActivity().startActivityForResult(intent, REQ_CAMERA);
+            switch (this.getTag()){
+                case "get-image":
+                    ((EditProfileActivity) getActivity()).imageUri = FileProvider.getUriForFile(context,
+                            context.
+                                    getApplicationContext().getPackageName() + ".app.codelabs.forum.provider",
+                            new File(Environment.getExternalStorageDirectory(), "fname_" +
+                                    System.currentTimeMillis() + ".jpg"));
+                    intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, ((EditProfileActivity) getActivity()).imageUri);
+                    getActivity().startActivityForResult(intent, REQ_CAMERA);
+                    break;
+                case "get-image-ktp":
+                    ((EditProfileActivity) getActivity()).imageKtp = FileProvider.getUriForFile(context,
+                            context.
+                                    getApplicationContext().getPackageName() + ".app.codelabs.forum.provider",
+                            new File(Environment.getExternalStorageDirectory(), "fnameKtp_" +
+                                    System.currentTimeMillis() + ".jpg"));
+                    intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, ((EditProfileActivity) getActivity()).imageKtp);
+                    getActivity().startActivityForResult(intent, REQ_CAMERA);
+                    break;
+                case "get-image-sim":
+                    ((EditProfileActivity) getActivity()).imageSIM = FileProvider.getUriForFile(context,
+                            context.
+                                    getApplicationContext().getPackageName() + ".app.codelabs.forum.provider",
+                            new File(Environment.getExternalStorageDirectory(), "fnameSim_" +
+                                    System.currentTimeMillis() + ".jpg"));
+                    intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, ((EditProfileActivity) getActivity()).imageSIM);
+                    getActivity().startActivityForResult(intent, REQ_CAMERA);
+                    break;
+
+            }
+
         }
     }
 

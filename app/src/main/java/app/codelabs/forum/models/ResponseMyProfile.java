@@ -58,6 +58,72 @@ public class ResponseMyProfile {
         private int company_id;
         @SerializedName("id")
         private int id;
+        /**
+         * nra : 2020
+         * nickname : sample
+         * gender : Laki-Laki
+         * phone : +628999
+         * chapter : bandung
+         * status : 1
+         * status_jabatan : null
+         * status_merchandise : null
+         * alamat : sample
+         * rt : 1
+         * rw : 1
+         * desa_kelurahan : Cimahi
+         * kecamatan : Cimahi Tengah
+         * kabupaten_kota : Cimahi
+         * provinsi : sample provinsi
+         * foto_ktp : UploadedFile/ktp/1606127007
+         * foto_sim : UploadedFile/sim/1606127007
+         * foto_stnk : UploadedFile/stnk/1606127007
+         * foto_mobil : UploadedFile/mobil/1606127007
+         * keterangan :
+         * status_starter_kit :
+         * reset_token :
+         */
+
+        @SerializedName("nra")
+        private String nra;
+        @SerializedName("nickname")
+        private String nickname;
+        @SerializedName("gender")
+        private String gender;
+        @SerializedName("phone")
+        private String phone;
+        @SerializedName("chapter")
+        private String chapter;
+        @SerializedName("status")
+        private int status;
+        @SerializedName("alamat")
+        private String alamat;
+        @SerializedName("rt")
+        private String rt;
+        @SerializedName("rw")
+        private String rw;
+        @SerializedName("desa_kelurahan")
+        private String desaKelurahan;
+        @SerializedName("kecamatan")
+        private String kecamatan;
+        @SerializedName("kabupaten_kota")
+        private String kabupatenKota;
+        @SerializedName("provinsi")
+        private String provinsi;
+        @SerializedName("foto_ktp")
+        private String fotoKtp;
+        @SerializedName("foto_sim")
+        private String fotoSim;
+        @SerializedName("foto_stnk")
+        private String fotoStnk;
+        @SerializedName("foto_mobil")
+        private String fotoMobil;
+        @SerializedName("keterangan")
+        private String keterangan;
+        @SerializedName("status_starter_kit")
+        private String statusStarterKit;
+        @SerializedName("reset_token")
+        private String resetToken;
+
 
         public int getFollowing() {
             return following;
@@ -145,6 +211,166 @@ public class ResponseMyProfile {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public String getNra() {
+            return nra;
+        }
+
+        public void setNra(String nra) {
+            this.nra = nra;
+        }
+
+        public String getNickname() {
+            return nickname;
+        }
+
+        public void setNickname(String nickname) {
+            this.nickname = nickname;
+        }
+
+        public String getGender() {
+            return gender;
+        }
+
+        public void setGender(String gender) {
+            this.gender = gender;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getChapter() {
+            return chapter;
+        }
+
+        public void setChapter(String chapter) {
+            this.chapter = chapter;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public String getAlamat() {
+            return alamat;
+        }
+
+        public void setAlamat(String alamat) {
+            this.alamat = alamat;
+        }
+
+        public String getRt() {
+            return rt;
+        }
+
+        public void setRt(String rt) {
+            this.rt = rt;
+        }
+
+        public String getRw() {
+            return rw;
+        }
+
+        public void setRw(String rw) {
+            this.rw = rw;
+        }
+
+        public String getDesaKelurahan() {
+            return desaKelurahan;
+        }
+
+        public void setDesaKelurahan(String desaKelurahan) {
+            this.desaKelurahan = desaKelurahan;
+        }
+
+        public String getKecamatan() {
+            return kecamatan;
+        }
+
+        public void setKecamatan(String kecamatan) {
+            this.kecamatan = kecamatan;
+        }
+
+        public String getKabupatenKota() {
+            return kabupatenKota;
+        }
+
+        public void setKabupatenKota(String kabupatenKota) {
+            this.kabupatenKota = kabupatenKota;
+        }
+
+        public String getProvinsi() {
+            return provinsi;
+        }
+
+        public void setProvinsi(String provinsi) {
+            this.provinsi = provinsi;
+        }
+
+        public String getFotoKtp() {
+            return fotoKtp;
+        }
+
+        public void setFotoKtp(String fotoKtp) {
+            this.fotoKtp = fotoKtp;
+        }
+
+        public String getFotoSim() {
+            return fotoSim;
+        }
+
+        public void setFotoSim(String fotoSim) {
+            this.fotoSim = fotoSim;
+        }
+
+        public String getFotoStnk() {
+            return fotoStnk;
+        }
+
+        public void setFotoStnk(String fotoStnk) {
+            this.fotoStnk = fotoStnk;
+        }
+
+        public String getFotoMobil() {
+            return fotoMobil;
+        }
+
+        public void setFotoMobil(String fotoMobil) {
+            this.fotoMobil = fotoMobil;
+        }
+
+        public String getKeterangan() {
+            return keterangan;
+        }
+
+        public void setKeterangan(String keterangan) {
+            this.keterangan = keterangan;
+        }
+
+        public String getStatusStarterKit() {
+            return statusStarterKit;
+        }
+
+        public void setStatusStarterKit(String statusStarterKit) {
+            this.statusStarterKit = statusStarterKit;
+        }
+
+        public String getResetToken() {
+            return resetToken;
+        }
+
+        public void setResetToken(String resetToken) {
+            this.resetToken = resetToken;
         }
     }
 }

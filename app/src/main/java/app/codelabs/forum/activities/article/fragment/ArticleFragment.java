@@ -123,6 +123,8 @@ public class ArticleFragment extends Fragment {
                 if (response.body() != null) {
                     if (response.isSuccessful() & response.body().getSuccess()) {
                         setArticles(response.body().getData());
+                    }else {
+                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }

@@ -23,10 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.home.fragment.profile.activity.FollowViewActivity"></activity>
         <activity android:name=".activities.questioner.QuestionResultActivity" />
-        <activity android:name=".activities.questioner.QuestionActivity">
-
-        </activity>
+        <activity android:name=".activities.questioner.QuestionActivity"></activity>
 
         <provider
             android:name=".helpers.GenericFileProvider"
@@ -61,13 +60,11 @@
         <activity android:name=".activities.login.LoginActivity" />
         <activity android:name=".activities.walktrough.WalkThroughActivity" />
         <activity android:name=".activities.splashscreen.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
-
-
-                 <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
