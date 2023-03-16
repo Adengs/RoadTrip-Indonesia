@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".activities.login.LoginActivity">
+    tools:context="app.codelabs.fevci.activities.login.LoginActivity">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,7 +37,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email"
-                android:text="codelabs1@mailinator.com"
+                tools:text="codelabs1@mailinator.com"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="E-mail"
@@ -63,7 +63,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="123456"
+                tools:text="123456"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:paddingTop="21dp"

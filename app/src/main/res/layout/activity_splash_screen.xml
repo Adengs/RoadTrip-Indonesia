@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.splashscreen.SplashScreenActivity"
+    tools:context="app.codelabs.fevci.activities.splashscreen.SplashScreenActivity"
     android:background="@color/colorWhite">
 
     <ImageView

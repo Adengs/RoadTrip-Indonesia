@@ -61,17 +61,22 @@
                     android:textSize="14sp"
                     tools:text="Bayerische Motoren Werke AG,translated in English as Bavarian Motor Works." />
 
-                <TextView
-                    android:id="@+id/tv_category"
+                <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/shape_home_latest"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="4dp"
-                    android:text="Cars"
-                    android:textColor="@color/colorRed"
-                    android:textSize="14sp" />
+                    android:paddingVertical="@dimen/_4sdp"
+                    android:paddingHorizontal="@dimen/_8sdp">
+                    <TextView
+                        android:id="@+id/tv_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cars"
+                        android:textColor="@color/colorRed"
+                        android:textSize="@dimen/_9ssp" />
+                </FrameLayout>
+
             </LinearLayout>
 
 

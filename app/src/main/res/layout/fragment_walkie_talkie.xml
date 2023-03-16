@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
     android:orientation="vertical"
-    tools:context=".activities.event.fragment.WalkieTalkieFragment">
+    tools:context="app.codelabs.fevci.activities.event.fragment.WalkieTalkieFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout

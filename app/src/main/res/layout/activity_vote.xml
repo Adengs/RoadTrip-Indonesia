@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
     android:orientation="vertical"
-    tools:context=".activities.vote.VoteActivity">
+    tools:context="app.codelabs.fevci.activities.vote.VoteActivity">
 
 
     <androidx.appcompat.widget.Toolbar

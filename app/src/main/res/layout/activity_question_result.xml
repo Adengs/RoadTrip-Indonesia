@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.questioner.QuestionResultActivity">
+    tools:context="app.codelabs.fevci.activities.questioner.QuestionResultActivity">
 
     <ImageView
         android:id="@+id/iv_close"

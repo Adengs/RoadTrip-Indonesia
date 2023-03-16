@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".activities.questioner.QuestionActivity">
+    tools:context="app.codelabs.fevci.activities.questioner.QuestionActivity">
 
     <FrameLayout
         android:id="@+id/container"

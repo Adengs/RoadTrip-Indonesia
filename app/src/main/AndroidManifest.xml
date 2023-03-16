@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name=".Forum"
+        android:name="app.codelabs.fevci.Forum"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,12 +23,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.home.fragment.profile.activity.FollowViewActivity"></activity>
-        <activity android:name=".activities.questioner.QuestionResultActivity" />
-        <activity android:name=".activities.questioner.QuestionActivity"></activity>
+        <activity android:name="app.codelabs.fevci.activities.home.fragment.profile.activity.FollowViewActivity"></activity>
+        <activity android:name="app.codelabs.fevci.activities.questioner.QuestionResultActivity" />
+        <activity android:name="app.codelabs.fevci.activities.questioner.QuestionActivity"></activity>
 
         <provider
-            android:name=".helpers.GenericFileProvider"
+            android:name="app.codelabs.fevci.helpers.GenericFileProvider"
             android:authorities="${applicationId}.app.codelabs.forum.provider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -37,29 +37,29 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".activities.profile.EditProfileActivity" />
-        <activity android:name=".activities.article.DetailArticleActivity" />
-        <activity android:name=".activities.about.AboutActivity" />
-        <activity android:name=".activities.gallery.GalleryActivity" />
-        <activity android:name=".activities.gallery.DetailGalleryActivity" />
-        <activity android:name=".activities.article.ArticleActivity" />
-        <activity android:name=".activities.event.EventActivity" />
-        <activity android:name=".activities.shop.ProductActivity" />
-        <activity android:name=".activities.shop.DetailProductActivity" />
-        <activity android:name=".activities.notification.NotificationDetailActivity" />
-        <activity android:name=".activities.vote.VoteActivity" />
-        <activity android:name=".activities.forgot_password.ForgotPasswordActivity" />
-        <activity android:name=".activities.forgot_password.SubmitPasswordActivity" />
-        <activity android:name=".activities.forgot_password.FinishPasswordActivity" />
-        <activity android:name=".activities.register.RegisterActivity" />
-        <activity android:name=".activities.home.HomeActivity" />
-        <activity android:name=".activities.notification.NotificationActivity" />
-        <activity android:name=".activities.setting.SettingActivity" />
-        <activity android:name=".activities.event.DetailEventActivity" />
-        <activity android:name=".activities.conversation.ChatRoomActivity" />
-        <activity android:name=".activities.login.LoginActivity" />
-        <activity android:name=".activities.walktrough.WalkThroughActivity" />
-        <activity android:name=".activities.splashscreen.SplashScreenActivity">
+        <activity android:name="app.codelabs.fevci.activities.profile.EditProfileActivity" />
+        <activity android:name="app.codelabs.fevci.activities.article.DetailArticleActivity" />
+        <activity android:name="app.codelabs.fevci.activities.about.AboutActivity" />
+        <activity android:name="app.codelabs.fevci.activities.gallery.GalleryActivity" />
+        <activity android:name="app.codelabs.fevci.activities.gallery.DetailGalleryActivity" />
+        <activity android:name="app.codelabs.fevci.activities.article.ArticleActivity" />
+        <activity android:name="app.codelabs.fevci.activities.event.EventActivity" />
+        <activity android:name="app.codelabs.fevci.activities.shop.ProductActivity" />
+        <activity android:name="app.codelabs.fevci.activities.shop.DetailProductActivity" />
+        <activity android:name="app.codelabs.fevci.activities.notification.NotificationDetailActivity" />
+        <activity android:name="app.codelabs.fevci.activities.vote.VoteActivity" />
+        <activity android:name="app.codelabs.fevci.activities.forgot_password.ForgotPasswordActivity" />
+        <activity android:name="app.codelabs.fevci.activities.forgot_password.SubmitPasswordActivity" />
+        <activity android:name="app.codelabs.fevci.activities.forgot_password.FinishPasswordActivity" />
+        <activity android:name="app.codelabs.fevci.activities.register.RegisterActivity" />
+        <activity android:name="app.codelabs.fevci.activities.home.HomeActivity" />
+        <activity android:name="app.codelabs.fevci.activities.notification.NotificationActivity" />
+        <activity android:name="app.codelabs.fevci.activities.setting.SettingActivity" />
+        <activity android:name="app.codelabs.fevci.activities.event.DetailEventActivity" />
+        <activity android:name="app.codelabs.fevci.activities.conversation.ChatRoomActivity" />
+        <activity android:name="app.codelabs.fevci.activities.login.LoginActivity" />
+        <activity android:name="app.codelabs.fevci.activities.walktrough.WalkThroughActivity" />
+        <activity android:name="app.codelabs.fevci.activities.splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

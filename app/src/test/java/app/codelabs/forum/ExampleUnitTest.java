@@ -2,7 +2,7 @@ package app.codelabs.forum;
 
 import org.junit.Test;
 
-import app.codelabs.forum.helpers.DateTimeHelper;
+import app.codelabs.fevci.helpers.DateTimeHelper;
 
 import static org.junit.Assert.*;
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
     android:orientation="vertical"
-    tools:context=".activities.event.DetailEventActivity">
+    tools:context="app.codelabs.fevci.activities.event.DetailEventActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

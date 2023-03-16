@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:background="@color/displayScreen"
     android:orientation="vertical"
-    tools:context=".activities.register.RegisterActivity">
+    tools:context="app.codelabs.fevci.activities.register.RegisterActivity">
 
 
     <androidx.appcompat.widget.Toolbar

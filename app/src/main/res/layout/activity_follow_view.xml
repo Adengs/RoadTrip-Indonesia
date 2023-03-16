@@ -8,7 +8,7 @@
     android:background="@color/colorWhite"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".activities.home.fragment.profile.activity.FollowViewActivity">
+    tools:context="app.codelabs.fevci.activities.home.fragment.profile.activity.FollowViewActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

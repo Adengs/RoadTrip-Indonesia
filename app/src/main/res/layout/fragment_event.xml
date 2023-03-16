@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
     android:orientation="vertical"
-    tools:context=".activities.home.fragment.myevent.EventFragment">
+    tools:context="app.codelabs.fevci.activities.home.fragment.myevent.EventFragment">
 
     <TextView
         android:layout_width="match_parent"

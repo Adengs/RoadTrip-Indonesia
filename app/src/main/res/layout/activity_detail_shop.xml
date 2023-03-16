@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.shop.DetailProductActivity">
+    tools:context="app.codelabs.fevci.activities.shop.DetailProductActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
