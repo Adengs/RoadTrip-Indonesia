@@ -1,15 +1,20 @@
 package app.codelabs.fevci.activities.home.fragment.community.fragment;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -88,6 +93,9 @@ public class MemberFragment extends Fragment {
                     if (response.isSuccessful() && response.body().getSuccess()) {
                         adapter.setItems(response.body().getData());
                     }
+                    else {
+                        Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -102,25 +110,50 @@ public class MemberFragment extends Fragment {
     }
 
     private void setEvent() {
-        etSearchMember.addTextChangedListener(new TextWatcher() {
+        etSearchMember.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                search = s.toString();
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+//                search = s.toString();
+                search = etSearchMember.getText().toString().trim();
                 setLoading(true, true);
                 loadData();
-
+                }
             }
         });
+
+        etSearchMember.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH){
+//                    etSearch.hideKeyboard();
+                    hideKeyboard();
+                    etSearchMember.clearFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+//        etSearchMember.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                search = s.toString();
+//                setLoading(true, true);
+//                loadData();
+//
+//            }
+//        });
         adapter.setListener(new MemberAdapter.OnItemSelected() {
             @Override
             public void onFollow(final ResponseListMemberCompany.Data data) {
@@ -195,5 +228,12 @@ public class MemberFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rv_member);
         etSearchMember = view.findViewById(R.id.et_search_member);
         progressBar = view.findViewById(R.id.progress);
+    }
+
+    public void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+        }
     }
 }

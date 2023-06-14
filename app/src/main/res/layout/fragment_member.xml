@@ -42,7 +42,8 @@
                 android:inputType="text"
                 android:layout_marginLeft="21dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:imeOptions="actionSearch"/>
         </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

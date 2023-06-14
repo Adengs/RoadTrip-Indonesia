@@ -64,6 +64,10 @@ public  class ResponseLogin {
         private int company_id;
         @SerializedName("id")
         private int id;
+        @SerializedName("nra")
+        private String nra;
+        @SerializedName("chapter")
+        private String chapter;
 
         public String getRole() {
             return role;
@@ -135,6 +139,22 @@ public  class ResponseLogin {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public String getNra() {
+            return nra;
+        }
+
+        public void setNra(String nra) {
+            this.nra = nra;
+        }
+
+        public String getChapter() {
+            return chapter;
+        }
+
+        public void setChapter(String chapter) {
+            this.chapter = chapter;
         }
     }
 }

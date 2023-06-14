@@ -300,6 +300,8 @@ public class EditProfileActivity extends AppCompatActivity {
         user.setDate_birth(data.getDate_birth());
         user.setEmail(data.getEmail());
         user.setPhoto(data.getPhoto());
+        user.setNra(data.getNra());
+        user.setChapter(data.getChapter());
 
         session.setUser(user);
     }

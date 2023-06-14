@@ -7,7 +7,9 @@
     android:layout_gravity="center"
     android:background="@color/displayScreen"
     android:orientation="vertical"
-    tools:context="app.codelabs.fevci.activities.register.RegisterActivity">
+    tools:context="app.codelabs.fevci.activities.register.RegisterActivity"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -20,9 +22,11 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_marginRight="20dp"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
             android:src="@drawable/ic_asset" />
 
         <TextView
@@ -31,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="Register"
             android:textColor="@color/colorTitleToolbar"
-            android:textSize="14dp" />
+            android:textSize="@dimen/_14sdp" />
     </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
@@ -50,12 +54,44 @@
                 android:background="@drawable/shape_rounded_regis"
                 android:orientation="vertical">
 
+                <ProgressBar
+                    android:id="@+id/progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:indeterminate="true"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                </ProgressBar>
+
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:passwordToggleDrawable="@drawable/icon_selector"
                     app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/et_nra"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:hint="NRA"
+                        android:textSize="14dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:passwordToggleDrawable="@drawable/icon_selector"
+                    app:passwordToggleEnabled="true"
+                    android:visibility="gone">
 
                     <EditText
                         android:id="@+id/et_username"
@@ -67,7 +103,6 @@
                         android:hint="Username"
                         android:textSize="14dp" />
                 </com.google.android.material.textfield.TextInputLayout>
-
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -84,7 +119,8 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:hint="Name"
-                        android:textSize="14dp" />
+                        android:textSize="14dp"
+                        android:enabled="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -120,6 +156,24 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textSize="14dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:passwordToggleDrawable="@drawable/icon_selector"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/con_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:hint="Confirm Password"
                         android:inputType="textPassword"
                         android:textSize="14dp" />
                 </com.google.android.material.textfield.TextInputLayout>

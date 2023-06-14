@@ -1,11 +1,14 @@
 package app.codelabs.fevci.activities.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -15,6 +18,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import app.codelabs.fevci.activities.home.fragment.community.DetailMemberActivity;
 import app.codelabs.fevci.helpers.Session;
 import app.codelabs.fevci.models.ResponseListMemberCompany;
 import app.codelabs.forum.R;
@@ -39,9 +43,11 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        ResponseListMemberCompany.Data data = items.get(position);
+        final ResponseListMemberCompany.Data data = items.get(position);
         holder.tvNama.setText(data.getName());
         holder.tvfollowers.setText(String.valueOf(data.getFollowers()));
+        holder.tvChapter.setText(data.getChapter());
+        holder.nra.setText(String.valueOf(data.getNra()));
         Picasso.with(context).load(data.getPhoto())
                 .placeholder(R.drawable.default_photo)
                 .centerCrop().fit().into(holder.ivMember);
@@ -61,6 +67,16 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
             holder.tvfollow.setTextColor(Color.parseColor("#F62C4C"));
             holder.tvfollow.setBackgroundResource(R.drawable.shape_car_club);
         }
+
+        holder.containerMember.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(context, "cek", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, DetailMemberActivity.class);
+                intent.putExtra("user_id", data.getId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -83,8 +99,9 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        TextView tvNama, tvfollowers, tvfollow;
+        TextView tvNama, tvfollowers, tvfollow, tvChapter, nra;
         CircleImageView ivMember;
+        LinearLayout containerMember;
 
         public MyHolder(@NonNull View view) {
             super(view);
@@ -111,6 +128,10 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyHolder> 
             tvfollowers = view.findViewById(R.id.tv_followers);
             ivMember = view.findViewById(R.id.iv_Member);
             tvfollow = view.findViewById(R.id.tv_follow);
+            tvfollow = view.findViewById(R.id.tv_follow);
+            tvChapter = view.findViewById(R.id.tv_chapter);
+            nra = view.findViewById(R.id.tv_Nra);
+            containerMember = view.findViewById(R.id.container_member);
         }
     }
 

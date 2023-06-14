@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context="app.codelabs.fevci.activities.home.fragment.community.DetailMemberActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackgroundToolbar"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/Register">
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_event"
+            app:layout_collapseMode="parallax"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_photo"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_marginLeft="16dp"
+                        android:scaleType="centerCrop"
+                        tools:src="@color/abu" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_header_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            tools:text="Edinofri" />
+
+                        <TextView
+                            android:id="@+id/tv_edit_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/shape_editprofile"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="6dp"
+                            android:paddingRight="8dp"
+                            android:paddingBottom="6dp"
+                            android:text="Edit Profile"
+                            android:textColor="@color/colorRed"
+                            android:textSize="12dp"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/iv_setting_app"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="16dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_settings"
+                    android:visibility="gone"/>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36.5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="21dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_count_post"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        tools:text="105" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:text="Post"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="@color/colorCircle" />
+
+                <!--                android:foreground="?selectableItemBackground"-->
+                <LinearLayout
+                    android:id="@+id/view_followers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_count_follower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        tools:text="3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:text="Followers"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="@color/colorCircle" />
+
+                <!--                android:foreground="?selectableItemBackground"-->
+                <LinearLayout
+                    android:id="@+id/view_following"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_count_following"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        tools:text="55" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:text="Following"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="0.3"
+                    android:text="Name"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp"
+                    tools:text="Edinofri" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="0.3"
+                    android:text="E-mail"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp"
+                    tools:text="bakteri.kurang.baik@gmail.com" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="0.4"
+                    android:text="Date of birth"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_dob"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="0.6"
+                    android:gravity="right"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp"
+                    tools:text="10 Desember 1980" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="0.3"
+                    android:text="Chapter"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_chapter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp"
+                    tools:text="Jakarta Banjir" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="0.3"
+                    android:text="NRA"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_nra"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp"
+                    tools:text="Jakarta Banjir" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackground"
+                android:id="@+id/viewKta">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/kta"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <RelativeLayout
+                    android:id="@+id/lay_image"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image_profile"
+                        android:layout_width="69dp"
+                        android:layout_height="69dp"
+                        android:scaleType="centerCrop"
+                        tools:src="@color/colorRed"
+                        android:layout_centerInParent="true"/>
+
+                    <ImageView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        tools:src="@drawable/frame_image"
+                        android:layout_centerInParent="true"
+                        android:visibility="visible"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lay_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/textView_name"
+                        android:layout_width="265dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorWhite"
+                        tools:text="Adeng Solihin"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/textView_noId"
+                        android:layout_width="265dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        tools:text="19969009887666"
+                        android:textColor="@color/colorWhite"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorWhite"
+            app:layout_anchor="@id/appbar_profile"
+            app:layout_anchorGravity="bottom"
+            app:tabIndicatorColor="@color/colorRed"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/colorBlack"
+            app:tabTextAppearance="@style/Tablayout"
+            app:tabTextColor="@color/texttablayout"
+            android:visibility="gone"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

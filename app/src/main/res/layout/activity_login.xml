@@ -7,7 +7,10 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context="app.codelabs.fevci.activities.login.LoginActivity">
+    tools:context="app.codelabs.fevci.activities.login.LoginActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -99,7 +102,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="56dp"
             android:gravity="bottom"
-            android:visibility="gone"
+            android:visibility="visible"
             android:orientation="horizontal">
 
             <TextView

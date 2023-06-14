@@ -3,11 +3,13 @@ package app.codelabs.fevci.helpers;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.codelabs.fevci.models.MemberProfile;
 import app.codelabs.fevci.models.ResponseAbout;
 import app.codelabs.fevci.models.ResponseAnswerQuestioner;
 import app.codelabs.fevci.models.ResponseApi;
 import app.codelabs.fevci.models.ResponseArticleCategory;
 import app.codelabs.fevci.models.ResponseBookmarkShop;
+import app.codelabs.fevci.models.ResponseCheckNra;
 import app.codelabs.fevci.models.ResponseDefault;
 import app.codelabs.fevci.models.ResponseDetailShopItem;
 import app.codelabs.fevci.models.ResponseDoBookmark;
@@ -66,7 +68,7 @@ public interface ApiService {
     @POST("auth/signin")
     Call<ResponseLogin> login(@Body Map<String, String> body);
 
-    @POST("auth/register")
+    @POST("api/register")
     Call<ResponseDefault> register(@Body Map<String, String> body);
 
     @GET("api/walk_through")
@@ -74,6 +76,9 @@ public interface ApiService {
 
     @GET("api/member")
     Call<ResponseListMemberCompany> listMember(@Query("search") String search);
+
+    @GET("api/member/{id}")
+    Call<MemberProfile> getDetailMember(@Path("id") int id);
 
     @GET("api/profile")
     Call<ResponseMyProfile> getProfile();
@@ -209,6 +214,9 @@ public interface ApiService {
     Call<ResponseFollowsModel> getFollowed(@Query("search") String search);
     @GET("api/follower")
     Call<ResponseFollowsModel> getFollower(@Query("search") String search);
+
+    @POST("api/check/nra")
+    Call<ResponseCheckNra> checkNra(@Query("nra") String nra);
 
 }
 

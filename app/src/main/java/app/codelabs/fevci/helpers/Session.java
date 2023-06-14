@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
+import app.codelabs.fevci.models.MemberProfile;
 import app.codelabs.fevci.models.ResponseLogin;
 import app.codelabs.fevci.activities.login.LoginActivity;
 import app.codelabs.fevci.models.ResponseWalkThrough;
@@ -19,6 +20,7 @@ public class Session {
     private static String KEY_WALK_TROUGH = "walk-trough";
     private static String KEY_IS_LOGIN = "is-login";
     private static String KEY_USER = "user";
+    private static String KEY_MEMBER = "member";
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -62,6 +64,10 @@ public class Session {
         return new Gson().fromJson(sharedPreferences.getString(KEY_USER, "{}"), ResponseLogin.Data.class);
     }
 
+    public MemberProfile.Data getMember() {
+        return new Gson().fromJson(sharedPreferences.getString(KEY_MEMBER, "{}"), MemberProfile.Data.class);
+    }
+
     public void setLogout() {
 
         editor.remove(KEY_IS_LOGIN);
@@ -86,6 +92,11 @@ public class Session {
 
     public void setUser(ResponseLogin.Data user) {
         editor.putString(KEY_USER, new Gson().toJson(user));
+        editor.commit();
+    }
+
+    public void setMember(MemberProfile.Data member) {
+        editor.putString(KEY_MEMBER, new Gson().toJson(member));
         editor.commit();
     }
 }

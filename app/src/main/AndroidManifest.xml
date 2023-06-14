@@ -23,9 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="app.codelabs.fevci.activities.home.fragment.profile.activity.FollowViewActivity"></activity>
+        <activity android:name="app.codelabs.fevci.activities.home.fragment.profile.activity.FollowViewActivity" />
         <activity android:name="app.codelabs.fevci.activities.questioner.QuestionResultActivity" />
-        <activity android:name="app.codelabs.fevci.activities.questioner.QuestionActivity"></activity>
+        <activity android:name="app.codelabs.fevci.activities.questioner.QuestionActivity" />
 
         <provider
             android:name="app.codelabs.fevci.helpers.GenericFileProvider"
@@ -37,6 +37,7 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
+        <activity android:name="app.codelabs.fevci.activities.home.fragment.community.DetailMemberActivity"/>
         <activity android:name="app.codelabs.fevci.activities.profile.EditProfileActivity" />
         <activity android:name="app.codelabs.fevci.activities.article.DetailArticleActivity" />
         <activity android:name="app.codelabs.fevci.activities.about.AboutActivity" />

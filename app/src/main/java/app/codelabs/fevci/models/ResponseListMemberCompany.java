@@ -63,7 +63,10 @@ public class ResponseListMemberCompany {
         private int company_id;
         @SerializedName("id")
         private int id;
-
+        @SerializedName("chapter")
+        private String chapter;
+        @SerializedName("nra")
+        private String nra;
 
         public void setIs_following(boolean is_following) {
             this.is_following = is_following;
@@ -159,6 +162,22 @@ public class ResponseListMemberCompany {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public String getChapter() {
+            return chapter;
+        }
+
+        public void setChapter(String chapter) {
+            this.chapter = chapter;
+        }
+
+        public String getNra() {
+            return nra;
+        }
+
+        public void setNra(String nra) {
+            this.nra = nra;
         }
     }
 }

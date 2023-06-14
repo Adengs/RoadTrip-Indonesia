@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -20,12 +22,14 @@ import app.codelabs.fevci.models.ResponseLogin;
 import app.codelabs.forum.R;
 import app.codelabs.fevci.helpers.Session;
 import app.codelabs.fevci.models.EventBusClass;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileUserFragment extends Fragment {
     private Session session;
     private Context context;
 
-    private TextView tvName, tvEmail, tvDob, tvCity;
+    private TextView tvName, tvEmail, tvDob, tvChapter, tvNra, tvNameKta, tvNraKta;
+    private CircleImageView imageKta;
     public ProfileUserFragment() {
     }
 
@@ -51,8 +55,20 @@ public class ProfileUserFragment extends Fragment {
 
         tvName.setText(user.getName());
         tvEmail.setText(user.getEmail());
-        tvCity.setText(user.getCity());
+        tvChapter.setText(user.getChapter());
         tvDob.setText(user.getDate_birth());
+        tvNra.setText(user.getNra());
+
+        Picasso.with(context).load(user.getPhoto())
+                .placeholder(R.drawable.default_photo)
+                .fit().centerCrop().into(imageKta);
+
+        tvNameKta.setText(user.getName());
+        if (user.getNra().isEmpty()){
+            tvNraKta.setText(" xxx xx xxxxx");
+        }else {
+            tvNraKta.setText(user.getNra());
+        }
 
     }
 
@@ -60,7 +76,11 @@ public class ProfileUserFragment extends Fragment {
         tvName = view.findViewById(R.id.tv_name);
         tvEmail = view.findViewById(R.id.tv_email);
         tvDob = view.findViewById(R.id.tv_dob);
-        tvCity = view.findViewById(R.id.tv_city);
+        tvChapter = view.findViewById(R.id.tv_chapter);
+        tvNra = view.findViewById(R.id.tv_nra);
+        tvNameKta = view.findViewById(R.id.textView_name);
+        tvNraKta = view.findViewById(R.id.textView_noId);
+        imageKta = view.findViewById(R.id.image_profile);
     }
 
     @Override
