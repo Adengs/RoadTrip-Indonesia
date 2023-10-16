@@ -19,7 +19,7 @@
 
             <ImageView
                 android:layout_marginRight="10dp"
-                android:src="@drawable/logologinbaru"
+                android:src="@drawable/logo_roadtrip"
                 android:layout_width="24dp"
                 android:layout_height="24dp" />
 

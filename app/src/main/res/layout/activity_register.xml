@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:background="@color/displayScreen"
     android:orientation="vertical"
-    tools:context="app.codelabs.fevci.activities.register.RegisterActivity"
+    tools:context="app.codelabs.roadtrip.activities.register.RegisterActivity"
     android:focusableInTouchMode="true"
     android:focusable="true">
 
@@ -72,7 +72,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    app:passwordToggleEnabled="true"
+                    android:visibility="gone">
 
                     <EditText
                         android:id="@+id/et_nra"
@@ -107,9 +108,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="20dp">
 
                     <EditText
                         android:id="@+id/et_name"
@@ -119,16 +118,13 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:hint="Name"
-                        android:textSize="14dp"
-                        android:enabled="false"/>
+                        android:textSize="14dp"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="20dp">
 
                     <EditText
                         android:id="@+id/et_email"
@@ -140,6 +136,22 @@
                         android:hint="E-mail"
                         android:textSize="14dp" />
 
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/et_phone"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:hint="Phone"
+                        android:textSize="14dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout

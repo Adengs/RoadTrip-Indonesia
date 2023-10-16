@@ -40,21 +40,22 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/shape_bulat"
-                        android:src="@drawable/logologinbaru" />
+                        android:src="@drawable/logo_roadtrip" />
 
                     <TextView
                         android:id="@+id/tv_company_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
-                        android:text="Ford Everest Club Indonesia"
+                        android:text="RoadTrip Indonesia"
                         android:textColor="@color/colorWhite"
                         android:textSize="14dp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"

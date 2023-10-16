@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/displayScreen"
     android:orientation="vertical"
-    tools:context="app.codelabs.fevci.activities.gallery.DetailGalleryActivity">
+    tools:context="app.codelabs.roadtrip.activities.gallery.DetailGalleryActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

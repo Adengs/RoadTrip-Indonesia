@@ -1,21 +1,23 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 33
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "app.codelabs.fevci"
+        applicationId "app.codelabs.roadtrip"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 33
         versionCode 10
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
         buildFeatures {
             viewBinding = true
         }
 
 
-        def appName = "fevci"
+        def appName = "roadtrip"
         def date = new Date()
         def formattedDate = date.format('yyyyMMdd')
         setProperty("archivesBaseName", appName + "_" + formattedDate + "_vc" + versionCode)
@@ -27,10 +29,35 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 
     packagingOptions {
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
+//        exclude 'META-INF/LICENSE.txt'
+//        exclude 'META-INF/NOTICE.txt'
+//        pickFirst 'META-INF/AL2.0'
+//        pickFirst 'META-INF/LGPL2.1'
+//        pickFirst  '**'
+//        pickFirst 'lib/armeabi-v7a/libassmidi.so'
+//        pickFirst 'lib/x86/libassmidi.so'
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/license.txt")
+        exclude("META-INF/NOTICE")
+        exclude("META-INF/NOTICE.txt")
+        exclude("META-INF/notice.txt")
+        exclude("META-INF/ASL2.0")
+        exclude("META-INF/*.kotlin_module")
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
@@ -45,6 +72,11 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment:2.6.0'
+    implementation 'androidx.navigation:navigation-ui:2.6.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
+    implementation 'com.google.android.gms:play-services-cast-framework:21.3.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
@@ -79,4 +111,23 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
 
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+//    implementasi 'com.android.support:multidex:1.0.3'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
+    //youtube player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
+
+    //maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.google.android.gms:play-services-analytics:18.0.3'
+
+    implementation('com.afollestad.material-dialogs:core:0.8.5.9@aar') {
+        force = true
+    }
 }

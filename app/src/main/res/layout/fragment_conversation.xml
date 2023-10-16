@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context="app.codelabs.fevci.activities.home.fragment.chat.ConversationFragment">
+    tools:context="app.codelabs.roadtrip.activities.home.fragment.chat.ConversationFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

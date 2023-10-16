@@ -27,7 +27,7 @@
 
             <ImageView
                 android:id="@+id/img_logo"
-                android:src="@drawable/download"
+                android:src="@drawable/logo_roadtrip"
                 android:layout_marginLeft="3dp"
                 android:layout_width="18dp"
                 android:layout_height="18dp"/>

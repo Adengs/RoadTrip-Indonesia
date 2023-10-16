@@ -19,7 +19,7 @@
             android:id="@+id/iv_logo"
             android:layout_width="46dp"
             android:layout_height="46dp"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo_roadtrip" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="14dp"
                 android:textStyle="bold"
-                tools:text="Ford Everest Club Indonesia" />
+                tools:text="RoadTrip Indonesia" />
 
             <TextView
                 android:id="@+id/tv_latest_chat"

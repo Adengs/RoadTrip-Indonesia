@@ -6,12 +6,14 @@
     <color name="colorNext">@color/colorRed</color>
     <color name="colorText">@color/colorBlack</color>
     <color name="colorBackground">@color/colorWhite</color>
+    <color name="colorBackgroundSearch">#F0F2F3</color>
     <color name="colorTitleToolbar">@color/colorBlack</color>
     <color name="colorBackgroundToolbar">@color/colorWhite</color>
     <color name="colorButtonRegister">@color/colorRed</color>
     <color name="colorCircle">#F0F3F5</color>
     <color name="colorDesc">#818E97</color>
     <color name="colorSpace">#FAFAFA</color>
+    <color name="colorSpaceListLocation">#E3E8EB</color>
 
 
     <color name="colorGray">#818E97</color>
@@ -46,6 +48,9 @@
     <color name="texttablayout">#818E97</color>
     <!-- display member-->
     <color name="member">#818E97</color>
+
+    <color name="main_bg">#F5EEDA</color>
+    <color name="orange">#EABD3C</color>
 
 
 </resources>

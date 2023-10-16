@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".activities.explore.ExploreActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="16dp"
+            android:src="@drawable/ic_back_black" />
+
+<!--        <EditText-->
+<!--            android:id="@+id/et_search"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@null"-->
+<!--            android:drawableRight="@drawable/ic_search"-->
+<!--            android:hint="Explore"-->
+<!--            android:imeOptions="actionSearch"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:padding="16dp"-->
+<!--            android:textColorHint="@color/colorBlack" />-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Explore"
+            android:textColor="@color/colorBlack"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/_15sdp"
+            android:paddingStart="@dimen/_12sdp"/>
+
+        <ImageView
+            android:id="@+id/btn_search"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_search"
+            android:scaleX="0.25"
+            android:scaleY="0.25"/>
+    </LinearLayout>
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="@color/colorSpace" />-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+<!--            app:tabIndicatorColor="@color/colorRed"-->
+<!--            app:tabIndicatorHeight="2dp"-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_tab_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_14sdp"
+                tools:listitem="@layout/item_category_explore"/>
+
+<!--            <com.google.android.material.tabs.TabLayout-->
+<!--                android:id="@+id/tab_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@color/colorWhite"-->
+<!--                android:visibility="invisible"-->
+<!--                app:tabIndicatorColor="@android:color/transparent"-->
+<!--                app:tabIndicatorFullWidth="false"-->
+
+<!--                app:tabMode="fixed"-->
+<!--                app:tabSelectedTextColor="@color/colorWhite"-->
+<!--                app:tabTextAppearance="@style/Tablayout"-->
+<!--                app:tabTextColor="@color/colorBlack"-->
+<!--                app:tabIndicator="@drawable/tab_indicator"-->
+<!--                app:tabBackground="@drawable/tab_bg_insert"/>-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorSpaceListLocation" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorSpace" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:visibility="invisible"
+                app:tabIndicatorColor="@color/colorRed"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/colorBlack"
+                app:tabTextAppearance="@style/Tablayout"
+                app:tabTextColor="@color/colorBlack" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+</LinearLayout>

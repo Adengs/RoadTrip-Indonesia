@@ -27,7 +27,7 @@
                 android:layout_marginRight="5dp"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp"
-                tools:text="Ford Everest Club Indonesia" />
+                tools:text="RoadTrip Indonesia" />
 
 
         </LinearLayout>

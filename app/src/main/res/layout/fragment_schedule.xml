@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
     android:orientation="vertical"
-    tools:context="app.codelabs.fevci.activities.event.fragment.ScheduleFragment">
+    tools:context="app.codelabs.roadtrip.activities.event.fragment.ScheduleFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView

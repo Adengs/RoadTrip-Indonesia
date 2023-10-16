@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/displayScreen"
-    tools:context="app.codelabs.fevci.activities.home.fragment.profile.ProfileFragment">
+    tools:context="app.codelabs.roadtrip.activities.home.fragment.profile.ProfileFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

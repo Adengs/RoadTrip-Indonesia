@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                    android:layout_gravity="center"
-                    android:text="FEVCI Indonesia"
+                    android:text="RoadTrip Indonesia"
                     android:textColor="@color/colorText"
                     android:textSize="17dp" />
 

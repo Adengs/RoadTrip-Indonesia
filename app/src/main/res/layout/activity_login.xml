@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context="app.codelabs.fevci.activities.login.LoginActivity"
+    tools:context="app.codelabs.roadtrip.activities.login.LoginActivity"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
@@ -28,8 +28,17 @@
             android:id="@+id/logo_login"
             android:layout_marginVertical="56dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logo_fevci" />
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/logo_roadtrip"
+            android:scaleX="2"
+            android:scaleY="2"/>
+
+<!--        <ImageView-->
+<!--            android:id="@+id/logo_login"-->
+<!--            android:layout_marginVertical="56dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/logo_fevci"/>-->
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -43,7 +52,7 @@
                 tools:text="codelabs1@mailinator.com"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:hint="E-mail"
+                android:hint="E-mail / Phone"
                 android:inputType="textEmailAddress"
                 android:paddingTop="21dp"
                 android:paddingBottom="19dp"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="app.codelabs.fevci.activities.walktrough.WalkThroughActivity">
+    tools:context="app.codelabs.roadtrip.activities.walktrough.WalkThroughActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"

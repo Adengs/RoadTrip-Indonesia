@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/displayScreen"
-    tools:context="app.codelabs.fevci.activities.home.fragment.community.fragment.MemberFragment">
+    tools:context="app.codelabs.roadtrip.activities.home.fragment.community.fragment.MemberFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout

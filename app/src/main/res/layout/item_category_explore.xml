@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="@dimen/_4sdp"
+    android:id="@+id/container_type">
+
+    <TextView
+        android:id="@+id/text_type"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_28sdp"
+        android:background="@drawable/background_category_outline"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:text="Toko &amp; Bengkel"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_10sdp"
+        app:drawableLeftCompat="@drawable/ic_car_red"
+        android:drawablePadding="@dimen/_8sdp"/>
+
+
+</RelativeLayout>

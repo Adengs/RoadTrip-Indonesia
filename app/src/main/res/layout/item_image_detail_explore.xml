@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:paddingEnd="@dimen/_8sdp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_store"
+        android:layout_width="@dimen/_255sdp"
+        android:layout_height="@dimen/_230sdp"
+        android:src="@drawable/ic_car"
+        app:shapeAppearance="@style/roundedImageViewRounded2"
+        android:scaleType="fitCenter"/>
+
+</LinearLayout>

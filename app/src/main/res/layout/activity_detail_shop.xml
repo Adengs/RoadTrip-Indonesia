@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.codelabs.fevci.activities.shop.DetailProductActivity">
+    tools:context="app.codelabs.roadtrip.activities.shop.DetailProductActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -27,7 +27,9 @@
         android:id="@+id/bottomshop"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:visibility="visible">
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -43,11 +45,11 @@
                         android:text="Hubungi"
                         android:textStyle="bold"
                         android:textColor="@color/colorBlack"
-                        android:textSize="14dp" />
+                        android:textSize="14dp"
+                        android:drawableTint="@color/colorBlack"/>
 
                 <TextView
                     android:id="@+id/tvWA"
-                    android:layout_marginTop="2dp"
                     android:drawableLeft="@drawable/ic_whatsapp"
                     android:background="#32B94C"
                     android:layout_width="0dp"
@@ -61,7 +63,53 @@
                 </LinearLayout>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_edit"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:visibility="gone">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_delete"
+                android:textAlignment="center"
+                android:drawableLeft="@drawable/ic_delete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="16dp"
+                android:text="Delete"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="14dp"
+                android:drawableTint="@color/colorBlack"
+                android:foreground="?android:attr/selectableItemBackground"/>
 
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/silver"/>
+
+            <TextView
+                android:id="@+id/tv_edit"
+                android:drawableLeft="@drawable/ic_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="16dp"
+                android:text="Edit"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="14dp"
+                android:drawableTint="@color/colorBlack"
+                android:textStyle="bold"
+                android:foreground="?android:attr/selectableItemBackground"/>
+        </LinearLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 

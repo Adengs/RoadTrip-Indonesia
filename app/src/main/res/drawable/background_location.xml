@@ -1,0 +1,16 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+  <corners
+      android:radius="@dimen/_4sdp"/>
+  <solid android:color="@color/colorWhite"/>
+
+</shape>
+
+<!--<vector xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:width="343dp"-->
+<!--    android:height="117dp"-->
+<!--    android:viewportWidth="343"-->
+<!--    android:viewportHeight="117">-->
+<!--  <path-->
+<!--      android:pathData="M0,4C0,1.79 1.79,0 4,0H339C341.21,0 343,1.79 343,4V113C343,115.21 341.21,117 339,117H4C1.79,117 0,115.21 0,113V4Z"-->
+<!--      android:fillColor="#ffffff"/>-->
+<!--</vector>-->

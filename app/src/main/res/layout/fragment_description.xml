@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/displayScreen"
-    tools:context="app.codelabs.fevci.activities.event.fragment.DescriptionFragment">
+    tools:context="app.codelabs.roadtrip.activities.event.fragment.DescriptionFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

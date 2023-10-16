@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="app.codelabs.fevci.activities.shop.fragment.FragmentProDescription">
+    tools:context="app.codelabs.roadtrip.activities.shop.fragment.FragmentProDescription">
 
 
     <com.codesgood.views.JustifiedTextView

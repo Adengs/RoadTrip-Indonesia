@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorCircle"
     android:orientation="vertical"
-    tools:context="app.codelabs.fevci.activities.profile.EditProfileActivity">
+    tools:context="app.codelabs.roadtrip.activities.profile.EditProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -60,8 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:visibility="gone">
 
                     <EditText
                         android:id="@+id/et_nra"
@@ -71,14 +70,14 @@
                         android:inputType="textPersonName"
                         android:layout_marginRight="16dp"
                         android:hint="@string/nomor_registrasi_anggota_nra"
-                        android:textColorHint="@color/colorRed" />
+                        android:textColorHint="@color/colorRed"
+                        android:enabled="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:visibility="gone">
 
                     <EditText
                         android:id="@+id/et_chapter"
@@ -94,9 +93,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="16dp">
 
                     <EditText
                         android:id="@+id/et_name"
@@ -111,9 +108,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="16dp">
 
                     <EditText
                         android:id="@+id/et_name_panggilan"
@@ -161,9 +156,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="16dp">
 
                     <EditText
                         android:id="@+id/et_dob"
@@ -180,9 +173,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="20dp">
 
                     <EditText
                         android:id="@+id/et_nomor_wa"
@@ -198,9 +189,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="16dp">
 
                     <EditText
                         android:id="@+id/et_alamat"
@@ -215,9 +204,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="16dp">
 
                     <EditText
                         android:id="@+id/et_RT"
@@ -232,9 +219,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="16dp">
 
                     <EditText
                         android:id="@+id/et_RW"
@@ -249,9 +234,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="16dp">
 
                     <EditText
                         android:id="@+id/et_desa"
@@ -266,9 +249,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="16dp">
 
                     <EditText
                         android:id="@+id/et_kecamatan"
@@ -283,9 +264,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="20dp">
 
                     <EditText
                         android:id="@+id/et_city"
@@ -300,9 +279,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="20dp">
 
                     <EditText
                         android:id="@+id/et_prov"
@@ -317,9 +294,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="20dp">
 
                     <EditText
                         android:id="@+id/et_keterangan"
@@ -335,9 +310,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:passwordToggleDrawable="@drawable/icon_selector"
-                    app:passwordToggleEnabled="true">
+                    android:layout_marginTop="20dp">
 
                     <EditText
                         android:id="@+id/et_email"
@@ -357,7 +330,8 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -382,7 +356,8 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
