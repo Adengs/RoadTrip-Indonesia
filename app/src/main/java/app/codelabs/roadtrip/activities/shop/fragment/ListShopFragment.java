@@ -2,6 +2,8 @@ package app.codelabs.roadtrip.activities.shop.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -19,7 +22,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.nativead.NativeAd;
+import com.google.android.gms.ads.nativead.NativeAdOptions;
+
 import app.codelabs.roadtrip.activities.shop.adapter.AdapterListShop;
+import app.codelabs.roadtrip.activities.shop.adapter.AdsLoader;
+import app.codelabs.roadtrip.activities.shop.adapter.NewAdapterListShop;
 import app.codelabs.roadtrip.models.EventBusClass;
 import app.codelabs.roadtrip.models.ResponseListShopByCategories;
 import app.codelabs.roadtrip.R;
@@ -34,6 +49,7 @@ import retrofit2.Response;
 public class ListShopFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterListShop adapter;
+    private NewAdapterListShop newAdapter;
     private Context context;
     private String search;
     public final static int CATEGORIES = 0;
@@ -41,6 +57,9 @@ public class ListShopFragment extends Fragment {
     public ListShopFragment() {
         // Required empty public constructor
     }
+
+    private ArrayList<ResponseListShopByCategories.DataEntity> list;
+    private List<NativeAd> nativeAdList;
 
 
     @Override
@@ -58,10 +77,65 @@ public class ListShopFragment extends Fragment {
         setView(view);
         setRecyclerView();
         loadData();
+        ads(view);
     }
 
-    private void setEvent() {
+    private void ads(View view) {
+        AdsLoader adsLoader = new AdsLoader();
+        MobileAds.initialize(context, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+                AdLoader adLoader = new AdLoader.Builder(context, "ca-app-pub-5403593084519358/4862345174")
+                        .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+                            @Override
+                            public void onNativeAdLoaded(NativeAd nativeAd) {
+                                Log.d("TAG", "Native Ad Loaded");
 
+//                                if (isDestroyed)
+
+                                nativeAdList.add(nativeAd);
+
+                                if (!adsLoader.getAdLoader().isLoading()){
+                                    newAdapter.setAd(nativeAdList);
+                                }
+
+//                                NativeTemplateStyle styles = new
+//                                        NativeTemplateStyle.Builder().build();
+//                                TemplateView template = view.findViewById(R.id.ads);
+//                                template.setStyles(styles);
+//                                template.setNativeAd(nativeAd);
+                            }
+                        })
+
+                        .withAdListener(new AdListener() {
+                            @Override
+                            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                                super.onAdFailedToLoad(loadAdError);
+                                Log.d("TAG", "Native Ad Failed to Load");
+
+                                new CountDownTimer(1000, 1000){
+
+                                    @Override
+                                    public void onTick(long l) {
+                                        Log.d("TAG", "Timer : " + l/1000);
+                                    }
+
+                                    @Override
+                                    public void onFinish() {
+                                        Log.d("TAG", "Reloading Native Ad");
+                                        ads(view);
+                                    }
+                                }.start();
+                            }
+                        })
+                        .withNativeAdOptions(new NativeAdOptions.Builder().build())
+                        .build();
+
+                adLoader.loadAds(new AdRequest.Builder().build(), 1);
+
+                adsLoader.setAdLoader(adLoader);
+            }
+        });
     }
 
     private void loadData() {
@@ -82,7 +156,9 @@ public class ListShopFragment extends Fragment {
                 public void onResponse(Call<ResponseListShopByCategories> call, Response<ResponseListShopByCategories> response) {
                     if (response.body() != null) {
                         if (response.isSuccessful() & response.body().getSuccess()) {
-                            setListShop(response.body().getData());
+//                            setListShop(response.body().getData());
+                            list.addAll(response.body().getData());
+                            newAdapter.setList(list);
                         }
                     }
                 }
@@ -104,12 +180,17 @@ public class ListShopFragment extends Fragment {
 
     private void setRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(adapter);
+//        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(newAdapter);
     }
 
     private void setView(View view) {
         recyclerView = view.findViewById(R.id.recyclerview);
-        adapter = new AdapterListShop(this);
+//        adapter = new AdapterListShop(this);
+        list = new ArrayList<>();
+        newAdapter = new NewAdapterListShop(this);
+
+        nativeAdList = new ArrayList<>();
 
     }
 

@@ -79,6 +79,9 @@ public interface ApiService {
     @GET("api/walk_through")
     Call<ResponseWalkThrough> getWalkTrough();
 
+    @POST("api/account/delete")
+    Call<ResponseDefault> deleteAccount();
+
     @GET("api/member")
     Call<ResponseListMemberCompany> listMember(@Query("search") String search);
 

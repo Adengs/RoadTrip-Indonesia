@@ -156,6 +156,26 @@
                 android:layout_marginRight="19.5dp"
                 android:background="@color/colorCircle" />
 
+            <TextView
+                android:id="@+id/tv_dlt_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_trash"
+                android:drawablePadding="16dp"
+                android:paddingLeft="21dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="Delete Account"
+                android:textColor="@color/colorBlack" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="21dp"
+                android:layout_marginRight="19.5dp"
+                android:background="@color/colorCircle"
+                android:paddingLeft="21dp" />
+
         </LinearLayout>
 
         <Button

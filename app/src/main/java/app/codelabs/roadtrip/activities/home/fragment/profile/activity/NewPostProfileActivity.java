@@ -345,7 +345,7 @@ public class NewPostProfileActivity extends AppCompatActivity {
         data.put("price", RequestBody.create(MediaType.parse("text/plain"), etPrice.getText().toString()));
         data.put("stock", RequestBody.create(MediaType.parse("text/plain"), etStock.getText().toString()));
         data.put("description", RequestBody.create(MediaType.parse("text/plain"), etDescription.getText().toString()));
-        data.put("user_store_id", RequestBody.create(MediaType.parse("text/plain"), String.valueOf(user.getStore().getUserId())));
+        data.put("user_store_id", RequestBody.create(MediaType.parse("text/plain"), String.valueOf(user.getStore().getId())));
 
         if (!progressDialogFragment.isAdded()) {
             progressDialogFragment.show(getSupportFragmentManager(), "loading");

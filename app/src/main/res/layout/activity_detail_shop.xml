@@ -2,117 +2,148 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="app.codelabs.roadtrip.activities.shop.DetailProductActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite">
-    </androidx.appcompat.widget.Toolbar>
+        android:background="@color/colorWhite" />
 
     <FrameLayout
-        android:layout_below="@+id/toolbar"
-        android:layout_above="@id/bottomshop"
         android:id="@+id/fragment_containershop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomshop"
+        android:layout_below="@+id/toolbar" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomshop"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/colorWhite"
         android:visibility="visible">
-            <LinearLayout
-                android:orientation="horizontal"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/tvHubungi"
-                        android:textAlignment="center"
-                        android:drawableLeft="@drawable/ic_call"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="16dp"
-                        android:text="Hubungi"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="14dp"
-                        android:drawableTint="@color/colorBlack"/>
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-5403593084519358/9268833353">
+
+            </com.google.android.gms.ads.AdView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvWA"
-                    android:drawableLeft="@drawable/ic_whatsapp"
-                    android:background="#32B94C"
+                    android:id="@+id/tvHubungi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_call"
+                    android:drawableTint="@color/colorBlack"
+                    android:padding="16dp"
+                    android:text="Hubungi"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvWA"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#32B94C"
+                    android:drawableLeft="@drawable/ic_whatsapp"
                     android:padding="16dp"
                     android:text="WhatsApp"
                     android:textAlignment="center"
                     android:textColor="#FFF"
                     android:textSize="14dp" />
-                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_edit"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/colorWhite"
         android:visibility="gone">
+
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tv_delete"
-                android:textAlignment="center"
-                android:drawableLeft="@drawable/ic_delete"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="16dp"
-                android:text="Delete"
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:textSize="14dp"
-                android:drawableTint="@color/colorBlack"
-                android:foreground="?android:attr/selectableItemBackground"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/silver"/>
-
-            <TextView
-                android:id="@+id/tv_edit"
-                android:drawableLeft="@drawable/ic_edit"
-                android:layout_width="0dp"
+            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="16dp"
-                android:text="Edit"
-                android:textAlignment="center"
-                android:textColor="@color/colorBlack"
-                android:textSize="14dp"
-                android:drawableTint="@color/colorBlack"
-                android:textStyle="bold"
-                android:foreground="?android:attr/selectableItemBackground"/>
+                android:background="@android:color/transparent"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-5403593084519358/9268833353">
+
+            </com.google.android.gms.ads.AdView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_delete"
+                    android:drawableTint="@color/colorBlack"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="16dp"
+                    android:text="Delete"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/silver" />
+
+                <TextView
+                    android:id="@+id/tv_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_edit"
+                    android:drawableTint="@color/colorBlack"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="16dp"
+                    android:text="Edit"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
-
 
 
 </RelativeLayout>
