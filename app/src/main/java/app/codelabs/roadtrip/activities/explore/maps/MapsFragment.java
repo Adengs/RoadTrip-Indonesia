@@ -203,7 +203,9 @@ public class MapsFragment extends Fragment implements GoogleApiClient.OnConnecti
                             nameOutlet.setText(responseOutlet.get(i).getTitle());
                             cityOutlet.setText(responseOutlet.get(i).getCity());
                             provinceOutlet.setText(responseOutlet.get(i).getProvince());
-                            countryFood.setText(responseOutlet.get(i).getTags().get(0));
+                            if (!responseOutlet.get(i).getTags().isEmpty()){
+                                countryFood.setText(responseOutlet.get(i).getTags().get(0));
+                            }
                             priceFrom.setText(formatRupiah.format((double)responseOutlet.get(i).getPrice_start()).replace(",00", "").replace("Rp",""));
 
                             if (responseOutlet.get(i).getImages().isEmpty()){

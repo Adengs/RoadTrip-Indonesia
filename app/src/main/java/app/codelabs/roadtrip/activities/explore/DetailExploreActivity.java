@@ -155,7 +155,11 @@ public class DetailExploreActivity extends AppCompatActivity {
 
                                 outlet.setText(data.getTitle());
                                 category.setText(data.getCategory().getTitle());
-                                subCategory.setText(data.getTags().get(0));
+                                if (!data.getTags().isEmpty()){
+                                    subCategory.setText(data.getTags().get(0));
+                                }else{
+                                    subCategory.setVisibility(View.GONE);
+                                }
                                 price.setText(formatRupiah.format((double) data.getPrice_start()).replace(",00", "").replace("Rp",""));
                                 desc.setText(Html.fromHtml(data.getDescription().replace("<br>","").replace("<p>","").replace("</p>","")));
                                 location.setText(Html.fromHtml(data.getAddress().replace("<br>","").replace("<p>","").replace("</p>","")));
